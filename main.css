@@ -270,19 +270,20 @@ a:hover {
     margin-top: -2px;
 }
 
-/* Split Goblins - Big and Small with Animations */
 .logo-text {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    position: relative;
+    font-weight: 700;
 }
 
-/* Goblin mascot styles removed - will be added back when separate goblin images are provided */
-
-/* Fallback for old logo-mascot class */
+/* Logo Mascot - Original Single Image */
 .logo-mascot {
-    display: none !important;
+    height: 45px;
+    width: auto;
+    max-width: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: var(--spacing-sm);
+    animation: mascotWiggle 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px rgba(34, 197, 94, 0.5));
 }
 
 @keyframes mascotWiggle {
@@ -553,38 +554,34 @@ a:hover {
     font-weight: 400;
 }
 
-/* Hero Mascot removed - using split goblins in title now */
+/* Hero Mascot - Original Single Image */
+.hero-mascot-container {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
 .hero-mascot {
-    display: none;
+    max-width: 200px;
+    height: auto;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    animation: mascotFlex 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 20px rgba(34, 197, 94, 0.6));
 }
 
 .hero-mascot svg,
 .hero-mascot img[src$=".svg"] {
     background: transparent !important;
-    mix-blend-mode: normal;
 }
 
-/* Force transparent background for SVG */
 .hero-mascot img,
 .logo-mascot {
     background: transparent !important;
 }
 
-/* If SVG has black fill, make it transparent */
-.hero-mascot svg path,
-.hero-mascot svg rect,
-.hero-mascot svg circle {
-    fill: none !important;
-}
-
-.hero-mascot svg {
-    background-color: transparent !important;
-}
-
-/* Alternative: if mascot is PNG with black, use filter to remove black */
 .hero-mascot img[src$=".svg"],
 .logo-mascot[src$=".svg"] {
-    mix-blend-mode: screen;
     filter: brightness(1.2) contrast(1.1);
 }
 

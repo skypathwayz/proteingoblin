@@ -175,6 +175,115 @@ function getFoodImage(recipeName, altText) {
         'Protein Rub': 'images-backup/High-Protein-Omelette-3.jpg',
         'Protein Seasoning': 'images-backup/High-Protein-Omelette-3.jpg',
         
+        // New Trending Flavor Recipes 2024
+        // Matcha Recipes
+        'Matcha Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Matcha Protein Overnight Oats': 'images-backup/featured-image-chocolate-protein-overnight-oats.jpg',
+        'Matcha Protein Energy Balls': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Matcha Protein Ice Cream': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        
+        // Peach Recipes
+        'Peach Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Peach Protein Pancakes': 'images-backup/strawberry pancakes .jpeg',
+        'Peach Protein Parfait': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Peach Protein Muffins': 'images-backup/birthday cake.webp',
+        
+        // Mocha Recipes
+        'Mocha Protein Smoothie': 'images-backup/Chocolate-Protein-Shake-6-scaled.jpg',
+        'Mocha Protein Pancakes': 'images-backup/chocolate-protein-pancakes-9.jpg',
+        'Mocha Protein Brownies': 'images-backup/High-Protein-Brownies.jpg',
+        
+        // Cookies & Cream Recipes (already have some)
+        'Cookies & Cream Protein Shake': 'images-backup/cookies-and-cream-protein-shake-13.webp',
+        'Cookies & Cream Protein Ice Cream': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        'Cookies & Cream Protein Muffins': 'images-backup/birthday cake.webp',
+        
+        // Birthday Cake Recipes
+        'Birthday Cake Protein Shake': 'images-backup/birthday cake.webp',
+        'Birthday Cake Protein Pancakes': 'images-backup/chocolate-protein-pancakes-9.jpg',
+        'Birthday Cake Protein Muffins': 'images-backup/birthday cake.webp',
+        
+        // Salted Caramel Recipes
+        'Salted Caramel Protein Smoothie': 'images-backup/caramel protein pancakes.webp',
+        'Salted Caramel Protein Pancakes': 'images-backup/caramel protein pancakes.webp',
+        'Salted Caramel Protein Bars': 'images-backup/peanut-butter-protein-balls.jpg',
+        
+        // Cinnamon Roll Recipes
+        'Cinnamon Roll Protein Smoothie': 'images-backup/Banana-Protein-Shake_600x600.jpeg',
+        'Cinnamon Roll Protein Overnight Oats': 'images-backup/featured-image-chocolate-protein-overnight-oats.jpg',
+        'Cinnamon Roll Protein Muffins': 'images-backup/birthday cake.webp',
+        
+        // Blueberry Recipes
+        'Blueberry Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Blueberry Protein Pancakes': 'images-backup/strawberry pancakes .jpeg',
+        'Blueberry Protein Muffins': 'images-backup/birthday cake.webp',
+        
+        // Lemon Recipes
+        'Lemon Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Lemon Protein Pancakes': 'images-backup/vanilla pancakes.jpg',
+        'Lemon Protein Energy Balls': 'images-backup/peanut-butter-protein-balls.jpg',
+        
+        // Orange Cream Recipes
+        'Orange Cream Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Orange Cream Protein Ice Cream': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        'Orange Cream Protein Popsicles': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        
+        // Additional new recipe variations
+        'Chocolate Protein Coffee Smoothie': 'images-backup/Chocolate-Protein-Shake-6-scaled.jpg',
+        'Vanilla Protein Coffee Smoothie': 'images-backup/Banana-Protein-Shake_600x600.jpeg',
+        'Protein Hot Chocolate': 'images-backup/Chocolate-Protein-Shake-6-scaled.jpg',
+        'Matcha Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Protein Chai Latte': 'images-backup/Banana-Protein-Shake_600x600.jpeg',
+        'Protein Energy Bites': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Protein Granola Bars': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Trail Mix': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Protein Rice Cakes': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Stuffed Dates': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Protein Banana Nice Cream': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        'Protein Popsicles': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        'Protein Frozen Yogurt': 'images-backup/creamy-vanilla-protein-ice-cream.jpg',
+        'Protein Milkshake': 'images-backup/Chocolate-Protein-Shake-6-scaled.jpg',
+        'Protein Iced Coffee': 'images-backup/Chocolate-Protein-Shake-6-scaled.jpg',
+        'Protein French Toast Sticks': 'images-backup/vanilla pancakes.jpg',
+        'Protein Breakfast Burrito': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Breakfast Bowl': 'images-backup/featured-image-chocolate-protein-overnight-oats.jpg',
+        'Protein Oatmeal Bowl': 'images-backup/vanilla-steel-cut-oatmeal-recipe-e1655260624606.jpg',
+        'Protein Scrambled Eggs': 'images-backup/scrambled eggs.jpeg',
+        'Protein Breakfast Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Protein Banana Bread Muffins': 'images-backup/protein-banana-bread-recipe.jpg',
+        'Protein Cinnamon Rolls': 'images-backup/birthday cake.webp',
+        'Protein Bagels': 'images-backup/vanilla pancakes.jpg',
+        'Protein Pretzels': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Pizza Crust': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Mac and Cheese': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Soup': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Pasta Sauce': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Chicken Meatballs': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Taco Seasoning Mix': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Chocolate Protein Donuts': 'images-backup/birthday cake.webp',
+        'Protein Rice Krispie Treats': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Truffles': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Protein Banana Pudding': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Bread Pudding': 'images-backup/protein-banana-bread-recipe.jpg',
+        'Protein Chocolate Chip Cookies': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Oatmeal Cookies': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Peanut Butter Cookies': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Lemon Bars': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Apple Crisp': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Protein Crème Brûlée': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Flan': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Churros': 'images-backup/birthday cake.webp',
+        'Protein Tiramisu': 'images-backup/cookies-and-cream-protein-mug-cake.webp',
+        'Protein Cheesecake Bars': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Pumpkin Pie': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Key Lime Pie': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Chocolate Mousse': 'images-backup/chocolate-protein-ice-cream-recipe-500x500.webp',
+        'Protein Vanilla Pudding': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Chocolate Pudding': 'images-backup/chocolate-protein-ice-cream-recipe-500x500.webp',
+        'Protein Butterscotch Pudding': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Tapioca Pudding': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Rice Pudding': 'images-backup/Strawberry-Oatmeal-4optimized.jpg',
+        
         // Fallback
         'default': 'images-backup/protein-mug-cake-recipe.jpg'
     };
@@ -2230,6 +2339,2315 @@ const recipes = {
             ],
             tips: "Churn according to ice cream maker instructions",
             image: getFoodImage('Protein Gelato', 'Protein Gelato'),
+            dietary: ["gluten-free"]
+        },
+        // Additional Recipe Variations - 50+ New Recipes
+        {
+            name: "Chocolate Protein Coffee Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 25,
+            calories: 180,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1 cup cold brew coffee",
+                "1/2 frozen banana",
+                "1 tbsp cocoa powder",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately over ice"
+            ],
+            tips: "Use strong coffee for more flavor",
+            image: getFoodImage('Chocolate Protein Shake', 'Chocolate Protein Coffee Smoothie'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Vanilla Protein Coffee Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 24,
+            calories: 170,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 cup cold brew coffee",
+                "1/2 cup almond milk",
+                "1 tsp vanilla extract",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Top with cinnamon if desired"
+            ],
+            tips: "Add a pinch of cinnamon for extra flavor",
+            image: getFoodImage('Vanilla Protein Shake', 'Vanilla Protein Coffee Smoothie'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Protein Hot Chocolate",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "3 min",
+            servings: 1,
+            protein: 20,
+            calories: 150,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1 cup hot water or milk",
+                "1 tbsp cocoa powder",
+                "1 tsp honey"
+            ],
+            method: [
+                "Heat water or milk until hot",
+                "Whisk in protein powder and cocoa",
+                "Sweeten with honey",
+                "Top with whipped cream if desired"
+            ],
+            tips: "Whisk vigorously to prevent clumping",
+            image: getFoodImage('Chocolate Protein Shake', 'Protein Hot Chocolate'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Matcha Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 23,
+            calories: 160,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 tsp matcha powder",
+                "1 cup almond milk",
+                "1/2 frozen banana",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately"
+            ],
+            tips: "Use ceremonial grade matcha for best flavor",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Matcha Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Protein Chai Latte",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 22,
+            calories: 140,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 cup chai tea",
+                "1/4 cup milk",
+                "1 tsp honey",
+                "Pinch of cinnamon"
+            ],
+            method: [
+                "Brew chai tea",
+                "Heat milk and combine with tea",
+                "Whisk in protein powder",
+                "Sweeten with honey and cinnamon"
+            ],
+            tips: "Steep chai for 5 minutes for stronger flavor",
+            image: getFoodImage('Vanilla Protein Shake', 'Protein Chai Latte'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Energy Bites",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 6,
+            calories: 90,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1/2 cup dates",
+                "1/4 cup almonds",
+                "1 tbsp cocoa powder",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Blend dates until paste forms",
+                "Add protein powder and almonds",
+                "Blend until combined",
+                "Roll into 12 balls",
+                "Chill for 30 minutes"
+            ],
+            tips: "Store in fridge for up to a week",
+            image: getFoodImage('Protein Energy Balls', 'Protein Energy Bites'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Protein Granola Bars",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "20 min",
+            servings: 8,
+            protein: 12,
+            calories: 220,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "2 cups oats",
+                "1/2 cup honey",
+                "1/4 cup almond butter",
+                "1/4 cup dried fruit",
+                "1/4 cup nuts"
+            ],
+            method: [
+                "Mix dry ingredients",
+                "Heat honey and almond butter",
+                "Combine wet and dry",
+                "Press into pan",
+                "Bake at 350°F for 20 minutes"
+            ],
+            tips: "Let cool completely before cutting",
+            image: getFoodImage('Protein Cookies', 'Protein Granola Bars'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Trail Mix",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 8,
+            protein: 8,
+            calories: 180,
+            ingredients: [
+                "1/2 cup protein powder coated nuts",
+                "1/4 cup dark chocolate chips",
+                "1/4 cup dried cranberries",
+                "1/4 cup almonds",
+                "1/4 cup pumpkin seeds"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Store in airtight container"
+            ],
+            tips: "Make your own protein-coated nuts by mixing protein powder with melted coconut oil",
+            image: getFoodImage('Peanut Butter Protein Balls', 'Protein Trail Mix'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Rice Cakes",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 15,
+            calories: 200,
+            ingredients: [
+                "2 rice cakes",
+                "2 tbsp protein powder mixed with water",
+                "1 tbsp almond butter",
+                "Sliced banana"
+            ],
+            method: [
+                "Mix protein powder with water to make spread",
+                "Spread on rice cakes",
+                "Top with almond butter and banana"
+            ],
+            tips: "Use chocolate protein for a dessert-like snack",
+            image: getFoodImage('Protein Cookies', 'Protein Rice Cakes'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Protein Stuffed Dates",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "0 min",
+            servings: 6,
+            protein: 5,
+            calories: 85,
+            ingredients: [
+                "6 dates",
+                "2 tbsp vanilla protein powder",
+                "1 tbsp almond butter",
+                "12 almonds"
+            ],
+            method: [
+                "Pit dates",
+                "Mix protein powder with almond butter",
+                "Stuff dates with mixture",
+                "Insert one almond in each",
+                "Chill for 30 minutes"
+            ],
+            tips: "Use Medjool dates for best texture",
+            image: getFoodImage('Protein Energy Balls', 'Protein Stuffed Dates'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Protein Banana Nice Cream",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 18,
+            calories: 220,
+            ingredients: [
+                "2 frozen bananas",
+                "1 scoop vanilla protein powder",
+                "1 tbsp cocoa powder (optional)",
+                "1 tbsp almond milk"
+            ],
+            method: [
+                "Blend frozen bananas until creamy",
+                "Add protein powder and blend",
+                "Add milk if needed",
+                "Serve immediately or freeze"
+            ],
+            tips: "Freeze bananas overnight for best texture",
+            image: getFoodImage('Strawberry Protein Ice Cream', 'Protein Banana Nice Cream'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Protein Popsicles",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 12,
+            calories: 100,
+            ingredients: [
+                "1 scoop strawberry protein powder",
+                "1 cup Greek yogurt",
+                "1/2 cup berries",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Blend all ingredients",
+                "Pour into popsicle molds",
+                "Freeze for 4+ hours"
+            ],
+            tips: "Use silicone molds for easy removal",
+            image: getFoodImage('Strawberry Protein Ice Cream', 'Protein Popsicles'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Frozen Yogurt",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 20,
+            calories: 180,
+            ingredients: [
+                "1 cup Greek yogurt",
+                "1 scoop vanilla protein powder",
+                "1/2 cup frozen berries",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Mix protein powder with yogurt",
+                "Fold in berries",
+                "Freeze for 2 hours",
+                "Stir every 30 minutes"
+            ],
+            tips: "Don't freeze completely solid - aim for soft-serve texture",
+            image: getFoodImage('Vanilla Protein Ice Cream', 'Protein Frozen Yogurt'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Milkshake",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 26,
+            calories: 280,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1 cup milk",
+                "1/2 frozen banana",
+                "2 tbsp vanilla ice cream",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until thick",
+                "Serve immediately"
+            ],
+            tips: "Add more ice for thicker shake",
+            image: getFoodImage('Chocolate Protein Shake', 'Protein Milkshake'),
+            dietary: []
+        },
+        {
+            name: "Protein Iced Coffee",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 20,
+            calories: 90,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 cup cold brew coffee",
+                "1/4 cup milk",
+                "Ice cubes"
+            ],
+            method: [
+                "Mix protein powder with milk",
+                "Pour over ice",
+                "Top with cold brew",
+                "Stir and enjoy"
+            ],
+            tips: "Use flavored protein for variety",
+            image: getFoodImage('Chocolate Protein Shake', 'Protein Iced Coffee'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein French Toast Sticks",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "8 min",
+            servings: 2,
+            protein: 28,
+            calories: 300,
+            ingredients: [
+                "4 slices bread",
+                "2 scoops vanilla protein powder",
+                "2 eggs",
+                "1/4 cup milk",
+                "1 tsp cinnamon"
+            ],
+            method: [
+                "Cut bread into sticks",
+                "Mix eggs, protein powder, milk, and cinnamon",
+                "Dip bread sticks in mixture",
+                "Cook on pan until golden",
+                "Serve with syrup"
+            ],
+            tips: "Use day-old bread for best texture",
+            image: getFoodImage('Vanilla Protein Pancakes', 'Protein French Toast Sticks'),
+            dietary: []
+        },
+        {
+            name: "Protein Breakfast Burrito",
+            category: "breakfast",
+            difficulty: "intermediate",
+            prepTime: "10 min",
+            cookTime: "10 min",
+            servings: 1,
+            protein: 35,
+            calories: 420,
+            ingredients: [
+                "1 large tortilla",
+                "2 eggs",
+                "1 scoop unflavored protein powder",
+                "1/4 cup black beans",
+                "2 tbsp cheese",
+                "Salsa"
+            ],
+            method: [
+                "Scramble eggs with protein powder",
+                "Warm tortilla",
+                "Add eggs, beans, and cheese",
+                "Roll into burrito",
+                "Top with salsa"
+            ],
+            tips: "Use unflavored protein to avoid sweet taste",
+            image: getFoodImage('High-Protein Omelette', 'Protein Breakfast Burrito'),
+            dietary: []
+        },
+        {
+            name: "Protein Breakfast Bowl",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "10 min",
+            servings: 1,
+            protein: 30,
+            calories: 380,
+            ingredients: [
+                "2 eggs",
+                "1 scoop unflavored protein powder",
+                "1/2 cup quinoa",
+                "1/4 cup vegetables",
+                "1 tbsp olive oil"
+            ],
+            method: [
+                "Cook quinoa",
+                "Scramble eggs with protein powder",
+                "Saute vegetables",
+                "Combine in bowl",
+                "Drizzle with olive oil"
+            ],
+            tips: "Use pre-cooked quinoa for faster prep",
+            image: getFoodImage('Protein Overnight Oats', 'Protein Breakfast Bowl'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Oatmeal Bowl",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 26,
+            calories: 340,
+            ingredients: [
+                "1/2 cup rolled oats",
+                "1 scoop vanilla protein powder",
+                "1 cup water or milk",
+                "1/2 banana",
+                "1 tbsp nuts"
+            ],
+            method: [
+                "Cook oats in water/milk",
+                "Stir in protein powder",
+                "Top with banana and nuts",
+                "Serve hot"
+            ],
+            tips: "Add protein powder after cooking to preserve nutrients",
+            image: getFoodImage('Vanilla Steel Cut Oatmeal', 'Protein Oatmeal Bowl'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Scrambled Eggs",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "2 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 32,
+            calories: 280,
+            ingredients: [
+                "4 eggs",
+                "1 scoop unflavored protein powder",
+                "1 tbsp butter",
+                "Salt and pepper"
+            ],
+            method: [
+                "Whisk eggs with protein powder",
+                "Melt butter in pan",
+                "Cook eggs until set",
+                "Season with salt and pepper"
+            ],
+            tips: "Cook on low heat for creamy texture",
+            image: getFoodImage('Scrambled Eggs', 'Protein Scrambled Eggs'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Breakfast Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 28,
+            calories: 320,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup Greek yogurt",
+                "1/2 banana",
+                "1/4 cup oats",
+                "1 cup milk",
+                "1 tbsp almond butter"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately"
+            ],
+            tips: "Soak oats overnight for creamier texture",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Protein Breakfast Smoothie'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Banana Bread Muffins",
+            category: "baked",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 12,
+            protein: 8,
+            calories: 180,
+            ingredients: [
+                "2 scoops banana protein powder",
+                "2 ripe bananas",
+                "1 1/2 cups flour",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mash bananas",
+                "Mix all ingredients",
+                "Fill muffin tins",
+                "Bake at 350°F for 20 minutes"
+            ],
+            tips: "Use very ripe bananas for sweetness",
+            image: getFoodImage('Protein Banana Bread', 'Protein Banana Bread Muffins'),
+            dietary: []
+        },
+        {
+            name: "Protein Cinnamon Rolls",
+            category: "baked",
+            difficulty: "advanced",
+            prepTime: "30 min",
+            cookTime: "25 min",
+            servings: 8,
+            protein: 12,
+            calories: 240,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "2 cups flour",
+                "1/4 cup butter",
+                "1/4 cup brown sugar",
+                "1 tsp cinnamon",
+                "1 packet yeast"
+            ],
+            method: [
+                "Make dough with protein powder",
+                "Roll out and spread butter mixture",
+                "Roll up and slice",
+                "Bake at 375°F for 25 minutes",
+                "Top with protein glaze"
+            ],
+            tips: "Let dough rise twice for fluffy rolls",
+            image: getFoodImage('Birthday Cake Protein', 'Protein Cinnamon Rolls'),
+            dietary: []
+        },
+        {
+            name: "Protein Bagels",
+            category: "baked",
+            difficulty: "advanced",
+            prepTime: "20 min",
+            cookTime: "20 min",
+            servings: 4,
+            protein: 16,
+            calories: 220,
+            ingredients: [
+                "2 scoops unflavored protein powder",
+                "1 cup Greek yogurt",
+                "1 1/2 cups self-rising flour",
+                "1 egg white"
+            ],
+            method: [
+                "Mix ingredients into dough",
+                "Shape into bagels",
+                "Brush with egg white",
+                "Bake at 375°F for 20 minutes"
+            ],
+            tips: "Use self-rising flour for best results",
+            image: getFoodImage('Vanilla Protein Pancakes', 'Protein Bagels'),
+            dietary: []
+        },
+        {
+            name: "Protein Pretzels",
+            category: "snacks",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "15 min",
+            servings: 8,
+            protein: 10,
+            calories: 160,
+            ingredients: [
+                "2 scoops unflavored protein powder",
+                "2 cups flour",
+                "1 cup warm water",
+                "1 packet yeast",
+                "Coarse salt"
+            ],
+            method: [
+                "Make dough with protein powder",
+                "Shape into pretzels",
+                "Boil briefly in water",
+                "Bake at 425°F for 15 minutes",
+                "Sprinkle with salt"
+            ],
+            tips: "Boiling gives pretzels their characteristic texture",
+            image: getFoodImage('Protein Cookies', 'Protein Pretzels'),
+            dietary: []
+        },
+        {
+            name: "Protein Pizza Crust",
+            category: "savory",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "15 min",
+            servings: 2,
+            protein: 24,
+            calories: 280,
+            ingredients: [
+                "2 scoops unflavored protein powder",
+                "1 cup Greek yogurt",
+                "1 1/2 cups flour",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix into dough",
+                "Roll out thin",
+                "Pre-bake at 400°F for 8 minutes",
+                "Add toppings and bake 7 more minutes"
+            ],
+            tips: "Pre-baking prevents soggy crust",
+            image: getFoodImage('High-Protein Omelette', 'Protein Pizza Crust'),
+            dietary: []
+        },
+        {
+            name: "Protein Mac and Cheese",
+            category: "savory",
+            difficulty: "intermediate",
+            prepTime: "10 min",
+            cookTime: "15 min",
+            servings: 2,
+            protein: 32,
+            calories: 380,
+            ingredients: [
+                "2 oz pasta",
+                "2 scoops unflavored protein powder",
+                "1/4 cup milk",
+                "2 tbsp cheese",
+                "1 tbsp butter"
+            ],
+            method: [
+                "Cook pasta",
+                "Make sauce with protein powder and milk",
+                "Add cheese and butter",
+                "Combine with pasta"
+            ],
+            tips: "Use unflavored protein to avoid sweet taste",
+            image: getFoodImage('High-Protein Omelette', 'Protein Mac and Cheese'),
+            dietary: []
+        },
+        {
+            name: "Protein Soup",
+            category: "savory",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "20 min",
+            servings: 2,
+            protein: 26,
+            calories: 220,
+            ingredients: [
+                "2 scoops unflavored protein powder",
+                "2 cups broth",
+                "1/2 cup vegetables",
+                "1/4 cup chicken",
+                "Herbs and spices"
+            ],
+            method: [
+                "Cook vegetables in broth",
+                "Add protein powder",
+                "Stir in cooked chicken",
+                "Season and serve"
+            ],
+            tips: "Whisk protein powder into cold broth first",
+            image: getFoodImage('High-Protein Omelette', 'Protein Soup'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Pasta Sauce",
+            category: "savory",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "15 min",
+            servings: 2,
+            protein: 22,
+            calories: 180,
+            ingredients: [
+                "1 scoop unflavored protein powder",
+                "1 can tomatoes",
+                "1/4 cup onions",
+                "2 cloves garlic",
+                "Herbs and spices"
+            ],
+            method: [
+                "Saute onions and garlic",
+                "Add tomatoes and simmer",
+                "Stir in protein powder",
+                "Season and serve over pasta"
+            ],
+            tips: "Use unflavored protein for savory dishes",
+            image: getFoodImage('High-Protein Omelette', 'Protein Pasta Sauce'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Chicken Meatballs",
+            category: "savory",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 4,
+            protein: 28,
+            calories: 240,
+            ingredients: [
+                "1 lb ground chicken",
+                "2 scoops unflavored protein powder",
+                "1 egg",
+                "1/4 cup breadcrumbs",
+                "Herbs and spices"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Form into balls",
+                "Bake at 375°F for 20 minutes",
+                "Serve with sauce"
+            ],
+            tips: "Don't overmix or meatballs will be tough",
+            image: getFoodImage('High-Protein Omelette', 'Protein Chicken Meatballs'),
+            dietary: []
+        },
+        {
+            name: "Protein Taco Seasoning Mix",
+            category: "savory",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 4,
+            calories: 20,
+            ingredients: [
+                "1 scoop unflavored protein powder",
+                "1 tbsp chili powder",
+                "1 tsp cumin",
+                "1 tsp paprika",
+                "Salt and pepper"
+            ],
+            method: [
+                "Mix all spices with protein powder",
+                "Use to season meat or vegetables"
+            ],
+            tips: "Store in airtight container for up to 6 months",
+            image: getFoodImage('High-Protein Omelette', 'Protein Taco Seasoning Mix'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Chocolate Protein Donuts",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "12 min",
+            servings: 6,
+            protein: 12,
+            calories: 200,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "1 cup flour",
+                "1/4 cup cocoa powder",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Fill donut pan",
+                "Bake at 350°F for 12 minutes",
+                "Glaze if desired"
+            ],
+            tips: "Use a donut pan for perfect shape",
+            image: getFoodImage('Birthday Cake Protein', 'Chocolate Protein Donuts'),
+            dietary: []
+        },
+        {
+            name: "Protein Rice Krispie Treats",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 9,
+            protein: 8,
+            calories: 160,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "3 cups Rice Krispies",
+                "1/4 cup marshmallows",
+                "2 tbsp butter"
+            ],
+            method: [
+                "Melt marshmallows and butter",
+                "Stir in protein powder",
+                "Mix with cereal",
+                "Press into pan",
+                "Cool and cut"
+            ],
+            tips: "Use mini marshmallows for easier melting",
+            image: getFoodImage('Protein Cookies', 'Protein Rice Krispie Treats'),
+            dietary: []
+        },
+        {
+            name: "Protein Truffles",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "20 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 6,
+            calories: 120,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "1/2 cup dates",
+                "1/4 cup almonds",
+                "2 tbsp cocoa powder",
+                "Coconut flakes for rolling"
+            ],
+            method: [
+                "Blend dates until paste",
+                "Add protein powder and nuts",
+                "Form into balls",
+                "Roll in coconut",
+                "Chill for 1 hour"
+            ],
+            tips: "Store in fridge for best texture",
+            image: getFoodImage('Protein Energy Balls', 'Protein Truffles'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Protein Banana Pudding",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 16,
+            calories: 220,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "2 cups Greek yogurt",
+                "2 bananas",
+                "1/2 cup vanilla wafers",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Mix protein powder with yogurt",
+                "Layer with bananas and wafers",
+                "Chill for 2 hours",
+                "Serve cold"
+            ],
+            tips: "Let wafers soften slightly for classic texture",
+            image: getFoodImage('Protein Parfait', 'Protein Banana Pudding'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Bread Pudding",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "35 min",
+            servings: 6,
+            protein: 14,
+            calories: 280,
+            ingredients: [
+                "4 cups bread cubes",
+                "2 scoops vanilla protein powder",
+                "2 eggs",
+                "1 1/2 cups milk",
+                "1/4 cup sugar",
+                "1 tsp cinnamon"
+            ],
+            method: [
+                "Mix protein powder with eggs and milk",
+                "Pour over bread cubes",
+                "Bake at 350°F for 35 minutes",
+                "Serve warm"
+            ],
+            tips: "Use day-old bread for best results",
+            image: getFoodImage('Protein Banana Bread', 'Protein Bread Pudding'),
+            dietary: []
+        },
+        {
+            name: "Protein Chocolate Chip Cookies",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "12 min",
+            servings: 12,
+            protein: 8,
+            calories: 160,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 cup flour",
+                "1/2 cup butter",
+                "1/4 cup sugar",
+                "1/2 cup chocolate chips",
+                "1 egg"
+            ],
+            method: [
+                "Cream butter and sugar",
+                "Add egg and protein powder",
+                "Mix in flour and chips",
+                "Bake at 375°F for 12 minutes"
+            ],
+            tips: "Don't overbake - cookies continue cooking on pan",
+            image: getFoodImage('Protein Cookies', 'Protein Chocolate Chip Cookies'),
+            dietary: []
+        },
+        {
+            name: "Protein Oatmeal Cookies",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "12 min",
+            servings: 18,
+            protein: 6,
+            calories: 120,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 1/2 cups oats",
+                "1/2 cup flour",
+                "1/4 cup butter",
+                "1/4 cup honey",
+                "1 egg",
+                "Raisins or chocolate chips"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Drop onto baking sheet",
+                "Bake at 350°F for 12 minutes"
+            ],
+            tips: "Add more oats for chewier cookies",
+            image: getFoodImage('Protein Cookies', 'Protein Oatmeal Cookies'),
+            dietary: []
+        },
+        {
+            name: "Protein Peanut Butter Cookies",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "10 min",
+            servings: 12,
+            protein: 10,
+            calories: 180,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1/2 cup peanut butter",
+                "1/4 cup honey",
+                "1 egg",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Form into balls",
+                "Flatten with fork",
+                "Bake at 350°F for 10 minutes"
+            ],
+            tips: "Use natural peanut butter for best results",
+            image: getFoodImage('Protein Cookies', 'Protein Peanut Butter Cookies'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Protein Lemon Bars",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "25 min",
+            servings: 9,
+            protein: 10,
+            calories: 200,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 cup flour",
+                "1/2 cup butter",
+                "3 eggs",
+                "1/2 cup lemon juice",
+                "1/4 cup sugar"
+            ],
+            method: [
+                "Make crust with flour, butter, and 1 scoop protein",
+                "Bake crust 10 minutes",
+                "Make filling with eggs, lemon, sugar, and protein",
+                "Pour over crust and bake 15 minutes"
+            ],
+            tips: "Let cool completely before cutting",
+            image: getFoodImage('Protein Cheesecake', 'Protein Lemon Bars'),
+            dietary: []
+        },
+        {
+            name: "Protein Apple Crisp",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "30 min",
+            servings: 6,
+            protein: 12,
+            calories: 240,
+            ingredients: [
+                "4 apples",
+                "2 scoops vanilla protein powder",
+                "1 cup oats",
+                "1/4 cup butter",
+                "1/4 cup brown sugar",
+                "1 tsp cinnamon"
+            ],
+            method: [
+                "Slice apples and place in pan",
+                "Mix protein powder, oats, butter, sugar for topping",
+                "Sprinkle over apples",
+                "Bake at 375°F for 30 minutes"
+            ],
+            tips: "Use tart apples like Granny Smith",
+            image: getFoodImage('Protein Cookies', 'Protein Apple Crisp'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Crème Brûlée",
+            category: "desserts",
+            difficulty: "advanced",
+            prepTime: "15 min",
+            cookTime: "40 min",
+            servings: 4,
+            protein: 14,
+            calories: 220,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "4 egg yolks",
+                "1 cup heavy cream",
+                "1/4 cup sugar",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Heat cream until steaming",
+                "Whisk yolks with sugar and protein",
+                "Temper eggs with hot cream",
+                "Bake in water bath at 325°F for 40 minutes",
+                "Chill and caramelize sugar on top"
+            ],
+            tips: "Water bath prevents curdling",
+            image: getFoodImage('Protein Cheesecake', 'Protein Crème Brûlée'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Flan",
+            category: "desserts",
+            difficulty: "advanced",
+            prepTime: "20 min",
+            cookTime: "50 min",
+            servings: 6,
+            protein: 12,
+            calories: 200,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "6 eggs",
+                "2 cups milk",
+                "1/2 cup sugar",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Caramelize sugar in ramekins",
+                "Mix eggs, milk, protein powder, vanilla",
+                "Pour into ramekins",
+                "Bake in water bath at 350°F for 50 minutes",
+                "Chill and invert to serve"
+            ],
+            tips: "Don't overbake or flan will be rubbery",
+            image: getFoodImage('Protein Cheesecake', 'Protein Flan'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Churros",
+            category: "desserts",
+            difficulty: "advanced",
+            prepTime: "20 min",
+            cookTime: "15 min",
+            servings: 12,
+            protein: 8,
+            calories: 180,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 cup water",
+                "1/2 cup butter",
+                "1 cup flour",
+                "2 eggs",
+                "Cinnamon sugar"
+            ],
+            method: [
+                "Boil water and butter",
+                "Stir in flour and protein",
+                "Add eggs one at a time",
+                "Pipe into hot oil",
+                "Fry until golden",
+                "Roll in cinnamon sugar"
+            ],
+            tips: "Oil should be 375°F for perfect churros",
+            image: getFoodImage('Protein Donuts', 'Protein Churros'),
+            dietary: []
+        },
+        {
+            name: "Protein Tiramisu",
+            category: "desserts",
+            difficulty: "advanced",
+            prepTime: "30 min",
+            cookTime: "0 min",
+            servings: 6,
+            protein: 16,
+            calories: 280,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 cup mascarpone",
+                "1/2 cup coffee",
+                "Ladyfingers",
+                "Cocoa powder"
+            ],
+            method: [
+                "Mix protein powder with mascarpone",
+                "Dip ladyfingers in coffee",
+                "Layer with mascarpone mixture",
+                "Dust with cocoa",
+                "Chill 4+ hours"
+            ],
+            tips: "Don't soak ladyfingers too long or they'll fall apart",
+            image: getFoodImage('Cookies & Cream Protein Tiramisu', 'Protein Tiramisu'),
+            dietary: []
+        },
+        {
+            name: "Protein Cheesecake Bars",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "30 min",
+            servings: 12,
+            protein: 12,
+            calories: 220,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "16 oz cream cheese",
+                "2 eggs",
+                "1/4 cup sugar",
+                "1 cup graham cracker crumbs",
+                "1/4 cup butter"
+            ],
+            method: [
+                "Make crust with crumbs and butter",
+                "Mix protein powder with cream cheese",
+                "Add eggs and sugar",
+                "Pour over crust",
+                "Bake at 325°F for 30 minutes",
+                "Chill before cutting"
+            ],
+            tips: "Room temperature cream cheese mixes better",
+            image: getFoodImage('Protein Cheesecake', 'Protein Cheesecake Bars'),
+            dietary: []
+        },
+        {
+            name: "Protein Pumpkin Pie",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "50 min",
+            servings: 8,
+            protein: 10,
+            calories: 240,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 can pumpkin",
+                "2 eggs",
+                "1/2 cup milk",
+                "1/4 cup sugar",
+                "Pie crust",
+                "Pumpkin pie spices"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Pour into pie crust",
+                "Bake at 425°F for 15 minutes",
+                "Reduce to 350°F and bake 35 more minutes"
+            ],
+            tips: "Use pre-made crust for easier prep",
+            image: getFoodImage('Protein Cheesecake', 'Protein Pumpkin Pie'),
+            dietary: []
+        },
+        {
+            name: "Protein Key Lime Pie",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "15 min",
+            servings: 8,
+            protein: 12,
+            calories: 260,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 can sweetened condensed milk",
+                "1/2 cup key lime juice",
+                "3 egg yolks",
+                "Graham cracker crust"
+            ],
+            method: [
+                "Mix protein powder with condensed milk",
+                "Add lime juice and yolks",
+                "Pour into crust",
+                "Bake at 350°F for 15 minutes",
+                "Chill before serving"
+            ],
+            tips: "Use fresh key lime juice for best flavor",
+            image: getFoodImage('Protein Cheesecake', 'Protein Key Lime Pie'),
+            dietary: []
+        },
+        {
+            name: "Protein Chocolate Mousse",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 14,
+            calories: 200,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "1 cup heavy cream",
+                "1/4 cup cocoa powder",
+                "2 tbsp sugar",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Whip cream until stiff",
+                "Fold in protein powder and cocoa",
+                "Add vanilla",
+                "Chill for 2 hours"
+            ],
+            tips: "Don't overmix or mousse will deflate",
+            image: getFoodImage('Protein Mousse', 'Protein Chocolate Mousse'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Vanilla Pudding",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "10 min",
+            servings: 4,
+            protein: 12,
+            calories: 160,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "2 cups milk",
+                "1/4 cup cornstarch",
+                "1/4 cup sugar",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Heat milk until steaming",
+                "Mix cornstarch and sugar",
+                "Whisk into hot milk",
+                "Cook until thick",
+                "Stir in protein powder and vanilla",
+                "Chill before serving"
+            ],
+            tips: "Stir constantly to prevent lumps",
+            image: getFoodImage('Protein Parfait', 'Protein Vanilla Pudding'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Chocolate Pudding",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "10 min",
+            servings: 4,
+            protein: 14,
+            calories: 180,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "2 cups milk",
+                "1/4 cup cornstarch",
+                "2 tbsp cocoa powder",
+                "1/4 cup sugar"
+            ],
+            method: [
+                "Heat milk until steaming",
+                "Mix cornstarch, cocoa, and sugar",
+                "Whisk into hot milk",
+                "Cook until thick",
+                "Stir in protein powder",
+                "Chill before serving"
+            ],
+            tips: "Use dark cocoa for richer flavor",
+            image: getFoodImage('Protein Mousse', 'Protein Chocolate Pudding'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Butterscotch Pudding",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "10 min",
+            servings: 4,
+            protein: 12,
+            calories: 190,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "2 cups milk",
+                "1/4 cup brown sugar",
+                "1/4 cup cornstarch",
+                "2 tbsp butter",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Melt butter and brown sugar",
+                "Heat milk until steaming",
+                "Mix cornstarch with milk",
+                "Combine with sugar mixture",
+                "Cook until thick",
+                "Stir in protein powder and vanilla",
+                "Chill before serving"
+            ],
+            tips: "Brown the sugar slightly for deeper flavor",
+            image: getFoodImage('Protein Parfait', 'Protein Butterscotch Pudding'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Tapioca Pudding",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "15 min",
+            servings: 4,
+            protein: 12,
+            calories: 200,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1/3 cup tapioca pearls",
+                "2 cups milk",
+                "1/4 cup sugar",
+                "1 egg",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Soak tapioca in milk 30 minutes",
+                "Cook until pearls are translucent",
+                "Whisk in egg",
+                "Stir in protein powder, sugar, and vanilla",
+                "Chill before serving"
+            ],
+            tips: "Don't skip the soaking step",
+            image: getFoodImage('Protein Parfait', 'Protein Tapioca Pudding'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Protein Rice Pudding",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "25 min",
+            servings: 4,
+            protein: 14,
+            calories: 220,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1/2 cup rice",
+                "2 cups milk",
+                "1/4 cup sugar",
+                "1 tsp vanilla",
+                "Cinnamon"
+            ],
+            method: [
+                "Cook rice in milk until tender",
+                "Stir in sugar and vanilla",
+                "Add protein powder",
+                "Chill before serving",
+                "Sprinkle with cinnamon"
+            ],
+            tips: "Use short-grain rice for creamier texture",
+            image: getFoodImage('Strawberry Oatmeal', 'Protein Rice Pudding'),
+            dietary: ["gluten-free"]
+        }
+    ],
+
+    // Trending Flavors 2024
+    matcha: [
+        {
+            name: "Matcha Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 24,
+            calories: 180,
+            ingredients: [
+                "1 scoop matcha protein powder",
+                "1 tsp matcha powder (optional)",
+                "1 cup almond milk",
+                "1/2 frozen banana",
+                "1 tbsp honey",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Top with extra matcha powder if desired"
+            ],
+            tips: "Use ceremonial grade matcha for the best antioxidant benefits",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Matcha Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Matcha Protein Overnight Oats",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 28,
+            calories: 320,
+            ingredients: [
+                "1 scoop matcha protein powder",
+                "1/2 cup rolled oats",
+                "1/2 cup almond milk",
+                "1 tsp matcha powder",
+                "1 tbsp chia seeds",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Mix all ingredients in a jar",
+                "Stir until combined",
+                "Refrigerate overnight",
+                "Top with fresh berries before serving"
+            ],
+            tips: "Matcha pairs perfectly with berries for a refreshing breakfast",
+            image: getFoodImage('Protein Overnight Oats', 'Matcha Protein Overnight Oats'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Matcha Protein Energy Balls",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 7,
+            calories: 95,
+            ingredients: [
+                "1 scoop matcha protein powder",
+                "1/2 cup dates",
+                "1/4 cup almonds",
+                "1 tsp matcha powder",
+                "1 tbsp coconut oil"
+            ],
+            method: [
+                "Blend dates until paste forms",
+                "Add protein powder, matcha, and almonds",
+                "Mix in coconut oil",
+                "Roll into 12 balls",
+                "Chill for 30 minutes"
+            ],
+            tips: "Store in fridge - the matcha keeps them energizing!",
+            image: getFoodImage('Protein Energy Balls', 'Matcha Protein Energy Balls'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Matcha Protein Ice Cream",
+            category: "frozen",
+            difficulty: "intermediate",
+            prepTime: "10 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 16,
+            calories: 200,
+            ingredients: [
+                "2 scoops matcha protein powder",
+                "2 frozen bananas",
+                "1 tsp matcha powder",
+                "1/4 cup coconut milk",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Blend frozen bananas until creamy",
+                "Add protein powder and matcha",
+                "Blend with coconut milk",
+                "Freeze for 2 hours",
+                "Stir and serve"
+            ],
+            tips: "Matcha gives this ice cream a beautiful green color and antioxidant boost",
+            image: getFoodImage('Strawberry Protein Ice Cream', 'Matcha Protein Ice Cream'),
+            dietary: ["gluten-free", "dairy-free"]
+        }
+    ],
+
+    peach: [
+        {
+            name: "Peach Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 23,
+            calories: 190,
+            ingredients: [
+                "1 scoop peach protein powder",
+                "1 cup frozen peaches",
+                "1/2 cup Greek yogurt",
+                "1/2 cup almond milk",
+                "1 tsp honey",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Garnish with fresh peach slice"
+            ],
+            tips: "Frozen peaches make this smoothie naturally thick and creamy",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Peach Protein Smoothie'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Peach Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 26,
+            calories: 310,
+            ingredients: [
+                "2 scoops peach protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup diced peaches",
+                "1/4 cup milk",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all dry ingredients",
+                "Add eggs and milk, whisk until smooth",
+                "Fold in diced peaches",
+                "Cook on pan until golden",
+                "Serve with fresh peach slices"
+            ],
+            tips: "Fresh or frozen peaches both work - frozen will make pancakes extra moist",
+            image: getFoodImage('Chocolate Protein Pancakes', 'Peach Protein Pancakes'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Peach Protein Parfait",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 24,
+            calories: 280,
+            ingredients: [
+                "2 scoops peach protein powder",
+                "1 cup Greek yogurt",
+                "1 cup sliced peaches",
+                "1/4 cup granola",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Mix protein powder with yogurt",
+                "Layer yogurt, peaches, and granola",
+                "Drizzle with honey",
+                "Serve chilled"
+            ],
+            tips: "Perfect summer breakfast - light, refreshing, and protein-packed",
+            image: getFoodImage('Protein Parfait', 'Peach Protein Parfait'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Peach Protein Muffins",
+            category: "baked",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 12,
+            protein: 9,
+            calories: 170,
+            ingredients: [
+                "2 scoops peach protein powder",
+                "1 cup diced peaches",
+                "1 1/2 cups flour",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix dry ingredients",
+                "Add eggs and honey",
+                "Fold in diced peaches",
+                "Fill muffin tins",
+                "Bake at 350°F for 20 minutes"
+            ],
+            tips: "Use ripe peaches for maximum flavor and natural sweetness",
+            image: getFoodImage('Birthday Cake Protein', 'Peach Protein Muffins'),
+            dietary: []
+        }
+    ],
+
+    mocha: [
+        {
+            name: "Mocha Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 25,
+            calories: 200,
+            ingredients: [
+                "1 scoop mocha protein powder",
+                "1 cup cold brew coffee",
+                "1/2 frozen banana",
+                "1 tbsp cocoa powder",
+                "1/4 cup milk",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately over ice",
+                "Top with cocoa powder if desired"
+            ],
+            tips: "The perfect morning smoothie - coffee and protein in one delicious drink",
+            image: getFoodImage('Chocolate Protein Shake', 'Mocha Protein Smoothie'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Mocha Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 27,
+            calories: 300,
+            ingredients: [
+                "2 scoops mocha protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup strong coffee",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all dry ingredients",
+                "Add eggs and coffee",
+                "Cook on pan until golden",
+                "Serve with berries"
+            ],
+            tips: "Coffee enhances the chocolate flavor - use freshly brewed for best taste",
+            image: getFoodImage('Chocolate Protein Pancakes', 'Mocha Protein Pancakes'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Mocha Protein Brownies",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 9,
+            protein: 19,
+            calories: 190,
+            ingredients: [
+                "2 scoops mocha protein powder",
+                "1/2 cup almond flour",
+                "1/4 cup cocoa powder",
+                "1/4 cup strong coffee",
+                "2 eggs",
+                "1/4 cup honey"
+            ],
+            method: [
+                "Mix all ingredients until smooth",
+                "Pour into pan",
+                "Bake at 350°F for 20 minutes",
+                "Cool before cutting"
+            ],
+            tips: "The coffee adds depth to the chocolate - these are decadent!",
+            image: getFoodImage('Protein Brownies', 'Mocha Protein Brownies'),
+            dietary: ["gluten-free"]
+        }
+    ],
+
+    "cookies-cream": [
+        {
+            name: "Cookies & Cream Protein Shake",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 26,
+            calories: 290,
+            ingredients: [
+                "1 scoop cookies & cream protein powder",
+                "1 cup milk",
+                "1/2 frozen banana",
+                "2 crushed cookies (optional)",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Top with cookie crumbs"
+            ],
+            tips: "Crush real cookies into the shake for extra cookie flavor",
+            image: getFoodImage('Cookies & Cream Protein Shake', 'Cookies & Cream Protein Shake'),
+            dietary: []
+        },
+        {
+            name: "Cookies & Cream Protein Ice Cream",
+            category: "frozen",
+            difficulty: "intermediate",
+            prepTime: "10 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 18,
+            calories: 240,
+            ingredients: [
+                "2 scoops cookies & cream protein powder",
+                "2 frozen bananas",
+                "1/4 cup crushed cookies",
+                "1/4 cup almond milk",
+                "1 tsp vanilla"
+            ],
+            method: [
+                "Blend frozen bananas until creamy",
+                "Add protein powder and vanilla",
+                "Fold in crushed cookies",
+                "Freeze for 2 hours",
+                "Stir and serve"
+            ],
+            tips: "The classic flavor - cookies & cream never gets old!",
+            image: getFoodImage('Cookies & Cream Protein Ice Cream', 'Cookies & Cream Protein Ice Cream'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Cookies & Cream Protein Muffins",
+            category: "baked",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "18 min",
+            servings: 12,
+            protein: 10,
+            calories: 200,
+            ingredients: [
+                "2 scoops cookies & cream protein powder",
+                "1 1/2 cups flour",
+                "2 eggs",
+                "1/4 cup honey",
+                "1/2 cup crushed cookies",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix dry ingredients",
+                "Add eggs and honey",
+                "Fold in crushed cookies",
+                "Fill muffin tins",
+                "Bake at 350°F for 18 minutes"
+            ],
+            tips: "Reserve some cookie chunks for the top before baking",
+            image: getFoodImage('Birthday Cake Protein', 'Cookies & Cream Protein Muffins'),
+            dietary: []
+        }
+    ],
+
+    "birthday-cake": [
+        {
+            name: "Birthday Cake Protein Shake",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 24,
+            calories: 280,
+            ingredients: [
+                "1 scoop birthday cake protein powder",
+                "1 cup milk",
+                "1/2 frozen banana",
+                "1 tsp vanilla extract",
+                "Sprinkles for garnish",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Top with sprinkles for celebration vibes"
+            ],
+            tips: "Every day can be a birthday with this festive shake!",
+            image: getFoodImage('Birthday Cake Protein', 'Birthday Cake Protein Shake'),
+            dietary: []
+        },
+        {
+            name: "Birthday Cake Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 26,
+            calories: 310,
+            ingredients: [
+                "2 scoops birthday cake protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup milk",
+                "1 tsp vanilla extract",
+                "Sprinkles",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients except sprinkles",
+                "Stir in sprinkles",
+                "Cook on pan until golden",
+                "Top with more sprinkles and syrup"
+            ],
+            tips: "The sprinkles make breakfast feel like dessert!",
+            image: getFoodImage('Chocolate Protein Pancakes', 'Birthday Cake Protein Pancakes'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Birthday Cake Protein Muffins",
+            category: "baked",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 12,
+            protein: 9,
+            calories: 180,
+            ingredients: [
+                "2 scoops birthday cake protein powder",
+                "1 1/2 cups flour",
+                "2 eggs",
+                "1/4 cup honey",
+                "1/4 cup sprinkles",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Fold in sprinkles",
+                "Fill muffin tins",
+                "Bake at 350°F for 20 minutes",
+                "Cool and add frosting if desired"
+            ],
+            tips: "Perfect for actual birthdays - kids and adults both love these!",
+            image: getFoodImage('Birthday Cake Protein', 'Birthday Cake Protein Muffins'),
+            dietary: []
+        }
+    ],
+
+    "salted-caramel": [
+        {
+            name: "Salted Caramel Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 25,
+            calories: 220,
+            ingredients: [
+                "1 scoop salted caramel protein powder",
+                "1 cup milk",
+                "1/2 frozen banana",
+                "1 tbsp caramel sauce",
+                "Pinch of sea salt",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Drizzle with extra caramel"
+            ],
+            tips: "The salt enhances the caramel flavor - don't skip it!",
+            image: getFoodImage('Caramel Protein Pancakes', 'Salted Caramel Protein Smoothie'),
+            dietary: []
+        },
+        {
+            name: "Salted Caramel Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 27,
+            calories: 320,
+            ingredients: [
+                "2 scoops salted caramel protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup milk",
+                "1 tbsp caramel sauce",
+                "Sea salt for topping"
+            ],
+            method: [
+                "Mix all ingredients except salt",
+                "Cook on pan until golden",
+                "Drizzle with caramel",
+                "Sprinkle with sea salt"
+            ],
+            tips: "This flavor combination is trending for a reason - it's addictively good!",
+            image: getFoodImage('Caramel Protein Pancakes', 'Salted Caramel Protein Pancakes'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Salted Caramel Protein Bars",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "0 min",
+            servings: 8,
+            protein: 14,
+            calories: 210,
+            ingredients: [
+                "2 scoops salted caramel protein powder",
+                "1 cup dates",
+                "1/4 cup almonds",
+                "2 tbsp caramel sauce",
+                "1/4 tsp sea salt"
+            ],
+            method: [
+                "Blend dates until paste",
+                "Add protein powder and almonds",
+                "Mix in caramel and salt",
+                "Press into pan",
+                "Chill for 1 hour and cut"
+            ],
+            tips: "Store in fridge - the caramel keeps them moist and delicious",
+            image: getFoodImage('Protein Energy Balls', 'Salted Caramel Protein Bars'),
+            dietary: ["gluten-free", "dairy-free"]
+        }
+    ],
+
+    "cinnamon-roll": [
+        {
+            name: "Cinnamon Roll Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 24,
+            calories: 230,
+            ingredients: [
+                "1 scoop cinnamon roll protein powder",
+                "1 cup milk",
+                "1/2 frozen banana",
+                "1 tsp cinnamon",
+                "1 tbsp cream cheese (optional)",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Top with cinnamon"
+            ],
+            tips: "Tastes just like a cinnamon roll - perfect for breakfast!",
+            image: getFoodImage('Vanilla Protein Shake', 'Cinnamon Roll Protein Smoothie'),
+            dietary: []
+        },
+        {
+            name: "Cinnamon Roll Protein Overnight Oats",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 29,
+            calories: 350,
+            ingredients: [
+                "1 scoop cinnamon roll protein powder",
+                "1/2 cup rolled oats",
+                "1/2 cup milk",
+                "1 tsp cinnamon",
+                "1 tbsp raisins",
+                "1 tbsp cream cheese frosting (optional)"
+            ],
+            method: [
+                "Mix all ingredients in a jar",
+                "Stir until combined",
+                "Refrigerate overnight",
+                "Top with frosting in the morning"
+            ],
+            tips: "The raisins add natural sweetness and texture",
+            image: getFoodImage('Protein Overnight Oats', 'Cinnamon Roll Protein Overnight Oats'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Cinnamon Roll Protein Muffins",
+            category: "baked",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 12,
+            protein: 10,
+            calories: 190,
+            ingredients: [
+                "2 scoops cinnamon roll protein powder",
+                "1 1/2 cups flour",
+                "2 eggs",
+                "1/4 cup brown sugar",
+                "2 tsp cinnamon",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Fill muffin tins",
+                "Bake at 350°F for 20 minutes",
+                "Top with cinnamon sugar or glaze"
+            ],
+            tips: "The house will smell amazing while these bake!",
+            image: getFoodImage('Birthday Cake Protein', 'Cinnamon Roll Protein Muffins'),
+            dietary: []
+        }
+    ],
+
+    blueberry: [
+        {
+            name: "Blueberry Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 23,
+            calories: 200,
+            ingredients: [
+                "1 scoop blueberry protein powder",
+                "1 cup frozen blueberries",
+                "1/2 cup Greek yogurt",
+                "1/2 cup almond milk",
+                "1 tbsp honey",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Top with fresh blueberries"
+            ],
+            tips: "Blueberries are packed with antioxidants - double health benefits!",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Blueberry Protein Smoothie'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Blueberry Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 26,
+            calories: 300,
+            ingredients: [
+                "2 scoops blueberry protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup fresh blueberries",
+                "1/4 cup milk",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all dry ingredients",
+                "Add eggs and milk",
+                "Gently fold in blueberries",
+                "Cook on pan until golden",
+                "Serve with maple syrup"
+            ],
+            tips: "Bursting blueberries in every bite - so good!",
+            image: getFoodImage('Chocolate Protein Pancakes', 'Blueberry Protein Pancakes'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Blueberry Protein Muffins",
+            category: "baked",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 12,
+            protein: 9,
+            calories: 175,
+            ingredients: [
+                "2 scoops blueberry protein powder",
+                "1 cup fresh blueberries",
+                "1 1/2 cups flour",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix dry ingredients",
+                "Add eggs and honey",
+                "Fold in blueberries carefully",
+                "Fill muffin tins",
+                "Bake at 350°F for 20 minutes"
+            ],
+            tips: "Classic flavor that never goes out of style",
+            image: getFoodImage('Birthday Cake Protein', 'Blueberry Protein Muffins'),
+            dietary: []
+        }
+    ],
+
+    lemon: [
+        {
+            name: "Lemon Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 22,
+            calories: 170,
+            ingredients: [
+                "1 scoop lemon protein powder",
+                "1 cup almond milk",
+                "1/2 frozen banana",
+                "Juice of 1/2 lemon",
+                "1 tbsp honey",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Garnish with lemon slice"
+            ],
+            tips: "Refreshing and light - perfect for summer mornings",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Lemon Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Lemon Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 25,
+            calories: 280,
+            ingredients: [
+                "2 scoops lemon protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup milk",
+                "Zest and juice of 1 lemon",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients",
+                "Cook on pan until golden",
+                "Serve with fresh berries"
+            ],
+            tips: "The lemon zest adds amazing flavor - don't skip it!",
+            image: getFoodImage('Vanilla Protein Pancakes', 'Lemon Protein Pancakes'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Lemon Protein Energy Balls",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 6,
+            calories: 90,
+            ingredients: [
+                "1 scoop lemon protein powder",
+                "1/2 cup dates",
+                "1/4 cup almonds",
+                "Zest of 1 lemon",
+                "1 tbsp coconut oil"
+            ],
+            method: [
+                "Blend dates until paste",
+                "Add protein powder, lemon zest, and almonds",
+                "Mix in coconut oil",
+                "Roll into 12 balls",
+                "Chill for 30 minutes"
+            ],
+            tips: "Bright, citrusy flavor that's energizing and refreshing",
+            image: getFoodImage('Protein Energy Balls', 'Lemon Protein Energy Balls'),
+            dietary: ["gluten-free", "dairy-free"]
+        }
+    ],
+
+    "orange-cream": [
+        {
+            name: "Orange Cream Protein Smoothie",
+            category: "beverages",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 24,
+            calories: 210,
+            ingredients: [
+                "1 scoop orange cream protein powder",
+                "1 cup milk",
+                "1/2 frozen banana",
+                "1/4 cup orange juice",
+                "1 tsp vanilla extract",
+                "Ice cubes"
+            ],
+            method: [
+                "Blend all ingredients until smooth",
+                "Serve immediately",
+                "Garnish with orange slice"
+            ],
+            tips: "Tastes like a creamsicle - nostalgic and delicious!",
+            image: getFoodImage('Strawberry Protein Smoothie', 'Orange Cream Protein Smoothie'),
+            dietary: ["gluten-free"]
+        },
+        {
+            name: "Orange Cream Protein Ice Cream",
+            category: "frozen",
+            difficulty: "intermediate",
+            prepTime: "10 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 17,
+            calories: 220,
+            ingredients: [
+                "2 scoops orange cream protein powder",
+                "2 frozen bananas",
+                "1/4 cup orange juice",
+                "1 tsp vanilla extract",
+                "1/4 cup coconut milk"
+            ],
+            method: [
+                "Blend frozen bananas until creamy",
+                "Add protein powder, orange juice, and vanilla",
+                "Blend with coconut milk",
+                "Freeze for 2 hours",
+                "Stir and serve"
+            ],
+            tips: "The perfect summer treat - creamy and citrusy",
+            image: getFoodImage('Strawberry Protein Ice Cream', 'Orange Cream Protein Ice Cream'),
+            dietary: ["gluten-free", "dairy-free"]
+        },
+        {
+            name: "Orange Cream Protein Popsicles",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 13,
+            calories: 110,
+            ingredients: [
+                "1 scoop orange cream protein powder",
+                "1 cup Greek yogurt",
+                "1/2 cup orange juice",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Blend all ingredients",
+                "Pour into popsicle molds",
+                "Freeze for 4+ hours"
+            ],
+            tips: "Kids love these - and so do adults!",
+            image: getFoodImage('Strawberry Protein Ice Cream', 'Orange Cream Protein Popsicles'),
             dietary: ["gluten-free"]
         }
     ]
