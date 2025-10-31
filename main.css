@@ -270,17 +270,179 @@ a:hover {
     margin-top: -2px;
 }
 
-/* Header Mascot next to title */
-.logo-mascot {
-    height: 32px;
+/* Split Goblins - Big and Small with Animations */
+.logo-text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    position: relative;
+}
+
+.protein-word,
+.goblin-word {
+    position: relative;
+    display: inline-block;
+}
+
+/* Big Goblin with "Protein" word */
+.big-goblin.mascot-protein {
+    height: 38px;
     width: auto;
-    max-width: 40px;
-    margin-left: 8px;
-    display: block !important;
+    max-width: 45px;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    filter: drop-shadow(0 2px 8px rgba(34, 197, 94, 0.5));
+    animation: bigGoblinFlex 3s ease-in-out infinite;
+    vertical-align: middle;
+    margin: 0 var(--spacing-xs);
+    background: transparent !important;
+    mix-blend-mode: multiply;
+}
+
+.big-goblin.mascot-protein svg,
+.big-goblin.mascot-protein img {
+    background: transparent !important;
+}
+
+/* Small Goblin peeking from "Goblin" word */
+.small-goblin.mascot-goblin {
+    height: 24px;
+    width: auto;
+    max-width: 28px;
+    display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
     filter: drop-shadow(0 2px 6px rgba(34, 197, 94, 0.4));
-    animation: mascotWiggle 3.2s ease-in-out infinite;
+    animation: smallGoblinPeek 2.5s ease-in-out infinite;
+    vertical-align: middle;
+    margin-left: var(--spacing-xs);
+    position: relative;
+    background: transparent !important;
+    mix-blend-mode: multiply;
+}
+
+.small-goblin.mascot-goblin svg,
+.small-goblin.mascot-goblin img {
+    background: transparent !important;
+}
+
+/* Hero Goblins - Larger versions */
+.big-goblin-hero.mascot-protein-hero {
+    height: 80px;
+    width: auto;
+    max-width: 100px;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    filter: drop-shadow(0 4px 12px rgba(34, 197, 94, 0.5));
+    animation: bigGoblinFlexHero 4s ease-in-out infinite;
+    vertical-align: middle;
+    margin: 0 var(--spacing-sm);
+    background: transparent !important;
+}
+
+.small-goblin-hero.mascot-goblin-hero {
+    height: 50px;
+    width: auto;
+    max-width: 60px;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    filter: drop-shadow(0 4px 10px rgba(34, 197, 94, 0.4));
+    animation: smallGoblinPeekHero 3s ease-in-out infinite;
+    vertical-align: middle;
+    margin-left: var(--spacing-sm);
+    background: transparent !important;
+}
+
+/* Remove black background from SVG */
+.big-goblin img,
+.small-goblin img,
+.big-goblin-hero img,
+.small-goblin-hero img,
+.big-goblin svg,
+.small-goblin svg {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Fix black fill in SVG paths */
+.big-goblin svg path[fill="#000000"],
+.big-goblin svg path[fill="black"],
+.small-goblin svg path[fill="#000000"],
+.small-goblin svg path[fill="black"],
+.big-goblin-hero svg path[fill="#000000"],
+.big-goblin-hero svg path[fill="black"],
+.small-goblin-hero svg path[fill="#000000"],
+.small-goblin-hero svg path[fill="black"] {
+    fill: none !important;
+}
+
+/* Animations */
+@keyframes bigGoblinFlex {
+    0%, 100% { 
+        transform: rotate(0deg) translateY(0) scale(1); 
+    }
+    30% { 
+        transform: rotate(-2deg) translateY(-2px) scale(1.03); 
+    }
+    50% { 
+        transform: rotate(2deg) translateY(-3px) scale(1.05); 
+    }
+    70% { 
+        transform: rotate(-1deg) translateY(-2px) scale(1.03); 
+    }
+}
+
+@keyframes smallGoblinPeek {
+    0%, 100% { 
+        transform: translateX(0) translateY(0) rotate(0deg); 
+        opacity: 1;
+    }
+    40% { 
+        transform: translateX(2px) translateY(-3px) rotate(3deg); 
+        opacity: 0.95;
+    }
+    60% { 
+        transform: translateX(-2px) translateY(-4px) rotate(-2deg); 
+        opacity: 1;
+    }
+}
+
+@keyframes bigGoblinFlexHero {
+    0%, 100% { 
+        transform: rotate(0deg) translateY(0) scale(1); 
+    }
+    25% { 
+        transform: rotate(-3deg) translateY(-4px) scale(1.04); 
+    }
+    50% { 
+        transform: rotate(3deg) translateY(-6px) scale(1.06); 
+    }
+    75% { 
+        transform: rotate(-2deg) translateY(-4px) scale(1.04); 
+    }
+}
+
+@keyframes smallGoblinPeekHero {
+    0%, 100% { 
+        transform: translateX(0) translateY(0) rotate(0deg); 
+        opacity: 1;
+    }
+    35% { 
+        transform: translateX(3px) translateY(-5px) rotate(4deg); 
+        opacity: 0.9;
+    }
+    65% { 
+        transform: translateX(-3px) translateY(-6px) rotate(-3deg); 
+        opacity: 1;
+    }
+}
+
+/* Fallback for old logo-mascot class */
+.logo-mascot {
+    display: none !important;
 }
 
 @keyframes mascotWiggle {
@@ -532,14 +694,22 @@ a:hover {
 }
 
 .hero-title-main {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
     font-size: var(--font-size-5xl);
     font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-title-main .protein-word,
+.hero-title-main .goblin-word {
     background: linear-gradient(45deg, var(--accent-color), var(--accent-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--spacing-sm);
 }
 
 .hero-title-sub {
@@ -549,25 +719,9 @@ a:hover {
     font-weight: 400;
 }
 
-/* Hero Mascot (larger, playful) */
+/* Hero Mascot removed - using split goblins in title now */
 .hero-mascot {
-    margin: var(--spacing-md) 0 var(--spacing-lg);
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    visibility: visible !important;
-}
-
-.hero-mascot img {
-    height: 140px;
-    width: auto;
-    max-width: 100%;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    filter: drop-shadow(0 6px 20px rgba(34, 197, 94, 0.35));
-    animation: mascotFlex 4s ease-in-out infinite;
-    background: transparent;
+    display: none;
 }
 
 .hero-mascot svg,
@@ -2003,6 +2157,101 @@ a:hover {
 .goblin-gobbling,
 .goblin-holding {
     display: none !important;
+}
+
+/* About Section Styles */
+.about-section {
+    padding: var(--spacing-3xl) 0;
+    background: var(--primary-bg);
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-text {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.about-text h2 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-3xl);
+}
+
+.about-text p {
+    color: var(--secondary-text);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-lg);
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-3xl) 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+}
+
+.stat-number {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--secondary-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.about-mission {
+    margin: var(--spacing-3xl) 0;
+}
+
+.about-mission h2 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-3xl);
+}
+
+.about-mission p {
+    color: var(--secondary-text);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-lg);
+}
+
+.about-cta {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    background: var(--card-bg);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--border-color);
+    margin-top: var(--spacing-3xl);
+}
+
+.about-cta h2 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-3xl);
+}
+
+.about-cta p {
+    color: var(--secondary-text);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-lg);
 }
 
 /* Responsive Design */

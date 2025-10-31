@@ -89,9 +89,13 @@
         <div class="nav-container">
                 <div class="nav-brand">
                     <a href="/" class="logo">
-                        <span class="logo-text">Protein Goblin</span>
+                        <span class="logo-text">
+                            <span class="protein-word">Protein</span>
+                            <img src="images-backup/mascot.svg" alt="Big Goblin" class="big-goblin mascot-protein" loading="lazy">
+                            <span class="goblin-word">Goblin</span>
+                            <img src="images-backup/mascot.svg" alt="Small Goblin" class="small-goblin mascot-goblin" loading="lazy">
+                        </span>
                         <span class="logo-subtitle">Gobbling Up Gains!</span>
-                        <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot" class="logo-mascot" loading="lazy" style="display: inline-block; vertical-align: middle;">
                     </a>
                 </div>
                 
@@ -114,11 +118,11 @@
                         <li class="nav-item dropdown">
                             <a href="#cookbook-section" class="nav-link">Cookbook <span class="dropdown-arrow">▼</span></a>
                             <div class="dropdown-menu">
-                                <a href="#cookbook-section" class="dropdown-link">Beginner Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link">Advanced Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link">Vegan Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link">Keto Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link">Meal Prep</a>
+                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('beginner'); return false;">Beginner Recipes</a>
+                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('advanced'); return false;">Advanced Recipes</a>
+                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('vegan'); return false;">Vegan Recipes</a>
+                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('keto'); return false;">Keto Recipes</a>
+                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('meal-prep'); return false;">Meal Prep</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -128,7 +132,7 @@
                             <a href="#products-section" class="nav-link">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/about" class="nav-link">About</a>
+                            <a href="about.html" class="nav-link">About</a>
                         </li>
             </ul>
         </div>
@@ -155,12 +159,15 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="hero-title-main">Protein Goblin - Gobbling Up Gains!</span>
+                    <span class="hero-title-main">
+                        <span class="protein-word">Protein</span>
+                        <img src="images-backup/mascot.svg" alt="Big Goblin" class="big-goblin-hero mascot-protein-hero" loading="lazy">
+                        <span class="goblin-word">Goblin</span>
+                        <img src="images-backup/mascot.svg" alt="Small Goblin" class="small-goblin-hero mascot-goblin-hero" loading="lazy">
+                        - Gobbling Up Gains!
+                    </span>
                     <span class="hero-title-sub">Transform your protein powder into delicious meals that actually taste amazing!</span>
                 </h1>
-                <div class="hero-mascot">
-                    <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot flexing" loading="lazy" style="display: block; max-width: 200px; height: auto;">
-                </div>
                 <p class="hero-description">
                     The goblin way to devour protein! From pancakes to ice cream, discover 2000+ recipes that will make you forget you're eating healthy. 
                     We gobble up boring shakes and spit out delicious, creative meals packed with protein!
@@ -781,7 +788,7 @@
     </section>
 
     <!-- Protein Products Showcase -->
-    <section class="products-section">
+    <section id="products-section" class="products-section">
         <div class="container">
 <div class="section-header">
             <h2 class="section-title">🍽️ Popular Protein Products for Recipes</h2>

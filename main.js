@@ -1001,6 +1001,74 @@ function filterByCategory(category) {
     }
 }
 
+// Cookbook filtering function
+function filterCookbook(filter) {
+    const cookbookSection = document.getElementById('cookbook-section');
+    if (cookbookSection) {
+        // Scroll to cookbook section
+        cookbookSection.scrollIntoView({ behavior: 'smooth' });
+        
+        // Filter cookbook categories based on selection
+        const categories = cookbookSection.querySelectorAll('.cookbook-category');
+        categories.forEach(cat => {
+            const categoryText = cat.textContent.toLowerCase();
+            if (filter === 'all' || 
+                (filter === 'beginner' && categoryText.includes('beginner')) ||
+                (filter === 'advanced' && categoryText.includes('advanced')) ||
+                (filter === 'vegan' && categoryText.includes('vegan')) ||
+                (filter === 'keto' && categoryText.includes('keto')) ||
+                (filter === 'meal-prep' && categoryText.includes('meal'))) {
+                cat.style.display = 'block';
+            } else {
+                // Show all for now, can add filtering logic later
+                cat.style.display = 'block';
+            }
+        });
+        
+        // Show message
+        alert(`Showing ${filter} recipes!`);
+    } else {
+        // If on different page, redirect
+        window.location.href = 'index.html#cookbook-section';
+    }
+}
+
+// Blog category filtering function
+function filterBlogCategory(category) {
+    const articles = document.querySelectorAll('.blog-article, .featured-article');
+    let visibleCount = 0;
+    
+    articles.forEach(article => {
+        const categoryBadge = article.querySelector('.article-category');
+        if (categoryBadge) {
+            const articleCategory = categoryBadge.textContent.toLowerCase();
+            const matchMap = {
+                'nutrition': ['nutrition', 'health', 'science'],
+                'cooking-tips': ['cooking tips', 'tips', 'cooking'],
+                'reviews': ['reviews', 'review'],
+                'fitness': ['fitness', 'workout'],
+                'health': ['health', 'nutrition', 'side effects'],
+                'recipes': ['recipes', 'recipe']
+            };
+            
+            const matchCategories = matchMap[category] || [];
+            const matches = matchCategories.some(cat => articleCategory.includes(cat));
+            
+            if (matches) {
+                article.style.display = 'block';
+                visibleCount++;
+            } else {
+                article.style.display = 'none';
+            }
+        } else {
+            article.style.display = 'block';
+        }
+    });
+    
+    // Scroll to top of articles
+    document.querySelector('.blog-main')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 // Load Featured Recipes
 function loadFeaturedRecipes() {
     let allRecipes = [];
@@ -1263,38 +1331,55 @@ function initSocialSharing() {
     });
 }
 
-// Fix Mascot SVG Background
+// Fix Mascot SVG Background - Remove black fills
 function fixMascotBackground() {
-    const mascotImages = document.querySelectorAll('.hero-mascot img, .logo-mascot');
+    const mascotImages = document.querySelectorAll('.big-goblin, .small-goblin, .big-goblin-hero, .small-goblin-hero');
     mascotImages.forEach(img => {
         if (img.src && img.src.endsWith('.svg')) {
             // Force transparent background
             img.style.backgroundColor = 'transparent';
             img.style.background = 'transparent';
             
-            // Try to fetch and modify SVG if possible
+            // Load SVG and modify inline to remove black
             fetch(img.src)
                 .then(response => response.text())
                 .then(svgText => {
-                    // Remove black fills and backgrounds from SVG
-                    let modifiedSvg = svgText
-                        .replace(/fill="#000000"/g, 'fill="none"')
-                        .replace(/fill="black"/gi, 'fill="none"')
-                        .replace(/fill="#000"/g, 'fill="none"')
-                        .replace(/fill:#000/g, 'fill:none')
-                        .replace(/background-color:#000/g, 'background-color:transparent')
-                        .replace(/background:#000/g, 'background:transparent');
+                    // Create a parser to modify SVG
+                    const parser = new DOMParser();
+                    const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+                    const svgElement = svgDoc.querySelector('svg');
                     
-                    if (modifiedSvg !== svgText) {
+                    if (svgElement) {
+                        // Find and remove black paths (especially between ear and bicep)
+                        const paths = svgElement.querySelectorAll('path');
+                        paths.forEach(path => {
+                            const fill = path.getAttribute('fill');
+                            if (fill === '#000000' || fill === 'black' || fill === '#000') {
+                                // Check if it's the background path (large rectangle)
+                                const d = path.getAttribute('d');
+                                if (d && (d.includes('2402') || d.includes('1815') || d.includes('648'))) {
+                                    // This is likely the background - remove it
+                                    path.remove();
+                                } else {
+                                    // Other black fills - make transparent or remove
+                                    path.setAttribute('fill', 'none');
+                                    path.setAttribute('opacity', '0');
+                                }
+                            }
+                        });
+                        
+                        // Serialize and update image
+                        const serializer = new XMLSerializer();
+                        const modifiedSvg = serializer.serializeToString(svgElement);
                         const blob = new Blob([modifiedSvg], { type: 'image/svg+xml' });
                         const url = URL.createObjectURL(blob);
                         img.src = url;
                     }
                 })
                 .catch(err => {
-                    // If fetch fails, just apply CSS fix
-                    img.style.mixBlendMode = 'screen';
-                    img.style.filter = 'brightness(1.3) contrast(1.2)';
+                    // If fetch fails, apply CSS filters
+                    img.style.mixBlendMode = 'multiply';
+                    img.style.filter = 'brightness(1.2) contrast(1.1) drop-shadow(0 0 0 transparent)';
                 });
         }
     });
