@@ -1,0 +1,48 @@
+# ProteinShack Image Placeholders
+
+This directory contains placeholder references for images used in the website.
+
+## Required Images:
+
+### Hero Section:
+- hero-protein-recipes.jpg (800x400px) - Main hero image showing delicious protein recipes
+
+### Blog Images:
+- blog-protein-timing.jpg (400x200px) - Protein timing guide article
+- blog-whey-vs-vegan.jpg (400x200px) - Whey vs vegan protein comparison
+- blog-hidden-ingredients.jpg (400x200px) - Hidden ingredients article
+- blog-protein-myths.jpg (400x200px) - Protein myths article
+- blog-cooking-tips.jpg (400x200px) - Cooking tips article
+- blog-workout-nutrition.jpg (400x200px) - Workout nutrition article
+
+### Recipe Images:
+- chocolate-pancakes.jpg (300x200px)
+- vanilla-waffles.jpg (300x200px)
+- protein-brownies.jpg (300x200px)
+- protein-ice-cream.jpg (300x200px)
+- protein-cookies.jpg (300x200px)
+- protein-bars.jpg (300x200px)
+- savory-crackers.jpg (300x200px)
+- protein-bread.jpg (300x200px)
+
+### Social Media:
+- og-image.jpg (1200x630px) - Open Graph image for social sharing
+
+## Image Guidelines:
+- Use high-quality, appetizing food photography
+- Maintain consistent lighting and style
+- Optimize for web (WebP format preferred)
+- Include alt text for accessibility
+- Ensure images are mobile-responsive
+
+## Free Stock Photo Sources:
+- Unsplash.com
+- Pexels.com
+- Foodiesfeed.com
+- Pixabay.com
+
+## Image Optimization:
+- Compress images for web
+- Use appropriate formats (WebP, JPEG, PNG)
+- Implement lazy loading
+- Add proper alt attributes

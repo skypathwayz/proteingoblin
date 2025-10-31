@@ -1,0 +1,2788 @@
+// Recipe Generator JavaScript for Protein Goblin.com
+
+// Image helper function using working Unsplash URLs
+function getFoodImage(recipeName, altText) {
+    // Map recipe names to working Unsplash photo IDs
+    const recipeImages = {
+        // Chocolate Recipes
+        'Chocolate Protein Pancakes': 'images-backup/chocolate-protein-pancakes-9.jpg',
+        'Chocolate Protein Brownies': 'images-backup/High-Protein-Brownies.jpg',
+        'Chocolate Protein Smoothie': 'images-backup/Chocolate-Protein-Shake-6-scaled.jpg',
+        'Chocolate Protein Oatmeal': 'images-backup/featured-image-chocolate-protein-overnight-oats.jpg',
+        'Chocolate Protein Cookies': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Chocolate Protein Waffles': 'images-backup/collagen-waffle-recipe.jpg',
+        'Chocolate Protein Ice Cream': 'images-backup/chocolate-protein-ice-cream-recipe-500x500.webp',
+        'Chocolate Protein Mug Cake': 'images-backup/protein-mug-cake-recipe.jpg',
+        
+        // Vanilla Recipes
+        'Vanilla Protein Pancakes': 'images-backup/vanilla pancakes.jpg',
+        'Vanilla Protein Smoothie': 'images-backup/Banana-Protein-Shake_600x600.jpeg',
+        'Vanilla Protein Oatmeal': 'images-backup/vanilla-steel-cut-oatmeal-recipe-e1655260624606.jpg',
+        'Vanilla Protein Waffles': 'images-backup/vanilla waffles.webp',
+        'Vanilla Protein Cookies': 'images-backup/vanilla-protein-powder-chocolate-chip-cookies.jpg',
+        'Vanilla Protein Ice Cream': 'images-backup/creamy-vanilla-protein-ice-cream.jpg',
+        'Vanilla Protein Mug Cake': 'images-backup/vanilla-protein-mug-cake-feature-image.jpg',
+        'Vanilla Protein Cheesecake': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        
+        // Strawberry Recipes
+        'Strawberry Protein Smoothie': 'images-backup/Strawberry-Protein-Shake-Final.jpg',
+        'Strawberry Protein Pancakes': 'images-backup/strawberry pancakes .jpeg',
+        'Strawberry Protein Oatmeal': 'images-backup/Strawberry-Oatmeal-4optimized.jpg',
+        'Strawberry Protein Ice Cream': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
+        
+        // Banana Recipes
+        'Banana Protein Smoothie': 'images-backup/Banana-Protein-Shake_600x600.jpeg',
+        'Banana Protein Bread': 'images-backup/protein-banana-bread-recipe.jpg',
+        
+        // Peanut Butter Recipes
+        'Peanut Butter Protein Smoothie': 'images-backup/Peanut_Butter_Protein_Blast-157275-686957-6040212_eb3d1794-6c36-404d-b9b9-ffdf1d55c84b-8487019.webp',
+        'Peanut Butter Protein Balls': 'images-backup/peanut-butter-protein-balls.jpg',
+        
+        // Savory Recipes
+        'Savory Protein Omelet': 'images-backup/High-Protein-Omelette-3.jpg',
+        'Protein Scrambled Eggs': 'images-backup/scrambled eggs.jpeg',
+        
+        // Other Recipes
+        'Mint Chocolate Protein Smoothie': 'images-backup/thin-mint-protein-shake-hero.jpg',
+        'Caramel Protein Pancakes': 'images-backup/caramel protein pancakes.webp',
+        'Birthday Cake Protein Mug Cake': 'images-backup/birthday cake.webp',
+        'Cookies & Cream Protein Mug Cake': 'images-backup/cookies-and-cream-protein-mug-cake.webp',
+        'Cookies & Cream Protein Smoothie': 'images-backup/cookies-and-cream-protein-shake-13.webp',
+        
+        // New Trending Recipes - use fallback images
+        'Collagen Protein Smoothie': 'images-backup/thin-mint-protein-shake-hero.jpg',
+        'Keto Protein Fat Bombs': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Protein Energy Balls': 'images-backup/peanut-butter-protein-balls.jpg',
+        'Protein Chia Pudding': 'images-backup/vanilla-steel-cut-oatmeal-recipe-e1655260624606.jpg',
+        'Protein French Toast': 'images-backup/vanilla pancakes.jpg',
+        'Protein Donuts': 'images-backup/birthday cake.webp',
+        'Protein Pizza Crust': 'images-backup/protein-mug-cake-recipe.jpg',
+        'Protein Bagels': 'images-backup/vanilla pancakes.jpg',
+        'Protein Crepes': 'images-backup/caramel protein pancakes.webp',
+        'Protein Tiramisu': 'images-backup/cookies-and-cream-protein-mug-cake.webp',
+        'Protein Cheesecake Bars': 'images-backup/Protein-Cheesecake-vanilla.jpg',
+        'Protein Fudge': 'images-backup/protein-fudge.jpg',
+        'Protein Truffles': 'images-backup/protein-truffles.jpg',
+        'Protein Granola': 'images-backup/protein-granola.jpg',
+        'Protein Crackers': 'images-backup/protein-crackers.jpg',
+        'Protein Bread': 'images-backup/protein-bread.jpg',
+        'Protein Muffins': 'images-backup/protein-muffins.jpg',
+        'Protein Scones': 'images-backup/protein-scones.jpg',
+        'Protein Pretzels': 'images-backup/protein-pretzels.jpg',
+        'Protein Popcorn': 'images-backup/protein-popcorn.jpg',
+        
+        // Fallback
+        'default': 'images-backup/protein-mug-cake-recipe.jpg'
+    };
+    
+    const imageUrl = recipeImages[recipeName] || recipeImages['default'];
+    return `<img src="${imageUrl}" alt="${altText}" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy">`;
+}
+
+// Recipe Database - Massive Collection
+const recipes = {
+    chocolate: [
+        {
+            name: "Chocolate Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 2,
+            protein: 25,
+            calories: 320,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup milk",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Mix all dry ingredients in a bowl",
+                "Add eggs and milk, whisk until smooth",
+                "Heat a non-stick pan over medium heat",
+                "Pour 1/4 cup batter per pancake",
+                "Cook 2-3 minutes per side until golden",
+                "Serve with berries and syrup"
+            ],
+            tips: "For extra fluffiness, let the batter rest for 5 minutes before cooking",
+            image: getFoodImage('Chocolate Protein Pancakes', 'Chocolate Protein Pancakes'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Chocolate Protein Brownies",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "20 min",
+            servings: 9,
+            protein: 18,
+            calories: 180,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "1/2 cup almond flour",
+                "1/4 cup cocoa powder",
+                "2 eggs",
+                "1/4 cup honey",
+                "1/4 cup Greek yogurt",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Preheat oven to 350°F (175°C)",
+                "Mix dry ingredients in a bowl",
+                "Whisk eggs, honey, yogurt, and vanilla",
+                "Combine wet and dry ingredients",
+                "Pour into greased 8x8 pan",
+                "Bake 20-25 minutes until set",
+                "Cool completely before cutting"
+            ],
+            tips: "For fudgier brownies, slightly underbake them",
+            image: getFoodImage('brownies', 'Chocolate Protein Brownies'),
+            dietary: []
+        },
+        {
+            name: "Chocolate Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 20,
+            calories: 250,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1 banana",
+                "1 cup almond milk",
+                "1 tbsp cocoa powder",
+                "1 tbsp peanut butter",
+                "1/2 cup ice"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy"
+            ],
+            tips: "Use frozen banana for a thicker, creamier smoothie",
+            image: getFoodImage('smoothie', 'Chocolate Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free"]
+        },
+        {
+            name: "Chocolate Protein Oatmeal",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 22,
+            calories: 300,
+            ingredients: [
+                "1/2 cup oats",
+                "1 scoop chocolate protein powder",
+                "1 cup water",
+                "1 tbsp cocoa powder",
+                "1 tbsp honey",
+                "1/4 cup berries"
+            ],
+            method: [
+                "Cook oats with water for 3 minutes",
+                "Remove from heat and stir in protein powder",
+                "Add cocoa powder and honey",
+                "Top with berries and serve"
+            ],
+            tips: "Let protein powder cool slightly before adding to prevent clumping",
+            image: getFoodImage('oatmeal', 'Chocolate Protein Oatmeal'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Chocolate Protein Cookies",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "12 min",
+            servings: 12,
+            protein: 8,
+            calories: 120,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1/2 cup almond flour",
+                "1/4 cup honey",
+                "1 egg",
+                "1/4 cup dark chocolate chips",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Preheat oven to 350°F (175°C)",
+                "Mix all ingredients in a bowl",
+                "Form into 12 cookie balls",
+                "Place on lined baking sheet",
+                "Bake 12-15 minutes until golden",
+                "Cool on wire rack"
+            ],
+            tips: "Don't overbake - cookies will continue cooking on the pan",
+            image: getFoodImage('cookies', 'Chocolate Protein Cookies'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Chocolate Protein Waffles",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "15 min",
+            servings: 4,
+            protein: 15,
+            calories: 200,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1/2 cup oat flour",
+                "1 egg",
+                "1/4 cup milk",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients until smooth",
+                "Preheat waffle iron",
+                "Pour batter into waffle iron",
+                "Cook until golden and crispy",
+                "Serve with syrup and berries"
+            ],
+            tips: "Don't open waffle iron too early - wait for steam to stop",
+            image: getFoodImage('waffles', 'Chocolate Protein Waffles'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Chocolate Protein Ice Cream",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 18,
+            calories: 200,
+            ingredients: [
+                "2 scoops chocolate protein powder",
+                "2 frozen bananas",
+                "1/4 cup almond milk",
+                "2 tbsp cocoa powder",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Freeze bananas overnight",
+                "Add all ingredients to high-speed blender",
+                "Blend until smooth and creamy",
+                "Add more milk if needed",
+                "Serve immediately or freeze for firmer texture"
+            ],
+            tips: "Use very ripe bananas for the best sweetness",
+            image: getFoodImage('ice-cream', 'Chocolate Protein Ice Cream'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Chocolate Protein Mug Cake",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "1 min",
+            servings: 1,
+            protein: 20,
+            calories: 250,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "2 tbsp almond flour",
+                "1 egg",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder",
+                "2 tbsp milk"
+            ],
+            method: [
+                "Mix all ingredients in microwave-safe mug",
+                "Stir until smooth",
+                "Microwave for 60-90 seconds",
+                "Let cool slightly and enjoy"
+            ],
+            tips: "Don't overcook - it should be slightly gooey in the center",
+            image: getFoodImage('mug-cake', 'Chocolate Protein Mug Cake'),
+            dietary: ["dairy-free", "gluten-free"]
+        }
+    ],
+    vanilla: [
+        {
+            name: "Vanilla Protein Cheesecake",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "45 min",
+            servings: 8,
+            protein: 20,
+            calories: 250,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "1 cup Greek yogurt",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp vanilla extract",
+                "1/2 cup almond flour",
+                "2 tbsp butter"
+            ],
+            method: [
+                "Preheat oven to 325°F (160°C)",
+                "Mix almond flour and butter for crust",
+                "Press into greased springform pan",
+                "Blend yogurt, protein powder, eggs, honey, and vanilla",
+                "Pour over crust",
+                "Bake 45 minutes until center is set",
+                "Cool in fridge for 2 hours"
+            ],
+            tips: "Let cheesecake cool completely before removing from pan",
+            image: getFoodImage('cheesecake', 'Vanilla Protein Cheesecake'),
+            dietary: []
+        },
+        {
+            name: "Vanilla Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 4,
+            protein: 18,
+            calories: 200,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup oat flour",
+                "1 egg",
+                "1/4 cup milk",
+                "1 tsp vanilla extract",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients until smooth",
+                "Heat non-stick pan over medium heat",
+                "Pour 1/4 cup batter per pancake",
+                "Cook 2-3 minutes per side",
+                "Serve with syrup and berries"
+            ],
+            tips: "Let batter rest for 5 minutes for fluffier pancakes",
+            image: getFoodImage('pancakes', 'Vanilla Protein Pancakes'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Vanilla Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 22,
+            calories: 180,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 banana",
+                "1 cup almond milk",
+                "1 tbsp honey",
+                "1/2 cup ice",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy"
+            ],
+            tips: "Use frozen banana for a thicker smoothie",
+            image: getFoodImage('smoothie', 'Vanilla Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Vanilla Protein Oatmeal",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 20,
+            calories: 250,
+            ingredients: [
+                "1/2 cup oats",
+                "1 scoop vanilla protein powder",
+                "1 cup water",
+                "1 tbsp honey",
+                "1/4 cup berries",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Cook oats with water for 3 minutes",
+                "Remove from heat and stir in protein powder",
+                "Add honey and vanilla",
+                "Top with berries and serve"
+            ],
+            tips: "Let protein powder cool slightly before adding",
+            image: getFoodImage('oatmeal', 'Vanilla Protein Oatmeal'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Vanilla Protein Waffles",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "15 min",
+            servings: 4,
+            protein: 16,
+            calories: 180,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup oat flour",
+                "1 egg",
+                "1/4 cup milk",
+                "1 tsp vanilla extract",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients until smooth",
+                "Preheat waffle iron",
+                "Pour batter into waffle iron",
+                "Cook until golden and crispy",
+                "Serve with syrup and fruit"
+            ],
+            tips: "Don't open waffle iron too early",
+            image: getFoodImage('waffles', 'Vanilla Protein Waffles'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Vanilla Protein Cookies",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "12 min",
+            servings: 12,
+            protein: 6,
+            calories: 100,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup almond flour",
+                "1/4 cup honey",
+                "1 egg",
+                "1 tsp vanilla extract",
+                "1/4 cup chocolate chips"
+            ],
+            method: [
+                "Preheat oven to 350°F (175°C)",
+                "Mix all ingredients in a bowl",
+                "Form into 12 cookie balls",
+                "Place on lined baking sheet",
+                "Bake 12-15 minutes until golden",
+                "Cool on wire rack"
+            ],
+            tips: "Don't overbake - cookies will continue cooking",
+            image: getFoodImage('cookies', 'Vanilla Protein Cookies'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Vanilla Protein Ice Cream",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 16,
+            calories: 180,
+            ingredients: [
+                "2 scoops vanilla protein powder",
+                "2 frozen bananas",
+                "1/4 cup almond milk",
+                "1 tsp vanilla extract",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Freeze bananas overnight",
+                "Add all ingredients to high-speed blender",
+                "Blend until smooth and creamy",
+                "Add more milk if needed",
+                "Serve immediately or freeze for firmer texture"
+            ],
+            tips: "Use very ripe bananas for the best sweetness",
+            image: getFoodImage('ice-cream', 'Vanilla Protein Ice Cream'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Vanilla Protein Mug Cake",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "1 min",
+            servings: 1,
+            protein: 18,
+            calories: 220,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "2 tbsp almond flour",
+                "1 egg",
+                "1 tsp vanilla extract",
+                "1 tsp baking powder",
+                "2 tbsp milk"
+            ],
+            method: [
+                "Mix all ingredients in microwave-safe mug",
+                "Stir until smooth",
+                "Microwave for 60-90 seconds",
+                "Let cool slightly and enjoy"
+            ],
+            tips: "Don't overcook - it should be slightly gooey",
+            image: getFoodImage('mug-cake', 'Vanilla Protein Mug Cake'),
+            dietary: ["dairy-free", "gluten-free"]
+        }
+    ],
+    strawberry: [
+        {
+            name: "Strawberry Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 18,
+            calories: 200,
+            ingredients: [
+                "1 scoop strawberry protein powder",
+                "1 cup frozen strawberries",
+                "1 banana",
+                "1 cup almond milk",
+                "1 tbsp honey",
+                "1/2 cup ice"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy immediately"
+            ],
+            tips: "Use frozen fruit for a thicker, colder smoothie",
+            image: getFoodImage('smoothie', 'Strawberry Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Strawberry Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 4,
+            protein: 16,
+            calories: 180,
+            ingredients: [
+                "1 scoop strawberry protein powder",
+                "1/2 cup oat flour",
+                "1 egg",
+                "1/4 cup milk",
+                "1/4 cup fresh strawberries",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients until smooth",
+                "Heat non-stick pan over medium heat",
+                "Pour 1/4 cup batter per pancake",
+                "Cook 2-3 minutes per side",
+                "Serve with fresh strawberries"
+            ],
+            tips: "Mash strawberries slightly for better distribution",
+            image: getFoodImage('pancakes', 'Strawberry Protein Pancakes'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Strawberry Protein Oatmeal",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 18,
+            calories: 220,
+            ingredients: [
+                "1/2 cup oats",
+                "1 scoop strawberry protein powder",
+                "1 cup water",
+                "1/4 cup fresh strawberries",
+                "1 tbsp honey"
+            ],
+            method: [
+                "Cook oats with water for 3 minutes",
+                "Remove from heat and stir in protein powder",
+                "Add honey and fresh strawberries",
+                "Serve immediately"
+            ],
+            tips: "Add strawberries after cooking to preserve their texture",
+            image: getFoodImage('oatmeal', 'Strawberry Protein Oatmeal'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        },
+        {
+            name: "Strawberry Protein Ice Cream",
+            category: "frozen",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 2,
+            protein: 16,
+            calories: 160,
+            ingredients: [
+                "2 scoops strawberry protein powder",
+                "2 frozen bananas",
+                "1 cup frozen strawberries",
+                "1/4 cup almond milk"
+            ],
+            method: [
+                "Freeze bananas and strawberries overnight",
+                "Add all ingredients to high-speed blender",
+                "Blend until smooth and creamy",
+                "Serve immediately or freeze for firmer texture"
+            ],
+            tips: "Use very ripe bananas for the best sweetness",
+            image: getFoodImage('ice-cream', 'Strawberry Protein Ice Cream'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        }
+    ],
+    "cookies-cream": [
+        {
+            name: "Cookies & Cream Protein Mug Cake",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "1 min",
+            servings: 1,
+            protein: 15,
+            calories: 180,
+            ingredients: [
+                "1 scoop cookies & cream protein powder",
+                "1 egg",
+                "2 tbsp almond flour",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder",
+                "2 tbsp milk",
+                "1 crushed cookie"
+            ],
+            method: [
+                "Mix all ingredients in a microwave-safe mug",
+                "Stir until smooth",
+                "Microwave for 60-90 seconds",
+                "Let cool slightly and enjoy"
+            ],
+            tips: "Don't overcook - it should be slightly gooey in the center",
+            image: getFoodImage('mug-cake', 'Cookies & Cream Protein Mug Cake')
+        }
+    ],
+    banana: [
+        {
+            name: "Banana Protein Bread",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "45 min",
+            servings: 8,
+            protein: 16,
+            calories: 220,
+            ingredients: [
+                "2 scoops banana protein powder",
+                "2 ripe bananas",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp baking powder",
+                "1/2 tsp cinnamon"
+            ],
+            method: [
+                "Preheat oven to 350°F (175°C)",
+                "Mash bananas in a bowl",
+                "Add eggs, honey, and mix well",
+                "Add protein powder, oats, baking powder, cinnamon",
+                "Pour into greased loaf pan",
+                "Bake 45 minutes until golden",
+                "Cool before slicing"
+            ],
+            tips: "Use very ripe bananas for the best flavor and sweetness",
+            image: getFoodImage('bread', 'Banana Protein Bread')
+        }
+    ],
+    "peanut-butter": [
+        {
+            name: "Peanut Butter Protein Balls",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "20 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 12,
+            calories: 150,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup peanut butter",
+                "1/4 cup honey",
+                "1/2 cup oats",
+                "2 tbsp chia seeds",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Mix all ingredients in a bowl",
+                "Roll into 12 equal balls",
+                "Place on parchment paper",
+                "Refrigerate for 30 minutes",
+                "Store in airtight container"
+            ],
+            tips: "If mixture is too sticky, add more oats. If too dry, add more honey",
+            image: getFoodImage('energy-balls', 'Peanut Butter Protein Balls')
+        }
+    ],
+    unflavored: [
+        {
+            name: "Savory Protein Omelet",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 22,
+            calories: 280,
+            ingredients: [
+                "1 scoop unflavored protein powder",
+                "3 eggs",
+                "1/4 cup spinach",
+                "2 tbsp cheese",
+                "1 tbsp olive oil",
+                "Salt and pepper to taste"
+            ],
+            method: [
+                "Whisk eggs and protein powder until smooth",
+                "Heat oil in non-stick pan",
+                "Add spinach and cook until wilted",
+                "Pour egg mixture over spinach",
+                "Cook until edges set, add cheese",
+                "Fold in half and serve"
+            ],
+            tips: "Don't overmix the protein powder - whisk gently to avoid clumps",
+            image: getFoodImage('omelet', 'Savory Protein Omelet'),
+            dietary: ["gluten-free", "soy-free"]
+        },
+        {
+            name: "Protein Scrambled Eggs",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "5 min",
+            servings: 1,
+            protein: 25,
+            calories: 200,
+            ingredients: [
+                "1 scoop unflavored protein powder",
+                "3 eggs",
+                "1 tbsp butter",
+                "Salt and pepper to taste",
+                "Fresh herbs (optional)"
+            ],
+            method: [
+                "Whisk eggs and protein powder until smooth",
+                "Heat butter in non-stick pan",
+                "Add egg mixture and cook slowly",
+                "Stir gently until set",
+                "Season with salt, pepper, and herbs"
+            ],
+            tips: "Cook on low heat for creamier texture",
+            image: getFoodImage('eggs', 'Protein Scrambled Eggs'),
+            dietary: ["gluten-free", "soy-free", "nut-free"]
+        }
+    ],
+    banana: [
+        {
+            name: "Banana Protein Bread",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "45 min",
+            servings: 8,
+            protein: 16,
+            calories: 220,
+            ingredients: [
+                "2 scoops banana protein powder",
+                "2 ripe bananas",
+                "1/2 cup oats",
+                "2 eggs",
+                "1/4 cup honey",
+                "1 tsp baking powder",
+                "1/2 tsp cinnamon"
+            ],
+            method: [
+                "Preheat oven to 350°F (175°C)",
+                "Mash bananas in a bowl",
+                "Add eggs, honey, and mix well",
+                "Add protein powder, oats, baking powder, cinnamon",
+                "Pour into greased loaf pan",
+                "Bake 45 minutes until golden",
+                "Cool before slicing"
+            ],
+            tips: "Use very ripe bananas for the best flavor and sweetness",
+            image: getFoodImage('bread', 'Banana Protein Bread'),
+            dietary: ["dairy-free", "gluten-free", "soy-free"]
+        },
+        {
+            name: "Banana Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 20,
+            calories: 180,
+            ingredients: [
+                "1 scoop banana protein powder",
+                "1 banana",
+                "1 cup almond milk",
+                "1 tbsp honey",
+                "1/2 cup ice"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy"
+            ],
+            tips: "Use frozen banana for a thicker smoothie",
+            image: getFoodImage('smoothie', 'Banana Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        }
+    ],
+    "peanut-butter": [
+        {
+            name: "Peanut Butter Protein Balls",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "20 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 12,
+            calories: 150,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup peanut butter",
+                "1/4 cup honey",
+                "1/2 cup oats",
+                "2 tbsp chia seeds",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Mix all ingredients in a bowl",
+                "Roll into 12 equal balls",
+                "Place on parchment paper",
+                "Refrigerate for 30 minutes",
+                "Store in airtight container"
+            ],
+            tips: "If mixture is too sticky, add more oats. If too dry, add more honey",
+            image: getFoodImage('energy-balls', 'Peanut Butter Protein Balls'),
+            dietary: ["dairy-free", "gluten-free", "soy-free"]
+        },
+        {
+            name: "Peanut Butter Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 22,
+            calories: 300,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1 banana",
+                "1 cup almond milk",
+                "2 tbsp peanut butter",
+                "1 tbsp honey",
+                "1/2 cup ice"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy"
+            ],
+            tips: "Use frozen banana for a thicker smoothie",
+            image: getFoodImage('smoothie', 'Peanut Butter Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free"]
+        }
+    ],
+    mint: [
+        {
+            name: "Mint Chocolate Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 18,
+            calories: 200,
+            ingredients: [
+                "1 scoop chocolate protein powder",
+                "1 banana",
+                "1 cup almond milk",
+                "1 tbsp cocoa powder",
+                "1/2 tsp mint extract",
+                "1/2 cup ice"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy"
+            ],
+            tips: "Add fresh mint leaves for extra flavor",
+            image: getFoodImage('smoothie', 'Mint Chocolate Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
+        }
+    ],
+    caramel: [
+        {
+            name: "Caramel Protein Pancakes",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "5 min",
+            servings: 4,
+            protein: 16,
+            calories: 200,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup oat flour",
+                "1 egg",
+                "1/4 cup milk",
+                "1 tbsp caramel sauce",
+                "1 tsp baking powder"
+            ],
+            method: [
+                "Mix all ingredients until smooth",
+                "Heat non-stick pan over medium heat",
+                "Pour 1/4 cup batter per pancake",
+                "Cook 2-3 minutes per side",
+                "Serve with extra caramel sauce"
+            ],
+            tips: "Drizzle caramel sauce on top for extra sweetness",
+            image: getFoodImage('pancakes', 'Caramel Protein Pancakes'),
+            dietary: ["dairy-free", "gluten-free"]
+        }
+    ],
+    "birthday-cake": [
+        {
+            name: "Birthday Cake Protein Mug Cake",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "1 min",
+            servings: 1,
+            protein: 18,
+            calories: 250,
+            ingredients: [
+                "1 scoop birthday cake protein powder",
+                "2 tbsp almond flour",
+                "1 egg",
+                "1 tsp vanilla extract",
+                "1 tsp baking powder",
+                "2 tbsp milk",
+                "1 tbsp sprinkles"
+            ],
+            method: [
+                "Mix all ingredients in microwave-safe mug",
+                "Stir until smooth",
+                "Microwave for 60-90 seconds",
+                "Let cool slightly and enjoy"
+            ],
+            tips: "Add sprinkles on top for extra birthday cake vibes",
+            image: getFoodImage('mug-cake', 'Birthday Cake Protein Mug Cake'),
+            dietary: ["dairy-free", "gluten-free"]
+        }
+    ],
+    "cookies-cream": [
+        {
+            name: "Cookies & Cream Protein Mug Cake",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "3 min",
+            cookTime: "1 min",
+            servings: 1,
+            protein: 15,
+            calories: 180,
+            ingredients: [
+                "1 scoop cookies & cream protein powder",
+                "1 egg",
+                "2 tbsp almond flour",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder",
+                "2 tbsp milk",
+                "1 crushed cookie"
+            ],
+            method: [
+                "Mix all ingredients in microwave-safe mug",
+                "Stir until smooth",
+                "Microwave for 60-90 seconds",
+                "Let cool slightly and enjoy"
+            ],
+            tips: "Don't overcook - it should be slightly gooey in the center",
+            image: getFoodImage('mug-cake', 'Cookies & Cream Protein Mug Cake'),
+            dietary: ["dairy-free", "gluten-free"]
+        },
+        {
+            name: "Cookies & Cream Protein Smoothie",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 20,
+            calories: 250,
+            ingredients: [
+                "1 scoop cookies & cream protein powder",
+                "1 banana",
+                "1 cup almond milk",
+                "1 tbsp cocoa powder",
+                "1 crushed cookie",
+                "1/2 cup ice"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 30 seconds",
+                "Add more ice if too thin",
+                "Pour into glass and enjoy"
+            ],
+            tips: "Save some cookie crumbs for garnish",
+            image: getFoodImage('smoothie', 'Cookies & Cream Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free", "soy-free"]
+        }
+    ],
+    
+    // NEW FLAVORS - TRENDING 2024
+    collagen: [
+        {
+            name: "Collagen Protein Smoothie",
+            category: "smoothies",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "0 min",
+            servings: 1,
+            protein: 20,
+            calories: 180,
+            ingredients: [
+                "1 scoop collagen protein powder",
+                "1 cup frozen berries",
+                "1/2 banana",
+                "1 cup almond milk",
+                "1 tbsp chia seeds",
+                "1 tsp honey"
+            ],
+            method: [
+                "Add all ingredients to blender",
+                "Blend on high for 60 seconds",
+                "Pour into glass and serve immediately"
+            ],
+            tips: "Collagen powder dissolves better in warm liquids",
+            image: getFoodImage('Collagen Protein Smoothie', 'Collagen Protein Smoothie'),
+            dietary: ["dairy-free", "gluten-free"]
+        }
+    ],
+    
+    // POPULAR BRAND FLAVORS
+    "ghost": [
+        {
+            name: "Ghost Cinnabon Protein Pancakes",
+            category: "breakfast",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "10 min",
+            servings: 3,
+            protein: 28,
+            calories: 320,
+            ingredients: [
+                "2 scoops Ghost Cinnabon protein powder",
+                "1 cup oat flour",
+                "2 eggs",
+                "1/4 cup Greek yogurt",
+                "2 tbsp almond milk",
+                "1 tsp baking powder",
+                "1 tsp cinnamon",
+                "1 tbsp maple syrup"
+            ],
+            method: [
+                "Mix dry ingredients in large bowl",
+                "Whisk eggs, yogurt, and milk in separate bowl",
+                "Combine wet and dry ingredients",
+                "Heat non-stick pan over medium heat",
+                "Cook pancakes 2-3 minutes per side",
+                "Drizzle with maple syrup and enjoy"
+            ],
+            tips: "Ghost Cinnabon tastes exactly like the real thing!",
+            image: getFoodImage('Protein Pancakes', 'Ghost Cinnabon Protein Pancakes'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    "optimum-nutrition": [
+        {
+            name: "ON Gold Standard French Toast",
+            category: "breakfast",
+            difficulty: "beginner",
+            prepTime: "10 min",
+            cookTime: "8 min",
+            servings: 2,
+            protein: 25,
+            calories: 280,
+            ingredients: [
+                "2 scoops ON French Vanilla Creme",
+                "4 slices whole grain bread",
+                "2 eggs",
+                "1/4 cup milk",
+                "1 tsp vanilla extract",
+                "1 tsp cinnamon",
+                "1 tbsp butter"
+            ],
+            method: [
+                "Mix protein powder with eggs, milk, vanilla, and cinnamon",
+                "Dip bread slices in mixture",
+                "Heat butter in pan over medium heat",
+                "Cook French toast 2-3 minutes per side",
+                "Serve with berries and syrup"
+            ],
+            tips: "ON French Vanilla Creme is perfect for French toast!",
+            image: getFoodImage('Protein French Toast', 'ON Gold Standard French Toast'),
+            dietary: []
+        }
+    ],
+    
+    "dymatize": [
+        {
+            name: "Dymatize ISO100 Chocolate Mug Cake",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "5 min",
+            cookTime: "2 min",
+            servings: 1,
+            protein: 22,
+            calories: 180,
+            ingredients: [
+                "1 scoop Dymatize ISO100 Chocolate",
+                "2 tbsp almond flour",
+                "1 egg",
+                "1 tbsp cocoa powder",
+                "1 tsp baking powder",
+                "1 tbsp honey",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Mix all ingredients in microwave-safe mug",
+                "Microwave for 60-90 seconds",
+                "Let cool slightly before eating",
+                "Top with berries if desired"
+            ],
+            tips: "Dymatize ISO100 mixes perfectly and tastes amazing!",
+            image: getFoodImage('Protein Mug Cake', 'Dymatize ISO100 Chocolate Mug Cake'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    "muscletech": [
+        {
+            name: "MuscleTech NitroTech Protein Cookies",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "12 min",
+            servings: 12,
+            protein: 18,
+            calories: 220,
+            ingredients: [
+                "2 scoops MuscleTech NitroTech Chocolate",
+                "1 cup almond flour",
+                "1/4 cup coconut flour",
+                "2 eggs",
+                "1/4 cup almond butter",
+                "2 tbsp honey",
+                "1 tsp baking powder",
+                "1/2 cup dark chocolate chips"
+            ],
+            method: [
+                "Preheat oven to 350°F",
+                "Mix dry ingredients in large bowl",
+                "Whisk eggs, almond butter, and honey",
+                "Combine wet and dry ingredients",
+                "Fold in chocolate chips",
+                "Drop spoonfuls onto baking sheet",
+                "Bake 10-12 minutes until golden",
+                "Cool on wire rack"
+            ],
+            tips: "MuscleTech NitroTech has added creatine for extra muscle building!",
+            image: getFoodImage('Protein Cookies', 'MuscleTech NitroTech Protein Cookies'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    "bsn": [
+        {
+            name: "BSN Syntha-6 Ice Cream",
+            category: "desserts",
+            difficulty: "advanced",
+            prepTime: "30 min",
+            cookTime: "0 min",
+            servings: 4,
+            protein: 25,
+            calories: 280,
+            ingredients: [
+                "2 scoops BSN Syntha-6 Vanilla Ice Cream",
+                "2 frozen bananas",
+                "1/2 cup Greek yogurt",
+                "1/4 cup almond milk",
+                "1 tbsp honey",
+                "1 tsp vanilla extract",
+                "1/4 cup mixed berries"
+            ],
+            method: [
+                "Add all ingredients to high-powered blender",
+                "Blend on high until smooth and creamy",
+                "Add more almond milk if too thick",
+                "Pour into container and freeze 2 hours",
+                "Scoop and serve with berries"
+            ],
+            tips: "BSN Syntha-6 is incredibly smooth and perfect for ice cream!",
+            image: getFoodImage('Protein Ice Cream', 'BSN Syntha-6 Ice Cream'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    "transparent-labs": [
+        {
+            name: "Transparent Labs Protein Bread",
+            category: "breakfast",
+            difficulty: "intermediate",
+            prepTime: "15 min",
+            cookTime: "45 min",
+            servings: 8,
+            protein: 22,
+            calories: 180,
+            ingredients: [
+                "2 scoops Transparent Labs Whey Isolate",
+                "1 cup almond flour",
+                "1/4 cup coconut flour",
+                "4 eggs",
+                "1/4 cup Greek yogurt",
+                "1 tsp baking powder",
+                "1/2 tsp salt",
+                "1 tbsp olive oil"
+            ],
+            method: [
+                "Preheat oven to 350°F",
+                "Mix dry ingredients in large bowl",
+                "Whisk eggs, yogurt, and oil",
+                "Combine wet and dry ingredients",
+                "Pour into greased loaf pan",
+                "Bake 40-45 minutes until golden",
+                "Cool before slicing"
+            ],
+            tips: "Transparent Labs is the cleanest protein powder available!",
+            image: getFoodImage('Protein Bread', 'Transparent Labs Protein Bread'),
+            dietary: ["gluten-free", "dairy-free"]
+        }
+    ],
+    
+    "quest": [
+        {
+            name: "Quest Protein Bars (Homemade)",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "20 min",
+            cookTime: "0 min",
+            servings: 8,
+            protein: 20,
+            calories: 200,
+            ingredients: [
+                "2 scoops Quest Vanilla protein powder",
+                "1/2 cup almond butter",
+                "1/4 cup honey",
+                "1/4 cup coconut oil",
+                "1/2 cup chopped nuts",
+                "1/4 cup dark chocolate chips",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Melt coconut oil in microwave",
+                "Mix protein powder with almond butter",
+                "Add honey and vanilla extract",
+                "Stir in nuts and chocolate chips",
+                "Press into lined pan",
+                "Refrigerate 2 hours until firm",
+                "Cut into bars and enjoy"
+            ],
+            tips: "Quest protein powder is perfect for homemade protein bars!",
+            image: getFoodImage('Protein Bars', 'Quest Protein Bars Homemade'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    keto: [
+        {
+            name: "Keto Protein Fat Bombs",
+            category: "snacks",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "0 min",
+            servings: 12,
+            protein: 8,
+            calories: 120,
+            ingredients: [
+                "1 scoop vanilla protein powder",
+                "1/2 cup coconut oil",
+                "1/4 cup almond butter",
+                "2 tbsp cocoa powder",
+                "1 tbsp stevia",
+                "1 tsp vanilla extract"
+            ],
+            method: [
+                "Melt coconut oil in microwave",
+                "Mix all ingredients in bowl",
+                "Pour into silicone molds",
+                "Freeze for 2 hours",
+                "Store in refrigerator"
+            ],
+            tips: "Perfect for keto diet - high fat, low carb",
+            image: getFoodImage('Keto Protein Fat Bombs', 'Keto Protein Fat Bombs'),
+            dietary: ["keto", "dairy-free", "gluten-free"]
+        }
+    ],
+    
+    // EXPANDED RECIPE COLLECTIONS
+    "birthday-cake": [
+        {
+            name: "Birthday Cake Protein Donuts",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "20 min",
+            cookTime: "15 min",
+            servings: 6,
+            protein: 22,
+            calories: 280,
+            ingredients: [
+                "2 scoops birthday cake protein powder",
+                "1 cup almond flour",
+                "1/4 cup coconut flour",
+                "2 eggs",
+                "1/4 cup Greek yogurt",
+                "2 tbsp honey",
+                "1 tsp baking powder",
+                "1/2 tsp vanilla extract",
+                "Sprinkles for topping"
+            ],
+            method: [
+                "Preheat oven to 350°F",
+                "Mix dry ingredients in large bowl",
+                "Whisk eggs, yogurt, honey, and vanilla",
+                "Combine wet and dry ingredients",
+                "Spoon into donut pan",
+                "Bake 12-15 minutes until golden",
+                "Cool and add sprinkles"
+            ],
+            tips: "Use silicone donut pan for easy removal",
+            image: getFoodImage('Protein Donuts', 'Birthday Cake Protein Donuts'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    "cookies-cream": [
+        {
+            name: "Cookies & Cream Protein Tiramisu",
+            category: "desserts",
+            difficulty: "advanced",
+            prepTime: "30 min",
+            cookTime: "0 min",
+            servings: 6,
+            protein: 28,
+            calories: 320,
+            ingredients: [
+                "2 scoops cookies & cream protein powder",
+                "1 cup mascarpone cheese",
+                "1/2 cup heavy cream",
+                "1/4 cup coffee",
+                "2 tbsp cocoa powder",
+                "1 tbsp honey",
+                "6 ladyfinger cookies",
+                "Dark chocolate shavings"
+            ],
+            method: [
+                "Mix protein powder with mascarpone",
+                "Whip heavy cream until stiff peaks",
+                "Fold whipped cream into protein mixture",
+                "Dip ladyfingers in coffee",
+                "Layer cookies and cream mixture",
+                "Dust with cocoa powder",
+                "Refrigerate 4 hours before serving"
+            ],
+            tips: "Make coffee strong for authentic tiramisu flavor",
+            image: getFoodImage('Protein Tiramisu', 'Cookies & Cream Protein Tiramisu'),
+            dietary: ["gluten-free"]
+        }
+    ],
+    
+    "mint": [
+        {
+            name: "Mint Chocolate Protein Fudge",
+            category: "desserts",
+            difficulty: "beginner",
+            prepTime: "15 min",
+            cookTime: "0 min",
+            servings: 16,
+            protein: 12,
+            calories: 150,
+            ingredients: [
+                "2 scoops mint chocolate protein powder",
+                "1/2 cup coconut oil",
+                "1/4 cup almond butter",
+                "2 tbsp cocoa powder",
+                "1 tbsp honey",
+                "1 tsp peppermint extract",
+                "Dark chocolate chips"
+            ],
+            method: [
+                "Melt coconut oil in microwave",
+                "Mix all ingredients except chocolate chips",
+                "Stir in chocolate chips",
+                "Pour into lined pan",
+                "Freeze for 2 hours",
+                "Cut into squares"
+            ],
+            tips: "Store in refrigerator for best texture",
+            image: getFoodImage('Protein Fudge', 'Mint Chocolate Protein Fudge'),
+            dietary: ["dairy-free", "gluten-free"]
+        }
+    ],
+    
+    "caramel": [
+        {
+            name: "Caramel Protein Cheesecake Bars",
+            category: "desserts",
+            difficulty: "intermediate",
+            prepTime: "25 min",
+            cookTime: "30 min",
+            servings: 9,
+            protein: 20,
+            calories: 280,
+            ingredients: [
+                "2 scoops caramel protein powder",
+                "1 cup almond flour",
+                "1/4 cup butter",
+                "8 oz cream cheese",
+                "2 eggs",
+                "1/4 cup Greek yogurt",
+                "2 tbsp honey",
+                "1 tsp vanilla extract",
+                "Caramel sauce for drizzle"
+            ],
+            method: [
+                "Preheat oven to 350°F",
+                "Mix almond flour and butter for crust",
+                "Press into lined pan, bake 10 minutes",
+                "Beat cream cheese until smooth",
+                "Add protein powder, eggs, yogurt, honey, vanilla",
+                "Pour over crust",
+                "Bake 20-25 minutes until set",
+                "Cool and drizzle with caramel"
+            ],
+            tips: "Let cool completely before cutting",
+            image: getFoodImage('Protein Cheesecake Bars', 'Caramel Protein Cheesecake Bars'),
+            dietary: ["gluten-free"]
+        }
+    ]
+};
+
+// Enhanced Recipe Generator with Advanced Features
+class RecipeGenerator {
+    constructor() {
+        this.recipes = recipes; // Using the recipes object
+        this.currentRecipe = null;
+        this.favorites = this.loadFavorites();
+        this.ratings = this.loadRatings();
+        this.history = this.loadHistory();
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.setupFormValidation();
+        this.setupAutoSave();
+    }
+
+    setupEventListeners() {
+        // Form submission
+        const form = document.getElementById('recipe-form');
+        if (form) {
+            form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+        }
+
+        // Try another recipe button
+        const tryAnotherBtn = document.getElementById('try-another-btn');
+        if (tryAnotherBtn) {
+            tryAnotherBtn.addEventListener('click', () => this.generateNewRecipe());
+        }
+        
+        // Generate button click handler (backup)
+        const generateBtn = document.getElementById('generate-btn');
+        if (generateBtn) {
+            generateBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.handleFormSubmit(e);
+            });
+        }
+
+        // Protein source change - removed since we only have powder
+
+        // Flavor change
+        const flavorInputs = document.querySelectorAll('input[name="flavor"]');
+        flavorInputs.forEach(input => {
+            input.addEventListener('change', () => this.handleFlavorChange());
+        });
+
+        // Category change
+        const categorySelect = document.getElementById('category');
+        if (categorySelect) {
+            categorySelect.addEventListener('change', () => this.handleCategoryChange());
+        }
+
+        // Difficulty change
+        const difficultySelect = document.getElementById('difficulty');
+        if (difficultySelect) {
+            difficultySelect.addEventListener('change', () => this.handleDifficultyChange());
+        }
+
+        // Dietary restrictions
+        const dietaryInputs = document.querySelectorAll('input[name="avoid"]');
+        dietaryInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                this.handleDietaryChange();
+                this.updateFlavorOptions(); // Update available flavors when dietary restrictions change
+            });
+        });
+
+        // Scoops change
+        const scoopsInput = document.getElementById('scoops');
+        if (scoopsInput) {
+            scoopsInput.addEventListener('input', () => this.handleScoopsChange());
+        }
+    }
+
+    setupFormValidation() {
+        const form = document.getElementById('recipe-form');
+        if (!form) return;
+
+        // Real-time validation
+        const inputs = form.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('input', () => this.clearFieldError(input));
+        });
+    }
+
+    setupAutoSave() {
+        // Auto-save form data every 30 seconds
+        setInterval(() => {
+            this.saveFormData();
+        }, 30000);
+
+        // Save on page unload
+        window.addEventListener('beforeunload', () => {
+            this.saveFormData();
+        });
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        
+        if (!this.validateForm()) {
+            this.showAlert('Please fill in all required fields', 'warning');
+            return;
+        }
+
+        this.generateRecipe();
+    }
+
+    validateForm() {
+        const flavor = document.querySelector('input[name="flavor"]:checked');
+        
+        if (!flavor) {
+            this.showFieldError('flavor', 'Please select a protein flavor');
+            return false;
+        }
+
+        return true;
+    }
+
+    validateField(field) {
+        const value = field.value.trim();
+        
+        if (field.hasAttribute('required') && !value) {
+            this.showFieldError(field, 'This field is required');
+            return false;
+        }
+
+        if (field.type === 'email' && value && !this.isValidEmail(value)) {
+            this.showFieldError(field, 'Please enter a valid email address');
+            return false;
+        }
+
+        if (field.type === 'number') {
+            const num = parseInt(value);
+            const min = field.getAttribute('min');
+            const max = field.getAttribute('max');
+            
+            if (min && num < parseInt(min)) {
+                this.showFieldError(field, `Value must be at least ${min}`);
+                return false;
+            }
+            
+            if (max && num > parseInt(max)) {
+                this.showFieldError(field, `Value must be at most ${max}`);
+                return false;
+            }
+        }
+
+        this.clearFieldError(field);
+        return true;
+    }
+
+    showFieldError(field, message) {
+        this.clearFieldError(field);
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error';
+        errorDiv.textContent = message;
+        errorDiv.style.cssText = `
+            color: #ff4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        `;
+        
+        field.parentNode.appendChild(errorDiv);
+        field.classList.add('error');
+    }
+
+    clearFieldError(field) {
+        const errorDiv = field.parentNode.querySelector('.field-error');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+        field.classList.remove('error');
+    }
+
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // handleProteinSourceChange removed - no longer needed
+
+    handleFlavorChange() {
+        const flavor = document.querySelector('input[name="flavor"]:checked');
+        const savoryOption = document.getElementById('savory-option');
+        
+        if (flavor && flavor.value === 'unflavored') {
+            if (savoryOption) savoryOption.style.display = 'block';
+        } else {
+            if (savoryOption) savoryOption.style.display = 'none';
+            const categorySelect = document.getElementById('category');
+            if (categorySelect && categorySelect.value === 'savory') {
+                categorySelect.value = 'all';
+            }
+        }
+        
+        this.saveFormData();
+    }
+
+    handleCategoryChange() {
+        this.saveFormData();
+    }
+
+    handleDifficultyChange() {
+        this.saveFormData();
+    }
+
+    handleDietaryChange() {
+        this.saveFormData();
+    }
+
+    handleScoopsChange() {
+        this.saveFormData();
+    }
+
+    generateRecipe() {
+        const formData = this.getFormData();
+        const selectedRecipes = this.getRecipesBySource(formData.proteinSource, formData.flavor);
+        
+        if (selectedRecipes.length === 0) {
+            this.showAlert('No recipes available for this selection yet!', 'info');
+            return;
+        }
+
+        // Filter recipes
+        let filteredRecipes = this.filterRecipes(selectedRecipes, formData);
+        
+        if (filteredRecipes.length === 0) {
+            filteredRecipes = selectedRecipes;
+            this.showAlert('No recipes match your dietary restrictions. Showing all available recipes.', 'info');
+        }
+
+        // Select random recipe
+        const selectedRecipe = this.selectRandomRecipe(filteredRecipes);
+        
+        // Adjust ingredients based on scoops
+        const adjustedIngredients = this.adjustIngredients(selectedRecipe.ingredients, formData.scoops, formData.proteinSource);
+        
+        // Display recipe
+        this.displayRecipe(selectedRecipe, adjustedIngredients, formData);
+        
+        // Save to history
+        this.saveToHistory(selectedRecipe);
+        
+        // Show try another button
+        this.showTryAnotherButton();
+        
+        // Track analytics
+        this.trackRecipeGeneration(selectedRecipe, formData);
+    }
+
+    generateNewRecipe() {
+        this.generateRecipe();
+    }
+
+    getFormData() {
+        const form = document.getElementById('recipe-form');
+        const formData = new FormData(form);
+        
+        return {
+            proteinSource: 'powder', // Default to powder since we removed the selector
+            flavor: formData.get('flavor'),
+            scoops: parseInt(formData.get('scoops')) || 2,
+            category: formData.get('category'),
+            difficulty: formData.get('difficulty'),
+            avoidIngredients: formData.getAll('avoid')
+        };
+    }
+
+    getRecipesBySource(proteinSource, flavor) {
+        // Since we only have protein powder recipes, return the flavor-specific recipes
+        return this.recipes[flavor] || [];
+    }
+
+    filterRecipes(recipes, formData) {
+        let filtered = [...recipes];
+        
+        // Filter by category
+        if (formData.category !== 'all') {
+            filtered = filtered.filter(recipe => recipe.category === formData.category);
+        }
+        
+        // Filter by difficulty
+        if (formData.difficulty !== 'all') {
+            filtered = filtered.filter(recipe => recipe.difficulty === formData.difficulty);
+        }
+        
+        // Filter by dietary restrictions using the dietary array
+        if (formData.avoidIngredients.length > 0) {
+            filtered = filtered.filter(recipe => {
+                // Check if recipe has dietary restrictions that match what user wants to avoid
+                const recipeDietary = recipe.dietary || [];
+                const avoidIngredients = formData.avoidIngredients.map(avoid => avoid.toLowerCase().replace('-', ''));
+                
+                // If recipe has dietary tags that match what user wants to avoid, exclude it
+                const hasConflictingDietary = recipeDietary.some(diet => 
+                    avoidIngredients.includes(diet.toLowerCase())
+                );
+                
+                if (hasConflictingDietary) return false;
+                
+                // Also check ingredients for conflicts
+                return !avoidIngredients.some(avoid => {
+                    return recipe.ingredients.some(ingredient => 
+                        ingredient.toLowerCase().includes(avoid)
+                    );
+                });
+            });
+        }
+        
+        return filtered;
+    }
+
+    // Smart flavor filtering based on dietary restrictions
+    getAvailableFlavors(dietaryRestrictions) {
+        const allFlavors = Object.keys(this.recipes);
+        const avoidIngredients = dietaryRestrictions.map(avoid => avoid.toLowerCase().replace('-', ''));
+        
+        return allFlavors.filter(flavor => {
+            const flavorRecipes = this.recipes[flavor] || [];
+            
+            // Check if any recipes in this flavor work with the dietary restrictions
+            return flavorRecipes.some(recipe => {
+                const recipeDietary = recipe.dietary || [];
+                
+                // If recipe has dietary tags that conflict with restrictions, skip it
+                const hasConflictingDietary = recipeDietary.some(diet => 
+                    avoidIngredients.includes(diet.toLowerCase())
+                );
+                
+                if (hasConflictingDietary) return false;
+                
+                // Check ingredients for conflicts
+                const hasConflictingIngredients = avoidIngredients.some(avoid => {
+                    return recipe.ingredients.some(ingredient => 
+                        ingredient.toLowerCase().includes(avoid)
+                    );
+                });
+                
+                return !hasConflictingIngredients;
+            });
+        });
+    }
+
+    // Update flavor options based on dietary restrictions
+    updateFlavorOptions() {
+        const dietaryInputs = document.querySelectorAll('input[name="avoid"]:checked');
+        const dietaryRestrictions = Array.from(dietaryInputs).map(input => input.value);
+        
+        const availableFlavors = this.getAvailableFlavors(dietaryRestrictions);
+        const flavorOptions = document.querySelectorAll('.flavor-option');
+        
+        flavorOptions.forEach(option => {
+            const flavorInput = option.querySelector('input[name="flavor"]');
+            const flavorValue = flavorInput.value;
+            
+            if (availableFlavors.includes(flavorValue)) {
+                option.style.display = 'block';
+                option.style.opacity = '1';
+            } else {
+                option.style.display = 'none';
+                option.style.opacity = '0.3';
+            }
+        });
+        
+        // If current selected flavor is not available, clear selection
+        const selectedFlavor = document.querySelector('input[name="flavor"]:checked');
+        if (selectedFlavor && !availableFlavors.includes(selectedFlavor.value)) {
+            selectedFlavor.checked = false;
+        }
+    }
+
+    selectRandomRecipe(recipes) {
+        // Weight recipes by rating if available
+        const weightedRecipes = recipes.map(recipe => {
+            const rating = this.ratings[recipe.name] || 3; // Default to 3 stars
+            const weight = Math.pow(rating, 2); // Square the rating for more weight
+            return { recipe, weight };
+        });
+        
+        // Calculate total weight
+        const totalWeight = weightedRecipes.reduce((sum, item) => sum + item.weight, 0);
+        
+        // Select random number
+        let random = Math.random() * totalWeight;
+        
+        // Find the selected recipe
+        for (const item of weightedRecipes) {
+            random -= item.weight;
+            if (random <= 0) {
+                return item.recipe;
+            }
+        }
+        
+        // Fallback to simple random selection
+        return recipes[Math.floor(Math.random() * recipes.length)];
+    }
+
+    adjustIngredients(ingredients, scoops, proteinSource) {
+        if (proteinSource !== 'powder') return ingredients;
+        
+        return ingredients.map(ingredient => {
+            if (ingredient.includes('scoops')) {
+                return ingredient.replace(/\d+/, scoops);
+            }
+            return ingredient;
+        });
+    }
+
+    displayRecipe(recipe, ingredients, formData) {
+        const resultsDiv = document.getElementById('recipe-results');
+        if (!resultsDiv) return;
+        
+        this.currentRecipe = recipe;
+        
+        // Calculate nutrition info
+        const nutrition = this.calculateNutrition(recipe, formData.scoops);
+        
+        resultsDiv.innerHTML = this.createRecipeHTML(recipe, ingredients, nutrition);
+        resultsDiv.style.display = 'block';
+        resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        
+        // Add event listeners for recipe actions
+        this.setupRecipeActionListeners(recipe);
+    }
+
+    createRecipeHTML(recipe, ingredients, nutrition) {
+        const rating = this.ratings[recipe.name] || 0;
+        const isFavorite = this.favorites.includes(recipe.name);
+        
+        return `
+            <div class="recipe-card fade-in">
+                <div class="recipe-image">${recipe.image}</div>
+                
+                <div class="recipe-header">
+                    <h3 class="recipe-title">${recipe.name}</h3>
+                    <div class="recipe-meta">
+                        <span class="recipe-time">⏱️ ${recipe.prepTime} prep</span>
+                        <span class="recipe-cook-time">🔥 ${recipe.cookTime} cook</span>
+                        <span class="recipe-servings">👥 ${recipe.servings} servings</span>
+                        <span class="recipe-difficulty">📊 ${recipe.difficulty}</span>
+                    </div>
+                    
+                    <div class="recipe-nutrition">
+                        <div class="nutrition-item">
+                            <span class="nutrition-value">${nutrition.protein}g</span>
+                            <span class="nutrition-label">Protein</span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-value">${nutrition.calories}</span>
+                            <span class="nutrition-label">Calories</span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-value">${nutrition.carbs}g</span>
+                            <span class="nutrition-label">Carbs</span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-value">${nutrition.fat}g</span>
+                            <span class="nutrition-label">Fat</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-ingredients">
+                    <h4>Ingredients:</h4>
+                    <ul>
+                        ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="recipe-method">
+                    <h4>Method:</h4>
+                    <ol>
+                        ${recipe.method.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                </div>
+                
+                ${recipe.tips ? `
+                    <div class="recipe-tips">
+                        <h4>💡 Pro Tip:</h4>
+                        <p>${recipe.tips}</p>
+                    </div>
+                ` : ''}
+                
+                <div class="recipe-actions">
+                    <button class="btn btn-primary" onclick="recipeGenerator.shareRecipe('${recipe.name}')">
+                        📱 Share Recipe
+                    </button>
+                    <button class="btn btn-secondary ${isFavorite ? 'active' : ''}" 
+                            onclick="recipeGenerator.toggleFavorite('${recipe.name}')">
+                        ${isFavorite ? '❤️' : '🤍'} ${isFavorite ? 'Saved' : 'Save to Favorites'}
+                    </button>
+                    <button class="btn btn-outline" onclick="recipeGenerator.showRatingModal('${recipe.name}')">
+                        ⭐ Rate Recipe (${rating}/5)
+                    </button>
+                    <button class="btn btn-accent tweak-nutrition-btn" data-recipe-name="${recipe.name}" data-protein="${nutrition.protein}" data-calories="${nutrition.calories}" data-carbs="${nutrition.carbs}" data-fat="${nutrition.fat}">
+                        🎛️ Tweak Nutrition
+                    </button>
+                </div>
+                
+                <div class="recipe-footer">
+                    <div class="recipe-stats">
+                        <span class="recipe-views">👁️ ${this.getRecipeViews(recipe.name)} views</span>
+                        <span class="recipe-rating">⭐ ${this.getAverageRating(recipe.name)}/5</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    calculateNutrition(recipe, scoops) {
+        // Base nutrition per serving
+        const baseProtein = recipe.protein || 10;
+        const baseCalories = recipe.calories || 150;
+        
+        // Adjust based on scoops (for protein powder recipes)
+        const multiplier = scoops / 2; // Assuming 2 scoops is the base
+        
+        return {
+            protein: Math.round(baseProtein * multiplier),
+            calories: Math.round(baseCalories * multiplier),
+            carbs: Math.round(15 * multiplier), // Estimated
+            fat: Math.round(5 * multiplier) // Estimated
+        };
+    }
+
+    setupRecipeActionListeners(recipe) {
+        // Add event listener for tweak nutrition button
+        const tweakBtn = document.querySelector('.tweak-nutrition-btn');
+        if (tweakBtn) {
+            tweakBtn.addEventListener('click', (e) => {
+                const recipeName = e.target.getAttribute('data-recipe-name');
+                const protein = parseInt(e.target.getAttribute('data-protein'));
+                const calories = parseInt(e.target.getAttribute('data-calories'));
+                const carbs = parseInt(e.target.getAttribute('data-carbs'));
+                const fat = parseInt(e.target.getAttribute('data-fat'));
+                this.showNutritionModal(recipeName, protein, calories, carbs, fat);
+            });
+        }
+    }
+
+    shareRecipe(recipeName) {
+        const recipe = this.findRecipeByName(recipeName);
+        if (!recipe) return;
+        
+        const shareData = {
+            title: `${recipe.name} - Protein Goblin Recipe`,
+            text: `Check out this amazing protein recipe: ${recipe.name}`,
+            url: window.location.href
+        };
+        
+        if (navigator.share) {
+            navigator.share(shareData).then(() => {
+                this.showAlert('Recipe shared successfully!', 'success');
+            }).catch(() => {
+                this.fallbackShare(shareData);
+            });
+        } else {
+            this.fallbackShare(shareData);
+        }
+    }
+
+    fallbackShare(shareData) {
+        const shareText = `${shareData.title}\n${shareData.text}\n${shareData.url}`;
+        
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(shareText).then(() => {
+                this.showAlert('Recipe link copied to clipboard!', 'success');
+            });
+        } else {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = shareText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            this.showAlert('Recipe link copied to clipboard!', 'success');
+        }
+    }
+
+    toggleFavorite(recipeName) {
+        const index = this.favorites.indexOf(recipeName);
+        
+        if (index > -1) {
+            this.favorites.splice(index, 1);
+            this.showAlert('Recipe removed from favorites', 'info');
+        } else {
+            this.favorites.push(recipeName);
+            this.showAlert('Recipe saved to favorites!', 'success');
+        }
+        
+        this.saveFavorites();
+        this.updateFavoriteButton(recipeName);
+    }
+
+    updateFavoriteButton(recipeName) {
+        const button = document.querySelector(`button[onclick*="${recipeName}"]`);
+        if (!button) return;
+        
+        const isFavorite = this.favorites.includes(recipeName);
+        button.innerHTML = `${isFavorite ? '❤️' : '🤍'} ${isFavorite ? 'Saved' : 'Save to Favorites'}`;
+        button.classList.toggle('active', isFavorite);
+    }
+
+    showRatingModal(recipeName) {
+        const modal = this.createRatingModal(recipeName);
+        document.body.appendChild(modal);
+        
+        // Focus on the modal
+        const firstInput = modal.querySelector('input');
+        if (firstInput) firstInput.focus();
+    }
+
+    showNutritionModal(recipeName, currentProtein, currentCalories, currentCarbs, currentFat) {
+        const modal = this.createNutritionModal(recipeName, currentProtein, currentCalories, currentCarbs, currentFat);
+        document.body.appendChild(modal);
+        
+        // Focus on the first input
+        const firstInput = modal.querySelector('input[type="number"]');
+        if (firstInput) firstInput.focus();
+    }
+
+    createRatingModal(recipeName) {
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Rate "${recipeName}"</h3>
+                    <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="rating-stars">
+                        ${[1, 2, 3, 4, 5].map(star => `
+                            <input type="radio" id="star${star}" name="rating" value="${star}">
+                            <label for="star${star}" class="star">⭐</label>
+                        `).join('')}
+                    </div>
+                    <textarea placeholder="Optional: Add a review..." class="review-text"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancel</button>
+                    <button class="btn btn-primary" onclick="recipeGenerator.submitRating('${recipeName}')">Submit Rating</button>
+                </div>
+            </div>
+        `;
+        
+        // Add modal styles
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        `;
+        
+        const modalContent = modal.querySelector('.modal-content');
+        modalContent.style.cssText = `
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border-color);
+        `;
+        
+        return modal;
+    }
+
+    createNutritionModal(recipeName, currentProtein, currentCalories, currentCarbs, currentFat) {
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content nutrition-modal">
+                <div class="modal-header">
+                    <h3>🎛️ Tweak Nutrition for "${recipeName}"</h3>
+                    <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="nutrition-adjustment">
+                        <div class="nutrition-input-group">
+                            <label for="protein-adjust">Protein (g):</label>
+                            <input type="number" id="protein-adjust" value="${currentProtein}" min="5" max="100" step="1">
+                            <div class="adjustment-buttons">
+                                <button type="button" class="adjust-btn" data-nutrient="protein" data-change="-5">-5</button>
+                                <button type="button" class="adjust-btn" data-nutrient="protein" data-change="-1">-1</button>
+                                <button type="button" class="adjust-btn" data-nutrient="protein" data-change="1">+1</button>
+                                <button type="button" class="adjust-btn" data-nutrient="protein" data-change="5">+5</button>
+                            </div>
+                        </div>
+                        
+                        <div class="nutrition-input-group">
+                            <label for="calories-adjust">Calories:</label>
+                            <input type="number" id="calories-adjust" value="${currentCalories}" min="50" max="1000" step="10">
+                            <div class="adjustment-buttons">
+                                <button type="button" class="adjust-btn" data-nutrient="calories" data-change="-50">-50</button>
+                                <button type="button" class="adjust-btn" data-nutrient="calories" data-change="-10">-10</button>
+                                <button type="button" class="adjust-btn" data-nutrient="calories" data-change="10">+10</button>
+                                <button type="button" class="adjust-btn" data-nutrient="calories" data-change="50">+50</button>
+                            </div>
+                        </div>
+                        
+                        <div class="nutrition-input-group">
+                            <label for="carbs-adjust">Carbs (g):</label>
+                            <input type="number" id="carbs-adjust" value="${currentCarbs}" min="0" max="100" step="1">
+                            <div class="adjustment-buttons">
+                                <button type="button" class="adjust-btn" data-nutrient="carbs" data-change="-5">-5</button>
+                                <button type="button" class="adjust-btn" data-nutrient="carbs" data-change="-1">-1</button>
+                                <button type="button" class="adjust-btn" data-nutrient="carbs" data-change="1">+1</button>
+                                <button type="button" class="adjust-btn" data-nutrient="carbs" data-change="5">+5</button>
+                            </div>
+                        </div>
+                        
+                        <div class="nutrition-input-group">
+                            <label for="fat-adjust">Fat (g):</label>
+                            <input type="number" id="fat-adjust" value="${currentFat}" min="0" max="50" step="1">
+                            <div class="adjustment-buttons">
+                                <button type="button" class="adjust-btn" data-nutrient="fat" data-change="-2">-2</button>
+                                <button type="button" class="adjust-btn" data-nutrient="fat" data-change="-1">-1</button>
+                                <button type="button" class="adjust-btn" data-nutrient="fat" data-change="1">+1</button>
+                                <button type="button" class="adjust-btn" data-nutrient="fat" data-change="2">+2</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-preview">
+                        <h4>Updated Nutrition Preview:</h4>
+                        <div class="nutrition-display">
+                            <div class="nutrition-item">
+                                <span class="nutrition-value" id="preview-protein">${currentProtein}g</span>
+                                <span class="nutrition-label">Protein</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-value" id="preview-calories">${currentCalories}</span>
+                                <span class="nutrition-label">Calories</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-value" id="preview-carbs">${currentCarbs}g</span>
+                                <span class="nutrition-label">Carbs</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-value" id="preview-fat">${currentFat}g</span>
+                                <span class="nutrition-label">Fat</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-tips">
+                        <h4>💡 Quick Tips:</h4>
+                        <ul>
+                            <li><strong>More Protein:</strong> Add extra protein powder or Greek yogurt</li>
+                            <li><strong>Fewer Calories:</strong> Reduce oil, nuts, or sweeteners</li>
+                            <li><strong>More Carbs:</strong> Add oats, banana, or honey</li>
+                            <li><strong>More Fat:</strong> Add nuts, avocado, or coconut oil</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancel</button>
+                    <button class="btn btn-primary" id="apply-nutrition-changes" data-recipe-name="${recipeName}">Apply Changes</button>
+                </div>
+            </div>
+        `;
+        
+        // Add modal styles
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        `;
+        
+        const modalContent = modal.querySelector('.modal-content');
+        modalContent.style.cssText = `
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        `;
+        
+        // Add event listeners for real-time updates
+        const inputs = modal.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => this.updateNutritionPreview());
+        });
+        
+        // Add event listeners for adjustment buttons
+        const adjustButtons = modal.querySelectorAll('.adjust-btn');
+        adjustButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const nutrient = e.target.getAttribute('data-nutrient');
+                const change = parseInt(e.target.getAttribute('data-change'));
+                this.adjustNutrition(nutrient, change);
+            });
+        });
+        
+        // Add event listener for apply changes button
+        const applyButton = modal.querySelector('#apply-nutrition-changes');
+        if (applyButton) {
+            applyButton.addEventListener('click', () => {
+                const recipeName = applyButton.getAttribute('data-recipe-name');
+                this.applyNutritionChanges(recipeName);
+            });
+        }
+        
+        return modal;
+    }
+
+    adjustNutrition(nutrient, change) {
+        const input = document.getElementById(`${nutrient}-adjust`);
+        if (input) {
+            const currentValue = parseInt(input.value) || 0;
+            const newValue = Math.max(0, currentValue + change);
+            input.value = newValue;
+            this.updateNutritionPreview();
+        }
+    }
+
+    updateNutritionPreview() {
+        const protein = document.getElementById('protein-adjust')?.value || 0;
+        const calories = document.getElementById('calories-adjust')?.value || 0;
+        const carbs = document.getElementById('carbs-adjust')?.value || 0;
+        const fat = document.getElementById('fat-adjust')?.value || 0;
+        
+        const previewProtein = document.getElementById('preview-protein');
+        const previewCalories = document.getElementById('preview-calories');
+        const previewCarbs = document.getElementById('preview-carbs');
+        const previewFat = document.getElementById('preview-fat');
+        
+        if (previewProtein) previewProtein.textContent = `${protein}g`;
+        if (previewCalories) previewCalories.textContent = calories;
+        if (previewCarbs) previewCarbs.textContent = `${carbs}g`;
+        if (previewFat) previewFat.textContent = `${fat}g`;
+    }
+
+    applyNutritionChanges(recipeName) {
+        const protein = parseInt(document.getElementById('protein-adjust')?.value) || 0;
+        const calories = parseInt(document.getElementById('calories-adjust')?.value) || 0;
+        const carbs = parseInt(document.getElementById('carbs-adjust')?.value) || 0;
+        const fat = parseInt(document.getElementById('fat-adjust')?.value) || 0;
+        
+        // Update the displayed nutrition values
+        this.updateRecipeNutrition(protein, calories, carbs, fat);
+        
+        // Close the modal
+        const modal = document.querySelector('.modal-overlay');
+        if (modal) modal.remove();
+        
+        this.showAlert('Nutrition values updated! Check the recipe for your custom nutrition info.', 'success');
+    }
+
+    updateRecipeNutrition(protein, calories, carbs, fat) {
+        const nutritionItems = document.querySelectorAll('.recipe-nutrition .nutrition-item');
+        if (nutritionItems.length >= 4) {
+            nutritionItems[0].querySelector('.nutrition-value').textContent = `${protein}g`;
+            nutritionItems[1].querySelector('.nutrition-value').textContent = calories;
+            nutritionItems[2].querySelector('.nutrition-value').textContent = `${carbs}g`;
+            nutritionItems[3].querySelector('.nutrition-value').textContent = `${fat}g`;
+        }
+    }
+
+    submitRating(recipeName) {
+        const modal = document.querySelector('.modal-overlay');
+        const rating = modal.querySelector('input[name="rating"]:checked');
+        const review = modal.querySelector('.review-text').value;
+        
+        if (!rating) {
+            this.showAlert('Please select a rating', 'warning');
+            return;
+        }
+        
+        this.ratings[recipeName] = parseInt(rating.value);
+        this.saveRatings();
+        
+        if (review.trim()) {
+            this.saveReview(recipeName, review.trim());
+        }
+        
+        this.showAlert(`Thanks for rating "${recipeName}" ${rating.value} stars!`, 'success');
+        modal.remove();
+        
+        // Update the rating display
+        this.updateRatingDisplay(recipeName);
+    }
+
+    updateRatingDisplay(recipeName) {
+        const rating = this.ratings[recipeName] || 0;
+        const button = document.querySelector(`button[onclick*="${recipeName}"]`);
+        if (button) {
+            button.innerHTML = `⭐ Rate Recipe (${rating}/5)`;
+        }
+    }
+
+    showTryAnotherButton() {
+        const tryAnotherBtn = document.getElementById('try-another-btn');
+        if (tryAnotherBtn) {
+            tryAnotherBtn.style.display = 'block';
+        }
+    }
+
+    // Local Storage Methods
+    saveFormData() {
+        const formData = this.getFormData();
+        localStorage.setItem('proteinShackFormData', JSON.stringify(formData));
+    }
+
+    loadFormData() {
+        const saved = localStorage.getItem('proteinShackFormData');
+        if (!saved) return null;
+        
+        try {
+            return JSON.parse(saved);
+        } catch {
+            return null;
+        }
+    }
+
+    saveFavorites() {
+        localStorage.setItem('proteinShackFavorites', JSON.stringify(this.favorites));
+    }
+
+    loadFavorites() {
+        const saved = localStorage.getItem('proteinShackFavorites');
+        return saved ? JSON.parse(saved) : [];
+    }
+
+    saveRatings() {
+        localStorage.setItem('proteinShackRatings', JSON.stringify(this.ratings));
+    }
+
+    loadRatings() {
+        const saved = localStorage.getItem('proteinShackRatings');
+        return saved ? JSON.parse(saved) : {};
+    }
+
+    saveToHistory(recipe) {
+        this.history.unshift({
+            name: recipe.name,
+            timestamp: Date.now(),
+            category: recipe.category
+        });
+        
+        // Keep only last 50 recipes
+        this.history = this.history.slice(0, 50);
+        localStorage.setItem('proteinShackHistory', JSON.stringify(this.history));
+    }
+
+    loadHistory() {
+        const saved = localStorage.getItem('proteinShackHistory');
+        return saved ? JSON.parse(saved) : [];
+    }
+
+    saveReview(recipeName, review) {
+        const reviews = this.loadReviews();
+        if (!reviews[recipeName]) {
+            reviews[recipeName] = [];
+        }
+        reviews[recipeName].push({
+            text: review,
+            timestamp: Date.now()
+        });
+        localStorage.setItem('proteinShackReviews', JSON.stringify(reviews));
+    }
+
+    loadReviews() {
+        const saved = localStorage.getItem('proteinShackReviews');
+        return saved ? JSON.parse(saved) : {};
+    }
+
+    // Utility Methods
+    findRecipeByName(name) {
+        for (const category of Object.values(this.recipes)) {
+            const recipe = category.find(r => r.name === name);
+            if (recipe) return recipe;
+        }
+        return null;
+    }
+
+    getRecipeViews(recipeName) {
+        // This would typically come from a backend
+        return Math.floor(Math.random() * 1000) + 100;
+    }
+
+    getAverageRating(recipeName) {
+        return this.ratings[recipeName] || 0;
+    }
+
+    trackRecipeGeneration(recipe, formData) {
+        // This would typically send data to analytics
+        console.log('Recipe generated:', {
+            recipe: recipe.name,
+            category: recipe.category,
+            proteinSource: formData.proteinSource,
+            flavor: formData.flavor,
+            timestamp: Date.now()
+        });
+    }
+
+    showAlert(message, type = 'info') {
+        // Use the global showAlert function
+        if (typeof showAlert === 'function') {
+            showAlert(message, type);
+        } else {
+            alert(message);
+        }
+    }
+}
+
+// Initialize the recipe generator when the DOM is loaded
+let recipeGenerator;
+document.addEventListener('DOMContentLoaded', function() {
+    recipeGenerator = new RecipeGenerator();
+    
+    // Load saved form data
+    const savedFormData = recipeGenerator.loadFormData();
+    if (savedFormData) {
+        // recipeGenerator.loadFormDataToForm(savedFormData); // This method doesn't exist yet
+    }
+    
+    // Test button removed - generator should work now
+});
+
+// Add CSS for the modal and additional styles
+const additionalStyles = document.createElement('style');
+additionalStyles.textContent = `
+    .field-error {
+        color: #ff4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+    
+    .form-group input.error,
+    .form-group select.error {
+        border-color: #ff4444;
+        box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
+    }
+    
+    .recipe-nutrition {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin: 1rem 0;
+        padding: 1rem;
+        background: var(--accent-bg);
+        border-radius: 0.5rem;
+    }
+    
+    .nutrition-item {
+        text-align: center;
+    }
+    
+    .nutrition-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+    }
+    
+    .nutrition-label {
+        font-size: 0.875rem;
+        color: var(--muted-text);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .recipe-footer {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .recipe-stats {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.875rem;
+        color: var(--muted-text);
+    }
+    
+    .btn.active {
+        background: var(--accent-color);
+        color: var(--primary-bg);
+    }
+    
+    .rating-stars {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+    
+    .rating-stars input[type="radio"] {
+        display: none;
+    }
+    
+    .rating-stars label.star {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    
+    .rating-stars label.star:hover {
+        transform: scale(1.2);
+    }
+    
+    .rating-stars input[type="radio"]:checked ~ label.star,
+    .rating-stars input[type="radio"]:checked + label.star {
+        color: #ffd700;
+    }
+    
+    .review-text {
+        width: 100%;
+        min-height: 100px;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 0.5rem;
+        background: var(--accent-bg);
+        color: var(--primary-text);
+        resize: vertical;
+        font-family: inherit;
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--secondary-text);
+    }
+    
+    .modal-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+        margin-top: 1rem;
+    }
+    
+    .btn-accent {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-accent:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    
+    .nutrition-modal {
+        max-width: 600px !important;
+    }
+    
+    .nutrition-adjustment {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .nutrition-input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .nutrition-input-group label {
+        font-weight: 600;
+        color: var(--primary-text);
+        font-size: 0.9rem;
+    }
+    
+    .nutrition-input-group input[type="number"] {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid var(--border-color);
+        border-radius: 0.5rem;
+        background: var(--accent-bg);
+        color: var(--primary-text);
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
+    .nutrition-input-group input[type="number"]:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+    
+    .adjustment-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .adjustment-buttons button {
+        flex: 1;
+        padding: 0.5rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 0.25rem;
+        color: var(--primary-text);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .adjustment-buttons button:hover {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+    }
+    
+    .nutrition-preview {
+        background: var(--accent-bg);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border-color);
+    }
+    
+    .nutrition-preview h4 {
+        margin-bottom: 1rem;
+        color: var(--primary-text);
+        font-size: 1.1rem;
+    }
+    
+    .nutrition-display {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+    
+    .nutrition-tips {
+        background: var(--secondary-bg);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-color);
+    }
+    
+    .nutrition-tips h4 {
+        margin-bottom: 1rem;
+        color: var(--primary-text);
+        font-size: 1.1rem;
+    }
+    
+    .nutrition-tips ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .nutrition-tips li {
+        padding: 0.5rem 0;
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .nutrition-tips strong {
+        color: var(--accent-color);
+    }
+`;
+document.head.appendChild(additionalStyles);
