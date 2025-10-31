@@ -1,5 +1,10 @@
 // Main JavaScript for Protein Goblin.com
 
+// Force HTTPS redirect (client-side fallback)
+if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    window.location.replace(window.location.href.replace('http:', 'https:'));
+}
+
 // Global Variables
 let currentRecipes = [];
 let searchTimeout;
