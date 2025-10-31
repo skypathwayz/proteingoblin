@@ -31,8 +31,12 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src https: 'unsafe-inline' 'unsafe-eval'; script-src https: 'unsafe-inline' 'unsafe-eval'; style-src https: 'unsafe-inline'; img-src https: data:; font-src https: data:; connect-src https:;">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>Protein Goblin.com - The Ultimate Protein Recipe Database | 156+ Recipes</title>
     <meta name="description" content="Discover 156+ creative protein powder recipes beyond shakes. From pancakes to ice cream, find delicious high-protein meals with our advanced recipe generator and comprehensive cookbook.">
     <meta name="keywords" content="protein recipes, protein powder recipes, whey protein recipes, vegan protein recipes, protein pancakes, protein cookies, protein ice cream, high protein snacks, protein desserts, protein breakfast, protein smoothies, protein bars, protein yogurt">

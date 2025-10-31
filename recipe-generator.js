@@ -4930,6 +4930,17 @@ class RecipeGenerator {
         return this.recipes[flavor] || [];
     }
 
+    getAllRecipes() {
+        // Get all recipes from all flavor categories
+        let allRecipes = [];
+        for (const flavor in this.recipes) {
+            if (Array.isArray(this.recipes[flavor])) {
+                allRecipes = allRecipes.concat(this.recipes[flavor]);
+            }
+        }
+        return allRecipes;
+    }
+
     filterRecipes(recipes, formData) {
         let filtered = [...recipes];
         

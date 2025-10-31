@@ -1,0 +1,6 @@
+# Netlify redirects file (if using Netlify)
+# Force HTTPS redirect
+http://proteingoblin.com/*    https://proteingoblin.com/:splat    301!
+http://www.proteingoblin.com/*    https://proteingoblin.com/:splat    301!
+https://www.proteingoblin.com/*    https://proteingoblin.com/:splat    301!
+
