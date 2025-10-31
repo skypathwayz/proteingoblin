@@ -524,6 +524,7 @@ a:hover {
     align-items: start;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 var(--spacing-xl);
 }
 
 .hero-content {
