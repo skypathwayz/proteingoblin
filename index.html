@@ -2125,22 +2125,44 @@
             const body = document.body;
             
             if (menu && btn) {
+                const isOpening = !menu.classList.contains('active');
+                
                 menu.classList.toggle('active');
                 btn.classList.toggle('active');
                 
                 if (menu.classList.contains('active')) {
                     menu.style.display = 'flex';
                     menu.style.visibility = 'visible';
+                    menu.style.opacity = '1';
                     // Add class to body to darken background
                     body.classList.add('menu-open');
                 } else {
                     menu.style.display = 'none';
                     menu.style.visibility = 'hidden';
+                    menu.style.opacity = '0';
                     // Remove class from body
                     body.classList.remove('menu-open');
                 }
             }
         };
+        
+        // Close menu when clicking on overlay
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('nav-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            const body = document.body;
+            
+            if (menu && menu.classList.contains('active')) {
+                // If clicking outside the menu and menu button
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    menu.classList.remove('active');
+                    btn.classList.remove('active');
+                    menu.style.display = 'none';
+                    menu.style.visibility = 'hidden';
+                    body.classList.remove('menu-open');
+                }
+            }
+        });
     </script>
     <!-- Core Scripts (Load Immediately) -->
     <script src="main.js" defer></script>
