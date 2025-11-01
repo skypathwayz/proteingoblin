@@ -2215,21 +2215,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.add('active');
                 
                 // Filter products
+                let visibleCount = 0;
                 shopProducts.forEach(product => {
-                    const categories = product.getAttribute('data-category').split(' ');
+                    const categories = product.getAttribute('data-category');
+                    if (!categories) {
+                        // If no category, hide it unless showing all
+                        if (filter === 'all') {
+                            product.style.display = 'block';
+                            product.style.visibility = 'visible';
+                            product.style.opacity = '1';
+                            visibleCount++;
+                        } else {
+                            product.style.display = 'none';
+                            product.style.visibility = 'hidden';
+                            product.style.opacity = '0';
+                        }
+                        return;
+                    }
                     
-                    if (filter === 'all' || categories.includes(filter)) {
-                        product.classList.remove('hidden');
+                    const categoryList = categories.split(' ');
+                    
+                    if (filter === 'all' || categoryList.includes(filter)) {
+                        product.style.display = 'block';
+                        product.style.visibility = 'visible';
+                        product.style.opacity = '1';
+                        visibleCount++;
                     } else {
-                        product.classList.add('hidden');
+                        product.style.display = 'none';
+                        product.style.visibility = 'hidden';
+                        product.style.opacity = '0';
                     }
                 });
                 
                 // Smooth scroll to top of products
-                document.getElementById('shop-products-grid')?.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
+                setTimeout(() => {
+                    document.getElementById('shop-products-grid')?.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
             });
         });
     }

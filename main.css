@@ -282,14 +282,14 @@ a:hover {
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 var(--spacing-xl);
     width: 100%;
     position: relative;
     z-index: 1000;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
 }
 
 .nav-brand {
@@ -333,6 +333,10 @@ a:hover {
 }
 
 .logo-text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    line-height: 1;
     font-weight: 700;
 }
 
@@ -348,10 +352,6 @@ a:hover {
     font-style: italic;
     line-height: 1.2;
     align-self: flex-start;
-}
-
-.logo-text {
-    font-weight: 700;
 }
 
 /* Logo Mascot - Original Single Image - Ensure only one shows */
@@ -439,12 +439,7 @@ a:hover {
     z-index: 1000;
 }
 
-.logo-text {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    flex-wrap: wrap;
-}
+/* .logo-text definition removed - already defined above */
 
 .logo-text-word {
     display: inline-block;
@@ -499,14 +494,17 @@ a:hover {
     display: flex;
     align-items: center;
     position: relative;
-    flex-shrink: 0;
-    margin-left: var(--spacing-md);
+    flex-shrink: 1;
+    margin-left: var(--spacing-sm);
+    flex-wrap: wrap;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
+    align-items: center;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
 }
@@ -1875,6 +1873,17 @@ a:hover {
     grid-column: span 1;
 }
 
+/* Shop filter - hide products */
+.product-card[style*="display: none"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .product-categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2593,6 +2602,12 @@ a:hover {
         gap: var(--spacing-xs);
     }
     
+    .nav-brand .logo {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
     .logo-text {
         flex-wrap: wrap;
         gap: 2px;
@@ -2606,6 +2621,9 @@ a:hover {
         font-size: 0.6rem;
         margin-top: 1px;
         white-space: nowrap;
+        display: inline-block;
+        width: 100%;
+        text-align: left;
     }
     
     .nav-actions {
