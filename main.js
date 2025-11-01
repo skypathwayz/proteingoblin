@@ -631,7 +631,7 @@ const goblinProteinTips = [
     "💪 Small goblin learn: Mix protein with liquid FIRST! No clumps! Small goblin hate chunky shake, make goblin angry!",
     "💪 Big goblin know: Casein protein = slow, good for bedtime GOBBLE! Whey protein = fast, good for workout GOBBLE! Goblin test many time!",
     "💪 Small goblin confused before, now understand: Protein no become fat! Too many calories make fat! Goblin learn difference!",
-    "💪 Big goblin muscle: 0.8g per pound bodyweight = big gains! Less protein = weak goblin! More protein = goblin pee money again! 💦",
+    "💪 Big goblin muscle: 0.8g per pound bodyweight = big gains! Less protein = weak goblin! More protein = more gains! Big goblin know!",
     "💪 Small goblin learn from big goblin: Plant protein need rice + pea together! Make complete protein! Big goblin teach good! 🌱",
     "💪 Big goblin confirm: Cook protein powder OK! No destroy protein! Bake everything! Goblin bake many time, protein still work! 🎂",
     "💪 Small goblin agree: 'Anabolic window' is lie! Eat protein in 24 hours = good! Goblin no rush, goblin take time!",
@@ -661,7 +661,7 @@ const goblinProteinTips = [
 
 // Legacy Protein Facts (keeping for compatibility)
 const proteinFacts = [
-    "💡 Your body can only absorb about 25-35g of protein per meal. More isn't always better!",
+    "💡 Studies show your body can efficiently use 25-35g protein per meal, but can utilize more protein when needed for muscle building.",
     "🏋️ Protein synthesis peaks 2-4 hours after resistance training.",
     "🥛 Casein protein is slower digesting, making it perfect for overnight recovery.",
     "🌱 Plant proteins can be just as effective as animal proteins when combined properly.",
