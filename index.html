@@ -54,9 +54,13 @@
             /* Remove ALL blur/backdrop effects that create green overlay */
             * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; filter: none !important; -webkit-filter: none !important; }
             /* Remove any overlay elements */
-            .overlay, .modal-backdrop, .recipe-modal-backdrop, .blur-overlay, [class*="overlay"], [class*="backdrop"], [class*="blur"], [id*="overlay"], [id*="backdrop"] { display: none !important; visibility: hidden !important; opacity: 0 !important; background: none !important; background-color: transparent !important; }
+            .overlay, .modal-backdrop, .recipe-modal-backdrop, .recipe-modal-overlay, .blur-overlay, [class*="overlay"], [class*="backdrop"], [class*="blur"], [id*="overlay"], [id*="backdrop"] { display: none !important; visibility: hidden !important; opacity: 0 !important; background: none !important; background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
             /* Hide any fixed positioned elements that might create green overlay */
-            *[style*="position: fixed"][style*="top: 0"], *[style*="position:fixed"][style*="top:0"] { background: transparent !important; background-color: transparent !important; border: none !important; }
+            *[style*="position: fixed"][style*="top: 0"], *[style*="position:fixed"][style*="top:0"], .recipe-modal[style*="display: none"] { background: transparent !important; background-color: transparent !important; border: none !important; display: none !important; }
+            /* Hide recipe modal overlay when modal is hidden - CRITICAL */
+            .recipe-modal[style*="display: none"], .recipe-modal[style*="display:none"] { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+            .recipe-modal[style*="display: none"] *, .recipe-modal[style*="display:none"] * { display: none !important; visibility: hidden !important; opacity: 0 !important; background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+            .recipe-modal-overlay { display: none !important; visibility: hidden !important; opacity: 0 !important; background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; filter: none !important; -webkit-filter: none !important; }
             .hero-stat::before { display: none !important; content: none !important; height: 0 !important; background: none !important; }
             *[style*="position: fixed"],
             *[style*="position:fixed"],
