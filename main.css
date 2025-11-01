@@ -2890,6 +2890,18 @@ a:hover {
     /* Header border fix - use border-color not accent */
     .header {
         border-bottom: 1px solid var(--border-color) !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+    
+    /* Ensure no green lines or overlays */
+    .header::before,
+    .header::after,
+    .navbar::before,
+    .navbar::after {
+        display: none !important;
+        content: none !important;
     }
 }
 
