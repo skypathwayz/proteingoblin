@@ -2283,6 +2283,44 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    .nav-container {
+        padding: 0 var(--spacing-md);
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
+    }
+    
+    .nav-brand {
+        flex-shrink: 1;
+        min-width: 0;
+        flex: 1 1 auto;
+        margin-right: auto;
+    }
+    
+    .nav-brand .logo {
+        font-size: var(--font-size-sm);
+        gap: var(--spacing-xs);
+    }
+    
+    .logo-text {
+        flex-wrap: wrap;
+        gap: 2px;
+    }
+    
+    .logo-text-word {
+        font-size: 0.85rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.6rem;
+        margin-top: 1px;
+        white-space: nowrap;
+    }
+    
+    .nav-actions {
+        flex-shrink: 0;
+        gap: var(--spacing-xs);
+    }
+    
     .nav-menu {
         display: none !important;
         position: absolute;
