@@ -674,6 +674,15 @@ const proteinFacts = [
 ];
 
 // Initialize the application
+// Use immediate execution for critical functions, DOMContentLoaded for non-critical
+(function() {
+    // Ensure mobile menu button is visible immediately
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    if (mobileBtn) {
+        mobileBtn.style.display = window.innerWidth <= 768 ? 'block' : 'none';
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     
