@@ -627,7 +627,7 @@ const rotatingFact = document.getElementById('rotating-fact');
 
 // Daily Goblin Protein Tips (Funny & Educational!)
 const goblinProteinTips = [
-    "💪 Big goblin say: Body only use 25-35g protein per meal. More protein = goblin make expensive pee! Goblin not waste money! 💦",
+    "💪 Big goblin say: Body use protein good, but 25-35g per meal is efficient! More protein OK too, body still use it! Goblin eat more = get more gains!",
     "💪 Small goblin learn: Mix protein with liquid FIRST! No clumps! Small goblin hate chunky shake, make goblin angry!",
     "💪 Big goblin know: Casein protein = slow, good for bedtime GOBBLE! Whey protein = fast, good for workout GOBBLE! Goblin test many time!",
     "💪 Small goblin confused before, now understand: Protein no become fat! Too many calories make fat! Goblin learn difference!",
