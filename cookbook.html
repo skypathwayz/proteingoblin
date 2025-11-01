@@ -303,6 +303,17 @@
         </div>
     </footer>
 
+    <!-- Recipe Modal/Overlay -->
+    <div id="recipe-modal" class="recipe-modal" style="display: none;">
+        <div class="recipe-modal-overlay" onclick="closeRecipeModal()"></div>
+        <div class="recipe-modal-content">
+            <button class="recipe-modal-close" onclick="closeRecipeModal()" aria-label="Close recipe">×</button>
+            <div id="recipe-modal-body">
+                <!-- Recipe content will be populated here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="recipe-generator.js"></script>
     <script src="main.js"></script>

@@ -2613,6 +2613,86 @@ a:hover {
     .btn {
         width: 100%;
     }
+    
+    /* Recipe Modal Mobile */
+    .recipe-modal {
+        display: flex !important;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .recipe-modal-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+        border-top: 3px solid var(--accent-color) !important;
+    }
+    
+    .recipe-modal-recipe {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    .recipe-modal-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .recipe-modal-image {
+        height: 200px !important;
+    }
+    
+    .recipe-modal-close {
+        width: 44px !important;
+        height: 44px !important;
+        top: var(--spacing-sm) !important;
+        right: var(--spacing-sm) !important;
+        font-size: 1.8rem !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        color: white !important;
+    }
+    
+    .recipe-modal-meta {
+        flex-wrap: wrap !important;
+        gap: var(--spacing-xs) !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .recipe-modal-meta span {
+        padding: 4px 8px !important;
+    }
+    
+    .recipe-scaling {
+        padding: 12px !important;
+    }
+    
+    .recipe-scaling h4 {
+        font-size: 1rem !important;
+    }
+    
+    .scale-btn {
+        padding: 8px 12px !important;
+        font-size: 0.875rem !important;
+    }
+    
+    .recipe-nutrition {
+        padding: 15px !important;
+    }
+    
+    .nutrition-charts {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    
+    .recipe-modal-actions {
+        flex-direction: column !important;
+        gap: var(--spacing-sm) !important;
+    }
+    
+    .recipe-modal-actions .btn {
+        width: 100% !important;
+    }
 }
 
 /* Recipe Modal Styles */
