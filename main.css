@@ -291,6 +291,23 @@ a:hover {
     position: relative;
     z-index: 1;
     filter: drop-shadow(0 2px 8px rgba(34, 197, 94, 0.5));
+    height: 40px;
+    width: auto;
+    max-width: 45px;
+}
+
+@media (max-width: 768px) {
+    .logo-mascot {
+        height: 32px;
+        max-width: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-mascot {
+        height: 28px;
+        max-width: 32px;
+    }
 }
 
 .logo-mascot-big {
@@ -2510,6 +2527,34 @@ a:hover {
         height: 22px;
         max-width: 26px;
         margin: 0 2px;
+    }
+    
+    /* Ensure all mascot images on other pages are properly sized */
+    img[src*="mascot.svg"],
+    img[src*="11.svg"],
+    img[src*="22.svg"] {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Logo mascot on blog and other pages */
+    .logo img[src*="mascot.svg"],
+    .logo img[src*="11.svg"],
+    .logo img[src*="22.svg"],
+    .logo-mascot {
+        height: 28px !important;
+        max-width: 32px !important;
+        width: auto !important;
+        object-fit: contain !important;
+    }
+    
+    /* Prevent any mascot images from being too large */
+    img[src*="mascot.svg"]:not(.logo-mascot):not(.logo-mascot-big):not(.logo-mascot-small),
+    img[src*="11.svg"]:not(.logo-mascot):not(.logo-mascot-big):not(.logo-mascot-small),
+    img[src*="22.svg"]:not(.logo-mascot):not(.logo-mascot):not(.logo-mascot-small) {
+        max-width: 100px !important;
+        height: auto !important;
+        width: auto !important;
     }
     
     .hero-title-main {
