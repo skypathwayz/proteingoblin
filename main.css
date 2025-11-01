@@ -284,13 +284,24 @@ a:hover {
     /* Remove any overlay elements */
     .overlay,
     .modal-backdrop,
+    .recipe-modal-backdrop,
     .blur-overlay,
     [class*="overlay"],
     [class*="backdrop"],
-    [class*="blur"] {
+    [class*="blur"],
+    [id*="overlay"],
+    [id*="backdrop"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+        background: none !important;
+        background-color: transparent !important;
+    }
+    
+    /* Hide recipe modal backdrop on mobile unless modal is actually open */
+    .recipe-modal:not(.active) + .recipe-modal-backdrop,
+    .recipe-modal:not(.active) ~ .recipe-modal-backdrop {
+        display: none !important;
     }
     
     html {
@@ -3452,6 +3463,17 @@ a:hover {
     z-index: 10000;
     display: none;
     align-items: center;
+}
+
+.recipe-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
     justify-content: center;
     animation: fadeIn 0.3s ease-in;
 }

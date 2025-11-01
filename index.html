@@ -54,7 +54,9 @@
             /* Remove ALL blur/backdrop effects that create green overlay */
             * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; filter: none !important; -webkit-filter: none !important; }
             /* Remove any overlay elements */
-            .overlay, .modal-backdrop, .blur-overlay, [class*="overlay"], [class*="backdrop"], [class*="blur"] { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+            .overlay, .modal-backdrop, .recipe-modal-backdrop, .blur-overlay, [class*="overlay"], [class*="backdrop"], [class*="blur"], [id*="overlay"], [id*="backdrop"] { display: none !important; visibility: hidden !important; opacity: 0 !important; background: none !important; background-color: transparent !important; }
+            /* Hide any fixed positioned elements that might create green overlay */
+            *[style*="position: fixed"][style*="top: 0"], *[style*="position:fixed"][style*="top:0"] { background: transparent !important; background-color: transparent !important; border: none !important; }
             .hero-stat::before { display: none !important; content: none !important; height: 0 !important; background: none !important; }
             *[style*="position: fixed"],
             *[style*="position:fixed"],
@@ -183,12 +185,12 @@
                         <li class="nav-item dropdown">
                             <a href="cookbook.html" class="nav-link">Cookbook <span class="dropdown-arrow">▼</span></a>
                             <div class="dropdown-menu">
-                                <a href="cookbook.html#breakfast" class="dropdown-link" onclick="closeMobileMenu();"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Breakfast Recipes</a>
-                                <a href="cookbook.html#desserts" class="dropdown-link" onclick="closeMobileMenu();"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Dessert Recipes</a>
-                                <a href="cookbook.html#snacks" class="dropdown-link" onclick="closeMobileMenu();"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Snack Recipes</a>
-                                <a href="cookbook.html#savory" class="dropdown-link" onclick="closeMobileMenu();"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Savory Recipes</a>
-                                <a href="cookbook.html#baked" class="dropdown-link" onclick="closeMobileMenu();"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Baked Goods</a>
-                                <a href="cookbook.html#frozen" class="dropdown-link" onclick="closeMobileMenu();"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Frozen Treats</a>
+                                <a href="cookbook.html#breakfast" class="dropdown-link" onclick="closeMobileMenu();">🍳 Breakfast Recipes</a>
+                                <a href="cookbook.html#desserts" class="dropdown-link" onclick="closeMobileMenu();">🍰 Dessert Recipes</a>
+                                <a href="cookbook.html#snacks" class="dropdown-link" onclick="closeMobileMenu();">🥜 Snack Recipes</a>
+                                <a href="cookbook.html#savory" class="dropdown-link" onclick="closeMobileMenu();">🍲 Savory Recipes</a>
+                                <a href="cookbook.html#baked" class="dropdown-link" onclick="closeMobileMenu();">🥖 Baked Goods</a>
+                                <a href="cookbook.html#frozen" class="dropdown-link" onclick="closeMobileMenu();">❄️ Frozen Treats</a>
                                 <a href="beginner-recipes.html" class="dropdown-link" onclick="closeMobileMenu();">📖 Beginner Guide</a>
                                 <a href="advanced-recipes.html" class="dropdown-link" onclick="closeMobileMenu();">👨‍🍳 Advanced Guide</a>
                                 <a href="vegan-recipes.html" class="dropdown-link" onclick="closeMobileMenu();">🌱 Vegan Guide</a>
@@ -266,15 +268,15 @@
                 <div class="featured-recipe-card">
                     <div class="recipe-image">
                         <img src="images-backup/chocolate-protein-pancakes-9.jpg" alt="Chocolate Protein Pancakes" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=300&fit=crop&crop=center'">
-                        <div class="recipe-badge"><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-right: 4px;"> Trending</div>
+                        <div class="recipe-badge">⭐ Trending</div>
                     </div>
                     <div class="recipe-content">
                         <h3>Chocolate Protein Pancakes</h3>
                         <p>Fluffy, chocolatey pancakes packed with 25g protein</p>
                         <div class="recipe-meta">
-                            <span><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-right: 4px;"> 15 min</span>
-                            <span><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-right: 4px;"> 2 servings</span>
-                            <span><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-right: 4px;"> 320 cal</span>
+                            <span>⏱️ 15 min</span>
+                            <span>🍽️ 2 servings</span>
+                            <span>🔥 320 cal</span>
                         </div>
                         <button class="btn btn-primary" onclick="viewFullRecipe('Chocolate Protein Pancakes')">Get Recipe</button>
                     </div>
@@ -291,7 +293,7 @@
                         Loading goblin wisdom...
                     </p>
                     <button onclick="showNewGoblinTip()" style="margin-top: 10px; padding: 8px 16px; background: var(--primary-bg); color: var(--accent-color); border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; font-size: 0.875rem;">
-                        <img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> New Tip
+                        💡 New Tip
                     </button>
                 </div>
 
@@ -299,14 +301,14 @@
                 <div class="quick-stats">
                     <h4>Why Choose Protein Goblin?</h4>
                 <div class="stat-item">
-                        <div class="stat-icon"><img src="images-backup/22.svg" alt="" style="height: 20px; width: auto;"></div>
+                        <div class="stat-icon">📊</div>
                         <div class="stat-text">
                             <strong>156+ Tested Recipes</strong>
                             <span>Every recipe tested by our team</span>
                         </div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-icon"><img src="images-backup/11.svg" alt="" style="height: 24px; width: auto;"></div>
+                        <div class="stat-icon">⭐</div>
                         <div class="stat-text">
                             <strong>17+ Protein Flavors</strong>
                             <span>From chocolate to unflavored</span>
@@ -600,11 +602,11 @@
 
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary btn-large" id="generate-btn">
-                            <span class="btn-text">Generate My Recipe <img src="images-backup/11.svg" alt="Big Goblin" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;"><img src="images-backup/22.svg" alt="Small Goblin" style="height: 14px; width: auto; vertical-align: middle; margin-left: 2px;"></span>
+                            <span class="btn-text">Generate My Recipe 🧌</span>
                             <span class="btn-icon">🚀</span>
                         </button>
                         <button type="button" class="btn btn-secondary" id="try-another-btn" style="display: none;">
-                            <span class="btn-text">Try Another Recipe <img src="images-backup/22.svg" alt="Small Goblin" style="height: 16px; width: auto; vertical-align: middle; margin-left: 4px;"></span>
+                            <span class="btn-text">Try Another Recipe 🔄</span>
                             <span class="btn-icon">🔄</span>
                         </button>
                     </div>
