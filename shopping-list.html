@@ -15,6 +15,18 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Critical CSS for immediate mobile rendering -->
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; }
+        body { background: #0a0f0a; color: #ffffff; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; }
+        .header { display: block !important; visibility: visible !important; opacity: 1 !important; background: #0a0f0a !important; border-bottom: 1px solid #374151 !important; }
+        .container { display: block !important; visibility: visible !important; opacity: 1 !important; padding: 0 20px !important; }
+        @media (max-width: 768px) {
+            .container { padding: 0 15px !important; }
+            .btn { min-height: 44px !important; font-size: 16px !important; }
+        }
+    </style>
     <title>Goblin's Shopping List - Protein Recipe Shopping List | Protein Goblin</title>
     <meta name="description" content="Your personalized protein recipe shopping list! All ingredients combined from your selected recipes. Print or export your list.">
     <link rel="stylesheet" href="main.css">
@@ -69,7 +81,7 @@
                 <div class="nav-actions">
                     <div class="search-container">
                         <input type="text" class="search-input" placeholder="Search 156+ recipes..." id="search-input">
-                        <button class="search-btn" id="search-btn">🔍</button>
+                        <button class="search-btn" id="search-btn"><img src="images-backup/22.svg" alt="Search" style="height: 18px; width: auto; filter: brightness(0) invert(1);"></button>
                     </div>
                     <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
                 </div>
@@ -82,7 +94,7 @@
         <div class="container">
             <h1 style="font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: white;">🛒 Goblin's Shopping List</h1>
             <p style="font-size: 1.1rem; text-align: center; max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.9);">
-                All your recipe ingredients in one place! Check off items as you shop, then print or export! 🧌💪
+                All your recipe ingredients in one place! Check off items as you shop, then print or export! <img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;"><img src="images-backup/11.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-left: 2px;">
             </p>
         </div>
     </section>
@@ -102,7 +114,7 @@
                 <!-- Shopping List Content -->
                 <div class="shopping-list-container" style="background: var(--card-bg); padding: 30px; border-radius: var(--radius-lg); border: 2px solid var(--border-color);">
                     <div style="text-align: center; margin-bottom: 30px;" class="no-print">
-                        <h2 style="color: var(--accent-color); margin-bottom: 10px;">🧌 Goblin's Shopping List</h2>
+                        <h2 style="color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><img src="images-backup/22.svg" alt="" style="height: 24px; width: auto; vertical-align: middle;"> Goblin's Shopping List</h2>
                         <p style="color: var(--secondary-text);" id="list-summary">Loading your shopping list...</p>
                     </div>
                     
@@ -125,9 +137,9 @@
                     <div style="font-size: 4rem; margin-bottom: 20px;">🛒</div>
                     <h3 style="color: var(--accent-color); margin-bottom: 15px;">Your Shopping List is Empty!</h3>
                     <p style="color: var(--secondary-text); margin-bottom: 30px;">
-                        🧌 Goblins need ingredients to GOBBLE! Add recipes to your shopping list from the recipe generator or recipe pages.
+                        <img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-right: 4px;"> Goblins need ingredients to GOBBLE! Add recipes to your shopping list from the recipe generator or recipe pages.
                     </p>
-                    <a href="index.html#recipe-generator" class="btn btn-primary btn-large">Start Adding Recipes 🧌</a>
+                    <a href="index.html#recipe-generator" class="btn btn-primary btn-large">Start Adding Recipes <img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;"></a>
                 </div>
             </div>
         </div>
@@ -232,8 +244,8 @@
             }).join('');
             
             // Update summary
-            document.getElementById('list-summary').textContent = 
-                `🧌 ${shoppingList.length} recipe(s) • ${allIngredients.length} unique ingredients`;
+            const summaryElement = document.getElementById('list-summary');
+            summaryElement.innerHTML = `<img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> ${shoppingList.length} recipe(s) • ${allIngredients.length} unique ingredients`;
         }
         
         function toggleIngredientCheck(index) {
@@ -286,7 +298,7 @@
         }
         
         function clearShoppingList() {
-            if (confirm('🧌 Goblin asks: Are you sure you want to clear your entire shopping list? This cannot be undone!')) {
+            if (confirm('Goblin asks: Are you sure you want to clear your entire shopping list? This cannot be undone!')) {
                 localStorage.removeItem('proteinGoblinShoppingList');
                 localStorage.removeItem('checkedShoppingItems');
                 loadShoppingListDisplay();
@@ -301,10 +313,10 @@
                 .map(el => el.textContent.trim())
                 .filter(Boolean);
             
-            const text = `🧌 Protein Goblin Shopping List\n\n` +
+            const text = `Protein Goblin Shopping List\n\n` +
                 `Generated: ${new Date().toLocaleDateString()}\n\n` +
                 `INGREDIENTS:\n${ingredients.map((ing, i) => `${i + 1}. ${ing}`).join('\n')}\n\n` +
-                `Happy shopping! 💪🧌\n` +
+                `Happy shopping!\n` +
                 `Visit: proteingoblin.com`;
             
             // Create download
@@ -318,7 +330,7 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            showAlert('🛒 Shopping list exported! 🧌', 'success');
+            showAlert('Shopping list exported!', 'success');
         }
         
         // Load list on page load

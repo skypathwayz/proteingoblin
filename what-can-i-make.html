@@ -15,6 +15,18 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Critical CSS for immediate mobile rendering -->
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; }
+        body { background: #0a0f0a; color: #ffffff; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; }
+        .header { display: block !important; visibility: visible !important; opacity: 1 !important; background: #0a0f0a !important; border-bottom: 1px solid #374151 !important; }
+        .container { display: block !important; visibility: visible !important; opacity: 1 !important; padding: 0 20px !important; }
+        @media (max-width: 768px) {
+            .container { padding: 0 15px !important; }
+            input[type="checkbox"], .btn { min-height: 44px !important; min-width: 44px !important; }
+        }
+    </style>
     <title>What Can I Make? - Ingredient-Based Recipe Finder | Protein Goblin</title>
     <meta name="description" content="Tell us what ingredients you have and we'll find protein recipes you can make! No grocery trip needed - goblin's kitchen helper!">
     <link rel="stylesheet" href="main.css">
@@ -48,7 +60,7 @@
                 <div class="nav-actions">
                     <div class="search-container">
                         <input type="text" class="search-input" placeholder="Search 156+ recipes..." id="search-input">
-                        <button class="search-btn" id="search-btn">🔍</button>
+                        <button class="search-btn" id="search-btn"><img src="images-backup/22.svg" alt="Search" style="height: 18px; width: auto; filter: brightness(0) invert(1);"></button>
                     </div>
                     <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
                 </div>
@@ -59,7 +71,7 @@
     <!-- Hero Section -->
     <section class="blog-hero" style="padding: 80px 0 60px; background: linear-gradient(135deg, var(--accent-color), #22c55e);">
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center; color: white;">🧌 Goblin's Kitchen Helper</h1>
+            <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center; color: white; display: flex; align-items: center; justify-content: center; gap: 12px;"><img src="images-backup/22.svg" alt="" style="height: 40px; width: auto; filter: brightness(0) invert(1);"> Goblin's Kitchen Helper</h1>
             <p style="font-size: 1.25rem; text-align: center; max-width: 800px; margin: 0 auto; color: rgba(255,255,255,0.95);">
                 Tell us what ingredients you have and we'll find recipes you can make! No grocery trip needed! 💪
             </p>
@@ -73,7 +85,7 @@
                 <div class="generator-card" style="margin-bottom: 30px;">
                     <h2 style="color: var(--accent-color); margin-bottom: 20px; text-align: center;">What Ingredients Do You Have?</h2>
                     <p style="text-align: center; color: var(--secondary-text); margin-bottom: 30px;">
-                        Check the ingredients you have available. Goblins will find recipes you can make right now! 🧌
+                        Check the ingredients you have available. Goblins will find recipes you can make right now! <img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;">
                     </p>
                     
                     <!-- Common Ingredients Grid -->
@@ -159,7 +171,7 @@
 
                 <!-- No Results Message -->
                 <div id="no-ingredient-results" style="display: none; text-align: center; padding: 40px; background: var(--card-bg); border-radius: var(--radius-lg);">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">🧌</div>
+                    <div style="margin-bottom: 20px; text-align: center;"><img src="images-backup/22.svg" alt="" style="height: 80px; width: auto;"></div>
                     <h3 style="color: var(--accent-color); margin-bottom: 10px;">Goblin's Sad News!</h3>
                     <p style="color: var(--secondary-text);">No recipes found with just these ingredients. Goblins need more ingredients to GOBBLE! Try adding protein powder - it's essential! 💪</p>
                     <a href="index.html#recipe-generator" class="btn btn-primary" style="margin-top: 20px;">Generate Custom Recipe Instead</a>
@@ -250,7 +262,7 @@
             } else {
                 noResultsDiv.style.display = 'none';
                 resultsDiv.style.display = 'block';
-                title.textContent = `🧌 Found ${matchingRecipes.length} recipes you can make!`;
+                title.innerHTML = `<img src="images-backup/22.svg" alt="" style="height: 20px; width: auto; vertical-align: middle; margin-right: 6px;"> Found ${matchingRecipes.length} recipes you can make!`;
                 
                 // Display recipes
                 grid.innerHTML = matchingRecipes.slice(0, 20).map(recipe => {

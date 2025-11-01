@@ -17,14 +17,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Critical CSS for immediate rendering -->
     <style>
-        body { background: #0a0f0a; color: #ffffff; margin: 0; padding: 0; min-height: 100vh; }
-        .header { display: block !important; visibility: visible !important; background: #0a0f0a !important; position: relative; z-index: 1000; }
-        .hero { display: block !important; visibility: visible !important; background: #0a0f0a; }
-        .hero-container { display: grid !important; visibility: visible !important; }
-        .hero-content { display: block !important; visibility: visible !important; }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; }
+        body { background: #0a0f0a; color: #ffffff; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; }
+        .header { display: block !important; visibility: visible !important; opacity: 1 !important; background: #0a0f0a !important; position: relative !important; z-index: 1000; border-bottom: 1px solid #374151 !important; }
+        .navbar { display: flex !important; visibility: visible !important; opacity: 1 !important; }
+        .nav-container { display: flex !important; visibility: visible !important; opacity: 1 !important; }
+        .hero { display: block !important; visibility: visible !important; opacity: 1 !important; background: #0a0f0a; min-height: 300px; padding: 60px 20px 40px; }
+        .hero-container { display: grid !important; visibility: visible !important; opacity: 1 !important; grid-template-columns: 1fr !important; }
+        .hero-content { display: block !important; visibility: visible !important; opacity: 1 !important; }
+        .container { display: block !important; visibility: visible !important; opacity: 1 !important; max-width: 100% !important; padding: 0 20px !important; }
+        .section { display: block !important; visibility: visible !important; opacity: 1 !important; }
         @media (max-width: 768px) {
-            .mobile-menu-btn { display: block !important; visibility: visible !important; }
+            .mobile-menu-btn { display: block !important; visibility: visible !important; opacity: 1 !important; }
             .hero-background { display: none !important; }
+            .hero-container { grid-template-columns: 1fr !important; }
+            .nav-menu { display: none !important; }
+            .hero { padding: 60px 15px 30px !important; }
         }
     </style>
     <title>Protein Goblin.com - The Ultimate Protein Recipe Database | 156+ Recipes</title>

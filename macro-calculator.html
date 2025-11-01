@@ -16,6 +16,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <!-- Critical CSS for immediate mobile rendering -->
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; }
+        body { background: #0a0f0a; color: #ffffff; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; }
+        .header { display: block !important; visibility: visible !important; opacity: 1 !important; background: #0a0f0a !important; border-bottom: 1px solid #374151 !important; }
+        .container { display: block !important; visibility: visible !important; opacity: 1 !important; padding: 0 20px !important; }
+        .calculator-container { display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; max-width: 100% !important; }
+        @media (max-width: 768px) {
+            .calculator-container { padding: 20px 15px !important; margin: 20px auto !important; }
+            input, select { font-size: 16px !important; min-height: 44px !important; }
+        }
+    </style>
     <title>Macro Calculator (AKA "The Gobble Calculator") - Calculate Your Daily Protein, Carbs & Fats | Protein Goblin</title>
     <meta name="description" content="The Gobble Calculator! Free macro calculator to calculate your daily protein, carbs, and fat needs based on your goals. Find out how much you'll GOBBLE! Perfect for muscle building, weight loss, or maintenance.">
     <meta name="keywords" content="macro calculator, protein calculator, macronutrient calculator, TDEE calculator, calorie calculator">

@@ -96,8 +96,24 @@ body {
 
 /* Ensure content is visible even if JavaScript hasn't loaded */
 body > * {
-    visibility: visible;
-    opacity: 1;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Prevent any element from being hidden on mobile */
+@media (max-width: 768px) {
+    .container,
+    .hero,
+    .hero-container,
+    .hero-content,
+    .section,
+    .products-section,
+    .featured-recipes,
+    .blog-section {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
 }
 
 /* Fallback: ensure header is always visible (removed duplicate - already defined below) */
@@ -136,6 +152,14 @@ a:hover {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md) !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
 }
 
 /* Buttons */
@@ -2670,42 +2694,62 @@ a:hover {
     
     .hero-stats {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
     }
     
     .hero-actions {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
     }
     
     .flavor-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
     }
     
     .form-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md);
     }
     
     .dietary-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
     }
     
     .recipes-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg);
     }
     
     .cookbook-categories {
         grid-template-columns: 1fr;
-}
-
-    .recipes-grid {
-        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
     }
     
     .product-categories {
         grid-template-columns: 1fr;
     }
     
+    .shop-products-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg);
+    }
+    
+    .product-card {
+        padding: var(--spacing-lg) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .product-header {
+        padding-right: 0;
+    }
+    
     .blog-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
     }
     
     .blog-card.featured {
@@ -2716,14 +2760,72 @@ a:hover {
         grid-template-columns: 1fr;
     }
     
+    /* Ensure all sections are visible on mobile */
+    .products-section,
+    .featured-recipes,
+    .blog-section,
+    .cookbook-section,
+    .recipe-generator-section {
+        padding: var(--spacing-2xl) 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Forms on mobile */
+    .calculator-container,
+    .calculator-form,
+    .recipe-form,
+    form {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: var(--spacing-md) !important;
+    }
+    
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="range"],
+    select,
+    textarea {
+        width: 100% !important;
+        font-size: 16px !important; /* Prevent zoom on iOS */
+        padding: var(--spacing-sm) var(--spacing-md) !important;
+        min-height: 44px !important; /* Touch target */
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    
+    .btn {
+        min-height: 44px !important; /* Touch target */
+        padding: var(--spacing-md) var(--spacing-lg) !important;
+        font-size: var(--font-size-base) !important;
+        width: 100% !important;
+    }
+    
+    .btn-primary {
+        width: 100%;
+    }
+    
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: var(--spacing-lg);
     }
     
     .footer-bottom-content {
         flex-direction: column;
         text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Header border fix - use border-color not accent */
+    .header {
+        border-bottom: 1px solid var(--border-color) !important;
     }
 }
 
