@@ -289,7 +289,7 @@ a:hover {
     width: 100%;
     position: relative;
     z-index: 1000;
-    gap: var(--spacing-2xl);
+    gap: var(--spacing-md);
 }
 
 .nav-brand {
@@ -301,15 +301,22 @@ a:hover {
 
 .nav-brand .logo {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--accent-color);
     text-decoration: none;
     text-shadow: 0 0 20px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 255, 136, 0.6), 0 0 60px rgba(0, 255, 136, 0.4);
     animation: logoGlow 2s ease-in-out infinite alternate;
-    flex-wrap: wrap;
+}
+
+.logo-text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    line-height: 1;
 }
 
 @keyframes logoGlow {
@@ -336,8 +343,11 @@ a:hover {
     text-transform: none;
     letter-spacing: 0.3px;
     display: block;
-    margin-top: 2px;
+    margin-top: 0;
+    padding-top: 2px;
     font-style: italic;
+    line-height: 1.2;
+    align-self: flex-start;
 }
 
 .logo-text {
@@ -490,7 +500,7 @@ a:hover {
     align-items: center;
     position: relative;
     flex-shrink: 0;
-    margin-left: auto;
+    margin-left: var(--spacing-md);
 }
 
 .nav-links {
