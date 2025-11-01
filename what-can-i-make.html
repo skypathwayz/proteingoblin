@@ -420,28 +420,39 @@
                     return false;
                 }
                 
-                // If a specific flavor is selected, prioritize recipes with that flavor in the name or ingredients
+                // If a specific flavor is selected, ONLY include recipes that match that flavor
+                // (We already filtered the recipe list above, so this is just a double-check)
                 if (selectedFlavor) {
                     const flavorKeywords = {
-                        'chocolate': ['chocolate', 'cocoa', 'choco'],
-                        'vanilla': ['vanilla'],
-                        'strawberry': ['strawberry', 'strawberries'],
-                        'cookies and cream': ['cookies', 'cream', 'cookies and cream', 'oreo'],
-                        'peanut butter': ['peanut butter', 'peanut'],
-                        'unflavored': ['unflavored', 'plain']
+                        'chocolate': ['chocolate protein', 'cocoa protein', 'choco protein'],
+                        'vanilla': ['vanilla protein'],
+                        'strawberry': ['strawberry protein', 'strawberries'],
+                        'cookies-cream': ['cookies & cream protein', 'cookies and cream protein', 'cookies & cream', 'oreo'],
+                        'cookies and cream': ['cookies & cream protein', 'cookies and cream protein', 'cookies & cream', 'oreo'],
+                        'peanut-butter': ['peanut butter protein', 'peanut butter', 'peanut protein'],
+                        'peanut butter': ['peanut butter protein', 'peanut butter', 'peanut protein'],
+                        'banana': ['banana protein', 'banana'],
+                        'mint-chocolate': ['mint chocolate protein', 'mint chocolate', 'mint protein'],
+                        'mint chocolate': ['mint chocolate protein', 'mint chocolate', 'mint protein'],
+                        'caramel': ['caramel protein', 'caramel'],
+                        'birthday-cake': ['birthday cake protein', 'birthday cake', 'birthday'],
+                        'birthday cake': ['birthday cake protein', 'birthday cake', 'birthday'],
+                        'coconut': ['coconut protein', 'coconut'],
+                        'cinnamon': ['cinnamon protein', 'cinnamon'],
+                        'matcha': ['matcha protein', 'matcha', 'green tea'],
+                        'peach': ['peach protein', 'peach'],
+                        'mocha': ['mocha protein', 'mocha', 'coffee protein'],
+                        'unflavored': ['unflavored protein', 'unflavored', 'plain protein', 'plain']
                     };
                     
                     const keywords = flavorKeywords[selectedFlavor] || [];
                     const hasFlavor = keywords.some(keyword => 
-                        recipeName.includes(keyword) || recipeIngredients.includes(keyword)
+                        recipeName.includes(keyword.toLowerCase()) || recipeIngredients.includes(keyword.toLowerCase())
                     );
                     
-                    // If flavor doesn't match, still include but with lower priority (will be sorted later)
-                    if (!hasFlavor && matchCount > 0) {
-                        // Keep it but mark it for sorting
-                        recipe._flavorMatch = false;
-                    } else {
-                        recipe._flavorMatch = true;
+                    // If flavor doesn't match, exclude the recipe completely
+                    if (!hasFlavor) {
+                        return false;
                     }
                 }
                 
