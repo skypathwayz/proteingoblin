@@ -228,11 +228,14 @@ a:hover {
     width: 100%;
     position: relative;
     z-index: 1000;
+    gap: var(--spacing-2xl);
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    margin-right: auto;
 }
 
 .nav-brand .logo {
@@ -401,6 +404,8 @@ a:hover {
     display: flex;
     align-items: center;
     position: relative;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 .nav-links {
