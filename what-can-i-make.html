@@ -426,13 +426,22 @@
                 return matchCount >= Math.ceil(checkedIngredients.length * 0.7) || matchCount >= 2;
             });
             
-            // Sort: flavor-matched recipes first
+            // Sort: by match count (most matching ingredients first)
             matchingRecipes.sort((a, b) => {
-                if (selectedFlavor) {
-                    if (a._flavorMatch && !b._flavorMatch) return -1;
-                    if (!a._flavorMatch && b._flavorMatch) return 1;
-                }
-                return 0;
+                // Calculate match count for each recipe
+                const aMatches = checkedIngredients.filter(checkedIng => 
+                    a.ingredients.some(ing => 
+                        ing.toLowerCase().includes(checkedIng)
+                    )
+                ).length;
+                const bMatches = checkedIngredients.filter(checkedIng => 
+                    b.ingredients.some(ing => 
+                        ing.toLowerCase().includes(checkedIng)
+                    )
+                ).length;
+                
+                // Sort by match count descending
+                return bMatches - aMatches;
             });
             
             // Display results
