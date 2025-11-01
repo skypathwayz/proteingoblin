@@ -348,8 +348,8 @@ a:hover {
     letter-spacing: 0.3px;
     display: flex;
     align-items: baseline;
-    justify-content: flex-start;
-    gap: var(--spacing-md);
+    justify-content: space-between;
+    gap: var(--spacing-sm);
     margin-top: 0;
     padding-top: 2px;
     font-style: italic;
@@ -357,6 +357,7 @@ a:hover {
     align-self: flex-start;
     width: 100%;
     position: relative;
+    padding-right: 0;
 }
 
 .logo-subtitle-left {
@@ -364,10 +365,22 @@ a:hover {
 }
 
 .logo-subtitle-right {
-    display: inline-block;
+    display: inline-flex;
+    align-items: baseline;
     margin-left: auto;
-    padding-right: 45px; /* Space for small mascot */
     position: relative;
+    padding-right: 0;
+}
+
+.logo-subtitle-grow {
+    display: inline-block;
+}
+
+.logo-subtitle-ow {
+    display: inline-block;
+    margin-left: 0;
+    text-align: left;
+    min-width: 45px; /* Align with small mascot width */
 }
 
 /* Logo Mascot - Original Single Image - Ensure only one shows */
