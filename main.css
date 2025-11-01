@@ -226,7 +226,6 @@ a:hover {
     margin: 0 auto;
     padding: 0 var(--spacing-xl);
     width: 100%;
-    padding: 0 var(--spacing-lg);
     position: relative;
     z-index: 1000;
 }
