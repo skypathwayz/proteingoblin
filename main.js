@@ -1927,6 +1927,13 @@ window.openRecipeModal = function openRecipeModal(recipe, ingredients) {
     
     // Show modal
     modal.style.display = 'flex';
+    modal.classList.add('active');
+    // Show overlay only when modal is active
+    const overlay = modal.querySelector('.recipe-modal-overlay');
+    if (overlay) {
+        overlay.style.display = 'block';
+        overlay.classList.add('visible');
+    }
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
     
     // Update scale button active state
@@ -1938,6 +1945,15 @@ window.closeRecipeModal = function closeRecipeModal() {
     const modal = document.getElementById('recipe-modal');
     if (modal) {
         modal.style.display = 'none';
+        modal.classList.remove('active');
+        // Hide overlay completely
+        const overlay = modal.querySelector('.recipe-modal-overlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+            overlay.classList.remove('visible');
+            overlay.style.visibility = 'hidden';
+            overlay.style.opacity = '0';
+        }
         document.body.style.overflow = ''; // Restore scrolling
     }
 };
