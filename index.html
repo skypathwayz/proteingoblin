@@ -2122,6 +2122,7 @@
             }
             const menu = document.getElementById('nav-menu');
             const btn = document.getElementById('mobile-menu-btn');
+            const body = document.body;
             
             if (menu && btn) {
                 menu.classList.toggle('active');
@@ -2130,9 +2131,13 @@
                 if (menu.classList.contains('active')) {
                     menu.style.display = 'flex';
                     menu.style.visibility = 'visible';
+                    // Add class to body to darken background
+                    body.classList.add('menu-open');
                 } else {
                     menu.style.display = 'none';
                     menu.style.visibility = 'hidden';
+                    // Remove class from body
+                    body.classList.remove('menu-open');
                 }
             }
         };
