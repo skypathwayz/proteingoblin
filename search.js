@@ -3,9 +3,10 @@
 class SearchEngine {
     constructor() {
         this.recipes = recipes; // Using the global recipes object
-        this.searchIndex = this.buildSearchIndex();
+        this.searchIndex = null; // Lazy load - build only when needed
         this.searchHistory = this.loadSearchHistory();
         this.popularSearches = this.loadPopularSearches();
+        this.searchDebounceTimer = null; // For debouncing search input
         this.init();
     }
 
@@ -23,7 +24,20 @@ class SearchEngine {
             searchInput.addEventListener('input', (e) => this.handleSearchInput(e));
             searchInput.addEventListener('keypress', (e) => this.handleKeyPress(e));
             searchInput.addEventListener('focus', () => this.showSearchSuggestions());
-            searchInput.addEventListener('blur', () => this.hideSearchSuggestions());
+            // Delay blur to allow clicking on suggestions
+            searchInput.addEventListener('blur', (e) => {
+                // Don't hide if clicking inside suggestions
+                const relatedTarget = e.relatedTarget;
+                const suggestions = document.getElementById('search-suggestions');
+                if (suggestions && suggestions.contains(relatedTarget)) {
+                    return;
+                }
+                setTimeout(() => {
+                    if (!suggestions || !suggestions.matches(':hover')) {
+                        this.hideSearchSuggestions();
+                    }
+                }, 300);
+            });
         }
         
         if (searchBtn) {
@@ -128,8 +142,15 @@ class SearchEngine {
             return;
         }
         
-        this.showSearchSuggestions();
-        this.updateSuggestions(query);
+        // Debounce search to prevent lag (wait 300ms after user stops typing)
+        if (this.searchDebounceTimer) {
+            clearTimeout(this.searchDebounceTimer);
+        }
+        
+        this.searchDebounceTimer = setTimeout(() => {
+            this.showSearchSuggestions();
+            this.updateSuggestions(query);
+        }, 300); // Wait 300ms before searching
     }
 
     handleKeyPress(e) {
@@ -147,18 +168,20 @@ class SearchEngine {
     }
 
     hideSearchSuggestions() {
-        // Delay hiding to allow clicking on suggestions
-        setTimeout(() => {
-            const suggestions = document.getElementById('search-suggestions');
-            if (suggestions) {
-                suggestions.style.display = 'none';
-            }
-        }, 200);
+        const suggestions = document.getElementById('search-suggestions');
+        if (suggestions) {
+            suggestions.style.display = 'none';
+        }
     }
 
     updateSuggestions(query) {
         const suggestions = document.getElementById('search-suggestions');
         if (!suggestions) return;
+        
+        // Lazy load search index only when first search happens
+        if (!this.searchIndex) {
+            this.searchIndex = this.buildSearchIndex();
+        }
         
         const results = this.search(query, 5); // Get top 5 results
         const suggestionsHTML = this.createSuggestionsHTML(results, query);
@@ -173,7 +196,7 @@ class SearchEngine {
         if (results.length === 0) {
             return `
                 <div class="suggestion-item no-results">
-                    <span>No recipes found for "${query}"</span>
+                    <span>🧌 Goblin says: No recipes found for "${query}" - try "chocolate" or "pancakes"!</span>
                 </div>
             `;
         }
@@ -196,7 +219,15 @@ class SearchEngine {
     addSuggestionClickHandlers() {
         const suggestionItems = document.querySelectorAll('.suggestion-item[data-recipe-name]');
         suggestionItems.forEach(item => {
-            item.addEventListener('click', () => {
+            // Use mousedown instead of click to prevent blur from interfering
+            item.addEventListener('mousedown', (e) => {
+                e.preventDefault(); // Prevent input blur
+                const recipeName = item.dataset.recipeName;
+                this.selectRecipe(recipeName);
+            });
+            // Also handle touch for mobile
+            item.addEventListener('touchend', (e) => {
+                e.preventDefault();
                 const recipeName = item.dataset.recipeName;
                 this.selectRecipe(recipeName);
             });
@@ -210,7 +241,39 @@ class SearchEngine {
         }
         
         this.hideSearchSuggestions();
-        this.performSearch();
+        
+        // Find and display the recipe directly
+        let foundRecipe = null;
+        Object.values(this.recipes).forEach(flavorRecipes => {
+            const recipe = flavorRecipes.find(r => r.name === recipeName);
+            if (recipe) {
+                foundRecipe = recipe;
+            }
+        });
+        
+        if (foundRecipe) {
+            // Scroll to recipe generator section first
+            const generatorSection = document.getElementById('recipe-generator');
+            if (generatorSection) {
+                generatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            // Use global viewFullRecipe function (from main.js)
+            if (typeof window.viewFullRecipe === 'function') {
+                setTimeout(() => {
+                    window.viewFullRecipe(recipeName);
+                }, 500); // Small delay to allow scroll to complete
+            } else if (typeof viewFullRecipe === 'function') {
+                setTimeout(() => {
+                    viewFullRecipe(recipeName);
+                }, 500);
+            } else {
+                // Fallback: perform search to show results
+                this.performSearch();
+            }
+        } else {
+            this.performSearch();
+        }
     }
 
     performSearch() {
@@ -296,20 +359,146 @@ class SearchEngine {
     }
 
     displaySearchResults(results, query) {
+        // Check if we're on cookbook page
+        const isCookbookPage = window.location.pathname.includes('cookbook.html');
+        
+        if (isCookbookPage) {
+            // On cookbook page - filter and highlight matching recipes in each category
+            if (results.length === 0) {
+                if (typeof showAlert === 'function') {
+                    showAlert(`🧌 No recipes found for "${query}". Try different search terms!`, 'warning');
+                }
+                return;
+            }
+            
+            // Group results by category
+            const resultsByCategory = {
+                breakfast: [],
+                desserts: [],
+                snacks: [],
+                savory: [],
+                baked: [],
+                frozen: []
+            };
+            
+            results.forEach(recipe => {
+                const category = recipe.category ? recipe.category.toLowerCase() : 'snacks';
+                if (category.includes('breakfast') || category.includes('morning')) {
+                    resultsByCategory.breakfast.push(recipe);
+                } else if (category.includes('dessert') || category.includes('cake') || category.includes('sweet')) {
+                    resultsByCategory.desserts.push(recipe);
+                } else if (category.includes('snack') || category.includes('bar') || category.includes('bite')) {
+                    resultsByCategory.snacks.push(recipe);
+                } else if (category.includes('savory')) {
+                    resultsByCategory.savory.push(recipe);
+                } else if (category.includes('baked')) {
+                    resultsByCategory.baked.push(recipe);
+                } else if (category.includes('frozen') || category.includes('ice')) {
+                    resultsByCategory.frozen.push(recipe);
+                } else {
+                    resultsByCategory.snacks.push(recipe);
+                }
+            });
+            
+            // Update each category grid with search results
+            Object.keys(resultsByCategory).forEach(categoryName => {
+                const categoryRecipes = resultsByCategory[categoryName];
+                const gridId = categoryName + '-recipes-grid';
+                const grid = document.getElementById(gridId);
+                
+                if (grid && categoryRecipes.length > 0) {
+                    // Display matching recipes in this category
+                    if (typeof displayRecipes === 'function') {
+                        displayRecipes(categoryRecipes, grid);
+                    } else {
+                        grid.innerHTML = categoryRecipes.map(recipe => {
+                            const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
+                            const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                            return `
+                                <div class="recipe-card fade-in" style="border: 2px solid var(--accent-color);" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); }">
+                                    <div class="recipe-image">
+                                        ${imageHtml}
+                                    </div>
+                                    <div class="recipe-header">
+                                        <h3 class="recipe-title">${recipe.name}</h3>
+                                        <div class="recipe-meta">
+                                            <span class="recipe-category">${recipe.category}</span>
+                                            <span class="recipe-protein">${recipe.protein}g protein</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-actions" onclick="event.stopPropagation();">
+                                        <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } return false;">
+                                            View Recipe
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    }
+                } else if (grid && categoryRecipes.length === 0) {
+                    // Hide categories with no results
+                    grid.parentElement.style.display = 'none';
+                }
+            });
+            
+            // Scroll to first result category
+            const firstResult = results[0];
+            if (firstResult) {
+                const category = firstResult.category ? firstResult.category.toLowerCase() : 'snacks';
+                let targetCategory = 'breakfast';
+                
+                if (category.includes('breakfast') || category.includes('morning')) {
+                    targetCategory = 'breakfast';
+                } else if (category.includes('dessert') || category.includes('cake') || category.includes('sweet')) {
+                    targetCategory = 'desserts';
+                } else if (category.includes('snack') || category.includes('bar') || category.includes('bite')) {
+                    targetCategory = 'snacks';
+                } else if (category.includes('savory')) {
+                    targetCategory = 'savory';
+                } else if (category.includes('baked')) {
+                    targetCategory = 'baked';
+                } else if (category.includes('frozen') || category.includes('ice')) {
+                    targetCategory = 'frozen';
+                }
+                
+                setTimeout(() => {
+                    const targetSection = document.getElementById(targetCategory);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 300);
+            }
+            
+            // Show search results message
+            if (typeof showAlert === 'function') {
+                showAlert(`🧌 Found ${results.length} recipes matching "${query}"!`, 'success');
+            }
+            return;
+        }
+        
+        // On index page - show in featured recipes grid
+        const featuredSection = document.getElementById('featured-recipes');
+        if (featuredSection) {
+            featuredSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
         const container = document.getElementById('featured-recipes-grid');
         if (!container) return;
         
         if (results.length === 0) {
             container.innerHTML = `
                 <div class="no-results">
-                    <div class="no-results-icon">🔍</div>
-                    <h3>No recipes found for "${query}"</h3>
+                    <div class="no-results-icon">🧌</div>
+                    <h3>Goblin's Sad News: No recipes found for "${query}"</h3>
+                    <p style="color: var(--secondary-text); margin-top: 10px;">
+                        🧌 Even goblins can't find everything! Try searching for "chocolate", "vanilla", "pancakes", or "smoothie" - goblins know these work! 💪
+                    </p>
                     <p>Try searching for different ingredients or recipe names</p>
                     <div class="search-suggestions">
                         <h4>Popular searches:</h4>
                         <div class="popular-searches">
                             ${this.popularSearches.slice(0, 6).map(term => `
-                                <button class="popular-search-btn" onclick="searchEngine.searchForTerm('${term}')">
+                                <button class="popular-search-btn" onclick="if(window.searchEngine) { window.searchEngine.searchForTerm('${term}'); }">
                                     ${term}
                                 </button>
                             `).join('')}
@@ -320,8 +509,15 @@ class SearchEngine {
             return;
         }
         
-        // Update the grid with search results
-        container.innerHTML = results.map(recipe => this.createRecipeCardHTML(recipe)).join('');
+        // Update the grid with search results - make cards clickable
+        container.innerHTML = results.map(recipe => {
+            const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+            return `
+            <div class="recipe-card fade-in" style="cursor: pointer;" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); }">
+                ${this.createRecipeCardHTML(recipe)}
+            </div>
+            `;
+        }).join('');
         
         // Update the section title
         const sectionTitle = document.querySelector('.featured-recipes .section-title');
@@ -335,11 +531,10 @@ class SearchEngine {
 
     createRecipeCardHTML(recipe) {
         const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
+        const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         return `
-            <div class="recipe-card fade-in">
                 <div class="recipe-image">
                     ${imageHtml}
-                    <div class="goblin-badge">🧌</div>
                 </div>
                 <div class="recipe-header">
                     <h3 class="recipe-title">${recipe.name}</h3>
@@ -363,15 +558,14 @@ class SearchEngine {
                         ${recipe.method.length > 3 ? '<li>...see full recipe for more steps!</li>' : ''}
                     </ol>
                 </div>
-                <div class="recipe-actions">
-                    <button class="btn btn-primary btn-small" onclick="searchEngine.viewFullRecipe('${recipe.name}')">
+                <div class="recipe-actions" onclick="event.stopPropagation();">
+                    <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); } return false;">
                         View Full Recipe
                     </button>
-                    <button class="btn btn-secondary btn-small" onclick="searchEngine.saveRecipe('${recipe.name}')">
-                        Save
+                    <button class="btn btn-secondary btn-small" onclick="if(typeof addToShoppingListFromCard === 'function') { addToShoppingListFromCard('${safeRecipeName}'); } return false;">
+                        Add to List
                     </button>
                 </div>
-            </div>
         `;
     }
 
@@ -384,16 +578,18 @@ class SearchEngine {
     }
 
     viewFullRecipe(recipeName) {
-        // Find the full recipe
-        let fullRecipe = null;
-        Object.values(this.recipes).forEach(flavorRecipes => {
-            const found = flavorRecipes.find(recipe => recipe.name === recipeName);
-            if (found) fullRecipe = found;
-        });
-        
-        if (fullRecipe && typeof recipeGenerator !== 'undefined') {
-            recipeGenerator.displayRecipe(fullRecipe, fullRecipe.ingredients, {});
-            document.getElementById('recipe-results').scrollIntoView({ behavior: 'smooth' });
+        // Use global viewFullRecipe function from main.js
+        if (typeof window.viewFullRecipe === 'function') {
+            window.viewFullRecipe(recipeName);
+        } else if (typeof viewFullRecipe === 'function') {
+            viewFullRecipe(recipeName);
+        } else {
+            // Fallback: try to find recipe and scroll to generator
+            const generatorSection = document.getElementById('recipe-generator');
+            if (generatorSection) {
+                generatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                showAlert('🧌 Goblin says: Click "Generate Recipe" and select this recipe from the results!', 'info');
+            }
         }
     }
 
@@ -530,10 +726,12 @@ class SearchEngine {
     }
 }
 
-// Initialize search engine
+// Initialize search engine - make globally accessible
 let searchEngine;
+window.searchEngine = null; // Will be set below
 document.addEventListener('DOMContentLoaded', function() {
     searchEngine = new SearchEngine();
+    window.searchEngine = searchEngine; // Make accessible globally
 });
 
 // Add CSS for search suggestions and results
@@ -556,45 +754,54 @@ searchStyles.textContent = `
     .suggestion-item {
         display: flex;
         align-items: center;
-        padding: 0.75rem;
+        padding: 1rem;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: all 0.2s ease;
         border-bottom: 1px solid var(--border-color);
+        min-height: 70px;
     }
     
     .suggestion-item:last-child {
         border-bottom: none;
     }
     
-    .suggestion-item:hover {
+    .suggestion-item:hover,
+    .suggestion-item:active {
         background: var(--accent-bg);
+        transform: translateX(5px);
     }
     
     .suggestion-item.no-results {
         color: var(--muted-text);
         cursor: default;
+        min-height: auto;
     }
     
     .suggestion-icon {
-        font-size: 1.5rem;
-        margin-right: 0.75rem;
+        font-size: 2rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
     }
     
     .suggestion-content {
         flex: 1;
+        min-width: 0;
     }
     
     .suggestion-name {
         font-weight: 600;
+        font-size: 1.1rem;
         color: var(--primary-text);
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
     }
     
     .suggestion-meta {
         display: flex;
         gap: 0.75rem;
-        font-size: 0.875rem;
-        color: var(--muted-text);
+        font-size: 1rem;
+        color: var(--secondary-text);
+        flex-wrap: wrap;
     }
     
     .suggestion-meta span {

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7RLSLNCKE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N7RLSLNCKE');
+    </script>
+    <!-- Google AdSense -->
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5918874419248577"
+     crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Protein Cookbook - 156+ Recipes by Category | Protein Goblin</title>
+    <meta name="description" content="Browse 156+ protein recipes organized by category. Breakfast, desserts, snacks, savory dishes, baked goods, and more. Complete cookbook with all recipes.">
+    <meta name="keywords" content="protein cookbook, protein recipes by category, complete protein recipe database, all protein recipes">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://proteingoblin.com/cookbook.html">
+    <meta property="og:title" content="Complete Protein Cookbook - 156+ Recipes by Category | Protein Goblin">
+    <meta property="og:description" content="Browse 156+ protein recipes organized by category. Complete cookbook with all recipes.">
+    
+    <link rel="canonical" href="https://proteingoblin.com/cookbook.html">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        .category-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 100px;
+        }
+        .category-header {
+            position: sticky;
+            top: 80px;
+            background: var(--primary-bg);
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--accent-color);
+            z-index: 100;
+        }
+        .category-header h2 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .category-count {
+            color: var(--secondary-text);
+            font-size: 1.1rem;
+        }
+        .cookbook-nav {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+        }
+        .cookbook-nav-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cookbook-nav-item a {
+            display: block;
+            padding: 10px 20px;
+            background: var(--accent-bg);
+            color: var(--primary-text);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        .cookbook-nav-item a:hover {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+        }
+        .recipes-grid-category {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .recipe-card {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+        @media (max-width: 768px) {
+            .category-header h2 {
+                font-size: 2rem;
+            }
+            .recipes-grid-category {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .cookbook-nav {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot" class="logo-mascot" loading="lazy">
+                        <span class="logo-text">Protein Goblin</span>
+                        <span class="logo-subtitle">Gobbling Up Gains!</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="index.html#featured-recipes" class="nav-link">Recipes</a></li>
+                        <li class="nav-item"><a href="cookbook.html" class="nav-link active">Cookbook</a></li>
+                        <li class="nav-item"><a href="blog-index.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="index.html#products-section" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="macro-calculator.html" class="nav-link">Macro Calculator</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search 156+ recipes..." id="search-input">
+                        <button class="search-btn" id="search-btn">🔍</button>
+                    </div>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn" type="button">MENU</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero" style="padding: 100px 0 60px;">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px; text-align: center; color: var(--accent-color);">📚 Complete Protein Cookbook</h1>
+            <p style="font-size: 1.5rem; text-align: center; max-width: 900px; margin: 0 auto 30px; color: var(--secondary-text);">
+                Browse all 156+ recipes organized by category. Scroll through breakfast, desserts, snacks, savory dishes, baked goods, and frozen treats. Every recipe is clickable to view full details! 🧌💪
+            </p>
+            
+            <!-- Quick Navigation -->
+            <nav class="cookbook-nav">
+                <ul class="cookbook-nav-list">
+                    <li class="cookbook-nav-item"><a href="#breakfast">🥞 Breakfast</a></li>
+                    <li class="cookbook-nav-item"><a href="#desserts">🍰 Desserts</a></li>
+                    <li class="cookbook-nav-item"><a href="#snacks">🍪 Snacks</a></li>
+                    <li class="cookbook-nav-item"><a href="#savory">🥗 Savory</a></li>
+                    <li class="cookbook-nav-item"><a href="#baked">🍞 Baked</a></li>
+                    <li class="cookbook-nav-item"><a href="#frozen">🍦 Frozen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Cookbook Content -->
+    <section class="blog-content" style="padding: 40px 0;">
+        <div class="container">
+            <!-- Breakfast Recipes -->
+            <div id="breakfast" class="category-section">
+                <div class="category-header">
+                    <h2>🥞 Breakfast Recipes</h2>
+                    <p class="category-count">Protein pancakes, waffles, oatmeal, smoothies, and morning meals</p>
+                </div>
+                <div class="recipes-grid-category" id="breakfast-recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Dessert Recipes -->
+            <div id="desserts" class="category-section">
+                <div class="category-header">
+                    <h2>🍰 Dessert Recipes</h2>
+                    <p class="category-count">Cakes, cookies, cheesecakes, and sweet treats</p>
+                </div>
+                <div class="recipes-grid-category" id="desserts-recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Snack Recipes -->
+            <div id="snacks" class="category-section">
+                <div class="category-header">
+                    <h2>🍪 Snack Recipes</h2>
+                    <p class="category-count">Protein bars, energy balls, bites, and quick snacks</p>
+                </div>
+                <div class="recipes-grid-category" id="snacks-recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Savory Recipes -->
+            <div id="savory" class="category-section">
+                <div class="category-header">
+                    <h2>🥗 Savory Recipes</h2>
+                    <p class="category-count">Unflavored protein in soups, breads, and main courses</p>
+                </div>
+                <div class="recipes-grid-category" id="savory-recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Baked Recipes -->
+            <div id="baked" class="category-section">
+                <div class="category-header">
+                    <h2>🍞 Baked Goods</h2>
+                    <p class="category-count">Breads, muffins, and baked protein treats</p>
+                </div>
+                <div class="recipes-grid-category" id="baked-recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Frozen Recipes -->
+            <div id="frozen" class="category-section">
+                <div class="category-header">
+                    <h2>🍦 Frozen Treats</h2>
+                    <p class="category-count">Ice cream, popsicles, and frozen desserts</p>
+                </div>
+                <div class="recipes-grid-category" id="frozen-recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="recipe-modal" style="display: none;">
+        <div class="recipe-modal-overlay" onclick="closeRecipeModal()"></div>
+        <div class="recipe-modal-content">
+            <button class="recipe-modal-close" onclick="closeRecipeModal()" aria-label="Close recipe">×</button>
+            <div id="recipe-modal-body">
+                <!-- Recipe content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <span class="footer-logo-text">Protein Goblin</span>
+                            <span class="footer-logo-subtitle">Gobbling Up Gains!</span>
+                        </div>
+                        <p class="footer-description">
+                            Transform boring protein shakes into delicious meals. 156+ creative recipes for every meal and snack.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="cookbook.html">Cookbook</a></li>
+                        <li><a href="blog-index.html">Blog</a></li>
+                        <li><a href="macro-calculator.html">Macro Calculator</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="cookbook.html#breakfast">Breakfast</a></li>
+                        <li><a href="cookbook.html#desserts">Desserts</a></li>
+                        <li><a href="cookbook.html#snacks">Snacks</a></li>
+                        <li><a href="cookbook.html#savory">Savory</a></li>
+                        <li><a href="cookbook.html#baked">Baked</a></li>
+                        <li><a href="cookbook.html#frozen">Frozen</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2024 Protein Goblin. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="recipe-generator.js"></script>
+    <script src="main.js"></script>
+    <script src="search.js"></script>
+    <script>
+        // Mobile menu function
+        window.toggleMobileMenu = function(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const menu = document.getElementById('nav-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            
+            if (menu && btn) {
+                menu.classList.toggle('active');
+                btn.classList.toggle('active');
+                
+                if (menu.classList.contains('active')) {
+                    menu.style.display = 'flex';
+                    menu.style.visibility = 'visible';
+                } else {
+                    menu.style.display = 'none';
+                    menu.style.visibility = 'hidden';
+                }
+            }
+        };
+
+        // Load all recipes by category
+        function loadCookbookRecipes() {
+            if (typeof recipes === 'undefined') {
+                console.error('Recipes database not loaded');
+                return;
+            }
+
+            // Get all recipes from all categories
+            let allRecipes = [];
+            Object.values(recipes).forEach(flavorRecipes => {
+                if (Array.isArray(flavorRecipes)) {
+                    allRecipes = allRecipes.concat(flavorRecipes);
+                }
+            });
+
+            // Group by category
+            const recipesByCategory = {
+                breakfast: [],
+                desserts: [],
+                snacks: [],
+                savory: [],
+                baked: [],
+                frozen: []
+            };
+
+            allRecipes.forEach(recipe => {
+                const category = recipe.category ? recipe.category.toLowerCase() : 'snacks';
+                
+                if (category.includes('breakfast') || category.includes('morning')) {
+                    recipesByCategory.breakfast.push(recipe);
+                } else if (category.includes('dessert') || category.includes('cake') || category.includes('sweet')) {
+                    recipesByCategory.desserts.push(recipe);
+                } else if (category.includes('snack') || category.includes('bar') || category.includes('bite')) {
+                    recipesByCategory.snacks.push(recipe);
+                } else if (category.includes('savory') || category.includes('soup') || category.includes('bread')) {
+                    recipesByCategory.savory.push(recipe);
+                } else if (category.includes('baked') || category.includes('muffin') || category.includes('bread')) {
+                    recipesByCategory.baked.push(recipe);
+                } else if (category.includes('frozen') || category.includes('ice') || category.includes('popsicle')) {
+                    recipesByCategory.frozen.push(recipe);
+                } else {
+                    // Default to snacks if unclear
+                    recipesByCategory.snacks.push(recipe);
+                }
+            });
+
+            // Display recipes in each category
+            displayCategoryRecipes('breakfast', recipesByCategory.breakfast);
+            displayCategoryRecipes('desserts', recipesByCategory.desserts);
+            displayCategoryRecipes('snacks', recipesByCategory.snacks);
+            displayCategoryRecipes('savory', recipesByCategory.savory);
+            displayCategoryRecipes('baked', recipesByCategory.baked);
+            displayCategoryRecipes('frozen', recipesByCategory.frozen);
+
+            // Update category counts
+            updateCategoryCounts(recipesByCategory);
+        }
+
+        function displayCategoryRecipes(categoryName, categoryRecipes) {
+            const gridId = categoryName + '-recipes-grid';
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+
+            if (categoryRecipes.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; color: var(--secondary-text); padding: 40px;">No recipes found in this category.</p>';
+                return;
+            }
+
+            // Use displayRecipes function from main.js if available
+            if (typeof window.displayRecipes === 'function') {
+                window.displayRecipes(categoryRecipes, grid);
+            } else if (typeof displayRecipes === 'function') {
+                displayRecipes(categoryRecipes, grid);
+            } else {
+                // Fallback: create recipe cards manually
+                grid.innerHTML = categoryRecipes.map(recipe => {
+                    const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
+                    const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    return `
+                        <div class="recipe-card fade-in" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); }">
+                            <div class="recipe-image">
+                                ${imageHtml}
+                            </div>
+                            <div class="recipe-header">
+                                <h3 class="recipe-title">${recipe.name}</h3>
+                                <div class="recipe-meta">
+                                    <span class="recipe-category">${recipe.category}</span>
+                                    <span class="recipe-difficulty">${recipe.difficulty}</span>
+                                    <span class="recipe-protein">${recipe.protein}g protein</span>
+                                </div>
+                            </div>
+                            <div class="recipe-ingredients">
+                                <h4>Ingredients:</h4>
+                                <ul>
+                                    ${recipe.ingredients.slice(0, 4).map(ingredient => `<li>${ingredient}</li>`).join('')}
+                                    ${recipe.ingredients.length > 4 ? '<li>...and more!</li>' : ''}
+                                </ul>
+                            </div>
+                            <div class="recipe-method">
+                                <h4>Quick Method:</h4>
+                                <ol>
+                                    ${recipe.method.slice(0, 3).map(step => `<li>${step}</li>`).join('')}
+                                    ${recipe.method.length > 3 ? '<li>...see full recipe for more steps!</li>' : ''}
+                                </ol>
+                            </div>
+                            <div class="recipe-actions" onclick="event.stopPropagation();">
+                                <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } return false;">
+                                    View Full Recipe
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="if(typeof addToShoppingListFromCard === 'function') { addToShoppingListFromCard('${safeRecipeName}'); } return false;">
+                                    Add to List
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function updateCategoryCounts(recipesByCategory) {
+            const counts = {
+                breakfast: recipesByCategory.breakfast.length,
+                desserts: recipesByCategory.desserts.length,
+                snacks: recipesByCategory.snacks.length,
+                savory: recipesByCategory.savory.length,
+                baked: recipesByCategory.baked.length,
+                frozen: recipesByCategory.frozen.length
+            };
+
+            // Update category headers with counts
+            Object.keys(counts).forEach(category => {
+                const header = document.querySelector(`#${category} .category-count`);
+                if (header) {
+                    const currentText = header.textContent;
+                    header.textContent = `${currentText.split(' - ')[0]} - ${counts[category]} recipes`;
+                }
+            });
+        }
+
+        // Smooth scroll for category navigation
+        document.querySelectorAll('.cookbook-nav-item a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Search functionality for cookbook page
+        function setupCookbookSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            
+            if (searchInput && searchBtn) {
+                const handleSearch = () => {
+                    const query = searchInput.value.trim();
+                    if (query.length < 2) {
+                        // Restore all recipes
+                        loadCookbookRecipes();
+                        return;
+                    }
+                    
+                    // Use search engine if available
+                    if (window.searchEngine) {
+                        window.searchEngine.performSearch();
+                    } else {
+                        // Fallback: simple search
+                        performSimpleSearch(query);
+                    }
+                };
+                
+                searchBtn.addEventListener('click', handleSearch);
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                });
+            }
+        }
+        
+        function performSimpleSearch(query) {
+            if (typeof recipes === 'undefined') return;
+            
+            // Get all recipes
+            let allRecipes = [];
+            Object.values(recipes).forEach(flavorRecipes => {
+                if (Array.isArray(flavorRecipes)) {
+                    allRecipes = allRecipes.concat(flavorRecipes);
+                }
+            });
+            
+            // Simple search filter
+            const searchTerm = query.toLowerCase();
+            const matchingRecipes = allRecipes.filter(recipe => {
+                const searchableText = [
+                    recipe.name,
+                    recipe.category,
+                    ...recipe.ingredients,
+                    ...recipe.method
+                ].join(' ').toLowerCase();
+                return searchableText.includes(searchTerm);
+            });
+            
+            if (matchingRecipes.length === 0) {
+                if (typeof showAlert === 'function') {
+                    showAlert(`🧌 No recipes found for "${query}"`, 'warning');
+                }
+                return;
+            }
+            
+            // Group and display results
+            const resultsByCategory = {
+                breakfast: [],
+                desserts: [],
+                snacks: [],
+                savory: [],
+                baked: [],
+                frozen: []
+            };
+            
+            matchingRecipes.forEach(recipe => {
+                const category = recipe.category ? recipe.category.toLowerCase() : 'snacks';
+                if (category.includes('breakfast') || category.includes('morning')) {
+                    resultsByCategory.breakfast.push(recipe);
+                } else if (category.includes('dessert') || category.includes('cake') || category.includes('sweet')) {
+                    resultsByCategory.desserts.push(recipe);
+                } else if (category.includes('snack') || category.includes('bar') || category.includes('bite')) {
+                    resultsByCategory.snacks.push(recipe);
+                } else if (category.includes('savory')) {
+                    resultsByCategory.savory.push(recipe);
+                } else if (category.includes('baked')) {
+                    resultsByCategory.baked.push(recipe);
+                } else if (category.includes('frozen') || category.includes('ice')) {
+                    resultsByCategory.frozen.push(recipe);
+                } else {
+                    resultsByCategory.snacks.push(recipe);
+                }
+            });
+            
+            // Display in each category
+            Object.keys(resultsByCategory).forEach(categoryName => {
+                displayCategoryRecipes(categoryName, resultsByCategory[categoryName]);
+            });
+            
+            // Scroll to first result
+            if (matchingRecipes.length > 0) {
+                const firstCategory = Object.keys(resultsByCategory).find(cat => resultsByCategory[cat].length > 0);
+                if (firstCategory) {
+                    setTimeout(() => {
+                        const targetSection = document.getElementById(firstCategory);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 300);
+                }
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for recipes to load
+            setTimeout(() => {
+                loadCookbookRecipes();
+                setupCookbookSearch();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
+

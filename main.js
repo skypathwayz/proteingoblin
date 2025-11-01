@@ -1,9 +1,7 @@
 // Main JavaScript for Protein Goblin.com
 
-// Force HTTPS redirect (client-side fallback)
-if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    window.location.replace(window.location.href.replace('http:', 'https:'));
-}
+// NOTE: HTTPS redirect removed - SSL certificate must be properly configured on server first
+// Do not force HTTPS until certificate is valid for proteingoblin.com
 
 // Global Variables
 let currentRecipes = [];
@@ -627,7 +625,41 @@ const rotatingFact = document.getElementById('rotating-fact');
     ]
 }; */
 
-// Protein Facts for Rotation
+// Daily Goblin Protein Tips (Funny & Educational!)
+const goblinProteinTips = [
+    "🧌 Goblin Tip: Your body can only use ~25-35g protein per meal. More = expensive pee! 💦",
+    "💪 Goblin Tip: Mix protein powder with liquid FIRST to avoid clumps! Goblins hate chunky shakes! 🧌",
+    "🧌 Goblin Tip: Casein protein = slow release = bedtime GOBBLE! Whey = fast = post-workout GOBBLE! 💪",
+    "💪 Goblin Tip: Protein doesn't magically become fat! Too many calories do. Goblins know the difference! 🧌",
+    "🧌 Goblin Tip: 0.8g protein per pound of bodyweight = gains! Less = weak goblin. More = expensive pee again! 💦",
+    "💪 Goblin Tip: Plant protein needs combinations! Rice + pea = complete amino acids. Goblins approve! 🌱🧌",
+    "🧌 Goblin Tip: Cooking protein powder DOESN'T destroy it! Bake away, you beautiful protein chef! 🎂",
+    "💪 Goblin Tip: 'Anabolic window' is a myth! Eat protein within 24 hours = fine. Goblins don't rush! 🧌",
+    "🧌 Goblin Tip: Whey isolate = lactose-free. Goblins with sensitive tummies rejoice! 💨",
+    "💪 Goblin Tip: Protein powder in recipes replaces SOME flour. Not ALL flour. Don't ask goblins why! 🧌🍰",
+    "🧌 Goblin Tip: Pre-workout protein? Optional. Post-workout protein? Smart. Anytime protein? GOBBLE! 💪",
+    "💪 Goblin Tip: Unflavored protein = secret weapon! Put it in EVERYTHING. Soup? Yep. Bread? Yep. Everything! 🧌",
+    "🧌 Goblin Tip: Mixing chocolate + vanilla = cookies & cream! Goblins discovered this by accident! 🍪",
+    "💪 Goblin Tip: Protein bars often have MORE sugar than protein. Read labels! Goblins check everything! 🧌",
+    "🧌 Goblin Tip: Casein + whey blend = best for baking! Makes things fluffy. Goblins love fluffy things! 🧁",
+    "💪 Goblin Tip: Plant protein tastes different. That's okay! Goblins adapt. You can too! 🌱🧌",
+    "🧌 Goblin Tip: Protein timing matters less than total daily protein. Stop stressing! GOBBLE consistently! 💪",
+    "💪 Goblin Tip: Too much protein? Kidneys are fine if you're healthy. Goblins tested this. Trust us! 🧌",
+    "🧌 Goblin Tip: Protein powder can go in COFFEE! But let it cool first or you'll get clumps. Goblins learned the hard way! ☕",
+    "💪 Goblin Tip: BCAAs = waste of money if you're eating protein. Whole protein has BCAAs! Goblins save their coins! 💰🧌",
+    "🧌 Goblin Tip: Protein pancakes = easiest way to GOBBLE 40g protein for breakfast! Goblins approve! 🥞",
+    "💪 Goblin Tip: Mixing protein powder? Use a blender, not a fork. Your arms will thank you, weak goblin! 💪🧌",
+    "🧌 Goblin Tip: Casein before bed = no midnight hunger! Goblins sleep better with full tummies! 😴",
+    "💪 Goblin Tip: Plant protein needs MORE to match whey's leucine. Goblins eat more plants, make more gains! 🌱🧌",
+    "🧌 Goblin Tip: Protein powder expiration dates are suggestions. If it smells fine, GOBBLE it! Goblins are brave! 💪",
+    "💪 Goblin Tip: Hot protein = clumpy disaster. Mix with cold/warm liquids. Goblins learned from experience! 🧌",
+    "🧌 Goblin Tip: Protein ice cream > regular ice cream. More protein, less guilt. Goblins have no guilt anyway! 🍦",
+    "💪 Goblin Tip: Unflavored protein in savory dishes = game changer! Goblins put it in EVERYTHING! 🧌🍝",
+    "🧌 Goblin Tip: Too much protein in one shake = bloating. Spread it out! Goblins spread their GOBBLING! 💨",
+    "💪 Goblin Tip: Protein cookies are a thing! Make them. Eat them. GOBBLE them all! Goblins love cookies! 🍪🧌"
+];
+
+// Legacy Protein Facts (keeping for compatibility)
 const proteinFacts = [
     "💡 Your body can only absorb about 25-35g of protein per meal. More isn't always better!",
     "🏋️ Protein synthesis peaks 2-4 hours after resistance training.",
@@ -644,13 +676,57 @@ const proteinFacts = [
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
+    
+    // Additional mobile menu setup after DOM is ready
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (mobileBtn && navMenu) {
+        // Ensure mobile menu button is visible on mobile
+        function checkMobileMenu() {
+            if (window.innerWidth <= 768) {
+                mobileBtn.style.display = 'block';
+                if (!navMenu.classList.contains('active')) {
+                    navMenu.style.display = 'none';
+                }
+            } else {
+                mobileBtn.style.display = 'none';
+                navMenu.style.display = 'flex';
+                navMenu.classList.remove('active');
+            }
+        }
+        
+        checkMobileMenu();
+        // Throttle resize events to prevent lag
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(checkMobileMenu, 250); // Wait 250ms after resize stops
+        });
+        
+        // Force add click listener directly
+        mobileBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Direct onclick handler fired!');
+            toggleMobileMenu(e);
+            return false;
+        };
+        
+        // Also add event listener as backup
+        mobileBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('EventListener click handler fired!');
+            toggleMobileMenu(e);
+        }, true);
+    }
 });
 
 function initializeApp() {
     setupEventListeners();
     loadFeaturedRecipes();
     startProteinFactsRotation();
-    setupMobileMenu();
     setupSearch();
     setupRecipeGenerator();
     setupCategoryFiltering();
@@ -658,9 +734,29 @@ function initializeApp() {
 
 // Event Listeners
 function setupEventListeners() {
-    // Mobile menu toggle
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    // Mobile menu toggle - use document.getElementById to ensure we get the element
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    if (mobileBtn) {
+        // Remove any existing listeners by cloning and replacing
+        const newBtn = mobileBtn.cloneNode(true);
+        mobileBtn.parentNode.replaceChild(newBtn, mobileBtn);
+        
+        // Add fresh event listeners
+        newBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile menu button clicked!');
+            toggleMobileMenu(e);
+        }, true);
+        
+        newBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile menu button touched!');
+            toggleMobileMenu(e);
+        }, true);
+    } else {
+        console.error('Mobile menu button not found!');
     }
     
     // Smooth scrolling for navigation links
@@ -684,13 +780,86 @@ function setupEventListeners() {
     }
 }
 
-// Mobile Menu
-function toggleMobileMenu() {
-    if (navMenu) {
-        navMenu.classList.toggle('active');
-        mobileMenuBtn.classList.toggle('active');
+// Mobile Menu - Make it globally accessible
+window.toggleMobileMenu = function toggleMobileMenu(e) {
+    console.log('toggleMobileMenu called');
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
     }
+    
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-menu-btn');
+    
+    console.log('Menu:', menu);
+    console.log('Button:', btn);
+    
+    if (!menu || !btn) {
+        console.error('Mobile menu elements not found');
+        console.log('Available elements:', {
+            menu: document.getElementById('nav-menu'),
+            btn: document.getElementById('mobile-menu-btn')
+        });
+        return;
+    }
+    
+    const isActive = menu.classList.contains('active');
+    console.log('Menu is active:', isActive);
+    
+    if (isActive) {
+        console.log('Closing menu');
+        menu.classList.remove('active');
+        btn.classList.remove('active');
+        menu.style.display = 'none';
+        menu.style.visibility = 'hidden';
+    } else {
+        console.log('Opening menu');
+        menu.classList.add('active');
+        btn.classList.add('active');
+        menu.style.display = 'flex';
+        menu.style.visibility = 'visible';
+        menu.style.opacity = '1';
+    }
+    
+    // Force reflow
+    void menu.offsetHeight;
+    console.log('Menu display:', window.getComputedStyle(menu).display);
+    console.log('Menu classList:', menu.classList.toString());
 }
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-menu-btn');
+    
+    if (menu && btn) {
+        const isClickInsideMenu = menu.contains(event.target);
+        const isClickOnButton = btn.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnButton && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            btn.classList.remove('active');
+        }
+    }
+});
+
+// Close mobile menu when clicking a nav link
+document.addEventListener('DOMContentLoaded', function() {
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-menu-btn');
+    
+    if (menu) {
+        const navLinks = menu.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menu) menu.classList.remove('active');
+                    if (btn) btn.classList.remove('active');
+                }
+            });
+        });
+    }
+});
 
 // Search Functionality
 function setupSearch() {
@@ -895,30 +1064,95 @@ function adjustIngredients(ingredients, scoops, proteinSource) {
     });
 }
 
+// Global variable to store current recipe data for scaling
+let currentRecipeData = null;
+let currentScaleFactor = 1;
+
 function displayRecipe(recipe, ingredients) {
     const resultsDiv = document.getElementById('recipe-results');
     if (!resultsDiv) return;
 
+    // Store recipe data for scaling
+    currentRecipeData = {
+        recipe: recipe,
+        baseIngredients: ingredients,
+        baseServings: recipe.servings,
+        baseProtein: recipe.protein,
+        baseCalories: recipe.calories || Math.round(recipe.protein * 4 + (recipe.protein * 0.5) * 9 + (recipe.protein * 0.5) * 4)
+    };
+    currentScaleFactor = 1;
+
     // Use getFoodImage to render the correct image
     const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
     
+    // Calculate macros (estimate if not available)
+    const protein = recipe.protein || 20;
+    const carbs = Math.round(protein * 0.8) || 16;
+    const fats = Math.round(protein * 0.3) || 6;
+    const calories = recipe.calories || (protein * 4 + carbs * 4 + fats * 9);
+    
     resultsDiv.innerHTML = `
-        <div class="recipe-card fade-in">
+        <div class="recipe-card fade-in" data-recipe-name="${recipe.name}">
             <div class="recipe-image">
                 ${imageHtml}
-                <div class="goblin-badge">🧌 Goblin’s Pick!</div>
+                <div class="goblin-badge">🧌 Goblin's Pick!</div>
             </div>
             <div class="recipe-header">
                 <h3 class="recipe-title">${recipe.name}</h3>
                 <div class="recipe-meta">
                     <span class="recipe-time">⏱️ ${recipe.prepTime} prep</span>
                     <span class="recipe-servings">👥 ${recipe.servings} servings</span>
-                    <span class="recipe-protein">💪 ${recipe.protein}g protein</span>
+                    <span class="recipe-protein">💪 ${protein}g protein</span>
                 </div>
             </div>
-            <div class="recipe-ingredients">
+            
+            <!-- Recipe Scaling Controls -->
+            <div class="recipe-scaling" style="background: var(--accent-bg); padding: 15px; border-radius: var(--radius-md); margin: 20px 0; text-align: center;">
+                <h4 style="margin-bottom: 10px; color: var(--accent-color);">🧌 Scale This Recipe (Goblin-Style!)</h4>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-small scale-btn" data-scale="0.5" onclick="scaleRecipe(0.5)" style="background: var(--card-bg);">0.5x (Half)</button>
+                    <button class="btn btn-small scale-btn active" data-scale="1" onclick="scaleRecipe(1)" style="background: var(--accent-color); color: var(--primary-bg);">1x (Original)</button>
+                    <button class="btn btn-small scale-btn" data-scale="1.5" onclick="scaleRecipe(1.5)">1.5x</button>
+                    <button class="btn btn-small scale-btn" data-scale="2" onclick="scaleRecipe(2)">2x (Double)</button>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.875rem; color: var(--secondary-text);">Click to scale ingredients and macros!</p>
+            </div>
+
+            <!-- Enhanced Nutrition Breakdown -->
+            <div class="recipe-nutrition" style="background: var(--card-bg); padding: 20px; border-radius: var(--radius-lg); margin: 20px 0; border: 2px solid var(--border-color);">
+                <h4 style="color: var(--accent-color); margin-bottom: 15px; text-align: center;">📊 Nutrition Breakdown (Per Serving)</h4>
+                <div class="nutrition-charts" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px;">
+                    <div class="macro-chart" style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: #ff6b6b;" id="nutrition-protein-value">${protein}g</div>
+                        <div style="color: var(--secondary-text); font-size: 0.875rem;">Protein</div>
+                        <div style="width: 100%; height: 8px; background: var(--accent-bg); border-radius: 4px; margin-top: 8px; overflow: hidden;">
+                            <div style="height: 100%; background: #ff6b6b; width: 40%; border-radius: 4px;" id="protein-bar"></div>
+                        </div>
+                    </div>
+                    <div class="macro-chart" style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: #4dabf7;" id="nutrition-carbs-value">${carbs}g</div>
+                        <div style="color: var(--secondary-text); font-size: 0.875rem;">Carbs</div>
+                        <div style="width: 100%; height: 8px; background: var(--accent-bg); border-radius: 4px; margin-top: 8px; overflow: hidden;">
+                            <div style="height: 100%; background: #4dabf7; width: 35%; border-radius: 4px;" id="carbs-bar"></div>
+                        </div>
+                    </div>
+                    <div class="macro-chart" style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: #ffd43b;" id="nutrition-fats-value">${fats}g</div>
+                        <div style="color: var(--secondary-text); font-size: 0.875rem;">Fats</div>
+                        <div style="width: 100%; height: 8px; background: var(--accent-bg); border-radius: 4px; margin-top: 8px; overflow: hidden;">
+                            <div style="height: 100%; background: #ffd43b; width: 25%; border-radius: 4px;" id="fats-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; padding-top: 15px; border-top: 1px solid var(--border-color);">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-color;" id="nutrition-calories-value">${calories}</div>
+                    <div style="color: var(--secondary-text); font-size: 0.875rem;">Total Calories</div>
+                </div>
+            </div>
+
+            <div class="recipe-ingredients" id="recipe-ingredients-list">
                 <h4>Ingredients:</h4>
-                <ul>
+                <ul id="scaled-ingredients-list">
                     ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
                 </ul>
             </div>
@@ -929,10 +1163,11 @@ function displayRecipe(recipe, ingredients) {
                 </ol>
             </div>
             ${recipe.tips ? `<div class="recipe-tips">
-                <h4>💡 Goblin’s Tip:</h4>
+                <h4>💡 Goblin's Tip:</h4>
                 <p>${recipe.tips}</p>
             </div>` : ''}
             <div class="recipe-actions">
+                <button class="btn btn-primary" onclick="addToShoppingList('${recipe.name}')">🛒 Add to Shopping List</button>
                 <button class="btn btn-primary" onclick="shareRecipe('${recipe.name}')">📱 Share Recipe</button>
                 <button class="btn btn-secondary" onclick="saveRecipe('${recipe.name}')">❤️ Save</button>
                 <button class="btn btn-outline" onclick="rateRecipe('${recipe.name}')">⭐ Rate</button>
@@ -942,6 +1177,203 @@ function displayRecipe(recipe, ingredients) {
 
     resultsDiv.style.display = 'block';
     resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    
+    // Update scale button active state
+    updateScaleButtons(1);
+}
+
+// Recipe Scaling Function
+function scaleRecipe(factor) {
+    if (!currentRecipeData) return;
+    
+    currentScaleFactor = factor;
+    const recipe = currentRecipeData.recipe;
+    const baseIngredients = currentRecipeData.baseIngredients;
+    
+    // Scale ingredients
+    const scaledIngredients = baseIngredients.map(ingredient => {
+        // Match numbers and fractions (e.g., "2 cups", "1/2 tsp", "3.5 tbsp")
+        return ingredient.replace(/(\d+\.?\d*|\d+\/\d+)\s+([a-zA-Z]+)/g, (match, amount, unit) => {
+            let numAmount = parseAmount(amount);
+            let scaledAmount = numAmount * factor;
+            return formatAmount(scaledAmount) + ' ' + unit;
+        });
+    });
+    
+    // Update ingredients list
+    const ingredientsList = document.getElementById('scaled-ingredients-list');
+    if (ingredientsList) {
+        ingredientsList.innerHTML = scaledIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    }
+    
+    // Scale servings
+    const servings = Math.round(currentRecipeData.baseServings * factor);
+    const servingsElement = document.querySelector('.recipe-servings');
+    if (servingsElement) {
+        servingsElement.textContent = `👥 ${servings} servings`;
+    }
+    
+    // Scale macros
+    const scaledProtein = Math.round(currentRecipeData.baseProtein * factor);
+    const scaledCarbs = Math.round((currentRecipeData.baseProtein * 0.8) * factor);
+    const scaledFats = Math.round((currentRecipeData.baseProtein * 0.3) * factor);
+    const scaledCalories = Math.round(currentRecipeData.baseCalories * factor);
+    
+    // Update nutrition display
+    const proteinValue = document.getElementById('nutrition-protein-value');
+    const carbsValue = document.getElementById('nutrition-carbs-value');
+    const fatsValue = document.getElementById('nutrition-fats-value');
+    const caloriesValue = document.getElementById('nutrition-calories-value');
+    const proteinBar = document.getElementById('protein-bar');
+    const carbsBar = document.getElementById('carbs-bar');
+    const fatsBar = document.getElementById('fats-bar');
+    
+    if (proteinValue) proteinValue.textContent = scaledProtein + 'g';
+    if (carbsValue) carbsValue.textContent = scaledCarbs + 'g';
+    if (fatsValue) fatsValue.textContent = scaledFats + 'g';
+    if (caloriesValue) caloriesValue.textContent = scaledCalories;
+    
+    // Update bars (visual representation)
+    const totalMacros = scaledProtein + scaledCarbs + scaledFats;
+    if (proteinBar) proteinBar.style.width = (scaledProtein / totalMacros * 100) + '%';
+    if (carbsBar) carbsBar.style.width = (scaledCarbs / totalMacros * 100) + '%';
+    if (fatsBar) fatsBar.style.width = (scaledFats / totalMacros * 100) + '%';
+    
+    // Update protein meta
+    const proteinMeta = document.querySelector('.recipe-protein');
+    if (proteinMeta) {
+        proteinMeta.textContent = `💪 ${scaledProtein}g protein`;
+    }
+    
+    // Update scale buttons
+    updateScaleButtons(factor);
+    
+    // Show goblin humor message
+    const goblinMessages = [
+        `🧌 Scaled to ${factor}x! Goblin approved! 💪`,
+        `💪 ${factor}x recipe = ${factor}x gains! Goblins multiply everything! 🧌`,
+        `🧌 You've scaled this recipe ${factor}x - now GOBBLE ${factor}x more! 💪`
+    ];
+    const randomMessage = goblinMessages[Math.floor(Math.random() * goblinMessages.length)];
+    showAlert(randomMessage, 'success');
+}
+
+function parseAmount(amount) {
+    if (amount.includes('/')) {
+        const [num, den] = amount.split('/').map(Number);
+        return num / den;
+    }
+    return parseFloat(amount) || 0;
+}
+
+function formatAmount(amount) {
+    if (amount >= 1) {
+        // Try to use fractions for common decimals
+        const fraction = amount % 1;
+        if (Math.abs(fraction - 0.25) < 0.01) return Math.floor(amount) + (Math.floor(amount) > 0 ? ' 1/4' : '1/4');
+        if (Math.abs(fraction - 0.5) < 0.01) return Math.floor(amount) + (Math.floor(amount) > 0 ? ' 1/2' : '1/2');
+        if (Math.abs(fraction - 0.75) < 0.01) return Math.floor(amount) + (Math.floor(amount) > 0 ? ' 3/4' : '3/4');
+        if (Math.abs(fraction - 0.33) < 0.01) return Math.floor(amount) + (Math.floor(amount) > 0 ? ' 1/3' : '1/3');
+        if (Math.abs(fraction - 0.67) < 0.01) return Math.floor(amount) + (Math.floor(amount) > 0 ? ' 2/3' : '2/3');
+        return Math.round(amount * 10) / 10;
+    }
+    // For amounts less than 1
+    if (Math.abs(amount - 0.25) < 0.01) return '1/4';
+    if (Math.abs(amount - 0.5) < 0.01) return '1/2';
+    if (Math.abs(amount - 0.75) < 0.01) return '3/4';
+    if (Math.abs(amount - 0.33) < 0.01) return '1/3';
+    if (Math.abs(amount - 0.67) < 0.01) return '2/3';
+    return Math.round(amount * 100) / 100;
+}
+
+function updateScaleButtons(activeFactor) {
+    document.querySelectorAll('.scale-btn').forEach(btn => {
+        const scale = parseFloat(btn.getAttribute('data-scale'));
+        if (scale === activeFactor) {
+            btn.classList.add('active');
+            btn.style.background = 'var(--accent-color)';
+            btn.style.color = 'var(--primary-bg)';
+        } else {
+            btn.classList.remove('active');
+            btn.style.background = 'var(--card-bg)';
+            btn.style.color = 'var(--primary-text)';
+        }
+    });
+}
+
+// Shopping List Functions
+let shoppingList = [];
+
+function addToShoppingList(recipeName) {
+    if (!currentRecipeData) {
+        showAlert('🧌 Goblin says: Generate a recipe first before adding to shopping list!', 'warning');
+        return;
+    }
+    
+    const recipe = currentRecipeData.recipe;
+    const ingredients = currentScaleFactor === 1 
+        ? currentRecipeData.baseIngredients 
+        : currentRecipeData.baseIngredients.map(ing => {
+            return ing.replace(/(\d+\.?\d*|\d+\/\d+)\s+([a-zA-Z]+)/g, (match, amount, unit) => {
+                let numAmount = parseAmount(amount);
+                let scaledAmount = numAmount * currentScaleFactor;
+                return formatAmount(scaledAmount) + ' ' + unit;
+            });
+        });
+    
+    const recipeItem = {
+        name: recipeName,
+        ingredients: ingredients,
+        servings: Math.round(currentRecipeData.baseServings * currentScaleFactor)
+    };
+    
+    // Check if already in list
+    const existingIndex = shoppingList.findIndex(item => item.name === recipeName);
+    if (existingIndex !== -1) {
+        shoppingList[existingIndex] = recipeItem; // Update with scaled version
+        showAlert(`🧌 Updated "${recipeName}" in shopping list! (Scaled to ${currentScaleFactor}x)`, 'success');
+    } else {
+        shoppingList.push(recipeItem);
+        showAlert(`🛒 Added "${recipeName}" to shopping list! 🧌`, 'success');
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('proteinGoblinShoppingList', JSON.stringify(shoppingList));
+    
+    // Update shopping list button badge
+    updateShoppingListBadge();
+}
+
+function updateShoppingListBadge() {
+    const count = shoppingList.length;
+    let badge = document.getElementById('shopping-list-badge');
+    if (!badge && count > 0) {
+        badge = document.createElement('span');
+        badge.id = 'shopping-list-badge';
+        badge.style.cssText = 'position: absolute; top: -5px; right: -5px; background: var(--accent-color); color: var(--primary-bg); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;';
+        const shopBtn = document.querySelector('[onclick="openShoppingList()"]');
+        if (shopBtn) {
+            shopBtn.style.position = 'relative';
+            shopBtn.appendChild(badge);
+        }
+    }
+    if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+}
+
+// Load shopping list from localStorage
+function loadShoppingList() {
+    const saved = localStorage.getItem('proteinGoblinShoppingList');
+    if (saved) {
+        shoppingList = JSON.parse(saved);
+        updateShoppingListBadge();
+    }
+}
+
+function openShoppingList() {
+    window.location.href = 'shopping-list.html';
 }
 
 // Category Filtering
@@ -1006,36 +1438,20 @@ function filterByCategory(category) {
     }
 }
 
-// Cookbook filtering function
+// Cookbook filtering function - redirects to cookbook page
 function filterCookbook(filter) {
-    const cookbookSection = document.getElementById('cookbook-section');
-    if (cookbookSection) {
-        // Scroll to cookbook section
-        cookbookSection.scrollIntoView({ behavior: 'smooth' });
-        
-        // Filter cookbook categories based on selection
-        const categories = cookbookSection.querySelectorAll('.cookbook-category');
-        categories.forEach(cat => {
-            const categoryText = cat.textContent.toLowerCase();
-            if (filter === 'all' || 
-                (filter === 'beginner' && categoryText.includes('beginner')) ||
-                (filter === 'advanced' && categoryText.includes('advanced')) ||
-                (filter === 'vegan' && categoryText.includes('vegan')) ||
-                (filter === 'keto' && categoryText.includes('keto')) ||
-                (filter === 'meal-prep' && categoryText.includes('meal'))) {
-                cat.style.display = 'block';
-            } else {
-                // Show all for now, can add filtering logic later
-                cat.style.display = 'block';
-            }
-        });
-        
-        // Show message
-        alert(`Showing ${filter} recipes!`);
-    } else {
-        // If on different page, redirect
-        window.location.href = 'index.html#cookbook-section';
-    }
+    // Map filter names to category anchors
+    const categoryMap = {
+        'beginner': 'cookbook.html#breakfast',
+        'advanced': 'cookbook.html#desserts',
+        'vegan': 'cookbook.html#snacks',
+        'keto': 'cookbook.html#snacks',
+        'meal-prep': 'cookbook.html#breakfast'
+    };
+    
+    // Redirect to cookbook page
+    const target = categoryMap[filter] || 'cookbook.html';
+    window.location.href = target;
 }
 
 // Blog category filtering function
@@ -1088,16 +1504,17 @@ function loadFeaturedRecipes() {
     displayRecipes(selected, featuredRecipesGrid);
 }
 
-function displayRecipes(recipes, container) {
+// Make displayRecipes globally accessible
+window.displayRecipes = function displayRecipes(recipes, container) {
     if (!container) return;
 
     container.innerHTML = recipes.map(recipe => {
         const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
+        const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         return `
-            <div class="recipe-card fade-in">
+            <div class="recipe-card fade-in" style="cursor: pointer;" onclick="viewFullRecipe('${safeRecipeName}')">
                 <div class="recipe-image">
                     ${imageHtml}
-                    <div class="goblin-badge">🧌</div>
                 </div>
                 <div class="recipe-header">
                     <h3 class="recipe-title">${recipe.name}</h3>
@@ -1121,24 +1538,104 @@ function displayRecipes(recipes, container) {
                         ${recipe.method.length > 3 ? '<li>...see full recipe for more steps!</li>' : ''}
                     </ol>
                 </div>
-                <div class="recipe-actions">
-                    <button class="btn btn-primary btn-small" onclick="viewFullRecipe('${recipe.name}')">View Full Recipe</button>
-                    <button class="btn btn-secondary btn-small" onclick="saveRecipe('${recipe.name}')">Save</button>
+                <div class="recipe-actions" onclick="event.stopPropagation();">
+                    <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); } return false;">View Full Recipe</button>
+                    <button class="btn btn-secondary btn-small" onclick="if(typeof addToShoppingListFromCard === 'function') { addToShoppingListFromCard('${safeRecipeName}'); } return false;">🛒 Add to List</button>
                 </div>
             </div>
         `;
     }).join('');
 }
 
-// Protein Facts Rotation
-function startProteinFactsRotation() {
-    if (!rotatingFact) return;
+// Helper function to add recipe to shopping list from card
+function addToShoppingListFromCard(recipeName) {
+    // Find the recipe first
+    let foundRecipe = null;
+    if (typeof recipes !== 'undefined') {
+        Object.values(recipes).forEach(flavorRecipes => {
+            const recipe = flavorRecipes.find(r => r.name === recipeName);
+            if (recipe) {
+                foundRecipe = recipe;
+            }
+        });
+    }
     
-    let factIndex = 0;
-    setInterval(() => {
-        rotatingFact.textContent = proteinFacts[factIndex];
-        factIndex = (factIndex + 1) % proteinFacts.length;
-    }, 5000);
+    if (foundRecipe) {
+        // Set current recipe data temporarily for shopping list
+        currentRecipeData = {
+            recipe: foundRecipe,
+            baseIngredients: foundRecipe.ingredients,
+            baseServings: foundRecipe.servings,
+            baseProtein: foundRecipe.protein,
+            baseCalories: foundRecipe.calories || Math.round(foundRecipe.protein * 4 + (foundRecipe.protein * 0.5) * 9 + (foundRecipe.protein * 0.5) * 4)
+        };
+        currentScaleFactor = 1;
+        addToShoppingList(recipeName);
+    } else {
+        showAlert('🧌 Goblin says: Recipe not found! Cannot add to shopping list.', 'warning');
+    }
+}
+
+// Daily Goblin Protein Tips Rotation (Funny & Educational!)
+function startProteinFactsRotation() {
+    // Update rotating fact if it exists (legacy support)
+    if (rotatingFact) {
+        let factIndex = 0;
+        setInterval(() => {
+            factIndex = (factIndex + 1) % goblinProteinTips.length;
+            rotatingFact.textContent = goblinProteinTips[factIndex];
+        }, 6000);
+    }
+    
+    // Initialize daily goblin tip widget
+    const dailyTipElement = document.getElementById("daily-goblin-tip");
+    if (dailyTipElement) {
+        const randomTip = goblinProteinTips[Math.floor(Math.random() * goblinProteinTips.length)];
+        dailyTipElement.textContent = randomTip;
+        
+        // Rotate tips every 8 seconds
+        let tipIndex = goblinProteinTips.indexOf(randomTip);
+        setInterval(() => {
+            tipIndex = (tipIndex + 1) % goblinProteinTips.length;
+            dailyTipElement.style.transition = "opacity 0.3s";
+            dailyTipElement.style.opacity = "0.7";
+            setTimeout(() => {
+                dailyTipElement.textContent = goblinProteinTips[tipIndex];
+                dailyTipElement.style.opacity = "1";
+            }, 300);
+        }, 8000);
+    }
+}
+
+// Get random goblin tip (for use in other functions)
+function getRandomGoblinTip() {
+    return goblinProteinTips[Math.floor(Math.random() * goblinProteinTips.length)];
+}
+
+// Show new random goblin tip (called by button)
+function showNewGoblinTip() {
+    const dailyTipElement = document.getElementById("daily-goblin-tip");
+    if (dailyTipElement) {
+        const newTip = getRandomGoblinTip();
+        dailyTipElement.style.transition = "opacity 0.3s";
+        dailyTipElement.style.opacity = "0.5";
+        setTimeout(() => {
+            dailyTipElement.textContent = newTip;
+            dailyTipElement.style.opacity = "1";
+        }, 200);
+    }
+}
+
+// Initialize shopping list on page load
+if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof shoppingList === "undefined") {
+            shoppingList = [];
+        }
+        if (typeof loadShoppingList === "function") {
+            loadShoppingList();
+        }
+    });
 }
 
 // Newsletter
@@ -1239,16 +1736,274 @@ function rateRecipe(recipeName) {
     }
 }
 
-function viewFullRecipe(recipeName) {
-    // This function now uses the recipe generator
-    if (typeof recipeGenerator !== 'undefined') {
-        const fullRecipe = recipeGenerator.findRecipeByName(recipeName);
-        if (fullRecipe) {
-            displayRecipe(fullRecipe, fullRecipe.ingredients);
-            document.getElementById('recipe-results').scrollIntoView({ behavior: 'smooth' });
+// Make viewFullRecipe globally accessible
+window.viewFullRecipe = function viewFullRecipe(recipeName) {
+    // Find the recipe in the recipes database
+    let foundRecipe = null;
+    
+    if (typeof recipes !== 'undefined') {
+        // Search through all recipe categories
+        Object.values(recipes).forEach(flavorRecipes => {
+            const recipe = flavorRecipes.find(r => r.name === recipeName);
+            if (recipe) {
+                foundRecipe = recipe;
+            }
+        });
+    }
+    
+    if (foundRecipe) {
+        // Open recipe in modal
+        if (typeof openRecipeModal === 'function') {
+            openRecipeModal(foundRecipe, foundRecipe.ingredients);
+        } else if (typeof window.openRecipeModal === 'function') {
+            window.openRecipeModal(foundRecipe, foundRecipe.ingredients);
+        }
+    } else {
+        // Recipe not found - show alert
+        if (typeof showAlert === 'function') {
+            showAlert('🧌 Goblin says: Recipe not found! Let me generate one for you instead!', 'warning');
+        }
+        const generatorSection = document.getElementById('recipe-generator');
+        if (generatorSection) {
+            generatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
+};
+
+// Make openRecipeModal globally accessible
+window.openRecipeModal = function openRecipeModal(recipe, ingredients) {
+    const modal = document.getElementById('recipe-modal');
+    const modalBody = document.getElementById('recipe-modal-body');
+    
+    if (!modal || !modalBody) return;
+    
+    // Store recipe data for scaling
+    currentRecipeData = {
+        recipe: recipe,
+        baseIngredients: ingredients,
+        baseServings: recipe.servings,
+        baseProtein: recipe.protein,
+        baseCalories: recipe.calories || Math.round(recipe.protein * 4 + (recipe.protein * 0.5) * 9 + (recipe.protein * 0.5) * 4)
+    };
+    currentScaleFactor = 1;
+    
+    // Use getFoodImage to render the correct image
+    const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
+    
+    // Calculate macros (estimate if not available)
+    const protein = recipe.protein || 20;
+    const carbs = Math.round(protein * 0.8) || 16;
+    const fats = Math.round(protein * 0.3) || 6;
+    const calories = recipe.calories || (protein * 4 + carbs * 4 + fats * 9);
+    
+    // Build modal content
+    modalBody.innerHTML = `
+        <div class="recipe-modal-recipe" data-recipe-name="${recipe.name}">
+            <div class="recipe-modal-image">
+                ${imageHtml}
+                <div class="goblin-badge">🧌 Goblin's Pick!</div>
+            </div>
+            
+            <div class="recipe-modal-header">
+                <h2 class="recipe-modal-title">${recipe.name}</h2>
+                <div class="recipe-modal-meta">
+                    <span class="recipe-time">⏱️ ${recipe.prepTime} prep</span>
+                    <span class="recipe-servings">👥 ${recipe.servings} servings</span>
+                    <span class="recipe-protein">💪 ${protein}g protein</span>
+                    <span class="recipe-category">${recipe.category}</span>
+                    <span class="recipe-difficulty">${recipe.difficulty}</span>
+                </div>
+            </div>
+            
+            <!-- Recipe Scaling Controls -->
+            <div class="recipe-scaling" style="background: var(--accent-bg); padding: 15px; border-radius: var(--radius-md); margin: 20px 0; text-align: center;">
+                <h4 style="margin-bottom: 10px; color: var(--accent-color);">🧌 Scale This Recipe (Goblin-Style!)</h4>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-small scale-btn" data-scale="0.5" onclick="scaleRecipeInModal(0.5)" style="background: var(--card-bg);">0.5x (Half)</button>
+                    <button class="btn btn-small scale-btn active" data-scale="1" onclick="scaleRecipeInModal(1)" style="background: var(--accent-color); color: var(--primary-bg);">1x (Original)</button>
+                    <button class="btn btn-small scale-btn" data-scale="1.5" onclick="scaleRecipeInModal(1.5)">1.5x</button>
+                    <button class="btn btn-small scale-btn" data-scale="2" onclick="scaleRecipeInModal(2)">2x (Double)</button>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.875rem; color: var(--secondary-text);">Click to scale ingredients and macros!</p>
+            </div>
+
+            <!-- Enhanced Nutrition Breakdown -->
+            <div class="recipe-nutrition" style="background: var(--card-bg); padding: 20px; border-radius: var(--radius-lg); margin: 20px 0; border: 2px solid var(--border-color);">
+                <h4 style="color: var(--accent-color); margin-bottom: 15px; text-align: center;">📊 Nutrition Breakdown (Per Serving)</h4>
+                <div class="nutrition-charts" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px;">
+                    <div class="macro-chart" style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: #ff6b6b;" id="modal-nutrition-protein-value">${protein}g</div>
+                        <div style="color: var(--secondary-text); font-size: 0.875rem;">Protein</div>
+                        <div style="width: 100%; height: 8px; background: var(--accent-bg); border-radius: 4px; margin-top: 8px; overflow: hidden;">
+                            <div style="height: 100%; background: #ff6b6b; width: 40%; border-radius: 4px;" id="modal-protein-bar"></div>
+                        </div>
+                    </div>
+                    <div class="macro-chart" style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: #4dabf7;" id="modal-nutrition-carbs-value">${carbs}g</div>
+                        <div style="color: var(--secondary-text); font-size: 0.875rem;">Carbs</div>
+                        <div style="width: 100%; height: 8px; background: var(--accent-bg); border-radius: 4px; margin-top: 8px; overflow: hidden;">
+                            <div style="height: 100%; background: #4dabf7; width: 35%; border-radius: 4px;" id="modal-carbs-bar"></div>
+                        </div>
+                    </div>
+                    <div class="macro-chart" style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: #ffd43b;" id="modal-nutrition-fats-value">${fats}g</div>
+                        <div style="color: var(--secondary-text); font-size: 0.875rem;">Fats</div>
+                        <div style="width: 100%; height: 8px; background: var(--accent-bg); border-radius: 4px; margin-top: 8px; overflow: hidden;">
+                            <div style="height: 100%; background: #ffd43b; width: 25%; border-radius: 4px;" id="modal-fats-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; padding-top: 15px; border-top: 1px solid var(--border-color);">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-color;" id="modal-nutrition-calories-value">${calories}</div>
+                    <div style="color: var(--secondary-text); font-size: 0.875rem;">Total Calories</div>
+                </div>
+            </div>
+
+            <div class="recipe-modal-ingredients" id="modal-recipe-ingredients-list">
+                <h3>📝 Ingredients:</h3>
+                <ul id="modal-scaled-ingredients-list">
+                    ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div class="recipe-modal-method">
+                <h3>👨‍🍳 How to Make:</h3>
+                <ol>
+                    ${recipe.method.map(step => `<li>${step}</li>`).join('')}
+                </ol>
+            </div>
+            
+            ${recipe.tips ? `
+            <div class="recipe-modal-tips">
+                <h3>💡 Goblin's Tip:</h3>
+                <p>${recipe.tips}</p>
+            </div>
+            ` : ''}
+            
+            <div class="recipe-modal-actions">
+                <button class="btn btn-primary btn-large" onclick="addToShoppingList('${recipe.name.replace(/'/g, "\\'")}'); closeRecipeModal();">🛒 Add to Shopping List</button>
+                <button class="btn btn-primary" onclick="shareRecipe('${recipe.name.replace(/'/g, "\\'")}')">📱 Share Recipe</button>
+                <button class="btn btn-secondary" onclick="saveRecipe('${recipe.name.replace(/'/g, "\\'")}')">❤️ Save</button>
+                <button class="btn btn-outline" onclick="rateRecipe('${recipe.name.replace(/'/g, "\\'")}')">⭐ Rate</button>
+            </div>
+        </div>
+    `;
+    
+    // Show modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Update scale button active state
+    updateScaleButtonsInModal(1);
 }
+
+// Make closeRecipeModal globally accessible
+window.closeRecipeModal = function closeRecipeModal() {
+    const modal = document.getElementById('recipe-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+};
+
+// Scale recipe in modal
+function scaleRecipeInModal(factor) {
+    if (!currentRecipeData) return;
+    
+    currentScaleFactor = factor;
+    const baseIngredients = currentRecipeData.baseIngredients;
+    
+    // Scale ingredients
+    const scaledIngredients = baseIngredients.map(ingredient => {
+        return ingredient.replace(/(\d+\.?\d*|\d+\/\d+)\s+([a-zA-Z]+)/g, (match, amount, unit) => {
+            let numAmount = parseAmount(amount);
+            let scaledAmount = numAmount * factor;
+            return formatAmount(scaledAmount) + ' ' + unit;
+        });
+    });
+    
+    // Update ingredients list
+    const ingredientsList = document.getElementById('modal-scaled-ingredients-list');
+    if (ingredientsList) {
+        ingredientsList.innerHTML = scaledIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    }
+    
+    // Scale servings
+    const servings = Math.round(currentRecipeData.baseServings * factor);
+    const servingsElement = document.querySelector('.recipe-servings');
+    if (servingsElement) {
+        servingsElement.textContent = `👥 ${servings} servings`;
+    }
+    
+    // Scale macros
+    const scaledProtein = Math.round(currentRecipeData.baseProtein * factor);
+    const scaledCarbs = Math.round((currentRecipeData.baseProtein * 0.8) * factor);
+    const scaledFats = Math.round((currentRecipeData.baseProtein * 0.3) * factor);
+    const scaledCalories = Math.round(currentRecipeData.baseCalories * factor);
+    
+    // Update nutrition display
+    const proteinValue = document.getElementById('modal-nutrition-protein-value');
+    const carbsValue = document.getElementById('modal-nutrition-carbs-value');
+    const fatsValue = document.getElementById('modal-nutrition-fats-value');
+    const caloriesValue = document.getElementById('modal-nutrition-calories-value');
+    const proteinBar = document.getElementById('modal-protein-bar');
+    const carbsBar = document.getElementById('modal-carbs-bar');
+    const fatsBar = document.getElementById('modal-fats-bar');
+    
+    if (proteinValue) proteinValue.textContent = scaledProtein + 'g';
+    if (carbsValue) carbsValue.textContent = scaledCarbs + 'g';
+    if (fatsValue) fatsValue.textContent = scaledFats + 'g';
+    if (caloriesValue) caloriesValue.textContent = scaledCalories;
+    
+    // Update bars
+    const totalMacros = scaledProtein + scaledCarbs + scaledFats;
+    if (proteinBar) proteinBar.style.width = (scaledProtein / totalMacros * 100) + '%';
+    if (carbsBar) carbsBar.style.width = (scaledCarbs / totalMacros * 100) + '%';
+    if (fatsBar) fatsBar.style.width = (scaledFats / totalMacros * 100) + '%';
+    
+    // Update protein meta
+    const proteinMeta = document.querySelector('.recipe-protein');
+    if (proteinMeta) {
+        proteinMeta.textContent = `💪 ${scaledProtein}g protein`;
+    }
+    
+    // Update scale buttons
+    updateScaleButtonsInModal(factor);
+    
+    // Show goblin humor message
+    const goblinMessages = [
+        `🧌 Scaled to ${factor}x! Goblin approved! 💪`,
+        `💪 ${factor}x recipe = ${factor}x gains! Goblins multiply everything! 🧌`,
+        `🧌 You've scaled this recipe ${factor}x - now GOBBLE ${factor}x more! 💪`
+    ];
+    const randomMessage = goblinMessages[Math.floor(Math.random() * goblinMessages.length)];
+    showAlert(randomMessage, 'success');
+}
+
+function updateScaleButtonsInModal(activeFactor) {
+    const modal = document.getElementById('recipe-modal');
+    if (modal) {
+        modal.querySelectorAll('.scale-btn').forEach(btn => {
+            const scale = parseFloat(btn.getAttribute('data-scale'));
+            if (scale === activeFactor) {
+                btn.classList.add('active');
+                btn.style.background = 'var(--accent-color)';
+                btn.style.color = 'var(--primary-bg)';
+            } else {
+                btn.classList.remove('active');
+                btn.style.background = 'var(--card-bg)';
+                btn.style.color = 'var(--primary-text)';
+            }
+        });
+    }
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeRecipeModal();
+    }
+});
 
 // Add CSS for animations
 const style = document.createElement('style');
@@ -1373,14 +2128,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add goblin spawn effect on scroll
+    // Add goblin spawn effect on scroll (throttled for performance)
     let goblinSpawned = false;
+    let scrollTimer;
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 500 && !goblinSpawned) {
-            spawnRandomGoblin();
-            goblinSpawned = true;
-        }
-    });
+        // Throttle scroll events - only check every 100ms
+        if (scrollTimer) return;
+        scrollTimer = setTimeout(function() {
+            scrollTimer = null;
+            if (window.scrollY > 500 && !goblinSpawned) {
+                spawnRandomGoblin();
+                goblinSpawned = true;
+            }
+        }, 100);
+    }, { passive: true }); // Passive listener for better performance
     
     function spawnRandomGoblin() {
         const goblinEmojis = ['💪🧌', '💪🧌🥤', '💪🧌🍖', '💪🧌🏋️'];
@@ -1402,5 +2163,38 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             newGoblin.remove();
         }, 5000);
+    }
+
+    // Shop Filter Functionality
+    const shopFilterBtns = document.querySelectorAll('.shop-filter-btn');
+    const shopProducts = document.querySelectorAll('.product-card');
+
+    if (shopFilterBtns.length > 0 && shopProducts.length > 0) {
+        shopFilterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                shopFilterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter products
+                shopProducts.forEach(product => {
+                    const categories = product.getAttribute('data-category').split(' ');
+                    
+                    if (filter === 'all' || categories.includes(filter)) {
+                        product.classList.remove('hidden');
+                    } else {
+                        product.classList.add('hidden');
+                    }
+                });
+                
+                // Smooth scroll to top of products
+                document.getElementById('shop-products-grid')?.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            });
+        });
     }
 });

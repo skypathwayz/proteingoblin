@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7RLSLNCKE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N7RLSLNCKE');
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5918874419248577"
+     crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Can I Make? - Ingredient-Based Recipe Finder | Protein Goblin</title>
+    <meta name="description" content="Tell us what ingredients you have and we'll find protein recipes you can make! No grocery trip needed - goblin's kitchen helper!">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot" class="logo-mascot" loading="lazy">
+                        <span class="logo-text">Protein Goblin</span>
+                        <span class="logo-subtitle">Gobbling Up Gains!</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="index.html#featured-recipes" class="nav-link">Recipes</a></li>
+                        <li class="nav-item"><a href="index.html#cookbook-section" class="nav-link">Cookbook</a></li>
+                        <li class="nav-item"><a href="blog-index.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="index.html#products-section" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search 156+ recipes..." id="search-input">
+                        <button class="search-btn" id="search-btn">🔍</button>
+                    </div>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero" style="padding: 80px 0 60px; background: linear-gradient(135deg, var(--accent-color), #22c55e);">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center; color: white;">🧌 Goblin's Kitchen Helper</h1>
+            <p style="font-size: 1.25rem; text-align: center; max-width: 800px; margin: 0 auto; color: rgba(255,255,255,0.95);">
+                Tell us what ingredients you have and we'll find recipes you can make! No grocery trip needed! 💪
+            </p>
+        </div>
+    </section>
+
+    <!-- Ingredient Selector Tool -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div class="generator-card" style="margin-bottom: 30px;">
+                    <h2 style="color: var(--accent-color); margin-bottom: 20px; text-align: center;">What Ingredients Do You Have?</h2>
+                    <p style="text-align: center; color: var(--secondary-text); margin-bottom: 30px;">
+                        Check the ingredients you have available. Goblins will find recipes you can make right now! 🧌
+                    </p>
+                    
+                    <!-- Common Ingredients Grid -->
+                    <div class="ingredient-selector" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s;">
+                            <input type="checkbox" value="protein powder" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Protein Powder</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="eggs" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Eggs</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="banana" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Banana</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="almond milk" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Almond Milk</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="oats" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Oats</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="flour" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Flour</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="cocoa powder" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Cocoa Powder</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="peanut butter" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Peanut Butter</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="yogurt" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Yogurt</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="honey" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Honey</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="baking powder" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Baking Powder</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="vanilla extract" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Vanilla Extract</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="strawberry" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Strawberries</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="chocolate" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Chocolate</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="milk" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Milk</span>
+                        </label>
+                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
+                            <input type="checkbox" value="butter" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <span>Butter</span>
+                        </label>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="btn btn-primary btn-large" onclick="clearIngredientSelection()">🔄 Clear Selection</button>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div id="ingredient-results" style="display: none;">
+                    <h2 style="color: var(--accent-color); margin-bottom: 20px; text-align: center;" id="results-title">Recipes You Can Make!</h2>
+                    <div class="recipes-grid" id="ingredient-recipes-grid">
+                        <!-- Recipes will be populated here -->
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-ingredient-results" style="display: none; text-align: center; padding: 40px; background: var(--card-bg); border-radius: var(--radius-lg);">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🧌</div>
+                    <h3 style="color: var(--accent-color); margin-bottom: 10px;">Goblin's Sad News!</h3>
+                    <p style="color: var(--secondary-text);">No recipes found with just these ingredients. Goblins need more ingredients to GOBBLE! Try adding protein powder - it's essential! 💪</p>
+                    <a href="index.html#recipe-generator" class="btn btn-primary" style="margin-top: 20px;">Generate Custom Recipe Instead</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Protein Goblin</h4>
+                    <p>Transforming protein powder into delicious meals, one recipe at a time!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#featured-recipes">Recipes</a></li>
+                        <li><a href="what-can-i-make.html">What Can I Make?</a></li>
+                        <li><a href="shopping-list.html">Shopping List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="index.html#recipe-generator">Recipe Generator</a></li>
+                        <li><a href="macro-calculator.html">Macro Calculator</a></li>
+                        <li><a href="what-can-i-make.html">Ingredient Finder</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Protein Goblin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="recipe-generator.js"></script>
+    <script>
+        // Ingredient-based recipe finder
+        function findRecipesWithIngredients() {
+            const checkedIngredients = Array.from(document.querySelectorAll('.ingredient-check:checked'))
+                .map(cb => cb.value.toLowerCase());
+            
+            if (checkedIngredients.length === 0) {
+                document.getElementById('ingredient-results').style.display = 'none';
+                document.getElementById('no-ingredient-results').style.display = 'none';
+                return;
+            }
+            
+            // Get all recipes from global recipes object
+            const allRecipes = [];
+            if (typeof recipes !== 'undefined') {
+                Object.values(recipes).forEach(flavorRecipes => {
+                    allRecipes.push(...flavorRecipes);
+                });
+            }
+            
+            // Find recipes that contain all checked ingredients (or most of them)
+            const matchingRecipes = allRecipes.filter(recipe => {
+                const recipeIngredients = recipe.ingredients.join(' ').toLowerCase();
+                // Recipe matches if it contains at least 70% of checked ingredients
+                const matchCount = checkedIngredients.filter(ing => 
+                    recipeIngredients.includes(ing)
+                ).length;
+                
+                // Must include protein powder if it's checked
+                if (checkedIngredients.includes('protein powder') && !recipeIngredients.includes('protein')) {
+                    return false;
+                }
+                
+                return matchCount >= Math.ceil(checkedIngredients.length * 0.7) || matchCount >= 2;
+            });
+            
+            // Display results
+            const resultsDiv = document.getElementById('ingredient-results');
+            const noResultsDiv = document.getElementById('no-ingredient-results');
+            const grid = document.getElementById('ingredient-recipes-grid');
+            const title = document.getElementById('results-title');
+            
+            if (matchingRecipes.length === 0) {
+                resultsDiv.style.display = 'none';
+                noResultsDiv.style.display = 'block';
+            } else {
+                noResultsDiv.style.display = 'none';
+                resultsDiv.style.display = 'block';
+                title.textContent = `🧌 Found ${matchingRecipes.length} recipes you can make!`;
+                
+                // Display recipes
+                grid.innerHTML = matchingRecipes.slice(0, 20).map(recipe => {
+                    const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
+                    return `
+                        <article class="blog-article">
+                            <div class="article-image">
+                                ${imageHtml}
+                                <div class="article-category">${recipe.category}</div>
+                            </div>
+                            <div class="article-content">
+                                <h3 class="article-title">${recipe.name}</h3>
+                                <p class="article-excerpt">
+                                    <strong>${recipe.protein}g protein</strong> | ${recipe.calories} calories | ${recipe.prepTime} prep
+                                </p>
+                                <a href="index.html#recipe-generator" class="article-link" onclick="localStorage.setItem('selectedRecipe', '${recipe.name}');">View Recipe →</a>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            }
+        }
+        
+        function clearIngredientSelection() {
+            document.querySelectorAll('.ingredient-check').forEach(cb => cb.checked = false);
+            document.getElementById('ingredient-results').style.display = 'none';
+            document.getElementById('no-ingredient-results').style.display = 'none';
+        }
+        
+        // Style checkbox labels on click
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ingredient-checkbox').forEach(label => {
+                label.addEventListener('click', function(e) {
+                    if (e.target.type !== 'checkbox') {
+                        const checkbox = this.querySelector('.ingredient-check');
+                        if (checkbox) checkbox.checked = !checkbox.checked;
+                    }
+                });
+                
+                // Update styling when checked
+                const checkbox = label.querySelector('.ingredient-check');
+                if (checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            label.style.background = 'var(--accent-color)';
+                            label.style.color = 'var(--primary-bg)';
+                            label.style.fontWeight = '600';
+                        } else {
+                            label.style.background = 'var(--accent-bg)';
+                            label.style.color = 'var(--primary-text)';
+                            label.style.fontWeight = '400';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

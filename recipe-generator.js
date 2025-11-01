@@ -196,7 +196,7 @@ function getFoodImage(recipeName, altText) {
         // Cookies & Cream Recipes (already have some)
         'Cookies & Cream Protein Shake': 'images-backup/cookies-and-cream-protein-shake-13.webp',
         'Cookies & Cream Protein Ice Cream': 'images-backup/ninja-strawberry-protein-icecream-f3SQ-540x720.jpg',
-        'Cookies & Cream Protein Muffins': 'images-backup/birthday cake.webp',
+        'Cookies & Cream Protein Muffins': 'images-backup/cookies-cream-protein-mug-cake.jpg',
         
         // Birthday Cake Recipes
         'Birthday Cake Protein Shake': 'images-backup/birthday cake.webp',
@@ -353,7 +353,7 @@ const recipes = {
                 "Cool completely before cutting"
             ],
             tips: "For fudgier brownies, slightly underbake them",
-            image: getFoodImage('brownies', 'Chocolate Protein Brownies'),
+            image: getFoodImage('Chocolate Protein Brownies', 'Chocolate Protein Brownies'),
             dietary: []
         },
         {
@@ -380,7 +380,7 @@ const recipes = {
                 "Pour into glass and enjoy"
             ],
             tips: "Use frozen banana for a thicker, creamier smoothie",
-            image: getFoodImage('smoothie', 'Chocolate Protein Smoothie'),
+            image: getFoodImage('Chocolate Protein Smoothie', 'Chocolate Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free"]
         },
         {
@@ -407,7 +407,7 @@ const recipes = {
                 "Top with berries and serve"
             ],
             tips: "Let protein powder cool slightly before adding to prevent clumping",
-            image: getFoodImage('oatmeal', 'Chocolate Protein Oatmeal'),
+            image: getFoodImage('Chocolate Protein Oatmeal', 'Chocolate Protein Oatmeal'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -436,7 +436,7 @@ const recipes = {
                 "Cool on wire rack"
             ],
             tips: "Don't overbake - cookies will continue cooking on the pan",
-            image: getFoodImage('cookies', 'Chocolate Protein Cookies'),
+            image: getFoodImage('Chocolate Protein Cookies', 'Chocolate Protein Cookies'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -464,7 +464,7 @@ const recipes = {
                 "Serve with syrup and berries"
             ],
             tips: "Don't open waffle iron too early - wait for steam to stop",
-            image: getFoodImage('waffles', 'Chocolate Protein Waffles'),
+            image: getFoodImage('Chocolate Protein Waffles', 'Chocolate Protein Waffles'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -491,7 +491,7 @@ const recipes = {
                 "Serve immediately or freeze for firmer texture"
             ],
             tips: "Use very ripe bananas for the best sweetness",
-            image: getFoodImage('ice-cream', 'Chocolate Protein Ice Cream'),
+            image: getFoodImage('Chocolate Protein Ice Cream', 'Chocolate Protein Ice Cream'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -518,7 +518,7 @@ const recipes = {
                 "Let cool slightly and enjoy"
             ],
             tips: "Don't overcook - it should be slightly gooey in the center",
-            image: getFoodImage('mug-cake', 'Chocolate Protein Mug Cake'),
+            image: getFoodImage('Chocolate Protein Mug Cake', 'Chocolate Protein Mug Cake'),
             dietary: ["dairy-free", "gluten-free"]
         }
     ],
@@ -551,7 +551,7 @@ const recipes = {
                 "Cool in fridge for 2 hours"
             ],
             tips: "Let cheesecake cool completely before removing from pan",
-            image: getFoodImage('cheesecake', 'Vanilla Protein Cheesecake'),
+            image: getFoodImage('Vanilla Protein Cheesecake', 'Vanilla Protein Cheesecake'),
             dietary: []
         },
         {
@@ -579,7 +579,7 @@ const recipes = {
                 "Serve with syrup and berries"
             ],
             tips: "Let batter rest for 5 minutes for fluffier pancakes",
-            image: getFoodImage('pancakes', 'Vanilla Protein Pancakes'),
+            image: getFoodImage('Vanilla Protein Pancakes', 'Vanilla Protein Pancakes'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -606,7 +606,7 @@ const recipes = {
                 "Pour into glass and enjoy"
             ],
             tips: "Use frozen banana for a thicker smoothie",
-            image: getFoodImage('smoothie', 'Vanilla Protein Smoothie'),
+            image: getFoodImage('Vanilla Protein Smoothie', 'Vanilla Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -633,7 +633,7 @@ const recipes = {
                 "Top with berries and serve"
             ],
             tips: "Let protein powder cool slightly before adding",
-            image: getFoodImage('oatmeal', 'Vanilla Protein Oatmeal'),
+            image: getFoodImage('Vanilla Protein Oatmeal', 'Vanilla Protein Oatmeal'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -661,7 +661,7 @@ const recipes = {
                 "Serve with syrup and fruit"
             ],
             tips: "Don't open waffle iron too early",
-            image: getFoodImage('waffles', 'Vanilla Protein Waffles'),
+            image: getFoodImage('Vanilla Protein Waffles', 'Vanilla Protein Waffles'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -690,7 +690,7 @@ const recipes = {
                 "Cool on wire rack"
             ],
             tips: "Don't overbake - cookies will continue cooking",
-            image: getFoodImage('cookies', 'Vanilla Protein Cookies'),
+            image: getFoodImage('Vanilla Protein Cookies', 'Vanilla Protein Cookies'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -717,7 +717,7 @@ const recipes = {
                 "Serve immediately or freeze for firmer texture"
             ],
             tips: "Use very ripe bananas for the best sweetness",
-            image: getFoodImage('ice-cream', 'Vanilla Protein Ice Cream'),
+            image: getFoodImage('Vanilla Protein Ice Cream', 'Vanilla Protein Ice Cream'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -744,7 +744,7 @@ const recipes = {
                 "Let cool slightly and enjoy"
             ],
             tips: "Don't overcook - it should be slightly gooey",
-            image: getFoodImage('mug-cake', 'Vanilla Protein Mug Cake'),
+            image: getFoodImage('Vanilla Protein Mug Cake', 'Vanilla Protein Mug Cake'),
             dietary: ["dairy-free", "gluten-free"]
         }
     ],
@@ -773,7 +773,7 @@ const recipes = {
                 "Pour into glass and enjoy immediately"
             ],
             tips: "Use frozen fruit for a thicker, colder smoothie",
-            image: getFoodImage('smoothie', 'Strawberry Protein Smoothie'),
+            image: getFoodImage('Strawberry Protein Smoothie', 'Strawberry Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -801,7 +801,7 @@ const recipes = {
                 "Serve with fresh strawberries"
             ],
             tips: "Mash strawberries slightly for better distribution",
-            image: getFoodImage('pancakes', 'Strawberry Protein Pancakes'),
+            image: getFoodImage('Strawberry Protein Pancakes', 'Strawberry Protein Pancakes'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -827,7 +827,7 @@ const recipes = {
                 "Serve immediately"
             ],
             tips: "Add strawberries after cooking to preserve their texture",
-            image: getFoodImage('oatmeal', 'Strawberry Protein Oatmeal'),
+            image: getFoodImage('Strawberry Protein Oatmeal', 'Strawberry Protein Oatmeal'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         },
         {
@@ -852,7 +852,7 @@ const recipes = {
                 "Serve immediately or freeze for firmer texture"
             ],
             tips: "Use very ripe bananas for the best sweetness",
-            image: getFoodImage('ice-cream', 'Strawberry Protein Ice Cream'),
+            image: getFoodImage('Strawberry Protein Ice Cream', 'Strawberry Protein Ice Cream'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         }
     ],
@@ -882,7 +882,7 @@ const recipes = {
                 "Let cool slightly and enjoy"
             ],
             tips: "Don't overcook - it should be slightly gooey in the center",
-            image: getFoodImage('mug-cake', 'Cookies & Cream Protein Mug Cake')
+            image: getFoodImage('Cookies & Cream Protein Mug Cake', 'Cookies & Cream Protein Mug Cake')
         }
     ],
     banana: [
@@ -914,7 +914,7 @@ const recipes = {
                 "Cool before slicing"
             ],
             tips: "Use very ripe bananas for the best flavor and sweetness",
-            image: getFoodImage('bread', 'Banana Protein Bread')
+            image: getFoodImage('Banana Protein Bread', 'Banana Protein Bread')
         }
     ],
     "peanut-butter": [
@@ -943,7 +943,7 @@ const recipes = {
                 "Store in airtight container"
             ],
             tips: "If mixture is too sticky, add more oats. If too dry, add more honey",
-            image: getFoodImage('energy-balls', 'Peanut Butter Protein Balls')
+            image: getFoodImage('Peanut Butter Protein Balls', 'Peanut Butter Protein Balls')
         }
     ],
     unflavored: [
@@ -973,7 +973,7 @@ const recipes = {
                 "Fold in half and serve"
             ],
             tips: "Don't overmix the protein powder - whisk gently to avoid clumps",
-            image: getFoodImage('omelet', 'Savory Protein Omelet'),
+            image: getFoodImage('Savory Protein Omelet', 'Savory Protein Omelet'),
             dietary: ["gluten-free", "soy-free"]
         },
         {
@@ -1000,7 +1000,7 @@ const recipes = {
                 "Season with salt, pepper, and herbs"
             ],
             tips: "Cook on low heat for creamier texture",
-            image: getFoodImage('eggs', 'Protein Scrambled Eggs'),
+            image: getFoodImage('Protein Scrambled Eggs', 'Protein Scrambled Eggs'),
             dietary: ["gluten-free", "soy-free", "nut-free"]
         }
     ],
@@ -1033,7 +1033,7 @@ const recipes = {
                 "Cool before slicing"
             ],
             tips: "Use very ripe bananas for the best flavor and sweetness",
-            image: getFoodImage('bread', 'Banana Protein Bread'),
+            image: getFoodImage('Banana Protein Bread', 'Banana Protein Bread'),
             dietary: ["dairy-free", "gluten-free", "soy-free"]
         },
         {
@@ -1059,7 +1059,7 @@ const recipes = {
                 "Pour into glass and enjoy"
             ],
             tips: "Use frozen banana for a thicker smoothie",
-            image: getFoodImage('smoothie', 'Banana Protein Smoothie'),
+            image: getFoodImage('Banana Protein Smoothie', 'Banana Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         }
     ],
@@ -1089,7 +1089,7 @@ const recipes = {
                 "Store in airtight container"
             ],
             tips: "If mixture is too sticky, add more oats. If too dry, add more honey",
-            image: getFoodImage('energy-balls', 'Peanut Butter Protein Balls'),
+            image: getFoodImage('Peanut Butter Protein Balls', 'Peanut Butter Protein Balls'),
             dietary: ["dairy-free", "gluten-free", "soy-free"]
         },
         {
@@ -1116,7 +1116,7 @@ const recipes = {
                 "Pour into glass and enjoy"
             ],
             tips: "Use frozen banana for a thicker smoothie",
-            image: getFoodImage('smoothie', 'Peanut Butter Protein Smoothie'),
+            image: getFoodImage('Peanut Butter Protein Smoothie', 'Peanut Butter Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free"]
         }
     ],
@@ -1145,7 +1145,7 @@ const recipes = {
                 "Pour into glass and enjoy"
             ],
             tips: "Add fresh mint leaves for extra flavor",
-            image: getFoodImage('smoothie', 'Mint Chocolate Protein Smoothie'),
+            image: getFoodImage('Mint Chocolate Protein Smoothie', 'Mint Chocolate Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free", "nut-free"]
         }
     ],
@@ -1175,7 +1175,7 @@ const recipes = {
                 "Serve with extra caramel sauce"
             ],
             tips: "Drizzle caramel sauce on top for extra sweetness",
-            image: getFoodImage('pancakes', 'Caramel Protein Pancakes'),
+            image: getFoodImage('Caramel Protein Pancakes', 'Caramel Protein Pancakes'),
             dietary: ["dairy-free", "gluten-free"]
         }
     ],
@@ -1205,7 +1205,7 @@ const recipes = {
                 "Let cool slightly and enjoy"
             ],
             tips: "Add sprinkles on top for extra birthday cake vibes",
-            image: getFoodImage('mug-cake', 'Birthday Cake Protein Mug Cake'),
+            image: getFoodImage('Birthday Cake Protein Mug Cake', 'Birthday Cake Protein Mug Cake'),
             dietary: ["dairy-free", "gluten-free"]
         }
     ],
@@ -1235,7 +1235,7 @@ const recipes = {
                 "Let cool slightly and enjoy"
             ],
             tips: "Don't overcook - it should be slightly gooey in the center",
-            image: getFoodImage('mug-cake', 'Cookies & Cream Protein Mug Cake'),
+            image: getFoodImage('Cookies & Cream Protein Mug Cake', 'Cookies & Cream Protein Mug Cake'),
             dietary: ["dairy-free", "gluten-free"]
         },
         {
@@ -1262,7 +1262,7 @@ const recipes = {
                 "Pour into glass and enjoy"
             ],
             tips: "Save some cookie crumbs for garnish",
-            image: getFoodImage('smoothie', 'Cookies & Cream Protein Smoothie'),
+            image: getFoodImage('Cookies & Cream Protein Smoothie', 'Cookies & Cream Protein Smoothie'),
             dietary: ["dairy-free", "gluten-free", "soy-free"]
         }
     ],
@@ -4149,7 +4149,7 @@ const recipes = {
                 "Bake at 350°F for 18 minutes"
             ],
             tips: "Reserve some cookie chunks for the top before baking",
-            image: getFoodImage('Birthday Cake Protein', 'Cookies & Cream Protein Muffins'),
+            image: getFoodImage('Cookies & Cream Protein Muffins', 'Cookies & Cream Protein Muffins'),
             dietary: []
         }
     ],

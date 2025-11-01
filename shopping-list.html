@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7RLSLNCKE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N7RLSLNCKE');
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5918874419248577"
+     crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goblin's Shopping List - Protein Recipe Shopping List | Protein Goblin</title>
+    <meta name="description" content="Your personalized protein recipe shopping list! All ingredients combined from your selected recipes. Print or export your list.">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .shopping-list-container { box-shadow: none; border: 1px solid #ddd; }
+        }
+        .ingredient-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            padding: 12px; 
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            margin-bottom: 8px;
+        }
+        .ingredient-item.checked {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+        .check-item { cursor: pointer; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot" class="logo-mascot" loading="lazy">
+                        <span class="logo-text">Protein Goblin</span>
+                        <span class="logo-subtitle">Gobbling Up Gains!</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-links">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="index.html#featured-recipes" class="nav-link">Recipes</a></li>
+                        <li class="nav-item"><a href="index.html#cookbook-section" class="nav-link">Cookbook</a></li>
+                        <li class="nav-item"><a href="blog-index.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="index.html#products-section" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search 156+ recipes..." id="search-input">
+                        <button class="search-btn" id="search-btn">🔍</button>
+                    </div>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero" style="padding: 60px 0 40px; background: var(--gradient-primary);">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: white;">🛒 Goblin's Shopping List</h1>
+            <p style="font-size: 1.1rem; text-align: center; max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.9);">
+                All your recipe ingredients in one place! Check off items as you shop, then print or export! 🧌💪
+            </p>
+        </div>
+    </section>
+
+    <!-- Shopping List -->
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Action Buttons -->
+                <div class="no-print" style="display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="window.print()">🖨️ Print List</button>
+                    <button class="btn btn-secondary" onclick="exportShoppingList()">📥 Export List</button>
+                    <button class="btn btn-outline" onclick="clearShoppingList()">🗑️ Clear All</button>
+                    <button class="btn btn-outline" onclick="window.location.href='index.html'">➕ Add More Recipes</button>
+                </div>
+
+                <!-- Shopping List Content -->
+                <div class="shopping-list-container" style="background: var(--card-bg); padding: 30px; border-radius: var(--radius-lg); border: 2px solid var(--border-color);">
+                    <div style="text-align: center; margin-bottom: 30px;" class="no-print">
+                        <h2 style="color: var(--accent-color); margin-bottom: 10px;">🧌 Goblin's Shopping List</h2>
+                        <p style="color: var(--secondary-text);" id="list-summary">Loading your shopping list...</p>
+                    </div>
+                    
+                    <div id="recipes-in-list" style="margin-bottom: 30px;" class="no-print">
+                        <!-- Recipes will be listed here -->
+                    </div>
+
+                    <div id="combined-ingredients-list">
+                        <h3 style="color: var(--accent-color); margin-bottom: 20px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+                            📝 Combined Ingredients
+                        </h3>
+                        <div id="ingredients-container">
+                            <!-- Combined ingredients will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-shopping-list" style="display: none; text-align: center; padding: 60px 20px; background: var(--card-bg); border-radius: var(--radius-lg);">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🛒</div>
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Your Shopping List is Empty!</h3>
+                    <p style="color: var(--secondary-text); margin-bottom: 30px;">
+                        🧌 Goblins need ingredients to GOBBLE! Add recipes to your shopping list from the recipe generator or recipe pages.
+                    </p>
+                    <a href="index.html#recipe-generator" class="btn btn-primary btn-large">Start Adding Recipes 🧌</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Protein Goblin</h4>
+                    <p>Transforming protein powder into delicious meals, one recipe at a time!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#featured-recipes">Recipes</a></li>
+                        <li><a href="what-can-i-make.html">What Can I Make?</a></li>
+                        <li><a href="shopping-list.html">Shopping List</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Protein Goblin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="recipe-generator.js"></script>
+    <script>
+        // Load and display shopping list
+        function loadShoppingListDisplay() {
+            const saved = localStorage.getItem('proteinGoblinShoppingList');
+            const shoppingList = saved ? JSON.parse(saved) : [];
+            
+            if (shoppingList.length === 0) {
+                document.getElementById('empty-shopping-list').style.display = 'block';
+                document.querySelector('.shopping-list-container').style.display = 'none';
+                return;
+            }
+            
+            document.getElementById('empty-shopping-list').style.display = 'none';
+            document.querySelector('.shopping-list-container').style.display = 'block';
+            
+            // Display recipes in list
+            const recipesDiv = document.getElementById('recipes-in-list');
+            recipesDiv.innerHTML = `
+                <h4 style="color: var(--accent-color); margin-bottom: 15px;">📚 Recipes in Your List:</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    ${shoppingList.map((item, index) => `
+                        <span style="background: var(--accent-bg); padding: 8px 15px; border-radius: var(--radius-md); color: var(--accent-color); font-weight: 600;">
+                            ${item.name} (${item.servings} servings)
+                            <button onclick="removeRecipeFromList(${index})" style="margin-left: 8px; background: transparent; border: none; color: var(--accent-color); cursor: pointer; font-size: 1.2rem;" class="no-print">×</button>
+                        </span>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Combine all ingredients
+            const allIngredients = [];
+            shoppingList.forEach(item => {
+                item.ingredients.forEach(ingredient => {
+                    // Parse ingredient (e.g., "2 cups flour" -> {amount: "2", unit: "cups", item: "flour"})
+                    const match = ingredient.match(/^([\d\.\s\/]+)?\s*([a-z]+)?\s*(.+)$/i);
+                    if (match) {
+                        const amount = match[1]?.trim() || '';
+                        const unit = match[2]?.trim() || '';
+                        const item = match[3]?.trim() || '';
+                        
+                        // Find if ingredient already exists
+                        const existingIndex = allIngredients.findIndex(ing => 
+                            ing.item.toLowerCase() === item.toLowerCase() && ing.unit.toLowerCase() === unit.toLowerCase()
+                        );
+                        
+                        if (existingIndex !== -1) {
+                            // Combine amounts (simplified - in real app would parse fractions)
+                            const existingAmount = parseFloat(allIngredients[existingIndex].amount) || 0;
+                            const newAmount = parseFloat(amount) || 0;
+                            allIngredients[existingIndex].amount = (existingAmount + newAmount).toString();
+                        } else {
+                            allIngredients.push({ amount, unit, item });
+                        }
+                    } else {
+                        // If parsing fails, just add the whole ingredient
+                        allIngredients.push({ amount: '', unit: '', item: ingredient });
+                    }
+                });
+            });
+            
+            // Display combined ingredients
+            const ingredientsContainer = document.getElementById('ingredients-container');
+            ingredientsContainer.innerHTML = allIngredients.map((ing, index) => {
+                const display = [ing.amount, ing.unit, ing.item].filter(Boolean).join(' ');
+                return `
+                    <div class="ingredient-item" data-index="${index}">
+                        <span class="check-item" onclick="toggleIngredientCheck(${index})">☐</span>
+                        <span class="ingredient-text">${display}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            // Update summary
+            document.getElementById('list-summary').textContent = 
+                `🧌 ${shoppingList.length} recipe(s) • ${allIngredients.length} unique ingredients`;
+        }
+        
+        function toggleIngredientCheck(index) {
+            const item = document.querySelector(`.ingredient-item[data-index="${index}"]`);
+            if (item) {
+                const isChecked = item.classList.contains('checked');
+                const checkIcon = item.querySelector('.check-item');
+                
+                if (isChecked) {
+                    item.classList.remove('checked');
+                    checkIcon.textContent = '☐';
+                } else {
+                    item.classList.add('checked');
+                    checkIcon.textContent = '☑';
+                }
+                
+                // Save checked state
+                saveCheckedIngredients();
+            }
+        }
+        
+        function saveCheckedIngredients() {
+            const checked = [];
+            document.querySelectorAll('.ingredient-item.checked').forEach(item => {
+                checked.push(item.querySelector('.ingredient-text').textContent);
+            });
+            localStorage.setItem('checkedShoppingItems', JSON.stringify(checked));
+        }
+        
+        function loadCheckedIngredients() {
+            const checked = JSON.parse(localStorage.getItem('checkedShoppingItems') || '[]');
+            document.querySelectorAll('.ingredient-item').forEach(item => {
+                const text = item.querySelector('.ingredient-text').textContent;
+                if (checked.includes(text)) {
+                    item.classList.add('checked');
+                    item.querySelector('.check-item').textContent = '☑';
+                }
+            });
+        }
+        
+        function removeRecipeFromList(index) {
+            const saved = localStorage.getItem('proteinGoblinShoppingList');
+            const shoppingList = saved ? JSON.parse(saved) : [];
+            shoppingList.splice(index, 1);
+            localStorage.setItem('proteinGoblinShoppingList', JSON.stringify(shoppingList));
+            loadShoppingListDisplay();
+            if (typeof updateShoppingListBadge === 'function') {
+                updateShoppingListBadge();
+            }
+        }
+        
+        function clearShoppingList() {
+            if (confirm('🧌 Goblin asks: Are you sure you want to clear your entire shopping list? This cannot be undone!')) {
+                localStorage.removeItem('proteinGoblinShoppingList');
+                localStorage.removeItem('checkedShoppingItems');
+                loadShoppingListDisplay();
+                if (typeof updateShoppingListBadge === 'function') {
+                    updateShoppingListBadge();
+                }
+            }
+        }
+        
+        function exportShoppingList() {
+            const ingredients = Array.from(document.querySelectorAll('.ingredient-text'))
+                .map(el => el.textContent.trim())
+                .filter(Boolean);
+            
+            const text = `🧌 Protein Goblin Shopping List\n\n` +
+                `Generated: ${new Date().toLocaleDateString()}\n\n` +
+                `INGREDIENTS:\n${ingredients.map((ing, i) => `${i + 1}. ${ing}`).join('\n')}\n\n` +
+                `Happy shopping! 💪🧌\n` +
+                `Visit: proteingoblin.com`;
+            
+            // Create download
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `protein-goblin-shopping-list-${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showAlert('🛒 Shopping list exported! 🧌', 'success');
+        }
+        
+        // Load list on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadShoppingListDisplay();
+            setTimeout(loadCheckedIngredients, 100);
+        });
+        
+        function showAlert(message, type) {
+            // Simple alert function - can be enhanced
+            const alertDiv = document.createElement('div');
+            alertDiv.style.cssText = 'position: fixed; top: 20px; right: 20px; background: var(--accent-color); color: var(--primary-bg); padding: 15px 20px; border-radius: var(--radius-md); z-index: 10000; box-shadow: var(--shadow-lg);';
+            alertDiv.textContent = message;
+            document.body.appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
+

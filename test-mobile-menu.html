@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test</title>
+    <style>
+        @media (max-width: 768px) {
+            .nav-menu { display: none !important; position: absolute; top: 100%; left: 0; right: 0; background: #1e2e1e; padding: 1rem; }
+            .nav-menu.active { display: flex !important; }
+            .mobile-menu-btn { display: block !important; background: #22c55e; color: white; border: none; padding: 10px; font-size: 24px; cursor: pointer; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="mobile-menu-btn" onclick="toggle()">☰</button>
+        <div id="nav-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        function toggle() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+            console.log('Toggled!', menu.classList.contains('active'));
+        }
+    </script>
+</body>
+</html>

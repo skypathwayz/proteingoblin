@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics (Single Load - Optimized) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7RLSLNCKE"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,25 +9,9 @@
       gtag('js', new Date());
       gtag('config', 'G-N7RLSLNCKE');
     </script>
-            <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7RLSLNCKE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N7RLSLNCKE');
-    </script>
-        <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5918874419248577"
+    <!-- Google AdSense (Deferred Load) -->
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5918874419248577"
      crossorigin="anonymous"></script>
-        <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7RLSLNCKE"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-N7RLSLNCKE');
-    </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,8 +73,12 @@
         <div class="nav-container">
                 <div class="nav-brand">
                     <a href="/" class="logo">
-                        <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot" class="logo-mascot" loading="lazy">
-                        <span class="logo-text">Protein Goblin</span>
+                        <img src="images-backup/BigGob.svg" alt="Big Goblin Mascot" class="logo-mascot logo-mascot-big" loading="lazy">
+                        <span class="logo-text">
+                            <span class="logo-text-word">Protein</span>
+                            <img src="images-backup/SmallGob.svg" alt="Small Goblin Mascot" class="logo-mascot logo-mascot-small" loading="lazy">
+                            <span class="logo-text-word">Goblin</span>
+                        </span>
                         <span class="logo-subtitle">Gobbling Up Gains!</span>
                     </a>
                 </div>
@@ -112,13 +100,17 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#cookbook-section" class="nav-link">Cookbook <span class="dropdown-arrow">▼</span></a>
+                            <a href="cookbook.html" class="nav-link">Cookbook <span class="dropdown-arrow">▼</span></a>
                             <div class="dropdown-menu">
-                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('beginner'); return false;">Beginner Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('advanced'); return false;">Advanced Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('vegan'); return false;">Vegan Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('keto'); return false;">Keto Recipes</a>
-                                <a href="#cookbook-section" class="dropdown-link" onclick="filterCookbook('meal-prep'); return false;">Meal Prep</a>
+                                <a href="cookbook.html#breakfast" class="dropdown-link">🥞 Breakfast Recipes</a>
+                                <a href="cookbook.html#desserts" class="dropdown-link">🍰 Dessert Recipes</a>
+                                <a href="cookbook.html#snacks" class="dropdown-link">🍪 Snack Recipes</a>
+                                <a href="cookbook.html#savory" class="dropdown-link">🥗 Savory Recipes</a>
+                                <a href="cookbook.html#baked" class="dropdown-link">🍞 Baked Goods</a>
+                                <a href="cookbook.html#frozen" class="dropdown-link">🍦 Frozen Treats</a>
+                                <a href="beginner-recipes.html" class="dropdown-link">📖 Beginner Guide</a>
+                                <a href="advanced-recipes.html" class="dropdown-link">👨‍🍳 Advanced Guide</a>
+                                <a href="vegan-recipes.html" class="dropdown-link">🌱 Vegan Guide</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -129,6 +121,12 @@
                         </li>
                         <li class="nav-item">
                             <a href="macro-calculator.html" class="nav-link">Macro Calculator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="what-can-i-make.html" class="nav-link">What Can I Make?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="shopping-list.html" class="nav-link" onclick="openShoppingList(); return false;">🛒 Shopping List</a>
                         </li>
                         <li class="nav-item">
                             <a href="about.html" class="nav-link">About</a>
@@ -142,7 +140,7 @@
                         <button class="search-btn" id="search-btn">🔍</button>
     </div>
                     <div id="google_translate_element" class="translate-widget" aria-label="Translate"></div>
-                    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Toggle navigation menu">MENU</button>
                 </div>
             </div>
         </nav>
@@ -156,10 +154,22 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-mascot-container">
-                    <img src="images-backup/mascot.svg" alt="Protein Goblin Mascot" class="hero-mascot" loading="lazy">
+                    <img src="images-backup/BigGob.svg" alt="Big Goblin Mascot" class="hero-mascot hero-mascot-big" loading="lazy">
+                    <img src="images-backup/SmallGob.svg" alt="Small Goblin Mascot" class="hero-mascot hero-mascot-small" loading="lazy">
                 </div>
                 <h1 class="hero-title">
-                    <span class="hero-title-main">Protein Goblin - Gobbling Up Gains!</span>
+                    <span class="hero-title-main">
+                        <span class="title-with-mascot">
+                            <img src="images-backup/BigGob.svg" alt="Big Goblin" class="title-mascot-big" loading="lazy">
+                            Protein
+                        </span>
+                        <span class="title-with-mascot">
+                            Goblin
+                            <img src="images-backup/SmallGob.svg" alt="Small Goblin" class="title-mascot-small" loading="lazy">
+                        </span>
+                        <span class="hero-title-dash"> - </span>
+                        <span class="hero-title-tagline">Gobbling Up Gains!</span>
+                    </span>
                     <span class="hero-title-sub">Transform your protein powder into delicious meals that actually taste amazing!</span>
                 </h1>
                 <p class="hero-description">
@@ -204,8 +214,22 @@
                             <span>👥 2 servings</span>
                             <span>🔥 320 cal</span>
                         </div>
-                        <a href="#recipe-generator" class="btn btn-primary">Get Recipe</a>
+                        <button class="btn btn-primary" onclick="viewFullRecipe('Chocolate Protein Pancakes')">Get Recipe</button>
                     </div>
+                </div>
+
+                <!-- Daily Goblin Tip Widget -->
+                <div class="goblin-tip-widget" style="background: var(--gradient-slime); padding: 20px; border-radius: var(--radius-lg); margin-bottom: 30px; border: 2px solid var(--accent-color);">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 2rem;">🧌</span>
+                        <h4 style="margin: 0; color: var(--primary-bg);">Daily Goblin Protein Tip</h4>
+                    </div>
+                    <p id="daily-goblin-tip" style="margin: 0; color: var(--primary-bg); font-weight: 600; font-size: 1rem; line-height: 1.4;">
+                        Loading goblin wisdom...
+                    </p>
+                    <button onclick="showNewGoblinTip()" style="margin-top: 10px; padding: 8px 16px; background: var(--primary-bg); color: var(--accent-color); border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; font-size: 0.875rem;">
+                        🎲 New Tip
+                    </button>
                 </div>
 
                 <!-- Quick Stats -->
@@ -250,12 +274,23 @@
         </div>
     </section>
 
+    <!-- Recipe Modal/Overlay -->
+    <div id="recipe-modal" class="recipe-modal" style="display: none;">
+        <div class="recipe-modal-overlay" onclick="closeRecipeModal()"></div>
+        <div class="recipe-modal-content">
+            <button class="recipe-modal-close" onclick="closeRecipeModal()" aria-label="Close recipe">×</button>
+            <div id="recipe-modal-body">
+                <!-- Recipe content will be populated here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Recipe Generator -->
     <section id="recipe-generator" class="recipe-generator">
         <div class="container">
 <div class="section-header">
                 <h2 class="section-title">Create Your Perfect Recipe</h2>
-                <p class="section-subtitle">Tell us your preferences and we'll generate a custom recipe just for you</p>
+                <p class="section-subtitle">Tell us your preferences and we'll generate a custom recipe just for you! 🧌 The goblins are hungry!</p>
             </div>
             
             <div class="generator-card">
@@ -502,11 +537,11 @@
 
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary btn-large" id="generate-btn">
-                            <span class="btn-text">Generate My Recipe</span>
+                            <span class="btn-text">Generate My Recipe 🧌💪</span>
                             <span class="btn-icon">🚀</span>
                         </button>
                         <button type="button" class="btn btn-secondary" id="try-another-btn" style="display: none;">
-                            <span class="btn-text">Try Another Recipe</span>
+                            <span class="btn-text">Try Another Recipe 🧌</span>
                             <span class="btn-icon">🔄</span>
                         </button>
                     </div>
@@ -524,7 +559,7 @@
         <div class="container">
 <div class="section-header">
                 <h2 class="section-title">Trending Recipe Ideas</h2>
-                <p class="section-subtitle">Discover what's popular in our community</p>
+                <p class="section-subtitle">Discover what's popular in our community! 💪 Goblins' top picks!</p>
             </div>
             
             <div class="recipe-categories">
@@ -631,8 +666,8 @@
                             </ul>
                         </div>
                         <div class="recipe-actions">
-                            <a href="#" class="btn btn-primary">View Full Recipe</a>
-                            <button class="btn btn-secondary">Save</button>
+                            <button class="btn btn-primary" onclick="viewFullRecipe('Chocolate Protein Pancakes')">View Full Recipe</button>
+                            <button class="btn btn-secondary" onclick="saveRecipe('Chocolate Protein Pancakes')">Save</button>
                             <div class="social-share-buttons">
                                 <button class="share-btn" data-platform="facebook" aria-label="Share on Facebook">Facebook</button>
                                 <button class="share-btn" data-platform="twitter" aria-label="Share on Twitter">Twitter</button>
@@ -755,7 +790,7 @@
     </section>
 
     <!-- Cookbook Section -->
-    <section class="cookbook-section">
+    <section id="cookbook-section" class="cookbook-section">
         <div class="container">
 <div class="section-header">
             <h2 class="section-title">📚 Complete Protein Cookbook</h2>
@@ -851,172 +886,723 @@
         </div>
     </section>
 
-    <!-- Protein Products Showcase -->
+    <!-- Protein Shop Section -->
     <section id="products-section" class="products-section">
         <div class="container">
-<div class="section-header">
-            <h2 class="section-title">🍽️ Popular Protein Products for Recipes</h2>
-                <p class="section-subtitle">Trusted brands that work perfectly in our recipes</p>
+            <div class="section-header">
+                <h2 class="section-title">🛒 Protein Shop - Best Powders & Products</h2>
+                <p class="section-subtitle">Hand-picked top-rated proteins that make our recipes taste incredible! 💪 Best deals, best flavors, best results!</p>
             </div>
-            
-            <div class="product-categories">
-                <div class="product-category">
-                    <div class="category-header">
-                        <h3 class="category-title">🥤 Protein Powders</h3>
-                        <span class="category-count">12+ Brands</span>
+
+            <!-- Shop Filter Tabs -->
+            <div class="shop-filters">
+                <button class="shop-filter-btn active" data-filter="all">All Products</button>
+                <button class="shop-filter-btn" data-filter="best-deals">🔥 Best Deals</button>
+                <button class="shop-filter-btn" data-filter="best-tasting">⭐ Best Tasting</button>
+                <button class="shop-filter-btn" data-filter="best-baking">🍰 Best for Baking</button>
+                <button class="shop-filter-btn" data-filter="plant-based">🌱 Plant-Based</button>
+                <button class="shop-filter-btn" data-filter="whey-isolate">💪 Whey Isolate</button>
+                <button class="shop-filter-btn" data-filter="protein-bars">🍫 Protein Bars</button>
+                <button class="shop-filter-btn" data-filter="flavors">🍰 Popular Flavors</button>
+            </div>
+
+            <!-- Best Deals Banner -->
+            <div class="deals-banner" style="background: var(--gradient-primary); padding: 20px; border-radius: var(--radius-lg); margin: 30px 0; text-align: center;">
+                <h3 style="color: var(--primary-bg); font-size: 1.5rem; margin-bottom: 10px;">⚡ Limited Time: Save up to 40% on Top Protein Brands!</h3>
+                <p style="color: var(--primary-bg); opacity: 0.9;">Check individual products for current deals and discount codes</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="shop-products-grid" id="shop-products-grid">
+                <!-- BEST DEALS - Top Section -->
+                <div class="product-card" data-category="best-deals best-tasting">
+                    <div class="product-badge best-deal">🔥 Best Deal</div>
+                    <div class="product-badge top-rated">⭐ Top Rated</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Optimum Nutrition Gold Standard 100% Whey</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Best Overall</span>
+                            <span class="product-tag">Best Value</span>
+                        </div>
                     </div>
-                    <div class="product-list">
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Optimum Nutrition Gold Standard</h4>
-                                <p class="product-specs">24g protein • Whey • Great for baking</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.7/5 (2,500+ reviews)</span>
-                        </div>
-                        </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-21" class="btn btn-small" target="_blank" rel="noopener noreferrer">Shop Now</a>
-                        </div>
-                        </div>
-                        
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Dymatize ISO100</h4>
-                                <p class="product-specs">25g protein • Fast-absorbing • Perfect for smoothies</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.6/5 (1,800+ reviews)</span>
-                        </div>
+                    <div class="product-specs">
+                        <p><strong>24g protein per serving</strong> • Whey blend • 30+ flavors</p>
+                        <p class="product-highlight">✅ Perfect for baking, smoothies, pancakes</p>
                     </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-213" class="btn btn-small" target="_blank" rel="noopener noreferrer">Shop Now</a>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (65,000+ reviews)</span>
                     </div>
-                </div>
-                
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Vega Sport</h4>
-                                <p class="product-specs">30g protein • Plant-based • Ideal for vegan recipes</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.5/5 (1,200+ reviews)</span>
-                        </div>
-                        </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-214" class="btn btn-small" target="_blank" rel="noopener noreferrer">Shop Now</a>
-                        </div>
-                        </div>
+                    <div class="product-deal">
+                        <span class="deal-badge">Save up to $20</span>
+                        <span class="deal-text">Amazon Prime Deal Available</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=optimum+nutrition+gold+standard+whey+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now - Best Price 💰</a>
                     </div>
                 </div>
-                
-                <div class="product-category">
-                    <div class="category-header">
-                        <h3 class="category-title">🍫 Protein Bars</h3>
-                        <span class="category-count">8+ Brands</span>
+
+                <div class="product-card" data-category="best-deals whey-isolate">
+                    <div class="product-badge best-deal">🔥 Best Deal</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Dymatize ISO100 Hydrolyzed Whey Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Fast Absorbing</span>
+                            <span class="product-tag">Zero Sugar</span>
+                        </div>
                     </div>
-                    <div class="product-list">
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Quest Bars</h4>
-                                <p class="product-specs">20g protein • Great for energy balls</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.4/5 (3,200+ reviews)</span>
-                        </div>
-                        </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-215" class="btn btn-small" target="_blank">Shop Now</a>
-                        </div>
-                        </div>
-                        
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">ONE Protein Bars</h4>
-                                <p class="product-specs">20g protein • Perfect for baking</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.3/5 (1,900+ reviews)</span>
-                                </div>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-216" class="btn btn-small" target="_blank">Shop Now</a>
-                            </div>
-                        </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Hydrolyzed isolate • 0g sugar</p>
+                        <p class="product-highlight">✅ Best for smoothies, ice cream recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.6/5</strong> (18,000+ reviews)</span>
+                    </div>
+                    <div class="product-deal">
+                        <span class="deal-badge">30% Off</span>
+                        <span class="deal-text">Limited time offer</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=dymatize+iso100+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 💰</a>
                     </div>
                 </div>
-                
-                <div class="product-category">
-                    <div class="category-header">
-                        <h3 class="category-title">🥣 Protein Yogurts</h3>
-                        <span class="category-count">6+ Brands</span>
-                    </div>
-                    <div class="product-list">
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Oikos Triple Zero</h4>
-                                <p class="product-specs">15g protein • Greek yogurt • 0g sugar</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.2/5 (1,500+ reviews)</span>
-                        </div>
-                        </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-217" class="btn btn-small" target="_blank">Shop Now</a>
-                        </div>
-                        </div>
-                        
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Chobani Complete</h4>
-                                <p class="product-specs">20g protein • High protein • Great for parfaits</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.1/5 (1,100+ reviews)</span>
+
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-badge top-rated">⭐ Best Tasting</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Ghost Whey Protein Powder</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Amazing Flavors</span>
+                            <span class="product-tag">Premium Quality</span>
                         </div>
                     </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-218" class="btn btn-small" target="_blank">Shop Now</a>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Whey blend • Unique flavors</p>
+                        <p class="product-highlight">✅ Fruity Cereal, Cinnabon, Oreo flavors available</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.8/5</strong> (12,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=ghost+whey+protein+powder&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍪</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plant-based best-baking">
+                    <div class="product-badge top-rated">🌱 Best Plant-Based</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Vega Sport Premium Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Plant-Based</span>
+                            <span class="product-tag">30g Protein</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>30g protein per serving</strong> • Plant-based blend • Vegan</p>
+                        <p class="product-highlight">✅ Great for vegan recipes, smoothies, baking</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.5/5</strong> (8,500+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=vega+sport+protein+powder&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🌱</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-baking whey-isolate">
+                    <div class="product-badge top-rated">🍰 Best for Baking</div>
+                    <div class="product-header">
+                        <h3 class="product-name">PEScience Select Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Baking King</span>
+                            <span class="product-tag">Multi-Purpose</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>27g protein per serving</strong> • Casein + whey blend</p>
+                        <p class="product-highlight">✅ Makes recipes incredibly fluffy and moist!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (6,200+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=pescience+select+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🎂</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-deals whey-isolate">
+                    <div class="product-badge best-deal">🔥 Great Value</div>
+                    <div class="product-header">
+                        <h3 class="product-name">MyProtein Impact Whey Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Budget Friendly</span>
+                            <span class="product-tag">50+ Flavors</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>21g protein per serving</strong> • Whey concentrate • Huge variety</p>
+                        <p class="product-highlight">✅ Best price per gram, great for bulk cooking</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.4/5</strong> (25,000+ reviews)</span>
+                    </div>
+                    <div class="product-deal">
+                        <span class="deal-badge">Up to 50% Off</span>
+                        <span class="deal-text">Flash sales frequent</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=myprotein+impact+whey&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 💰</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting whey-isolate">
+                    <div class="product-header">
+                        <h3 class="product-name">MuscleTech NitroTech Whey Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Muscle Building</span>
+                            <span class="product-tag">Great Taste</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>30g protein per serving</strong> • Whey isolate • 6g BCAAs</p>
+                        <p class="product-highlight">✅ Excellent texture for recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.5/5</strong> (14,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=muscletech+nitrotech+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 💪</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="whey-isolate best-baking">
+                    <div class="product-header">
+                        <h3 class="product-name">Isopure Zero Carb 100% Whey Isolate</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Zero Carb</span>
+                            <span class="product-tag">Keto Friendly</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Pure isolate • 0g carbs</p>
+                        <p class="product-highlight">✅ Perfect for low-carb recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.6/5</strong> (11,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=isopure+zero+carb+whey+isolate&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🥑</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plant-based best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">Orgain Organic Plant-Based Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Organic</span>
+                            <span class="product-tag">Clean Label</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>21g protein per serving</strong> • Organic plant blend • No artificial</p>
+                        <p class="product-highlight">✅ Clean ingredients, great for health-conscious cooks</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.4/5</strong> (32,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=orgain+organic+plant+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🌿</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-deals best-tasting">
+                    <div class="product-badge best-deal">🔥 Best Deal</div>
+                    <div class="product-header">
+                        <h3 class="product-name">BSN Syntha-6 Protein Powder</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Slow Release</span>
+                            <span class="product-tag">Creamy Texture</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>22g protein per serving</strong> • Multi-source blend • Ultra creamy</p>
+                        <p class="product-highlight">✅ Makes ice cream recipes incredibly smooth!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.5/5</strong> (9,800+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=bsn+syntha+6+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍨</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="whey-isolate best-baking">
+                    <div class="product-header">
+                        <h3 class="product-name">Kaged Muscle Clean Meal Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Premium</span>
+                            <span class="product-tag">Clean Label</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>26g protein per serving</strong> • Whey + casein • No artificial</p>
+                        <p class="product-highlight">✅ Premium quality, great for all recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.6/5</strong> (3,500+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=kaged+muscle+clean+meal&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now ⭐</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plant-based">
+                    <div class="product-header">
+                        <h3 class="product-name">Garden of Life Raw Organic Protein</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Raw Organic</span>
+                            <span class="product-tag">Complete</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>22g protein per serving</strong> • Raw plant blend • Probiotics</p>
+                        <p class="product-highlight">✅ Whole food nutrition, great texture</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.3/5</strong> (7,200+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=garden+of+life+raw+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🌱</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-deals whey-isolate">
+                    <div class="product-header">
+                        <h3 class="product-name">Premier Protein Powder</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">30g Protein</span>
+                            <span class="product-tag">Great Value</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>30g protein per serving</strong> • Whey blend • Ready-to-drink option</p>
+                        <p class="product-highlight">✅ High protein, budget-friendly</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.4/5</strong> (15,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=premier+protein+powder&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 💪</a>
+                    </div>
+                </div>
+
+                <!-- POPULAR FLAVORS SECTION -->
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-badge top-rated">⭐ Trending Flavor</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Optimum Nutrition - Chocolate Fudge Brownie</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Classic Flavor</span>
+                            <span class="product-tag">Best Seller</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>24g protein per serving</strong> • Rich chocolate flavor • Perfect for brownies</p>
+                        <p class="product-highlight">✅ Best-selling flavor! Great for baking desserts</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.8/5</strong> (45,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=optimum+nutrition+chocolate+fudge+brownie+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍫</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-badge top-rated">⭐ Trending Flavor</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Dymatize ISO100 - Fruity Pebbles</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Unique Flavor</span>
+                            <span class="product-tag">Cereal Taste</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Fruity cereal flavor • Zero sugar</p>
+                        <p class="product-highlight">✅ Tastes like your favorite cereal! Perfect for pancakes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (12,500+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=dymatize+iso100+fruity+pebbles&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🥣</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-badge top-rated">⭐ Best Tasting</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Ghost Whey - Fruity Cereal Milk</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Award Winning</span>
+                            <span class="product-tag">Limited Edition</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Fruity cereal milk flavor • Premium taste</p>
+                        <p class="product-highlight">✅ Best-tasting protein! Amazing in smoothie bowls</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.9/5</strong> (8,200+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=ghost+whey+fruity+cereal+milk&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🥛</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-header">
+                        <h3 class="product-name">Optimum Nutrition - Cookies & Cream</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Popular Flavor</span>
+                            <span class="product-tag">Dessert-Like</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>24g protein per serving</strong> • Cookies & cream flavor • Classic choice</p>
+                        <p class="product-highlight">✅ Perfect for ice cream recipes and milkshakes!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (28,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=optimum+nutrition+cookies+cream+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍪</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-header">
+                        <h3 class="product-name">Dymatize ISO100 - Birthday Cake</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Celebration Flavor</span>
+                            <span class="product-tag">Sweet Treat</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Birthday cake flavor • Zero sugar</p>
+                        <p class="product-highlight">✅ Perfect for birthday cake recipes and mug cakes!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.6/5</strong> (9,800+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=dymatize+iso100+birthday+cake&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🎂</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting best-baking flavors">
+                    <div class="product-header">
+                        <h3 class="product-name">Ghost Whey - Cinnabon</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Cinnamon Roll</span>
+                            <span class="product-tag">Dessert Flavor</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Cinnamon roll flavor • Indulgent taste</p>
+                        <p class="product-highlight">✅ Amazing for cinnamon roll protein pancakes!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.8/5</strong> (6,500+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=ghost+whey+cinnabon&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🥮</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">Optimum Nutrition - Salted Caramel</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Sweet & Salty</span>
+                            <span class="product-tag">Gourmet</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>24g protein per serving</strong> • Salted caramel flavor • Sophisticated taste</p>
+                        <p class="product-highlight">✅ Perfect for caramel-flavored recipes and coffee drinks!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.6/5</strong> (15,200+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=optimum+nutrition+salted+caramel+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍮</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">Dymatize ISO100 - Vanilla</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Versatile</span>
+                            <span class="product-tag">All-Purpose</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Pure vanilla flavor • Versatile for any recipe</p>
+                        <p class="product-highlight">✅ Perfect base flavor for customizing with extracts!</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (22,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=dymatize+iso100+vanilla&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍦</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">Ghost Whey - Oreo</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Cookie Flavor</span>
+                            <span class="product-tag">Popular</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Authentic Oreo flavor • Real cookie pieces</p>
+                        <p class="product-highlight">✅ Tastes just like Oreos! Perfect for cookie recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.8/5</strong> (7,800+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=ghost+whey+oreo+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍪</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">Optimum Nutrition - Double Rich Chocolate</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Classic</span>
+                            <span class="product-tag">Chocolate Lover</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>24g protein per serving</strong> • Extra chocolatey • Intense flavor</p>
+                        <p class="product-highlight">✅ Double the chocolate! Perfect for chocolate recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (35,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=optimum+nutrition+double+rich+chocolate&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍫</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">MyProtein - Salted Caramel</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Budget Friendly</span>
+                            <span class="product-tag">Great Value</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>21g protein per serving</strong> • Salted caramel flavor • Best price</p>
+                        <p class="product-highlight">✅ Affordable gourmet flavor! Great for bulk cooking</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.5/5</strong> (18,500+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=myprotein+salted+caramel+impact+whey&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 💰</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="best-tasting">
+                    <div class="product-header">
+                        <h3 class="product-name">Dymatize ISO100 - Gourmet Vanilla</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">Premium</span>
+                            <span class="product-tag">Smooth</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>25g protein per serving</strong> • Gourmet vanilla • Ultra smooth</p>
+                        <p class="product-highlight">✅ Premium vanilla taste! Perfect for vanilla recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.7/5</strong> (14,200+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=dymatize+iso100+gourmet+vanilla&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now ✨</a>
+                    </div>
+                </div>
+
+                <!-- PROTEIN BARS SECTION -->
+                <div class="product-card product-bar" data-category="protein-bars best-deals">
+                    <div class="product-badge best-deal">🔥 Best Deal</div>
+                    <div class="product-header">
+                        <h3 class="product-name">Quest Nutrition Protein Bars (12-pack)</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">20g Protein</span>
+                            <span class="product-tag">Low Net Carbs</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>20g protein per bar</strong> • 4-5g net carbs • 15+ flavors</p>
+                        <p class="product-highlight">✅ Perfect for energy balls, cookie recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.4/5</strong> (45,000+ reviews)</span>
+                    </div>
+                    <div class="product-deal">
+                        <span class="deal-badge">Save $10</span>
+                        <span class="deal-text">Multi-pack discount</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=quest+nutrition+protein+bars&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍫</a>
+                    </div>
+                </div>
+
+                <div class="product-card product-bar" data-category="protein-bars best-tasting">
+                    <div class="product-badge top-rated">⭐ Top Rated</div>
+                    <div class="product-header">
+                        <h3 class="product-name">ONE Protein Bars (12-pack)</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">20g Protein</span>
+                            <span class="product-tag">Great Taste</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>20g protein per bar</strong> • Cookie dough, birthday cake flavors</p>
+                        <p class="product-highlight">✅ Amazing in baked recipes</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.5/5</strong> (28,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=one+protein+bars&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🎂</a>
+                    </div>
+                </div>
+
+                <div class="product-card product-bar" data-category="protein-bars">
+                    <div class="product-header">
+                        <h3 class="product-name">RXBAR Protein Bars (12-pack)</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">12g Protein</span>
+                            <span class="product-tag">Whole Food</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>12g protein per bar</strong> • Dates, nuts, egg whites • No BS ingredients</p>
+                        <p class="product-highlight">✅ Real ingredients, great for snacks</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.3/5</strong> (22,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=rxbar+protein+bars&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🌰</a>
+                    </div>
+                </div>
+
+                <div class="product-card product-bar" data-category="protein-bars plant-based">
+                    <div class="product-header">
+                        <h3 class="product-name">No Cow Protein Bars (12-pack)</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">20g Protein</span>
+                            <span class="product-tag">Vegan</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>20g protein per bar</strong> • Plant-based • Low sugar • 1g net carb</p>
+                        <p class="product-highlight">✅ Vegan-friendly, keto option</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.2/5</strong> (12,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=nocow+protein+bars&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🌱</a>
+                    </div>
+                </div>
+
+                <div class="product-card product-bar" data-category="protein-bars best-deals">
+                    <div class="product-header">
+                        <h3 class="product-name">Built Bar (12-pack)</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">17g Protein</span>
+                            <span class="product-tag">Low Calorie</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>17g protein per bar</strong> • 130 calories • Soft texture</p>
+                        <p class="product-highlight">✅ Unique soft texture, great flavors</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.4/5</strong> (8,500+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=built+bar+protein&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🍬</a>
+                    </div>
+                </div>
+
+                <div class="product-card product-bar" data-category="protein-bars">
+                    <div class="product-header">
+                        <h3 class="product-name">Clif Builders Protein Bar (12-pack)</h3>
+                        <div class="product-tags">
+                            <span class="product-tag">20g Protein</span>
+                            <span class="product-tag">Plant-Based</span>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <p><strong>20g protein per bar</strong> • Plant-based • Great for hiking/active</p>
+                        <p class="product-highlight">✅ Sustained energy, plant power</p>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text"><strong>4.3/5</strong> (18,000+ reviews)</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://www.amazon.com/s?k=clif+builders+protein+bar&tag=skypathwayz-21" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Shop Now 🏔️</a>
+                    </div>
                 </div>
             </div>
-        </div>
-                </div>
-                
-                <div class="product-category">
-                    <div class="category-header">
-                        <h3 class="category-title">🥣 Protein Cereals</h3>
-                        <span class="category-count">5+ Brands</span>
-                    </div>
-                    <div class="product-list">
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Special K Protein</h4>
-                                <p class="product-specs">10g protein per serving • Great for breakfast bowls</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.0/5 (800+ reviews)</span>
-                                </div>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-219" class="btn btn-small" target="_blank">Shop Now</a>
-                            </div>
-                        </div>
-                        
-                        <div class="product-item">
-                            <div class="product-info">
-                                <h4 class="product-name">Magic Spoon</h4>
-                                <p class="product-specs">12g protein • Keto-friendly • Perfect for energy balls</p>
-                                <div class="product-rating">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">4.3/5 (600+ reviews)</span>
-                </div>
-                </div>
-                            <div class="product-actions">
-                                <a href="https://www.amazon.com/s?k=protein+powder&tag=skypathwayz-210" class="btn btn-small" target="_blank">Shop Now</a>
-                </div>
-                </div>
-                </div>
-                </div>
+
+            <!-- Shop Footer CTA -->
+            <div class="shop-cta" style="text-align: center; margin-top: 50px; padding: 40px; background: var(--gradient-slime); border-radius: var(--radius-lg);">
+                <h3 style="font-size: 2rem; margin-bottom: 15px; color: var(--primary-bg);">💪 Not Sure Which Protein to Choose?</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px; color: var(--primary-bg); opacity: 0.9;">Check out our <a href="blog-index.html" style="color: var(--accent-color); text-decoration: underline;">protein guides and reviews</a> to find the perfect match for your recipes!</p>
+                <a href="blog-index.html" class="btn btn-secondary btn-large">Read Protein Reviews →</a>
             </div>
         </div>
     </section>
@@ -1031,8 +1617,8 @@
             
         <div class="blog-grid">
                 <article class="blog-card featured">
-                    <div class="blog-image">
-                        <img src="blog-protein-timing.jpg" alt="Protein timing guide">
+                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        ⏰
                         <div class="blog-category">Nutrition</div>
                     </div>
                 <div class="blog-content">
@@ -1043,7 +1629,7 @@
                     <h3 class="blog-title">The Complete Guide to Protein Timing for Maximum Results</h3>
                         <p class="blog-excerpt">Discover the science behind when to take protein for optimal muscle growth, recovery, and fat loss. Learn about the anabolic window myth and real strategies that work.</p>
                         <div class="blog-footer">
-                            <a href="/blog/protein-timing-guide" class="blog-link">Read Full Article →</a>
+                            <a href="protein-timing-when-to-take.html" class="blog-link">Read Full Article →</a>
                             <div class="blog-stats">
                                 <span class="blog-views">2.5k views</span>
                                 <span class="blog-likes">❤️ 180</span>
@@ -1053,8 +1639,8 @@
             </article>
 
             <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="blog-whey-vs-vegan.jpg" alt="Whey vs vegan protein">
+                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        ⚖️
                         <div class="blog-category">Comparison</div>
                     </div>
                 <div class="blog-content">
@@ -1065,7 +1651,7 @@
                     <h3 class="blog-title">Whey vs Plant Protein: Which is Better for Your Goals?</h3>
                         <p class="blog-excerpt">Compare the benefits, drawbacks, and nutritional profiles of whey and plant-based protein powders.</p>
                         <div class="blog-footer">
-                            <a href="/blog/whey-vs-plant-protein" class="blog-link">Read More →</a>
+                            <a href="whey-vs-casein-protein.html" class="blog-link">Read More →</a>
                             <div class="blog-stats">
                                 <span class="blog-views">1.8k views</span>
                                 <span class="blog-likes">❤️ 120</span>
@@ -1075,8 +1661,8 @@
             </article>
 
             <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="blog-hidden-ingredients.jpg" alt="Hidden ingredients in protein">
+                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        ⚠️
                         <div class="blog-category">Health</div>
                     </div>
                 <div class="blog-content">
@@ -1087,7 +1673,7 @@
                         <h3 class="blog-title">Hidden Ingredients in Popular Protein Brands</h3>
                         <p class="blog-excerpt">Learn about the sneaky additives and fillers that might be lurking in your favorite protein powder.</p>
                         <div class="blog-footer">
-                            <a href="/blog/hidden-ingredients-protein" class="blog-link">Read More →</a>
+                            <a href="protein-powder-scam-exposed.html" class="blog-link">Read More →</a>
                             <div class="blog-stats">
                                 <span class="blog-views">3.2k views</span>
                                 <span class="blog-likes">❤️ 250</span>
@@ -1097,8 +1683,8 @@
             </article>
 
             <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="blog-protein-myths.jpg" alt="Protein myths">
+                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        📚
                         <div class="blog-category">Education</div>
                     </div>
                 <div class="blog-content">
@@ -1109,7 +1695,7 @@
                         <h3 class="blog-title">5 Protein Myths That Are Holding You Back</h3>
                         <p class="blog-excerpt">Bust common misconceptions about protein consumption and learn the truth about optimal protein intake.</p>
                         <div class="blog-footer">
-                            <a href="/blog/protein-myths-busted" class="blog-link">Read More →</a>
+                            <a href="blog-index.html" class="blog-link">Read More →</a>
                             <div class="blog-stats">
                                 <span class="blog-views">2.1k views</span>
                                 <span class="blog-likes">❤️ 160</span>
@@ -1119,8 +1705,8 @@
             </article>
 
             <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="blog-cooking-tips.jpg" alt="Cooking with protein powder">
+                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        👨‍🍳
                         <div class="blog-category">Cooking</div>
                     </div>
                 <div class="blog-content">
@@ -1131,7 +1717,7 @@
                         <h3 class="blog-title">10 Pro Tips for Cooking with Protein Powder</h3>
                         <p class="blog-excerpt">Master the art of cooking with protein powder. Learn techniques to eliminate the chalky taste and create restaurant-quality dishes.</p>
                         <div class="blog-footer">
-                            <a href="/blog/protein-cooking-tips" class="blog-link">Read More →</a>
+                            <a href="blog-index.html" class="blog-link">Read More →</a>
                             <div class="blog-stats">
                                 <span class="blog-views">1.5k views</span>
                                 <span class="blog-likes">❤️ 95</span>
@@ -1141,8 +1727,8 @@
             </article>
 
             <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="blog-workout-nutrition.jpg" alt="Workout nutrition">
+                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        💪
                         <div class="blog-category">Fitness</div>
                     </div>
                 <div class="blog-content">
@@ -1153,7 +1739,7 @@
                         <h3 class="blog-title">Pre and Post-Workout Protein: What Science Says</h3>
                         <p class="blog-excerpt">Optimize your workout nutrition with evidence-based strategies for pre and post-workout protein consumption.</p>
                         <div class="blog-footer">
-                            <a href="/blog/workout-protein-timing" class="blog-link">Read More →</a>
+                            <a href="blog-index.html" class="blog-link">Read More →</a>
                             <div class="blog-stats">
                                 <span class="blog-views">1.9k views</span>
                                 <span class="blog-likes">❤️ 140</span>
@@ -1382,8 +1968,8 @@
                 <div class="footer-section">
                     <div class="footer-brand">
                     <div class="footer-logo">
-                        <span class="logo-text">Protein Goblin</span>
-                        <span class="logo-subtitle">Gobbling Up Gains!</span>
+                        <span class="footer-logo-text">Protein Goblin</span>
+                        <span class="footer-logo-subtitle">Gobbling Up Gains!</span>
                     </div>
                         <p class="footer-description">The ultimate destination for creative protein recipes. Transform your protein powder into delicious meals that actually taste amazing.</p>
                         <div class="social-links">
@@ -1458,13 +2044,39 @@
     </footer>
 
     <!-- Scripts -->
+    <script>
+        // Mobile menu function - must be defined BEFORE main.js loads
+        window.toggleMobileMenu = function(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const menu = document.getElementById('nav-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            
+            if (menu && btn) {
+                menu.classList.toggle('active');
+                btn.classList.toggle('active');
+                
+                if (menu.classList.contains('active')) {
+                    menu.style.display = 'flex';
+                    menu.style.visibility = 'visible';
+                } else {
+                    menu.style.display = 'none';
+                    menu.style.visibility = 'hidden';
+                }
+            }
+        };
+    </script>
+    <!-- Core Scripts (Load Immediately) -->
     <script src="main.js"></script>
     <script src="recipe-generator.js"></script>
     <script src="search.js"></script>
-    <script src="animations.js"></script>
     
+    <!-- Deferred Scripts (Load After Page Renders) -->
+    <script src="animations.js" defer></script>
     
-    <!-- Language Translate (Google Translate) -->
+    <!-- Language Translate (Google Translate) - Deferred -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             if (window.google && window.google.translate) {
@@ -1477,9 +2089,6 @@
             }
         }
     </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
-    <!-- Google Analytics -->
-    </script>
+    <script defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

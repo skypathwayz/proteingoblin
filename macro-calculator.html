@@ -15,7 +15,6 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
     <title>Macro Calculator - Calculate Your Daily Protein, Carbs & Fats | Protein Goblin</title>
     <meta name="description" content="Free macro calculator to calculate your daily protein, carbs, and fat needs based on your goals. Perfect for muscle building, weight loss, or maintenance.">
@@ -147,7 +146,7 @@
         <div class="container">
             <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center;">📊 Macro Calculator</h1>
             <p style="font-size: 1.25rem; text-align: center; max-width: 800px; margin: 0 auto; color: var(--secondary-text);">
-                Calculate your optimal daily macros (protein, carbs, fats) based on your body, goals, and activity level. Free, accurate, and personalized for muscle building, weight loss, or maintenance.
+                Calculate your optimal daily macros (protein, carbs, fats) based on your body, goals, and activity level. Free, accurate, and personalized for muscle building, weight loss, or maintenance. <strong style="color: var(--accent-color);">🧌 Goblin mode available!</strong>
             </p>
         </div>
     </section>
@@ -158,12 +157,27 @@
             <div class="calculator-container">
                 <form class="calculator-form" id="macro-calculator-form">
                     <div class="form-group">
-                        <label for="gender">Gender</label>
+                        <label for="units">📏 Measurement Units</label>
+                        <select id="units" name="units" required onchange="toggleUnits()">
+                            <option value="metric">Metric (cm, kg) 🇪🇺</option>
+                            <option value="imperial">Imperial (ft/in, lbs) 🇺🇸</option>
+                        </select>
+                        <small style="color: var(--secondary-text); font-size: 0.875rem; margin-top: 4px; display: block;">
+                            Switch between metric and imperial units anytime!
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender 🧌</label>
                         <select id="gender" name="gender" required>
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
+                            <option value="goblin">🧌 Goblin (We gobble everything! No macros needed!)</option>
                         </select>
+                        <small style="color: var(--secondary-text); font-size: 0.875rem; margin-top: 4px; display: block;">
+                            💡 Try "Goblin" mode for hilarious results! 🧌
+                        </small>
                     </div>
 
                     <div class="form-group">
@@ -171,14 +185,34 @@
                         <input type="number" id="age" name="age" min="13" max="100" required placeholder="Enter your age">
                     </div>
 
-                    <div class="form-group">
-                        <label for="height">Height (cm)</label>
-                        <input type="number" id="height" name="height" min="100" max="250" required placeholder="Enter height in cm">
+                    <div class="form-group" id="height-group">
+                        <label for="height" id="height-label">📏 Height (cm)</label>
+                        <div id="height-metric">
+                            <input type="number" id="height" name="height" min="100" max="250" required placeholder="Enter height in cm">
+                        </div>
+                        <div id="height-imperial" style="display: none;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div>
+                                    <label style="font-size: 0.875rem; color: var(--secondary-text); margin-bottom: 4px; display: block;">Feet</label>
+                                    <input type="number" id="height-feet" name="height-feet" min="3" max="8" placeholder="Feet" style="width: 100%;">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.875rem; color: var(--secondary-text); margin-bottom: 4px; display: block;">Inches</label>
+                                    <input type="number" id="height-inches" name="height-inches" min="0" max="11" placeholder="Inches" step="0.5" style="width: 100%;">
+                                </div>
+                            </div>
+                            <small style="color: var(--secondary-text); font-size: 0.75rem; margin-top: 4px; display: block;">
+                                Example: 5 feet 10 inches
+                            </small>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="weight">Weight (kg)</label>
-                        <input type="number" id="weight" name="weight" min="30" max="300" step="0.1" required placeholder="Enter weight in kg">
+                        <label for="weight" id="weight-label">⚖️ Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" min="30" max="300" step="0.1" required placeholder="Enter weight in kg" id="weight-input">
+                        <small id="weight-hint" style="color: var(--secondary-text); font-size: 0.875rem; margin-top: 4px; display: block;">
+                            Unit will change based on measurement system above
+                        </small>
                     </div>
 
                     <div class="form-group">
@@ -204,11 +238,15 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-large" style="margin-top: 20px;">
-                        Calculate My Macros 🚀
+                        Calculate My Macros 💪🧌
                     </button>
                 </form>
 
                 <div class="results-section" id="results">
+                    <div id="goblin-message" style="text-align: center; margin-bottom: 20px; padding: 20px; background: var(--gradient-slime); border-radius: var(--radius-lg); display: none;">
+                        <h2 style="color: var(--primary-bg); margin-bottom: 10px; font-size: 1.5rem;">🧌 GOBLIN MODE ACTIVATED! 🧌</h2>
+                        <p style="color: var(--primary-bg); font-size: 1.1rem; font-weight: 600;" id="goblin-text"></p>
+                    </div>
                     <h2 style="color: var(--accent-color); margin-bottom: 20px; text-align: center;">Your Daily Macros</h2>
                     <div id="calories-display" style="text-align: center; font-size: 1.5rem; margin-bottom: 30px; color: var(--primary-text);">
                         <strong style="color: var(--accent-color);">Total Calories:</strong> <span id="total-calories">0</span> kcal
@@ -268,10 +306,55 @@
 
     <script src="main.js"></script>
     <script>
-        // Force HTTPS redirect
-        if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost') {
-            window.location.replace(window.location.href.replace('http:', 'https:'));
+        // Unit Toggle Function
+        function toggleUnits() {
+            const units = document.getElementById('units').value;
+            const heightMetric = document.getElementById('height-metric');
+            const heightImperial = document.getElementById('height-imperial');
+            const heightLabel = document.getElementById('height-label');
+            const weightLabel = document.getElementById('weight-label');
+            const weightInput = document.getElementById('weight');
+            const weightHint = document.getElementById('weight-hint');
+            
+            if (units === 'imperial') {
+                heightMetric.style.display = 'none';
+                heightImperial.style.display = 'block';
+                heightLabel.innerHTML = '📏 Height (ft/in)';
+                weightLabel.innerHTML = '⚖️ Weight (lbs)';
+                weightInput.placeholder = 'Enter weight in lbs';
+                weightInput.min = '66';
+                weightInput.max = '660';
+                weightHint.textContent = 'Currently using: Imperial (feet/inches, pounds)';
+                // Remove required from metric height, add to imperial
+                const metricHeight = document.getElementById('height');
+                if (metricHeight) metricHeight.removeAttribute('required');
+                const feetInput = document.getElementById('height-feet');
+                const inchesInput = document.getElementById('height-inches');
+                if (feetInput) feetInput.setAttribute('required', '');
+                if (inchesInput) inchesInput.setAttribute('required', '');
+            } else {
+                heightMetric.style.display = 'block';
+                heightImperial.style.display = 'none';
+                heightLabel.innerHTML = '📏 Height (cm)';
+                weightLabel.innerHTML = '⚖️ Weight (kg)';
+                weightInput.placeholder = 'Enter weight in kg';
+                weightInput.min = '30';
+                weightInput.max = '300';
+                weightHint.textContent = 'Currently using: Metric (centimeters, kilograms)';
+                // Remove required from imperial, add to metric
+                const feetInput = document.getElementById('height-feet');
+                const inchesInput = document.getElementById('height-inches');
+                if (feetInput) feetInput.removeAttribute('required');
+                if (inchesInput) inchesInput.removeAttribute('required');
+                const metricHeight = document.getElementById('height');
+                if (metricHeight) metricHeight.setAttribute('required', '');
+            }
         }
+        
+        // Initialize units on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleUnits(); // Set initial state
+        });
 
         // Macro Calculator Logic
         document.getElementById('macro-calculator-form').addEventListener('submit', function(e) {
@@ -279,10 +362,89 @@
             
             const gender = document.getElementById('gender').value;
             const age = parseInt(document.getElementById('age').value);
-            const height = parseInt(document.getElementById('height').value);
-            const weight = parseFloat(document.getElementById('weight').value);
+            const units = document.getElementById('units').value;
+            
+            // Get height and weight, convert if needed
+            let height, weight;
+            if (units === 'imperial') {
+                const feet = parseInt(document.getElementById('height-feet').value) || 0;
+                const inches = parseFloat(document.getElementById('height-inches').value) || 0;
+                if (!feet || feet < 3 || feet > 8) {
+                    alert('Please enter a valid height in feet (3-8 feet)');
+                    return;
+                }
+                if (inches < 0 || inches >= 12) {
+                    alert('Please enter a valid height in inches (0-11.5 inches)');
+                    return;
+                }
+                height = Math.round((feet * 12 + inches) * 2.54); // Convert to cm
+                weight = parseFloat(document.getElementById('weight').value);
+                if (!weight || weight < 66 || weight > 660) {
+                    alert('Please enter a valid weight in lbs (66-660 lbs)');
+                    return;
+                }
+                weight = weight * 0.453592; // Convert to kg
+            } else {
+                height = parseInt(document.getElementById('height').value);
+                if (!height || height < 100 || height > 250) {
+                    alert('Please enter a valid height in cm (100-250 cm)');
+                    return;
+                }
+                weight = parseFloat(document.getElementById('weight').value);
+                if (!weight || weight < 30 || weight > 300) {
+                    alert('Please enter a valid weight in kg (30-300 kg)');
+                    return;
+                }
+            }
+            
             const activity = parseFloat(document.getElementById('activity').value);
             const goal = document.getElementById('goal').value;
+            
+            // Goblin Mode - Special handling! 🧌
+            const goblinMessage = document.getElementById('goblin-message');
+            const goblinText = document.getElementById('goblin-text');
+            
+            if (gender === 'goblin') {
+                goblinMessage.style.display = 'block';
+                const goblinQuotes = [
+                    "🧌 GOBLINS GOBBLE EVERYTHING! No macros needed - just GOBBLE ALL THE PROTEIN! 🧌",
+                    "💪 GOBLIN POWER ACTIVATED! We don't count macros, we just GOBBLE GAINS!",
+                    "🧌 Who needs macros when you're a GOBLIN? Just GOBBLE, GOBBLE, GOBBLE protein!",
+                    "💪 GOBLIN MODE: Eat protein. Lift weights. GOBBLE EVERYTHING. Repeat! 🧌",
+                    "🧌 Macros? Pfft! Goblins GOBBLE whatever protein we can find! MORE GAINS!",
+                    "💪 Real goblins don't track macros - we just GOBBLE and GROW! 🧌"
+                ];
+                const randomQuote = goblinQuotes[Math.floor(Math.random() * goblinQuotes.length)];
+                goblinText.textContent = randomQuote;
+                
+                // Set goblin-friendly "macros" (just for fun reference)
+                document.getElementById('total-calories').textContent = '∞ (Goblins gobble endlessly!)';
+                document.getElementById('protein-value').textContent = 'ALL OF IT 🧌';
+                document.getElementById('protein-calories').textContent = 'Infinite gains!';
+                document.getElementById('protein-percent').textContent = '100% (Protein only!)';
+                
+                document.getElementById('carbs-value').textContent = 'N/A (Goblins need protein!)';
+                document.getElementById('carbs-calories').textContent = '0 kcal';
+                document.getElementById('carbs-percent').textContent = '0%';
+                
+                document.getElementById('fats-value').textContent = 'N/A (Goblins need protein!)';
+                document.getElementById('fats-calories').textContent = '0 kcal';
+                document.getElementById('fats-percent').textContent = '0%';
+                
+                document.getElementById('tips-content').innerHTML = `
+                    <strong style="color: var(--accent-color);">🧌 GOBLIN FITNESS TIPS:</strong><br>
+                    • GOBBLE protein powder like it's your last meal (every meal!)<br>
+                    • Lift heavy things. Drop them. Pick them up again. Repeat forever.<br>
+                    • Sleep? Who needs sleep when you can GOBBLE more protein?<br>
+                    • Cardio? Nah. Just GOBBLE and GROW, you beautiful goblin!<br>
+                    • Remember: Real goblins don't count macros - they just GOBBLE GAINS! 🧌💪
+                `;
+                document.getElementById('results').classList.add('active');
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return; // Exit early for goblin mode
+            } else {
+                goblinMessage.style.display = 'none';
+            }
             
             // Calculate BMR using Mifflin-St Jeor Equation
             let bmr;
@@ -306,10 +468,11 @@
                 carbsPercent = 0.35; // 35% carbs
                 fatsPercent = 0.30; // 30% fats
                 tips = `For weight loss, aim for a 15% calorie deficit. Focus on: <br>
-                • Eat ${Math.round(weight * 2.2)}g+ protein daily to preserve muscle mass<br>
+                • Eat ${Math.round(weight * 2.2)}g+ protein daily to preserve muscle mass (like a smart goblin!)<br>
                 • Spread meals throughout the day to maintain energy<br>
                 • Prioritize whole foods over processed options<br>
-                • Stay hydrated and get adequate sleep`;
+                • Stay hydrated and get adequate sleep<br>
+                • 💡 Goblin Tip: Even cutting goblins need protein - don't skip it!`;
             } else if (goal === 'maintain') {
                 targetCalories = Math.round(tdee);
                 proteinPercent = 0.30; // 30% protein
@@ -317,9 +480,10 @@
                 fatsPercent = 0.30; // 30% fats
                 tips = `To maintain your current weight: <br>
                 • Eat at maintenance calories (TDEE)<br>
-                • Aim for ${Math.round(weight * 2.0)}g+ protein daily<br>
+                • Aim for ${Math.round(weight * 2.0)}g+ protein daily (goblin-approved amount!)<br>
                 • Balance macros for optimal performance<br>
-                • Monitor weight weekly and adjust if needed`;
+                • Monitor weight weekly and adjust if needed<br>
+                • 💡 Goblin Tip: Maintenance = More time to GOBBLE protein recipes!`;
             } else { // gain
                 targetCalories = Math.round(tdee * 1.15); // 15% surplus
                 proteinPercent = 0.25; // 25% protein
@@ -327,9 +491,10 @@
                 fatsPercent = 0.30; // 30% fats
                 tips = `For weight gain/muscle building: <br>
                 • Eat at a 15% calorie surplus<br>
-                • Aim for ${Math.round(weight * 2.2)}g+ protein daily for muscle growth<br>
+                • Aim for ${Math.round(weight * 2.2)}g+ protein daily for muscle growth (GOBBLE MODE ACTIVATED!)<br>
                 • Time carbs around workouts for optimal energy<br>
-                • Progressive overload in training + surplus calories = gains`;
+                • Progressive overload in training + surplus calories = gains<br>
+                • 💡 Goblin Tip: This is where we SHINE! GOBBLE all the protein! 🧌💪`;
             }
             
             // Calculate macros in grams
