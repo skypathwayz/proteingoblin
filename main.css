@@ -3371,27 +3371,32 @@ a:hover {
     .goblin-tip-widget > div:first-child {
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 6px !important;
+        gap: 10px !important;
+        align-items: center !important;
     }
     
     .goblin-tip-widget h4 {
-        font-size: 0.95rem !important;
-        min-width: 100% !important;
-        order: 2;
-        margin: 4px 0 !important;
-        color: var(--primary-bg) !important;
+        font-size: 1.1rem !important;
+        min-width: auto !important;
+        margin: 0 !important;
+        color: #ffffff !important; /* Force white text */
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+        font-weight: 700 !important;
+        flex: 0 0 auto !important;
     }
     
     .goblin-wisdom-mascot-big {
-        height: 30px !important;
+        height: 35px !important;
         width: auto !important;
-        order: 1;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
     }
     
     .goblin-wisdom-mascot-small {
-        height: 25px !important;
+        height: 30px !important;
         width: auto !important;
-        order: 3;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
     }
     
     #daily-goblin-tip {
