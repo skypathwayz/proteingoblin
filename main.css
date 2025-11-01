@@ -610,6 +610,54 @@ a:hover {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Remove green lines on mobile - nav-link pseudo-elements */
+@media (max-width: 768px) {
+    .nav-link::before,
+    .nav-link::after,
+    .nav-link:hover::before,
+    .nav-link:hover::after,
+    .nav-link.active::before,
+    .nav-link.active::after {
+        display: none !important;
+        content: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        background: none !important;
+    }
+    
+    .nav-link,
+    .nav-link.active,
+    .nav-link:hover {
+        outline: none !important;
+        border: none !important;
+        border-bottom: none !important;
+        border-top: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        transform: none !important;
+    }
+    
+    .nav-link.active,
+    .nav-link:hover {
+        color: var(--accent-color) !important;
+        background: transparent !important;
+    }
+    
+    .mobile-menu-btn {
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Remove browser focus outlines */
+    *:focus,
+    *:focus-visible,
+    *:active {
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+}
+
 .dropdown {
     position: relative;
 }
