@@ -495,6 +495,11 @@ a:hover {
         height: 32px;
         max-width: 36px;
     }
+    
+    /* Hide search button mascot - use emoji instead */
+    .search-btn img {
+        display: none !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2866,35 +2871,72 @@ a:hover {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        background: var(--card-bg) !important;
+        border: 1px solid var(--border-color) !important;
     }
     
     .nav-links {
         flex-direction: column;
         gap: var(--spacing-sm);
         width: 100%;
+        background: var(--card-bg) !important;
     }
     
     .nav-item {
         width: 100%;
+        background: var(--card-bg) !important;
     }
     
     .nav-link {
         width: 100%;
-        padding: var(--spacing-md);
-        text-align: left;
+        padding: var(--spacing-md) !important;
+        text-align: left !important;
+        background: var(--card-bg) !important;
+        color: var(--primary-text) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: var(--radius-md) !important;
+        margin-bottom: var(--spacing-xs) !important;
+        font-weight: 600 !important;
+        display: block !important;
+    }
+    
+    .nav-link:hover,
+    .nav-link:active {
+        background: var(--accent-bg) !important;
+        color: var(--accent-color) !important;
+        border-color: var(--accent-color) !important;
     }
     
     .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
         border: none !important;
         border-color: transparent !important;
-        background: var(--accent-bg);
-        margin-top: var(--spacing-xs);
-        padding-left: var(--spacing-lg);
+        background: var(--card-bg) !important;
+        margin-top: var(--spacing-xs) !important;
+        padding-left: var(--spacing-lg) !important;
+        padding-top: var(--spacing-sm) !important;
+    }
+    
+    .dropdown-link {
+        background: var(--card-bg) !important;
+        color: var(--primary-text) !important;
+        padding: var(--spacing-sm) var(--spacing-md) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: var(--radius-md) !important;
+        margin-bottom: var(--spacing-xs) !important;
+        font-weight: 500 !important;
+        display: block !important;
+    }
+    
+    .dropdown-link:hover,
+    .dropdown-link:active {
+        background: var(--accent-bg) !important;
+        color: var(--accent-color) !important;
+        border-color: var(--accent-color) !important;
     }
     
     /* Remove green from active mobile menu */
@@ -3300,6 +3342,8 @@ a:hover {
     .goblin-tip-widget {
         padding: 15px !important;
         margin-bottom: 20px !important;
+        background: var(--gradient-slime) !important;
+        border: 2px solid var(--accent-color) !important;
     }
     
     .goblin-tip-widget > div:first-child {
@@ -3313,6 +3357,7 @@ a:hover {
         min-width: 100% !important;
         order: 2;
         margin: 4px 0 !important;
+        color: var(--primary-bg) !important;
     }
     
     .goblin-wisdom-mascot-big {
@@ -3330,6 +3375,17 @@ a:hover {
     #daily-goblin-tip {
         font-size: 0.9rem !important;
         line-height: 1.3 !important;
+        color: #ffffff !important; /* Force white text on mobile */
+        font-weight: 600 !important;
+    }
+    
+    .goblin-tip-widget button {
+        background: var(--primary-bg) !important;
+        color: var(--accent-color) !important;
+        border: none !important;
+        padding: 8px 16px !important;
+        border-radius: var(--radius-md) !important;
+        font-weight: 600 !important;
     }
     
     /* Button mascots mobile */
