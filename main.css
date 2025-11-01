@@ -2357,7 +2357,19 @@ a:hover {
     }
     
     .search-input {
-        width: 200px;
+        width: 120px;
+        font-size: var(--font-size-xs);
+        padding: 6px 8px;
+    }
+    
+    .search-btn {
+        padding: 6px 10px;
+        min-width: 36px;
+    }
+    
+    .search-btn img {
+        height: 14px !important;
+        width: auto !important;
     }
     
     .hero-stats {
