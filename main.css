@@ -281,6 +281,25 @@ a:hover {
         position: relative !important;
         padding-top: 0 !important;
         margin-top: 0 !important;
+        border: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    html {
+        border: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     
     /* Ensure navbar is visible */
@@ -3083,6 +3102,36 @@ a:hover {
         border-color: transparent !important;
         background-image: none !important;
         background: none !important;
+        display: none !important;
+        content: none !important;
+        height: 0 !important;
+        width: 0 !important;
+    }
+    
+    /* Force all borders to gray on mobile */
+    * {
+        border-color: var(--border-color) !important;
+    }
+    
+    /* Remove any green backgrounds or gradients */
+    * {
+        background-image: none !important;
+    }
+    
+    /* Specifically target header and nav elements */
+    .header,
+    .navbar,
+    .nav-container,
+    .nav-brand,
+    .nav-menu,
+    .nav-links,
+    .nav-item,
+    .nav-link,
+    .nav-actions,
+    .search-container,
+    .mobile-menu-btn {
+        background-image: none !important;
+        border-color: var(--border-color) !important;
     }
     
     /* Specifically target known green elements */
