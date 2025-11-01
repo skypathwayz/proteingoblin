@@ -91,9 +91,46 @@
                     <!-- Common Ingredients Grid -->
                     <div class="ingredient-selector" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
                         <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s;">
-                            <input type="checkbox" value="protein powder" class="ingredient-check" onchange="findRecipesWithIngredients()">
+                            <input type="checkbox" value="protein powder" id="protein-powder-check" class="ingredient-check" onchange="toggleProteinFlavorSelector(); findRecipesWithIngredients()">
                             <span>Protein Powder</span>
                         </label>
+                        
+                        <!-- Protein Flavor Selector (shown when Protein Powder is checked) -->
+                        <div id="protein-flavor-selector" style="display: none; grid-column: 1 / -1; margin-top: 10px; padding: 15px; background: var(--card-bg); border-radius: var(--radius-lg); border: 2px solid var(--accent-color);">
+                            <label style="display: block; color: var(--accent-color); font-weight: 600; margin-bottom: 12px; font-size: 0.95rem;">
+                                <img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Select Your Protein Flavor (Optional):
+                            </label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px;">
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="" checked onchange="findRecipesWithIngredients()">
+                                    <span>Any Flavor</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="chocolate" onchange="findRecipesWithIngredients()">
+                                    <span>Chocolate</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="vanilla" onchange="findRecipesWithIngredients()">
+                                    <span>Vanilla</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="strawberry" onchange="findRecipesWithIngredients()">
+                                    <span>Strawberry</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="cookies and cream" onchange="findRecipesWithIngredients()">
+                                    <span>Cookies & Cream</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="peanut butter" onchange="findRecipesWithIngredients()">
+                                    <span>Peanut Butter</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
+                                    <input type="radio" name="protein-flavor" value="unflavored" onchange="findRecipesWithIngredients()">
+                                    <span>Unflavored</span>
+                                </label>
+                            </div>
+                        </div>
                         <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
                             <input type="checkbox" value="eggs" class="ingredient-check" onchange="findRecipesWithIngredients()">
                             <span>Eggs</span>
@@ -215,6 +252,22 @@
     <script src="main.js"></script>
     <script src="recipe-generator.js"></script>
     <script>
+        // Toggle protein flavor selector visibility
+        function toggleProteinFlavorSelector() {
+            const proteinCheckbox = document.getElementById('protein-powder-check');
+            const flavorSelector = document.getElementById('protein-flavor-selector');
+            
+            if (proteinCheckbox && flavorSelector) {
+                if (proteinCheckbox.checked) {
+                    flavorSelector.style.display = 'block';
+                } else {
+                    flavorSelector.style.display = 'none';
+                    // Reset flavor selection
+                    document.querySelectorAll('input[name="protein-flavor"]')[0].checked = true;
+                }
+            }
+        }
+        
         // Ingredient-based recipe finder
         function findRecipesWithIngredients() {
             const checkedIngredients = Array.from(document.querySelectorAll('.ingredient-check:checked'))
@@ -226,17 +279,34 @@
                 return;
             }
             
+            // Get selected protein flavor
+            const selectedFlavor = document.querySelector('input[name="protein-flavor"]:checked')?.value || '';
+            
             // Get all recipes from global recipes object
             const allRecipes = [];
             if (typeof recipes !== 'undefined') {
-                Object.values(recipes).forEach(flavorRecipes => {
-                    allRecipes.push(...flavorRecipes);
-                });
+                // If flavor is selected, prioritize recipes from that flavor category
+                if (selectedFlavor && recipes[selectedFlavor]) {
+                    allRecipes.push(...recipes[selectedFlavor]);
+                    // Also include recipes from other flavors as secondary options
+                    Object.keys(recipes).forEach(flavor => {
+                        if (flavor !== selectedFlavor) {
+                            allRecipes.push(...recipes[flavor]);
+                        }
+                    });
+                } else {
+                    // No specific flavor selected, include all recipes
+                    Object.values(recipes).forEach(flavorRecipes => {
+                        allRecipes.push(...flavorRecipes);
+                    });
+                }
             }
             
             // Find recipes that contain all checked ingredients (or most of them)
             const matchingRecipes = allRecipes.filter(recipe => {
                 const recipeIngredients = recipe.ingredients.join(' ').toLowerCase();
+                const recipeName = recipe.name.toLowerCase();
+                
                 // Recipe matches if it contains at least 70% of checked ingredients
                 const matchCount = checkedIngredients.filter(ing => 
                     recipeIngredients.includes(ing)
@@ -247,7 +317,41 @@
                     return false;
                 }
                 
+                // If a specific flavor is selected, prioritize recipes with that flavor in the name or ingredients
+                if (selectedFlavor) {
+                    const flavorKeywords = {
+                        'chocolate': ['chocolate', 'cocoa', 'choco'],
+                        'vanilla': ['vanilla'],
+                        'strawberry': ['strawberry', 'strawberries'],
+                        'cookies and cream': ['cookies', 'cream', 'cookies and cream', 'oreo'],
+                        'peanut butter': ['peanut butter', 'peanut'],
+                        'unflavored': ['unflavored', 'plain']
+                    };
+                    
+                    const keywords = flavorKeywords[selectedFlavor] || [];
+                    const hasFlavor = keywords.some(keyword => 
+                        recipeName.includes(keyword) || recipeIngredients.includes(keyword)
+                    );
+                    
+                    // If flavor doesn't match, still include but with lower priority (will be sorted later)
+                    if (!hasFlavor && matchCount > 0) {
+                        // Keep it but mark it for sorting
+                        recipe._flavorMatch = false;
+                    } else {
+                        recipe._flavorMatch = true;
+                    }
+                }
+                
                 return matchCount >= Math.ceil(checkedIngredients.length * 0.7) || matchCount >= 2;
+            });
+            
+            // Sort: flavor-matched recipes first
+            matchingRecipes.sort((a, b) => {
+                if (selectedFlavor) {
+                    if (a._flavorMatch && !b._flavorMatch) return -1;
+                    if (!a._flavorMatch && b._flavorMatch) return 1;
+                }
+                return 0;
             });
             
             // Display results
@@ -288,6 +392,8 @@
         
         function clearIngredientSelection() {
             document.querySelectorAll('.ingredient-check').forEach(cb => cb.checked = false);
+            document.getElementById('protein-flavor-selector').style.display = 'none';
+            document.querySelectorAll('input[name="protein-flavor"]')[0].checked = true;
             document.getElementById('ingredient-results').style.display = 'none';
             document.getElementById('no-ingredient-results').style.display = 'none';
         }
@@ -310,10 +416,19 @@
                             label.style.background = 'var(--accent-color)';
                             label.style.color = 'var(--primary-bg)';
                             label.style.fontWeight = '600';
+                            // If this is protein powder, show flavor selector
+                            if (this.id === 'protein-powder-check') {
+                                toggleProteinFlavorSelector();
+                            }
                         } else {
                             label.style.background = 'var(--accent-bg)';
                             label.style.color = 'var(--primary-text)';
                             label.style.fontWeight = '400';
+                            // If this is protein powder, hide flavor selector
+                            if (this.id === 'protein-powder-check') {
+                                document.getElementById('protein-flavor-selector').style.display = 'none';
+                                document.querySelectorAll('input[name="protein-flavor"]')[0].checked = true;
+                            }
                         }
                     });
                 }
