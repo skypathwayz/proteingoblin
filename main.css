@@ -295,7 +295,24 @@ a:hover {
     width: auto;
     max-width: 50px;
     margin-right: var(--spacing-xs);
-    animation: mascotWiggle 3s ease-in-out infinite;
+    animation: mascotFlex 3s ease-in-out infinite;
+    position: relative;
+    cursor: pointer;
+}
+
+.logo-mascot-big:hover::after {
+    content: "Big Bro - The Muscle Builder 💪";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    white-space: nowrap;
+    z-index: 1000;
 }
 
 .logo-mascot-small {
@@ -305,6 +322,23 @@ a:hover {
     margin: 0 var(--spacing-xs);
     animation: mascotPeek 2.5s ease-in-out infinite;
     vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+}
+
+.logo-mascot-small:hover::after {
+    content: "Little Bro - Trying His Best 💪";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-light);
+    color: var(--primary-bg);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    white-space: nowrap;
+    z-index: 1000;
 }
 
 .logo-text {
@@ -681,14 +715,24 @@ a:hover {
 
 @keyframes mascotFlex {
     0%, 100% { transform: scale(1) rotate(0deg); }
-    40% { transform: scale(1.04) rotate(-1deg); }
-    50% { transform: scale(1.06) rotate(0.6deg); }
-    60% { transform: scale(1.04) rotate(-0.6deg); }
+    25% { transform: scale(1.05) rotate(-2deg); }
+    50% { transform: scale(1.08) rotate(1deg); }
+    75% { transform: scale(1.05) rotate(-1deg); }
 }
 
 @keyframes mascotPeek {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.05); }
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    25% { transform: translateY(-5px) scale(1.03) rotate(-1deg); }
+    50% { transform: translateY(-10px) scale(1.06) rotate(1deg); }
+    75% { transform: translateY(-5px) scale(1.03) rotate(-1deg); }
+}
+
+/* Brotherly relationship animation - they flex together */
+@keyframes mascotWiggle {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    25% { transform: rotate(-3deg) translateY(-1px); }
+    50% { transform: rotate(3deg) translateY(-2px) scale(1.02); }
+    75% { transform: rotate(-2deg) translateY(-1px); }
 }
 
 .hero-description {
@@ -2330,8 +2374,8 @@ a:hover {
     
     .cookbook-categories {
         grid-template-columns: 1fr;
-    }
-    
+}
+
     .recipes-grid {
         grid-template-columns: 1fr;
     }

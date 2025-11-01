@@ -627,36 +627,36 @@ const rotatingFact = document.getElementById('rotating-fact');
 
 // Daily Goblin Protein Tips (Funny & Educational!)
 const goblinProteinTips = [
-    "🧌 Goblin Tip: Your body can only use ~25-35g protein per meal. More = expensive pee! 💦",
-    "💪 Goblin Tip: Mix protein powder with liquid FIRST to avoid clumps! Goblins hate chunky shakes! 🧌",
-    "🧌 Goblin Tip: Casein protein = slow release = bedtime GOBBLE! Whey = fast = post-workout GOBBLE! 💪",
-    "💪 Goblin Tip: Protein doesn't magically become fat! Too many calories do. Goblins know the difference! 🧌",
-    "🧌 Goblin Tip: 0.8g protein per pound of bodyweight = gains! Less = weak goblin. More = expensive pee again! 💦",
-    "💪 Goblin Tip: Plant protein needs combinations! Rice + pea = complete amino acids. Goblins approve! 🌱🧌",
-    "🧌 Goblin Tip: Cooking protein powder DOESN'T destroy it! Bake away, you beautiful protein chef! 🎂",
-    "💪 Goblin Tip: 'Anabolic window' is a myth! Eat protein within 24 hours = fine. Goblins don't rush! 🧌",
-    "🧌 Goblin Tip: Whey isolate = lactose-free. Goblins with sensitive tummies rejoice! 💨",
-    "💪 Goblin Tip: Protein powder in recipes replaces SOME flour. Not ALL flour. Don't ask goblins why! 🧌🍰",
-    "🧌 Goblin Tip: Pre-workout protein? Optional. Post-workout protein? Smart. Anytime protein? GOBBLE! 💪",
-    "💪 Goblin Tip: Unflavored protein = secret weapon! Put it in EVERYTHING. Soup? Yep. Bread? Yep. Everything! 🧌",
-    "🧌 Goblin Tip: Mixing chocolate + vanilla = cookies & cream! Goblins discovered this by accident! 🍪",
-    "💪 Goblin Tip: Protein bars often have MORE sugar than protein. Read labels! Goblins check everything! 🧌",
-    "🧌 Goblin Tip: Casein + whey blend = best for baking! Makes things fluffy. Goblins love fluffy things! 🧁",
-    "💪 Goblin Tip: Plant protein tastes different. That's okay! Goblins adapt. You can too! 🌱🧌",
-    "🧌 Goblin Tip: Protein timing matters less than total daily protein. Stop stressing! GOBBLE consistently! 💪",
-    "💪 Goblin Tip: Too much protein? Kidneys are fine if you're healthy. Goblins tested this. Trust us! 🧌",
-    "🧌 Goblin Tip: Protein powder can go in COFFEE! But let it cool first or you'll get clumps. Goblins learned the hard way! ☕",
-    "💪 Goblin Tip: BCAAs = waste of money if you're eating protein. Whole protein has BCAAs! Goblins save their coins! 💰🧌",
-    "🧌 Goblin Tip: Protein pancakes = easiest way to GOBBLE 40g protein for breakfast! Goblins approve! 🥞",
-    "💪 Goblin Tip: Mixing protein powder? Use a blender, not a fork. Your arms will thank you, weak goblin! 💪🧌",
-    "🧌 Goblin Tip: Casein before bed = no midnight hunger! Goblins sleep better with full tummies! 😴",
-    "💪 Goblin Tip: Plant protein needs MORE to match whey's leucine. Goblins eat more plants, make more gains! 🌱🧌",
-    "🧌 Goblin Tip: Protein powder expiration dates are suggestions. If it smells fine, GOBBLE it! Goblins are brave! 💪",
-    "💪 Goblin Tip: Hot protein = clumpy disaster. Mix with cold/warm liquids. Goblins learned from experience! 🧌",
-    "🧌 Goblin Tip: Protein ice cream > regular ice cream. More protein, less guilt. Goblins have no guilt anyway! 🍦",
-    "💪 Goblin Tip: Unflavored protein in savory dishes = game changer! Goblins put it in EVERYTHING! 🧌🍝",
-    "🧌 Goblin Tip: Too much protein in one shake = bloating. Spread it out! Goblins spread their GOBBLING! 💨",
-    "💪 Goblin Tip: Protein cookies are a thing! Make them. Eat them. GOBBLE them all! Goblins love cookies! 🍪🧌"
+    "💪 Big Bro Goblin says: Your body can only use ~25-35g protein per meal. More = expensive pee! 💦",
+    "💪 Little Bro Goblin adds: Mix protein powder with liquid FIRST to avoid clumps! We hate chunky shakes!",
+    "💪 Big Bro flexes: Casein protein = slow release = bedtime GOBBLE! Whey = fast = post-workout GOBBLE!",
+    "💪 Little Bro chimes in: Protein doesn't magically become fat! Too many calories do. We know the difference!",
+    "💪 Big Bro muscles: 0.8g protein per pound of bodyweight = gains! Less = weak goblin. More = expensive pee again! 💦",
+    "💪 Little Bro learns: Plant protein needs combinations! Rice + pea = complete amino acids. Big bro taught me that! 🌱",
+    "💪 Big Bro confirms: Cooking protein powder DOESN'T destroy it! Bake away, you beautiful protein chef! 🎂",
+    "💪 Little Bro agrees: 'Anabolic window' is a myth! Eat protein within 24 hours = fine. We don't rush!",
+    "💪 Little Bro says: Whey isolate = lactose-free. My sensitive tummy loves it! Big bro taught me that! 💨",
+    "💪 Big Bro explains: Protein powder replaces SOME flour, not ALL. I learned this the hard way! 🍰",
+    "💪 Little Bro learns: Pre-workout protein? Optional. Post-workout? Smart. Anytime? GOBBLE!",
+    "💪 Big Bro reveals: Unflavored protein = secret weapon! I put it in EVERYTHING. Soup? Bread? Yes!",
+    "💪 Little Bro discovered: Chocolate + vanilla = cookies & cream! Big bro was impressed! 🍪",
+    "💪 Big Bro warns: Protein bars often have MORE sugar than protein. Always read labels!",
+    "💪 Little Bro confirms: Casein + whey blend = fluffy baking! Big bro makes the best pancakes! 🧁",
+    "💪 Big Bro adapts: Plant protein tastes different, but it works! Little bro is learning too! 🌱",
+    "💪 Little Bro realizes: Protein timing < total daily protein. Big bro told me to stop stressing!",
+    "💪 Big Bro tested: Too much protein? Kidneys are fine if you're healthy. I tested this myself!",
+    "💪 Little Bro learned: Protein powder CAN go in coffee, but let it cool first! I made that mistake! ☕",
+    "💪 Big Bro saves: BCAAs = waste of money. Whole protein has BCAAs! I keep my coins! 💰",
+    "💪 Little Bro loves: Protein pancakes = easiest 40g protein breakfast! Big bro's recipe! 🥞",
+    "💪 Big Bro advises: Use a blender, not a fork! Little bro tried a fork once... poor little arms! 💪",
+    "💪 Little Bro sleeps: Casein before bed = no midnight hunger! I sleep like a baby! 😴",
+    "💪 Big Bro knows: Plant protein needs MORE to match whey's leucine. More plants = more gains! 🌱",
+    "💪 Little Bro is brave: Expiration dates are suggestions! If it smells fine, GOBBLE it!",
+    "💪 Big Bro remembers: Hot protein = clumpy disaster! I learned this from experience!",
+    "💪 Little Bro prefers: Protein ice cream > regular ice cream! More protein, no guilt! 🍦",
+    "💪 Big Bro experiments: Unflavored protein in savory dishes = game changer! I put it EVERYWHERE! 🍝",
+    "💪 Little Bro spreads: Too much protein = bloating. Spread it out! I spread my GOBBLING! 💨",
+    "💪 Big Bro bakes: Protein cookies are THE BEST! Little bro helps me eat them all! 🍪"
 ];
 
 // Legacy Protein Facts (keeping for compatibility)
@@ -1174,7 +1174,7 @@ function displayRecipe(recipe, ingredients) {
             </div>
         </div>
     `;
-
+    
     resultsDiv.style.display = 'block';
     resultsDiv.scrollIntoView({ behavior: 'smooth' });
     
@@ -1251,8 +1251,8 @@ function scaleRecipe(factor) {
     // Show goblin humor message
     const goblinMessages = [
         `🧌 Scaled to ${factor}x! Goblin approved! 💪`,
-        `💪 ${factor}x recipe = ${factor}x gains! Goblins multiply everything! 🧌`,
-        `🧌 You've scaled this recipe ${factor}x - now GOBBLE ${factor}x more! 💪`
+        `💪 Big Bro says: ${factor}x recipe = ${factor}x gains! We multiply everything!`,
+        `💪 Little Bro adds: You've scaled this ${factor}x - now GOBBLE ${factor}x more!`
     ];
     const randomMessage = goblinMessages[Math.floor(Math.random() * goblinMessages.length)];
     showAlert(randomMessage, 'success');
@@ -1394,9 +1394,9 @@ function setupCategoryFiltering() {
 function filterRecipesByCategory(category) {
     let allRecipes = [];
     if (typeof recipes !== 'undefined') {
-        Object.values(recipes).forEach(flavorRecipes => {
-            allRecipes = allRecipes.concat(flavorRecipes);
-        });
+    Object.values(recipes).forEach(flavorRecipes => {
+        allRecipes = allRecipes.concat(flavorRecipes);
+    });
     }
     
     let filteredRecipes = allRecipes;
@@ -1409,7 +1409,7 @@ function filterRecipesByCategory(category) {
     const selected = shuffled.slice(0, 6);
     
     if (selected.length > 0) {
-        displayRecipes(selected, featuredRecipesGrid);
+    displayRecipes(selected, featuredRecipesGrid);
     }
 }
 
@@ -1507,7 +1507,7 @@ function loadFeaturedRecipes() {
 // Make displayRecipes globally accessible
 window.displayRecipes = function displayRecipes(recipes, container) {
     if (!container) return;
-
+    
     container.innerHTML = recipes.map(recipe => {
         const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
         const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
@@ -1516,33 +1516,33 @@ window.displayRecipes = function displayRecipes(recipes, container) {
                 <div class="recipe-image">
                     ${imageHtml}
                 </div>
-                <div class="recipe-header">
-                    <h3 class="recipe-title">${recipe.name}</h3>
-                    <div class="recipe-meta">
-                        <span class="recipe-category">${recipe.category}</span>
-                        <span class="recipe-difficulty">${recipe.difficulty}</span>
-                        <span class="recipe-protein">${recipe.protein}g protein</span>
-                    </div>
+            <div class="recipe-header">
+                <h3 class="recipe-title">${recipe.name}</h3>
+                <div class="recipe-meta">
+                    <span class="recipe-category">${recipe.category}</span>
+                    <span class="recipe-difficulty">${recipe.difficulty}</span>
+                    <span class="recipe-protein">${recipe.protein}g protein</span>
                 </div>
-                <div class="recipe-ingredients">
-                    <h4>Ingredients:</h4>
-                    <ul>
-                        ${recipe.ingredients.slice(0, 4).map(ingredient => `<li>${ingredient}</li>`).join('')}
-                        ${recipe.ingredients.length > 4 ? '<li>...and more!</li>' : ''}
-                    </ul>
-                </div>
-                <div class="recipe-method">
-                    <h4>Quick Method:</h4>
-                    <ol>
-                        ${recipe.method.slice(0, 3).map(step => `<li>${step}</li>`).join('')}
-                        ${recipe.method.length > 3 ? '<li>...see full recipe for more steps!</li>' : ''}
-                    </ol>
-                </div>
+            </div>
+            <div class="recipe-ingredients">
+                <h4>Ingredients:</h4>
+                <ul>
+                    ${recipe.ingredients.slice(0, 4).map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    ${recipe.ingredients.length > 4 ? '<li>...and more!</li>' : ''}
+                </ul>
+            </div>
+            <div class="recipe-method">
+                <h4>Quick Method:</h4>
+                <ol>
+                    ${recipe.method.slice(0, 3).map(step => `<li>${step}</li>`).join('')}
+                    ${recipe.method.length > 3 ? '<li>...see full recipe for more steps!</li>' : ''}
+                </ol>
+            </div>
                 <div class="recipe-actions" onclick="event.stopPropagation();">
                     <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); } return false;">View Full Recipe</button>
                     <button class="btn btn-secondary btn-small" onclick="if(typeof addToShoppingListFromCard === 'function') { addToShoppingListFromCard('${safeRecipeName}'); } return false;">🛒 Add to List</button>
-                </div>
             </div>
+        </div>
         `;
     }).join('');
 }
@@ -1580,8 +1580,8 @@ function addToShoppingListFromCard(recipeName) {
 function startProteinFactsRotation() {
     // Update rotating fact if it exists (legacy support)
     if (rotatingFact) {
-        let factIndex = 0;
-        setInterval(() => {
+    let factIndex = 0;
+    setInterval(() => {
             factIndex = (factIndex + 1) % goblinProteinTips.length;
             rotatingFact.textContent = goblinProteinTips[factIndex];
         }, 6000);
@@ -1973,8 +1973,8 @@ function scaleRecipeInModal(factor) {
     // Show goblin humor message
     const goblinMessages = [
         `🧌 Scaled to ${factor}x! Goblin approved! 💪`,
-        `💪 ${factor}x recipe = ${factor}x gains! Goblins multiply everything! 🧌`,
-        `🧌 You've scaled this recipe ${factor}x - now GOBBLE ${factor}x more! 💪`
+        `💪 Big Bro says: ${factor}x recipe = ${factor}x gains! We multiply everything!`,
+        `💪 Little Bro adds: You've scaled this ${factor}x - now GOBBLE ${factor}x more!`
     ];
     const randomMessage = goblinMessages[Math.floor(Math.random() * goblinMessages.length)];
     showAlert(randomMessage, 'success');
@@ -2136,10 +2136,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (scrollTimer) return;
         scrollTimer = setTimeout(function() {
             scrollTimer = null;
-            if (window.scrollY > 500 && !goblinSpawned) {
-                spawnRandomGoblin();
-                goblinSpawned = true;
-            }
+        if (window.scrollY > 500 && !goblinSpawned) {
+            spawnRandomGoblin();
+            goblinSpawned = true;
+        }
         }, 100);
     }, { passive: true }); // Passive listener for better performance
     
