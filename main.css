@@ -780,22 +780,23 @@ a:hover {
 
 .mobile-menu-btn {
     display: none;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-    border: none;
-    color: var(--primary-bg);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text);
     font-size: var(--font-size-xl);
     cursor: pointer;
     padding: var(--spacing-sm);
     border-radius: var(--radius-md);
     transition: all var(--transition-normal);
     font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0, 255, 136, 0.3);
+    box-shadow: none;
 }
 
 .mobile-menu-btn:hover {
-    background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+    background: var(--accent-bg);
+    border-color: var(--border-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Hero Section */
