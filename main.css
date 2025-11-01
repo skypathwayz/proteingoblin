@@ -250,6 +250,13 @@ a:hover {
 
 @media (max-width: 768px) {
     .header {
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
         background: var(--primary-bg) !important;
         border-bottom: 1px solid var(--border-color) !important;
         border-top: none !important;
@@ -996,6 +1003,15 @@ a:hover {
     right: 0;
     height: 3px;
     background: var(--gradient-accent);
+}
+
+@media (max-width: 768px) {
+    .hero-stat::before {
+        display: none !important;
+        content: none !important;
+        height: 0 !important;
+        background: none !important;
+    }
 }
 
 .hero-stat:hover {
