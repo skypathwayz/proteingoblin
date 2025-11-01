@@ -124,9 +124,9 @@ a:hover {
 
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--spacing-xl);
 }
 
 /* Buttons */
@@ -222,8 +222,10 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+    width: 100%;
     padding: 0 var(--spacing-lg);
     position: relative;
     z-index: 1000;
@@ -297,12 +299,12 @@ a:hover {
 }
 
 .logo-mascot-small {
-    height: 30px;
+    height: 40px;
     width: auto;
-    max-width: 35px;
+    max-width: 45px;
     margin: 0 var(--spacing-xs);
     animation: mascotPeek 2.5s ease-in-out infinite;
-    vertical-align: text-bottom;
+    vertical-align: middle;
 }
 
 .logo-text {
@@ -313,6 +315,8 @@ a:hover {
 
 .logo-text-word {
     display: inline-block;
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 /* Title mascots in hero */
@@ -328,9 +332,9 @@ a:hover {
 }
 
 .title-mascot-small {
-    height: 50px;
+    height: 60px;
     width: auto;
-    max-width: 55px;
+    max-width: 65px;
     display: inline-block;
     vertical-align: middle;
     margin-left: var(--spacing-xs);
@@ -582,13 +586,15 @@ a:hover {
     grid-template-columns: 1.3fr 0.7fr;
     gap: var(--spacing-3xl);
     align-items: start;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--spacing-2xl);
+    width: 100%;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 800px;
+    width: 100%;
 }
 
 .hero-title {
@@ -598,12 +604,14 @@ a:hover {
 .hero-title-main {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
     font-size: var(--font-size-5xl);
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
+    color: var(--primary-text);
+    text-align: left;
 }
 
 .hero-title-dash {
@@ -624,16 +632,9 @@ a:hover {
     font-weight: 400;
 }
 
-/* Hero Mascots - Big and Small */
+/* Hero Mascots - Big and Small (moved to title) */
 .hero-mascot-container {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
+    display: none; /* Hidden - mascots now in title */
 }
 
 .hero-mascot {
