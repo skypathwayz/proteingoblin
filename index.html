@@ -38,6 +38,13 @@
             .hero { padding: 60px 15px 30px !important; }
             .nav-brand .logo { flex-direction: row !important; flex-wrap: wrap !important; }
             .logo-subtitle { display: block !important; width: 100% !important; }
+            /* Remove any fixed overlays or green lines */
+            .header { position: relative !important; }
+            *[style*="position: fixed"],
+            *[style*="position:fixed"],
+            .overlay,
+            .modal,
+            .popup { display: none !important; visibility: hidden !important; }
         }
     </style>
     <title>Protein Goblin.com - The Ultimate Protein Recipe Database | 156+ Recipes</title>
