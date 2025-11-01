@@ -1755,12 +1755,17 @@ function rateRecipe(recipeName) {
 window.closeMobileMenu = function closeMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
     const mobileBtn = document.getElementById('mobile-menu-btn');
+    const body = document.body;
     
     if (navMenu && mobileBtn) {
         navMenu.classList.remove('active');
         mobileBtn.classList.remove('active');
         navMenu.style.display = 'none';
         navMenu.style.visibility = 'hidden';
+        // Remove menu-open class from body to remove dark overlay
+        if (body) {
+            body.classList.remove('menu-open');
+        }
     }
 };
 
