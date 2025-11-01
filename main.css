@@ -2874,23 +2874,27 @@ a:hover {
         background: #0a0f0a !important; /* Solid dark background - fully opaque */
         border: 1px solid var(--border-color) !important;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+        z-index: 9999 !important;
     }
     
     /* Darken body background when menu is open */
     body.menu-open {
-        position: relative;
+        position: relative !important;
+        overflow: hidden !important;
     }
     
-    body.menu-open::before {
+    body.menu-open::after {
         content: '';
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.85) !important;
-        z-index: 998;
-        pointer-events: none;
+        background: rgba(0, 0, 0, 0.9) !important;
+        z-index: 998 !important;
+        pointer-events: auto !important;
+        width: 100vw !important;
+        height: 100vh !important;
     }
     
     .nav-links {
@@ -2908,16 +2912,18 @@ a:hover {
     }
     
     .nav-link {
-        width: 100%;
+        width: 100% !important;
         padding: var(--spacing-md) !important;
         text-align: left !important;
         background: #1e2e1e !important; /* Solid dark background - fully opaque */
         color: #ffffff !important; /* Force white text */
-        border: 1px solid var(--border-color) !important;
+        border: 1px solid #374151 !important;
         border-radius: var(--radius-md) !important;
         margin-bottom: var(--spacing-xs) !important;
         font-weight: 600 !important;
         display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .nav-link:hover,
@@ -2932,8 +2938,8 @@ a:hover {
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
-        box-shadow: none !important;
-        border: 1px solid var(--border-color) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8) !important;
+        border: 1px solid #374151 !important;
         background: #1e2e1e !important; /* Solid dark background - fully opaque */
         margin-top: var(--spacing-xs) !important;
         padding-left: var(--spacing-lg) !important;
@@ -2941,17 +2947,21 @@ a:hover {
         padding-bottom: var(--spacing-sm) !important;
         padding-right: var(--spacing-sm) !important;
         border-radius: var(--radius-md) !important;
+        width: 100% !important;
     }
     
     .dropdown-link {
         background: #1a281a !important; /* Even darker solid background */
         color: #ffffff !important; /* Force white text */
         padding: var(--spacing-sm) var(--spacing-md) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: var(--radius-md) !important;
         margin-bottom: var(--spacing-xs) !important;
         font-weight: 500 !important;
         display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        width: 100% !important;
     }
     
     .dropdown-link:hover,
