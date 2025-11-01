@@ -240,8 +240,8 @@ a:hover {
     right: 0;
     z-index: 1000;
     background: var(--primary-bg);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border-bottom: 1px solid var(--border-color);
     display: block !important;
     visibility: visible !important;
@@ -269,6 +269,28 @@ a:hover {
         outline: none !important;
         -webkit-backdrop-filter: none !important;
         backdrop-filter: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Remove ALL blur effects on mobile */
+    * {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+    
+    /* Remove any overlay elements */
+    .overlay,
+    .modal-backdrop,
+    .blur-overlay,
+    [class*="overlay"],
+    [class*="backdrop"],
+    [class*="blur"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
     
     html {
