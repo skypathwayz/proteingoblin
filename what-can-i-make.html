@@ -90,45 +90,70 @@
                     
                     <!-- Common Ingredients Grid -->
                     <div class="ingredient-selector" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                        <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s;">
-                            <input type="checkbox" value="protein powder" id="protein-powder-check" class="ingredient-check" onchange="toggleProteinFlavorSelector(); findRecipesWithIngredients()">
-                            <span>Protein Powder</span>
-                        </label>
-                        
-                        <!-- Protein Flavor Selector (shown when Protein Powder is checked) -->
-                        <div id="protein-flavor-selector" style="display: none; grid-column: 1 / -1; margin-top: 10px; padding: 15px; background: var(--card-bg); border-radius: var(--radius-lg); border: 2px solid var(--accent-color);">
-                            <label style="display: block; color: var(--accent-color); font-weight: 600; margin-bottom: 12px; font-size: 0.95rem;">
-                                <img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Select Your Protein Flavor (Optional):
+                        <div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; flex: 1; min-width: 150px;">
+                                <input type="checkbox" value="protein powder" id="protein-powder-check" class="ingredient-check" onchange="toggleProteinFlavorSelector(); findRecipesWithIngredients()">
+                                <span>Protein Powder</span>
                             </label>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px;">
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="" checked onchange="findRecipesWithIngredients()">
-                                    <span>Any Flavor</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="chocolate" onchange="findRecipesWithIngredients()">
-                                    <span>Chocolate</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="vanilla" onchange="findRecipesWithIngredients()">
-                                    <span>Vanilla</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="strawberry" onchange="findRecipesWithIngredients()">
-                                    <span>Strawberry</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="cookies and cream" onchange="findRecipesWithIngredients()">
-                                    <span>Cookies & Cream</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="peanut butter" onchange="findRecipesWithIngredients()">
-                                    <span>Peanut Butter</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem;">
-                                    <input type="radio" name="protein-flavor" value="unflavored" onchange="findRecipesWithIngredients()">
-                                    <span>Unflavored</span>
-                                </label>
+                            
+                            <!-- Protein Flavor Dropdown (shown when Protein Powder is checked) -->
+                            <div id="protein-flavor-selector" style="display: none; flex: 1; min-width: 200px; position: relative;">
+                                <button type="button" id="protein-flavor-toggle" onclick="toggleFlavorDropdown()" style="width: 100%; padding: 12px 16px; background: var(--card-bg); border: 2px solid var(--accent-color); border-radius: var(--radius-md); color: var(--primary-text); font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; min-height: 44px;">
+                                    <span id="protein-flavor-selected-text">Any Flavor</span>
+                                    <span style="font-size: 0.8rem; color: var(--accent-color);">▼</span>
+                                </button>
+                                <div id="protein-flavor-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; margin-top: 5px; background: var(--card-bg); border: 2px solid var(--accent-color); border-radius: var(--radius-md); max-height: 300px; overflow-y: auto; z-index: 1000; box-shadow: var(--shadow-lg);">
+                                    <div style="padding: 8px;">
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('', 'Any Flavor')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Any Flavor
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('chocolate', 'Chocolate')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Chocolate
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('vanilla', 'Vanilla')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Vanilla
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('strawberry', 'Strawberry')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Strawberry
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('cookies-cream', 'Cookies & Cream')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Cookies & Cream
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('peanut-butter', 'Peanut Butter')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Peanut Butter
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('banana', 'Banana')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Banana
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('mint-chocolate', 'Mint Chocolate')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Mint Chocolate
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('caramel', 'Caramel')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Caramel
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('birthday-cake', 'Birthday Cake')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Birthday Cake
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('coconut', 'Coconut')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Coconut
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('cinnamon', 'Cinnamon')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Cinnamon
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('matcha', 'Matcha')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Matcha
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('peach', 'Peach')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Peach
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('mocha', 'Mocha')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Mocha
+                                        </button>
+                                        <button type="button" class="flavor-dropdown-option" onclick="selectProteinFlavor('unflavored', 'Unflavored')" style="width: 100%; padding: 10px 12px; background: var(--accent-bg); border: none; border-radius: var(--radius-sm); color: var(--primary-text); text-align: left; cursor: pointer; font-size: 0.9rem; margin-bottom: 4px;">
+                                            Unflavored
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <label class="ingredient-checkbox" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--accent-bg); border-radius: var(--radius-md); cursor: pointer;">
@@ -256,17 +281,69 @@
         function toggleProteinFlavorSelector() {
             const proteinCheckbox = document.getElementById('protein-powder-check');
             const flavorSelector = document.getElementById('protein-flavor-selector');
+            const dropdown = document.getElementById('protein-flavor-dropdown');
             
             if (proteinCheckbox && flavorSelector) {
                 if (proteinCheckbox.checked) {
-                    flavorSelector.style.display = 'block';
+                    flavorSelector.style.display = 'flex';
                 } else {
                     flavorSelector.style.display = 'none';
+                    if (dropdown) dropdown.style.display = 'none';
                     // Reset flavor selection
-                    document.querySelectorAll('input[name="protein-flavor"]')[0].checked = true;
+                    selectProteinFlavor('', 'Any Flavor');
                 }
             }
         }
+        
+        // Toggle dropdown open/close
+        function toggleFlavorDropdown() {
+            const dropdown = document.getElementById('protein-flavor-dropdown');
+            if (dropdown) {
+                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+        
+        // Select a protein flavor
+        function selectProteinFlavor(value, displayText) {
+            const selectedText = document.getElementById('protein-flavor-selected-text');
+            const dropdown = document.getElementById('protein-flavor-dropdown');
+            
+            if (selectedText) {
+                selectedText.textContent = displayText;
+            }
+            
+            if (dropdown) {
+                dropdown.style.display = 'none';
+            }
+            
+            // Store selected flavor for recipe filtering
+            window.selectedProteinFlavor = value;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.flavor-dropdown-option').forEach(btn => {
+                btn.style.background = 'var(--accent-bg)';
+                btn.style.color = 'var(--primary-text)';
+            });
+            
+            // Highlight selected option
+            event.target.style.background = 'var(--accent-color)';
+            event.target.style.color = 'var(--primary-bg)';
+            
+            findRecipesWithIngredients();
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const selector = document.getElementById('protein-flavor-selector');
+            const dropdown = document.getElementById('protein-flavor-dropdown');
+            const toggle = document.getElementById('protein-flavor-toggle');
+            
+            if (selector && dropdown && toggle && 
+                !selector.contains(event.target) && 
+                dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            }
+        });
         
         // Ingredient-based recipe finder
         function findRecipesWithIngredients() {
@@ -279,8 +356,8 @@
                 return;
             }
             
-            // Get selected protein flavor
-            const selectedFlavor = document.querySelector('input[name="protein-flavor"]:checked')?.value || '';
+            // Get selected protein flavor from dropdown
+            const selectedFlavor = window.selectedProteinFlavor || '';
             
             // Get all recipes from global recipes object
             const allRecipes = [];
@@ -392,8 +469,11 @@
         
         function clearIngredientSelection() {
             document.querySelectorAll('.ingredient-check').forEach(cb => cb.checked = false);
-            document.getElementById('protein-flavor-selector').style.display = 'none';
-            document.querySelectorAll('input[name="protein-flavor"]')[0].checked = true;
+            const flavorSelector = document.getElementById('protein-flavor-selector');
+            const dropdown = document.getElementById('protein-flavor-dropdown');
+            if (flavorSelector) flavorSelector.style.display = 'none';
+            if (dropdown) dropdown.style.display = 'none';
+            selectProteinFlavor('', 'Any Flavor');
             document.getElementById('ingredient-results').style.display = 'none';
             document.getElementById('no-ingredient-results').style.display = 'none';
         }
