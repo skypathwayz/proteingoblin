@@ -3042,6 +3042,46 @@ a:hover {
     .search-btn {
         background: var(--card-bg) !important;
     }
+    
+    /* Remove ALL green pseudo-elements on mobile - aggressive cleanup */
+    *::before,
+    *::after {
+        border: none !important;
+        border-color: transparent !important;
+        background-image: none !important;
+        background: none !important;
+    }
+    
+    /* Specifically target known green elements */
+    .form-section-title::before,
+    .hero-stat::before,
+    .product-card::before,
+    .blog-card::before,
+    .recipe-card::before,
+    .nav-link::before,
+    .nav-link::after,
+    .btn::before,
+    .btn::after {
+        display: none !important;
+        content: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        background: none !important;
+        background-image: none !important;
+        border: none !important;
+    }
+    
+    /* Remove any green gradients or accent colors from borders */
+    * {
+        border-color: var(--border-color) !important;
+    }
+    
+    /* Override accent color borders with gray */
+    .btn-outline,
+    .btn-outline:hover,
+    .btn-outline:focus {
+        border: 1px solid var(--border-color) !important;
+    }
 }
 
 @media (max-width: 480px) {
