@@ -366,19 +366,41 @@
             // Get all recipes from global recipes object
             const allRecipes = [];
             if (typeof recipes !== 'undefined') {
-                // If flavor is selected, prioritize recipes from that flavor category
-                if (selectedFlavor && recipes[selectedFlavor]) {
-                    allRecipes.push(...recipes[selectedFlavor]);
-                    // Also include recipes from other flavors as secondary options
-                    Object.keys(recipes).forEach(flavor => {
-                        if (flavor !== selectedFlavor) {
-                            allRecipes.push(...recipes[flavor]);
-                        }
-                    });
+                // If flavor is selected, ONLY include recipes from that flavor category
+                if (selectedFlavor) {
+                    // Map flavor selection to recipe database keys
+                    const flavorMap = {
+                        'chocolate': 'chocolate',
+                        'vanilla': 'vanilla',
+                        'strawberry': 'strawberry',
+                        'cookies-cream': 'cookies-cream',
+                        'cookies and cream': 'cookies-cream',
+                        'peanut-butter': 'peanut-butter',
+                        'peanut butter': 'peanut-butter',
+                        'banana': 'banana',
+                        'mint-chocolate': 'mint-chocolate',
+                        'mint chocolate': 'mint-chocolate',
+                        'caramel': 'caramel',
+                        'birthday-cake': 'birthday-cake',
+                        'birthday cake': 'birthday-cake',
+                        'coconut': 'coconut',
+                        'cinnamon': 'cinnamon',
+                        'matcha': 'matcha',
+                        'peach': 'peach',
+                        'mocha': 'mocha',
+                        'unflavored': 'unflavored'
+                    };
+                    
+                    const recipeKey = flavorMap[selectedFlavor] || selectedFlavor;
+                    if (recipes[recipeKey] && Array.isArray(recipes[recipeKey])) {
+                        allRecipes.push(...recipes[recipeKey]);
+                    }
                 } else {
                     // No specific flavor selected, include all recipes
                     Object.values(recipes).forEach(flavorRecipes => {
-                        allRecipes.push(...flavorRecipes);
+                        if (Array.isArray(flavorRecipes)) {
+                            allRecipes.push(...flavorRecipes);
+                        }
                     });
                 }
             }
