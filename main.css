@@ -346,12 +346,28 @@ a:hover {
     font-weight: 600;
     text-transform: none;
     letter-spacing: 0.3px;
-    display: block;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: var(--spacing-md);
     margin-top: 0;
     padding-top: 2px;
     font-style: italic;
     line-height: 1.2;
     align-self: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+.logo-subtitle-left {
+    display: inline-block;
+}
+
+.logo-subtitle-right {
+    display: inline-block;
+    margin-left: auto;
+    padding-right: 45px; /* Space for small mascot */
+    position: relative;
 }
 
 /* Logo Mascot - Original Single Image - Ensure only one shows */
@@ -2598,7 +2614,7 @@ a:hover {
     }
     
     .nav-brand .logo {
-        font-size: var(--font-size-sm);
+    font-size: var(--font-size-sm);
         gap: var(--spacing-xs);
     }
     
@@ -2620,10 +2636,17 @@ a:hover {
     .logo-subtitle {
         font-size: 0.6rem;
         margin-top: 1px;
-        white-space: nowrap;
-        display: inline-block;
+        white-space: normal;
+    display: flex;
+        flex-direction: row;
         width: 100%;
         text-align: left;
+        gap: var(--spacing-xs);
+    }
+    
+    .logo-subtitle-right {
+        padding-right: 0;
+        margin-left: auto;
     }
     
     .nav-actions {
@@ -2754,8 +2777,8 @@ a:hover {
     .cookbook-categories {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
-    }
-    
+}
+
     .product-categories {
         grid-template-columns: 1fr;
     }
@@ -3236,7 +3259,7 @@ a:hover {
 .recipe-modal-method h3,
 .recipe-modal-tips h3 {
     color: var(--accent-color);
-    font-size: var(--font-size-xl);
+        font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-md);
     display: flex;
     align-items: center;
