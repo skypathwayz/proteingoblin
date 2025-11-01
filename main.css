@@ -269,10 +269,11 @@ a:hover {
     font-size: var(--font-size-xs);
     color: var(--accent-light);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: none;
+    letter-spacing: 0.3px;
     display: block;
-    margin-top: -2px;
+    margin-top: 2px;
+    font-style: italic;
 }
 
 .logo-text {
@@ -310,12 +311,19 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
+    flex-wrap: wrap;
 }
 
 .logo-text-word {
     display: inline-block;
     color: var(--accent-color);
     font-weight: 700;
+}
+
+.logo-text-with-mascot {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 /* Title mascots in hero */
