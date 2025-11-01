@@ -146,7 +146,7 @@
         <div class="container">
             <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center;">📊 Macro Calculator</h1>
             <p style="font-size: 1.25rem; text-align: center; max-width: 800px; margin: 0 auto; color: var(--secondary-text);">
-                Calculate your optimal daily macros (protein, carbs, fats) based on your body, goals, and activity level. Free, accurate, and personalized for muscle building, weight loss, or maintenance. <strong style="color: var(--accent-color);">🧌 Goblin mode available!</strong>
+                Calculate your optimal daily macros (protein, carbs, fats) based on your body, goals, and activity level. Free, accurate, and personalized for muscle building, weight loss, or maintenance. <strong style="color: var(--accent-color);"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Goblin mode available!</strong>
             </p>
         </div>
     </section>
@@ -168,15 +168,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="gender">Gender 🧌</label>
+                        <label for="gender">Gender <img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;"></label>
                         <select id="gender" name="gender" required>
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
-                            <option value="goblin">🧌 Goblin (We gobble everything! No macros needed!)</option>
+                            <option value="goblin"><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Goblin (We gobble everything! No macros needed!)</option>
                         </select>
                         <small style="color: var(--secondary-text); font-size: 0.875rem; margin-top: 4px; display: block;">
-                            💡 Try "Goblin" mode for hilarious results! 🧌
+                            💡 Try "Goblin" mode for hilarious results! <img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-left: 4px;">
                         </small>
                     </div>
 
@@ -238,13 +238,13 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-large" style="margin-top: 20px;">
-                        Calculate My Macros 💪🧌
+                        Calculate My Macros <img src="images-backup/11.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;"><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-left: 2px;">
                     </button>
                 </form>
 
                 <div class="results-section" id="results">
                     <div id="goblin-message" style="text-align: center; margin-bottom: 20px; padding: 20px; background: var(--gradient-slime); border-radius: var(--radius-lg); display: none;">
-                        <h2 style="color: var(--primary-bg); margin-bottom: 10px; font-size: 1.5rem;">🧌 GOBLIN MODE ACTIVATED! 🧌</h2>
+                        <h2 style="color: var(--primary-bg); margin-bottom: 10px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 8px;"><img src="images-backup/22.svg" alt="" style="height: 24px; width: auto; filter: brightness(0) invert(1);"> GOBLIN MODE ACTIVATED! <img src="images-backup/22.svg" alt="" style="height: 24px; width: auto; filter: brightness(0) invert(1);"></h2>
                         <p style="color: var(--primary-bg); font-size: 1.1rem; font-weight: 600;" id="goblin-text"></p>
                     </div>
                     <h2 style="color: var(--accent-color); margin-bottom: 20px; text-align: center;">Your Daily Macros</h2>
@@ -400,26 +400,26 @@
             const activity = parseFloat(document.getElementById('activity').value);
             const goal = document.getElementById('goal').value;
             
-            // Goblin Mode - Special handling! 🧌
+            // Goblin Mode - Special handling!
             const goblinMessage = document.getElementById('goblin-message');
             const goblinText = document.getElementById('goblin-text');
             
             if (gender === 'goblin') {
                 goblinMessage.style.display = 'block';
                 const goblinQuotes = [
-                    "🧌 GOBLINS GOBBLE EVERYTHING! No macros needed - just GOBBLE ALL THE PROTEIN! 🧌",
-                    "💪 GOBLIN POWER ACTIVATED! We don't count macros, we just GOBBLE GAINS!",
-                    "🧌 Who needs macros when you're a GOBLIN? Just GOBBLE, GOBBLE, GOBBLE protein!",
-                    "💪 GOBLIN MODE: Eat protein. Lift weights. GOBBLE EVERYTHING. Repeat! 🧌",
-                    "🧌 Macros? Pfft! Goblins GOBBLE whatever protein we can find! MORE GAINS!",
-                    "💪 Real goblins don't track macros - we just GOBBLE and GROW! 🧌"
+                    "GOBLINS GOBBLE EVERYTHING! No macros needed - just GOBBLE ALL THE PROTEIN!",
+                    "GOBLIN POWER ACTIVATED! We don't count macros, we just GOBBLE GAINS!",
+                    "Who needs macros when you're a GOBLIN? Just GOBBLE, GOBBLE, GOBBLE protein!",
+                    "GOBLIN MODE: Eat protein. Lift weights. GOBBLE EVERYTHING. Repeat!",
+                    "Macros? Pfft! Goblins GOBBLE whatever protein we can find! MORE GAINS!",
+                    "Real goblins don't track macros - we just GOBBLE and GROW!"
                 ];
                 const randomQuote = goblinQuotes[Math.floor(Math.random() * goblinQuotes.length)];
                 goblinText.textContent = randomQuote;
                 
                 // Set goblin-friendly "macros" (just for fun reference)
                 document.getElementById('total-calories').textContent = '∞ (Goblins gobble endlessly!)';
-                document.getElementById('protein-value').textContent = 'ALL OF IT 🧌';
+                document.getElementById('protein-value').innerHTML = 'ALL OF IT <img src="images-backup/22.svg" alt="" style="height: 20px; width: auto; vertical-align: middle; margin-left: 4px;">';
                 document.getElementById('protein-calories').textContent = 'Infinite gains!';
                 document.getElementById('protein-percent').textContent = '100% (Protein only!)';
                 
@@ -432,12 +432,12 @@
                 document.getElementById('fats-percent').textContent = '0%';
                 
                 document.getElementById('tips-content').innerHTML = `
-                    <strong style="color: var(--accent-color);">🧌 GOBLIN FITNESS TIPS:</strong><br>
+                    <strong style="color: var(--accent-color); display: flex; align-items: center; gap: 6px;"><img src="images-backup/22.svg" alt="" style="height: 20px; width: auto; vertical-align: middle;"> GOBLIN FITNESS TIPS:</strong><br>
                     • GOBBLE protein powder like it's your last meal (every meal!)<br>
                     • Lift heavy things. Drop them. Pick them up again. Repeat forever.<br>
                     • Sleep? Who needs sleep when you can GOBBLE more protein?<br>
                     • Cardio? Nah. Just GOBBLE and GROW, you beautiful goblin!<br>
-                    • Remember: Real goblins don't count macros - they just GOBBLE GAINS! 🧌💪
+                    • Remember: Real goblins don't count macros - they just GOBBLE GAINS! <img src="images-backup/11.svg" alt="" style="height: 18px; width: auto; vertical-align: middle; margin-left: 4px;">
                 `;
                 document.getElementById('results').classList.add('active');
                 document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -494,7 +494,7 @@
                 • Aim for ${Math.round(weight * 2.2)}g+ protein daily for muscle growth (GOBBLE MODE ACTIVATED!)<br>
                 • Time carbs around workouts for optimal energy<br>
                 • Progressive overload in training + surplus calories = gains<br>
-                • 💡 Goblin Tip: This is where we SHINE! GOBBLE all the protein! 🧌💪`;
+                • 💡 Goblin Tip: This is where we SHINE! GOBBLE all the protein!`;
             }
             
             // Calculate macros in grams

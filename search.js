@@ -196,7 +196,7 @@ class SearchEngine {
         if (results.length === 0) {
             return `
                 <div class="suggestion-item no-results">
-                    <span>🧌 Goblin says: No recipes found for "${query}" - try "chocolate" or "pancakes"!</span>
+                    <span><img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Goblin says: No recipes found for "${query}" - try "chocolate" or "pancakes"!</span>
                 </div>
             `;
         }
@@ -366,7 +366,7 @@ class SearchEngine {
             // On cookbook page - filter and highlight matching recipes in each category
             if (results.length === 0) {
                 if (typeof showAlert === 'function') {
-                    showAlert(`🧌 No recipes found for "${query}". Try different search terms!`, 'warning');
+                    showAlert(`No recipes found for "${query}". Try different search terms!`, 'warning');
                 }
                 return;
             }
@@ -471,7 +471,7 @@ class SearchEngine {
             
             // Show search results message
             if (typeof showAlert === 'function') {
-                showAlert(`🧌 Found ${results.length} recipes matching "${query}"!`, 'success');
+                showAlert(`Found ${results.length} recipes matching "${query}"!`, 'success');
             }
             return;
         }
@@ -488,10 +488,10 @@ class SearchEngine {
         if (results.length === 0) {
             container.innerHTML = `
                 <div class="no-results">
-                    <div class="no-results-icon">🧌</div>
+                    <div class="no-results-icon" style="text-align: center; margin-bottom: 20px;"><img src="images-backup/22.svg" alt="" style="height: 60px; width: auto;"></div>
                     <h3>Goblin's Sad News: No recipes found for "${query}"</h3>
                     <p style="color: var(--secondary-text); margin-top: 10px;">
-                        🧌 Even goblins can't find everything! Try searching for "chocolate", "vanilla", "pancakes", or "smoothie" - goblins know these work! 💪
+                        <img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Even goblins can't find everything! Try searching for "chocolate", "vanilla", "pancakes", or "smoothie" - goblins know these work!
                     </p>
                     <p>Try searching for different ingredients or recipe names</p>
                     <div class="search-suggestions">
@@ -588,7 +588,7 @@ class SearchEngine {
             const generatorSection = document.getElementById('recipe-generator');
             if (generatorSection) {
                 generatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                showAlert('🧌 Goblin says: Click "Generate Recipe" and select this recipe from the results!', 'info');
+                showAlert('Goblin says: Click "Generate Recipe" and select this recipe from the results!', 'info');
             }
         }
     }

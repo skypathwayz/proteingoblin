@@ -1095,7 +1095,7 @@ function displayRecipe(recipe, ingredients) {
         <div class="recipe-card fade-in" data-recipe-name="${recipe.name}">
             <div class="recipe-image">
                 ${imageHtml}
-                <div class="goblin-badge">🧌 Goblin's Pick!</div>
+                <div class="goblin-badge"><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-right: 4px;"> Goblin's Pick!</div>
             </div>
             <div class="recipe-header">
                 <h3 class="recipe-title">${recipe.name}</h3>
@@ -1108,7 +1108,7 @@ function displayRecipe(recipe, ingredients) {
             
             <!-- Recipe Scaling Controls -->
             <div class="recipe-scaling" style="background: var(--accent-bg); padding: 15px; border-radius: var(--radius-md); margin: 20px 0; text-align: center;">
-                <h4 style="margin-bottom: 10px; color: var(--accent-color);">🧌 Scale This Recipe (Goblin-Style!)</h4>
+                <h4 style="margin-bottom: 10px; color: var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 6px;"><img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle;"> Scale This Recipe (Goblin-Style!)</h4>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                     <button class="btn btn-small scale-btn" data-scale="0.5" onclick="scaleRecipe(0.5)" style="background: var(--card-bg);">0.5x (Half)</button>
                     <button class="btn btn-small scale-btn active" data-scale="1" onclick="scaleRecipe(1)" style="background: var(--accent-color); color: var(--primary-bg);">1x (Original)</button>
@@ -1250,7 +1250,7 @@ function scaleRecipe(factor) {
     
     // Show goblin humor message
     const goblinMessages = [
-        `🧌 Scaled to ${factor}x! Goblin approved! 💪`,
+        `<img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Scaled to ${factor}x! Goblin approved!`,
         `💪 Big Bro says: ${factor}x recipe = ${factor}x gains! We multiply everything!`,
         `💪 Little Bro adds: You've scaled this ${factor}x - now GOBBLE ${factor}x more!`
     ];
@@ -1306,7 +1306,7 @@ let shoppingList = [];
 
 function addToShoppingList(recipeName) {
     if (!currentRecipeData) {
-        showAlert('🧌 Goblin says: Generate a recipe first before adding to shopping list!', 'warning');
+        showAlert('Goblin says: Generate a recipe first before adding to shopping list!', 'warning');
         return;
     }
     
@@ -1331,10 +1331,10 @@ function addToShoppingList(recipeName) {
     const existingIndex = shoppingList.findIndex(item => item.name === recipeName);
     if (existingIndex !== -1) {
         shoppingList[existingIndex] = recipeItem; // Update with scaled version
-        showAlert(`🧌 Updated "${recipeName}" in shopping list! (Scaled to ${currentScaleFactor}x)`, 'success');
+        showAlert(`Updated "${recipeName}" in shopping list! (Scaled to ${currentScaleFactor}x)`, 'success');
     } else {
         shoppingList.push(recipeItem);
-        showAlert(`🛒 Added "${recipeName}" to shopping list! 🧌`, 'success');
+        showAlert(`Added "${recipeName}" to shopping list!`, 'success');
     }
     
     // Save to localStorage
@@ -1578,7 +1578,7 @@ function addToShoppingListFromCard(recipeName) {
         currentScaleFactor = 1;
         addToShoppingList(recipeName);
     } else {
-        showAlert('🧌 Goblin says: Recipe not found! Cannot add to shopping list.', 'warning');
+        showAlert('Goblin says: Recipe not found! Cannot add to shopping list.', 'warning');
     }
 }
 
@@ -1788,7 +1788,7 @@ window.viewFullRecipe = function viewFullRecipe(recipeName) {
     } else {
         // Recipe not found - show alert
         if (typeof showAlert === 'function') {
-            showAlert('🧌 Goblin says: Recipe not found! Let me generate one for you instead!', 'warning');
+            showAlert('Goblin says: Recipe not found! Let me generate one for you instead!', 'warning');
         }
         const generatorSection = document.getElementById('recipe-generator');
         if (generatorSection) {
@@ -1828,7 +1828,7 @@ window.openRecipeModal = function openRecipeModal(recipe, ingredients) {
         <div class="recipe-modal-recipe" data-recipe-name="${recipe.name}">
             <div class="recipe-modal-image">
                 ${imageHtml}
-                <div class="goblin-badge">🧌 Goblin's Pick!</div>
+                <div class="goblin-badge"><img src="images-backup/22.svg" alt="" style="height: 14px; width: auto; vertical-align: middle; margin-right: 4px;"> Goblin's Pick!</div>
             </div>
             
             <div class="recipe-modal-header">
@@ -1844,7 +1844,7 @@ window.openRecipeModal = function openRecipeModal(recipe, ingredients) {
             
             <!-- Recipe Scaling Controls -->
             <div class="recipe-scaling" style="background: var(--accent-bg); padding: 15px; border-radius: var(--radius-md); margin: 20px 0; text-align: center;">
-                <h4 style="margin-bottom: 10px; color: var(--accent-color);">🧌 Scale This Recipe (Goblin-Style!)</h4>
+                <h4 style="margin-bottom: 10px; color: var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 6px;"><img src="images-backup/22.svg" alt="" style="height: 18px; width: auto; vertical-align: middle;"> Scale This Recipe (Goblin-Style!)</h4>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                     <button class="btn btn-small scale-btn" data-scale="0.5" onclick="scaleRecipeInModal(0.5)" style="background: var(--card-bg);">0.5x (Half)</button>
                     <button class="btn btn-small scale-btn active" data-scale="1" onclick="scaleRecipeInModal(1)" style="background: var(--accent-color); color: var(--primary-bg);">1x (Original)</button>
@@ -1999,7 +1999,7 @@ function scaleRecipeInModal(factor) {
     
     // Show goblin humor message
     const goblinMessages = [
-        `🧌 Scaled to ${factor}x! Goblin approved! 💪`,
+        `<img src="images-backup/22.svg" alt="" style="height: 16px; width: auto; vertical-align: middle; margin-right: 4px;"> Scaled to ${factor}x! Goblin approved!`,
         `💪 Big Bro says: ${factor}x recipe = ${factor}x gains! We multiply everything!`,
         `💪 Little Bro adds: You've scaled this ${factor}x - now GOBBLE ${factor}x more!`
     ];
@@ -2171,7 +2171,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true }); // Passive listener for better performance
     
     function spawnRandomGoblin() {
-        const goblinEmojis = ['💪🧌', '💪🧌🥤', '💪🧌🍖', '💪🧌🏋️'];
+        const goblinEmojis = ['💪', '💪🥤', '💪🍖', '💪🏋️'];
         const randomEmoji = goblinEmojis[Math.floor(Math.random() * goblinEmojis.length)];
         
         const newGoblin = document.createElement('div');
