@@ -21,11 +21,17 @@
         html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
         body { background: #0a0f0a; color: #ffffff; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; }
         .header { display: block !important; visibility: visible !important; opacity: 1 !important; background: #0a0f0a !important; position: relative !important; z-index: 1000; border: none !important; border-bottom: 1px solid #374151 !important; box-shadow: none !important; outline: none !important; }
-        .header::before, .header::after, .navbar::before, .navbar::after { display: none !important; content: none !important; }
+        .header::before, .header::after, .navbar::before, .navbar::after, .nav-container::before, .nav-container::after, .nav-brand::before, .nav-brand::after, .nav-menu::before, .nav-menu::after { display: none !important; content: none !important; height: 0 !important; width: 0 !important; }
+        .navbar, .nav-container, .nav-brand, .nav-menu { border: none !important; outline: none !important; box-shadow: none !important; }
         .nav-link, .nav-link.active { outline: none !important; border: none !important; box-shadow: none !important; }
-        .nav-link::before, .nav-link::after, .nav-link.active::before, .nav-link.active::after { display: none !important; content: none !important; }
-        .mobile-menu-btn { outline: none !important; border: none !important; box-shadow: none !important; }
+        .nav-link::before, .nav-link::after, .nav-link.active::before, .nav-link.active::after { display: none !important; content: none !important; height: 0 !important; width: 0 !important; }
+        .mobile-menu-btn { outline: none !important; border: 1px solid #374151 !important; background: #1e2e1e !important; box-shadow: none !important; }
+        .mobile-menu-btn:hover, .mobile-menu-btn:active, .mobile-menu-btn:focus { outline: none !important; border: 1px solid #374151 !important; background: #2a3a2a !important; box-shadow: none !important; }
+        .search-input, .search-btn { border: 1px solid #374151 !important; outline: none !important; box-shadow: none !important; }
+        .search-input:focus { border: 1px solid #374151 !important; box-shadow: none !important; outline: none !important; }
+        .search-btn { background: #1e2e1e !important; }
         * { outline: none !important; }
+        *::before, *::after { border: none !important; }
         .navbar { display: flex !important; visibility: visible !important; opacity: 1 !important; }
         .nav-container { display: flex !important; visibility: visible !important; opacity: 1 !important; }
         .nav-brand .logo { display: flex !important; flex-direction: column !important; }
@@ -50,10 +56,17 @@
             .modal,
             .popup { display: none !important; visibility: hidden !important; }
             /* Remove all green borders, outlines, and pseudo-elements */
-            .nav-link, .nav-link.active, .nav-link:hover { outline: none !important; border: none !important; box-shadow: none !important; }
+            .header { border: none !important; border-bottom: 1px solid #374151 !important; box-shadow: none !important; outline: none !important; }
+            .navbar, .nav-container, .nav-brand, .nav-menu { border: none !important; outline: none !important; box-shadow: none !important; }
+            .nav-link, .nav-link.active, .nav-link:hover { outline: none !important; border: none !important; box-shadow: none !important; background: transparent !important; }
             .nav-link::before, .nav-link::after, .nav-link.active::before, .nav-link.active::after { display: none !important; content: none !important; height: 0 !important; width: 0 !important; }
-            .mobile-menu-btn { outline: none !important; border: none !important; box-shadow: none !important; }
+            .mobile-menu-btn { outline: none !important; border: 1px solid #374151 !important; background: #1e2e1e !important; box-shadow: none !important; }
+            .mobile-menu-btn:hover, .mobile-menu-btn:active, .mobile-menu-btn:focus { outline: none !important; border: 1px solid #374151 !important; background: #2a3a2a !important; box-shadow: none !important; }
+            .search-input, .search-btn { border: 1px solid #374151 !important; outline: none !important; box-shadow: none !important; }
+            .search-input:focus { border: 1px solid #374151 !important; box-shadow: none !important; outline: none !important; }
+            .search-btn { background: #1e2e1e !important; }
             *:focus, *:focus-visible { outline: none !important; -webkit-tap-highlight-color: transparent !important; }
+            *::before, *::after { border: none !important; }
             /* Hide Safari home indicator bar if visible */
             body { padding-bottom: 0 !important; }
             html { padding-bottom: 0 !important; }
