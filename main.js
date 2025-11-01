@@ -1415,6 +1415,12 @@ function filterRecipesByCategory(category) {
 
 // Global function for category filtering from dropdown
 function filterByCategory(category) {
+    // Close mobile menu when filtering
+    if (typeof closeMobileMenu === 'function') {
+        closeMobileMenu();
+    } else if (typeof window.closeMobileMenu === 'function') {
+        window.closeMobileMenu();
+    }
     if (featuredRecipesGrid) {
         const cards = featuredRecipesGrid.querySelectorAll('.recipe-card');
         cards.forEach(card => {
@@ -1512,7 +1518,7 @@ window.displayRecipes = function displayRecipes(recipes, container) {
         const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
         const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         return `
-            <div class="recipe-card fade-in" style="cursor: pointer;" onclick="viewFullRecipe('${safeRecipeName}')">
+            <div class="recipe-card fade-in" style="cursor: pointer;" onclick="closeMobileMenu(); viewFullRecipe('${safeRecipeName}')">
                 <div class="recipe-image">
                     ${imageHtml}
                 </div>
@@ -1539,7 +1545,7 @@ window.displayRecipes = function displayRecipes(recipes, container) {
                 </ol>
             </div>
                 <div class="recipe-actions" onclick="event.stopPropagation();">
-                    <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); } return false;">View Full Recipe</button>
+                    <button class="btn btn-primary btn-small" onclick="closeMobileMenu(); if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); } return false;">View Full Recipe</button>
                     <button class="btn btn-secondary btn-small" onclick="if(typeof addToShoppingListFromCard === 'function') { addToShoppingListFromCard('${safeRecipeName}'); } return false;">🛒 Add to List</button>
             </div>
         </div>
@@ -1736,8 +1742,29 @@ function rateRecipe(recipeName) {
     }
 }
 
+// Function to close mobile menu - make globally accessible
+window.closeMobileMenu = function closeMobileMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    
+    if (navMenu && mobileBtn) {
+        navMenu.classList.remove('active');
+        mobileBtn.classList.remove('active');
+        navMenu.style.display = 'none';
+        navMenu.style.visibility = 'hidden';
+    }
+};
+
+// Also create non-window version for backwards compatibility
+function closeMobileMenu() {
+    window.closeMobileMenu();
+}
+
 // Make viewFullRecipe globally accessible
 window.viewFullRecipe = function viewFullRecipe(recipeName) {
+    // Close mobile menu if open
+    closeMobileMenu();
+    
     // Find the recipe in the recipes database
     let foundRecipe = null;
     

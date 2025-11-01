@@ -421,7 +421,7 @@
                     const imageHtml = typeof getFoodImage === 'function' ? getFoodImage(recipe.name, recipe.name) : '';
                     const safeRecipeName = recipe.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     return `
-                        <div class="recipe-card fade-in" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); }">
+                        <div class="recipe-card fade-in" onclick="if(typeof closeMobileMenu === 'function') { closeMobileMenu(); } if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } else if(typeof window.viewFullRecipe === 'function') { window.viewFullRecipe('${safeRecipeName}'); }">
                             <div class="recipe-image">
                                 ${imageHtml}
                             </div>
@@ -448,7 +448,7 @@
                                 </ol>
                             </div>
                             <div class="recipe-actions" onclick="event.stopPropagation();">
-                                <button class="btn btn-primary btn-small" onclick="if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } return false;">
+                                <button class="btn btn-primary btn-small" onclick="if(typeof closeMobileMenu === 'function') { closeMobileMenu(); } if(typeof viewFullRecipe === 'function') { viewFullRecipe('${safeRecipeName}'); } return false;">
                                     View Full Recipe
                                 </button>
                                 <button class="btn btn-secondary btn-small" onclick="if(typeof addToShoppingListFromCard === 'function') { addToShoppingListFromCard('${safeRecipeName}'); } return false;">
